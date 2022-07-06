@@ -1,7 +1,6 @@
 require("dotenv").config(); // require .env for processing
-
+require("./config/connection").connect();
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
