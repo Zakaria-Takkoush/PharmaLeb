@@ -44,8 +44,20 @@ async function editPharmacy(req, res) {
     }
 }
 
+// Delete All
+async function removeAllPharmacies(req, res) {
+    try {
+        const removed = await Pharmacy.deleteMany();
+        return res.status(200).json({ status: "success", removed: removed });
+    } catch (error) {
+        console.log(error.message);
+        res.json({ Error: error.message });
+    }
+}
+
 module.exports = {
     registerPharmacy,
     removePharmacy,
     editPharmacy,
+    removeAllPharmacies,
 };
