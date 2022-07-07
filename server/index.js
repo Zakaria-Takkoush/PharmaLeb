@@ -10,8 +10,8 @@ app.use(express.json());
 // import routers
 const pharmacyRouter = require("./routes/PharmacyRoutes");
 
-// routes
-app.use("/api/pharmacies", pharmacyRouter);
+// routes version 1
+app.use("/v1/api/pharmacies", pharmacyRouter);
 
 // port
 const { API_PORT } = process.env;
