@@ -62,7 +62,7 @@ async function getPharmacies(req, res) {
         if (pharmacies.length == 0) {
             return res.json("No pharmacies found");
         }
-        return res.status(200).json(pharmacies);
+        return res.status(200).json({ found: pharmacies.length, pharmacies });
     } catch (error) {
         console.log(error.message);
         res.status(404).json({ Error: error.message });
@@ -70,6 +70,20 @@ async function getPharmacies(req, res) {
 }
 
 // Get Items of a specific pharmacy
+async function getItemsByPharmID(req, res) {
+    try {
+        const pharmacy = await Pharmacy.findById(req.params.id);
+        const items = pharmacy.items;
+        return res.status(200).json({
+            pharmacy: pharmacy.name,
+            "itemCount:": items.length,
+            "items:": items,
+        });
+    } catch (error) {
+        console.log(error.message);
+        res.status(404).json({ Error: error.message });
+    }
+}
 
 module.exports = {
     registerPharmacy,
@@ -77,4 +91,5 @@ module.exports = {
     editPharmacy,
     removeAllPharmacies,
     getPharmacies,
+    getItemsByPharmID,
 };
