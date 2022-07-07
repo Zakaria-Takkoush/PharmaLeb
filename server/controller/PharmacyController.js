@@ -26,7 +26,26 @@ async function removePharmacy(req, res) {
     }
 }
 
+// Edit a pharmacy
+async function editPharmacy(req, res) {
+    // const { name, phone_number, location, address, owner } = req.body;
+    try {
+        const pharmacy = await Pharmacy.findByIdAndUpdate(
+            req.params.id,
+            req.body
+        );
+        if (!pharmacy) {
+            res.json("No pharmacy to edit");
+        }
+        return res.status(200).json({ status: "success", edited: pharmacy });
+    } catch (error) {
+        console.log(error.message);
+        res.status(400).json({ Error: error.message });
+    }
+}
+
 module.exports = {
     registerPharmacy,
     removePharmacy,
+    editPharmacy,
 };
