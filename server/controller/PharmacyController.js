@@ -12,6 +12,21 @@ async function registerPharmacy(req, res) {
     }
 }
 
+// Delete a pharmacy
+async function removePharmacy(req, res) {
+    try {
+        const removed = await Pharmacy.findByIdAndRemove(req.params.id);
+        if (!removed) {
+            return res.json({ status: "Not found or already removed" });
+        }
+        return res.json({ status: "success", removed: removed });
+    } catch (error) {
+        console.log(error.message);
+        res.json({ Error: error.message });
+    }
+}
+
 module.exports = {
     registerPharmacy,
+    removePharmacy,
 };
