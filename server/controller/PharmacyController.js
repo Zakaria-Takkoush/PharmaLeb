@@ -69,6 +69,20 @@ async function getPharmacies(req, res) {
     }
 }
 
+// Get a specific pharmacy
+async function getPharmacy(req, res) {
+    try {
+        const pharmacy = await Pharmacy.findById(req.params.id);
+        if (!pharmacy) {
+            return res.status(404).json("Pharmacy not found");
+        }
+        return res.status(200).json(pharmacy);
+    } catch (error) {
+        console.log(error.message);
+        res.error.json(error);
+    }
+}
+
 // Get Items of a specific pharmacy
 async function getItemsByPharmID(req, res) {
     try {
@@ -92,4 +106,5 @@ module.exports = {
     removeAllPharmacies,
     getPharmacies,
     getItemsByPharmID,
+    getPharmacy,
 };
