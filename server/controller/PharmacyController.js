@@ -55,9 +55,26 @@ async function removeAllPharmacies(req, res) {
     }
 }
 
+// Get all pharmacies
+async function getPharmacies(req, res) {
+    try {
+        const pharmacies = await Pharmacy.find();
+        if (pharmacies.length == 0) {
+            return res.json("No pharmacies found");
+        }
+        return res.status(200).json(pharmacies);
+    } catch (error) {
+        console.log(error.message);
+        res.status(404).json({ Error: error.message });
+    }
+}
+
+// Get Items of a specific pharmacy
+
 module.exports = {
     registerPharmacy,
     removePharmacy,
     editPharmacy,
     removeAllPharmacies,
+    getPharmacies,
 };
