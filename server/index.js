@@ -7,6 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// import routers
+const pharmacyRouter = require("./routes/PharmacyRoutes");
+
+// routes
+app.use("/api/pharmacies", pharmacyRouter);
+
 // port
 const { API_PORT } = process.env;
 const port = process.env.PORT || API_PORT;
