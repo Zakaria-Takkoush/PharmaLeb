@@ -125,6 +125,19 @@ async function addItemToPharmacy(req, res) {
     }
 }
 
+// Remove and item from a pharmacy
+async function removeItemFromPharmacy(req, res) {
+    try {
+        const pharmacy = await Pharmacy.findById(req.params.id);
+        await pharmacy.items.remove({ _id: req.body.id });
+        await pharmacy.save();
+        return res.status(200).json({ status: "success" });
+    } catch (error) {
+        console.log(error.message);
+        res.json({ Error: error.message });
+    }
+}
+
 module.exports = {
     registerPharmacy,
     removePharmacy,
@@ -134,4 +147,5 @@ module.exports = {
     getItemsByPharmID,
     getPharmacy,
     addItemToPharmacy,
+    removeItemFromPharmacy,
 };

@@ -8,6 +8,7 @@ const {
     getItemsByPharmID,
     getPharmacy,
     addItemToPharmacy,
+    removeItemFromPharmacy,
 } = require("../controller/PharmacyController");
 const router = express.Router();
 
@@ -26,6 +27,9 @@ router.get("/:id/items", getItemsByPharmID);
 
 // Add an item to pharmacy
 router.post("/:id/add_item", addItemToPharmacy);
+
+// Remove an item from pharmacy
+router.delete("/:id/delete_item", removeItemFromPharmacy);
 
 // Delete All (testing and admin)
 router.delete("/", removeAllPharmacies);
