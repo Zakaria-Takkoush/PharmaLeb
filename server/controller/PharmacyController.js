@@ -99,6 +99,32 @@ async function getItemsByPharmID(req, res) {
     }
 }
 
+// Add an item to a pharmacy
+async function addItemToPharmacy(req, res) {
+    try {
+        const pharmacy = await Pharmacy.findById(req.params.id);
+
+        // item to add
+        const itemToAdd = req.body;
+
+        // for very item added, check if it already exists
+        for (let i = 0; i < pharmacy.items.length; i++) {
+            if (itemToAdd.item == pharmacy.items[i].item) {
+                return res.json("Item already exists");
+            }
+        }
+        // if item does not exist, add it to the array and save
+        pharmacy.items.push(itemToAdd);
+        pharmacy.save();
+        return res
+            .status(201)
+            .json({ pharmacy: pharmacy, added_item: itemToAdd });
+    } catch (error) {
+        console.log(error.message);
+        res.json({ Error: error.message });
+    }
+}
+
 module.exports = {
     registerPharmacy,
     removePharmacy,
@@ -107,4 +133,5 @@ module.exports = {
     getPharmacies,
     getItemsByPharmID,
     getPharmacy,
+    addItemToPharmacy,
 };
