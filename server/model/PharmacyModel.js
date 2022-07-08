@@ -16,7 +16,7 @@ const pharmacySchema = new mongoose.Schema(
                     type: mongoose.Types.ObjectId,
                     ref: "Medicine",
                 },
-                stock: { type: Number },
+                stock: { type: Number, default: 0 },
             },
         ],
     },

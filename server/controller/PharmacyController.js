@@ -115,7 +115,7 @@ async function addItemToPharmacy(req, res) {
         }
         // if item does not exist, add it to the array and save
         pharmacy.items.push(itemToAdd);
-        pharmacy.save();
+        await pharmacy.save();
         return res
             .status(201)
             .json({ pharmacy: pharmacy, added_item: itemToAdd });
