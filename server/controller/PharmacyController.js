@@ -128,10 +128,35 @@ async function addItemToPharmacy(req, res) {
 // Remove and item from a pharmacy
 async function removeItemFromPharmacy(req, res) {
     try {
+        // Find pharmacy by its id
         const pharmacy = await Pharmacy.findById(req.params.id);
         await pharmacy.items.remove({ _id: req.body.id });
         await pharmacy.save();
         return res.status(200).json({ status: "success" });
+    } catch (error) {
+        console.log(error.message);
+        res.json({ Error: error.message });
+    }
+}
+
+// Update stock of an item in a pharmacy
+async function updateItemStock(req, res) {
+    try {
+        // Find pharmacy by its id
+        const pharmacy = await Pharmacy.findById(req.params.id);
+
+        // Find the specific item by its unique id
+        const itemToEdit = pharmacy.items.id(req.body.id);
+        if (!itemToEdit) {
+            return res.status(404).json("No item to update");
+        }
+
+        // Update stock
+        itemToEdit.stock = req.body.stock;
+
+        // Save pharmacy
+        await pharmacy.save();
+        return res.status(200).json({ status: "stock updated successfully" });
     } catch (error) {
         console.log(error.message);
         res.json({ Error: error.message });
@@ -148,4 +173,5 @@ module.exports = {
     getPharmacy,
     addItemToPharmacy,
     removeItemFromPharmacy,
+    updateItemStock,
 };

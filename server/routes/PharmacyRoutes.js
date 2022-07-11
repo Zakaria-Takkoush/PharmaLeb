@@ -9,6 +9,7 @@ const {
     getPharmacy,
     addItemToPharmacy,
     removeItemFromPharmacy,
+    updateItemStock,
 } = require("../controller/PharmacyController");
 const router = express.Router();
 
@@ -30,6 +31,9 @@ router.post("/:id/add_item", addItemToPharmacy);
 
 // Remove an item from pharmacy
 router.delete("/:id/delete_item", removeItemFromPharmacy);
+
+// Update an item stock
+router.put("/:id/edit_stock", updateItemStock);
 
 // Delete All (testing and admin)
 router.delete("/", removeAllPharmacies);
