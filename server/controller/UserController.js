@@ -89,7 +89,7 @@ async function login(req, res) {
         // Validate if user exists in our database
         const user = await User.findOne({ email });
 
-        // IF everything is okay => create token
+        // If everything is okay => create token
         if (user && (await bcrypt.compare(password, user.password))) {
             // Create token
             const token = jwt.sign(
@@ -104,13 +104,11 @@ async function login(req, res) {
             user.token = token;
 
             // user
-            res.header("auth-token", token);
             res.status(200).json({ status: "successfully logged in", user });
         }
         res.status(400).send("Invalid Credentials");
     } catch (error) {
         console.log(error.message);
-        res.send(error.message);
     }
 }
 
