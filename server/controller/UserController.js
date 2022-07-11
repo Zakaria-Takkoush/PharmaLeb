@@ -104,7 +104,8 @@ async function login(req, res) {
             user.token = token;
 
             // user
-            res.status(200).json(user);
+            res.header("auth-token", token);
+            res.status(200).json({ status: "successfully logged in", user });
         }
         res.status(400).send("Invalid Credentials");
     } catch (error) {

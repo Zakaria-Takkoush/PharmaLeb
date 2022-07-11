@@ -11,6 +11,10 @@ const {
     removeItemFromPharmacy,
     updateItemStock,
 } = require("../controller/PharmacyController");
+
+// authentication middleware
+const verifyToken = require("../middleware/auth");
+
 const router = express.Router();
 
 // Get all
