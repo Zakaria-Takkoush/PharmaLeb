@@ -51,7 +51,7 @@ async function register(req, res) {
 
         // Create token
         const token = jwt.sign(
-            { user_id: user._id, email },
+            { user_id: user._id, email, type: user.user_type },
             process.env.TOKEN_KEY,
             {
                 expiresIn: "2h",
@@ -65,10 +65,46 @@ async function register(req, res) {
         res.status(201).json(user);
     } catch (error) {
         console.log(error.message);
-        res.json(error.message);
+        res.send(error.message);
     }
 }
 
 // Login
+async function login(req, res) {
+    try {
+        // Get user input
+        const { email, password } = req.body;
 
-module.exports = { register };
+        // Validate user input
+        if (!(email && password)) {
+            res.status(400).send("Input required");
+        }
+
+        // Validate if user exists in our database
+        const user = await User.findOne({ email });
+
+        // IF everything is okay => create token
+        if (user && (await bcrypt.compare(password, user.password))) {
+            // Create token
+            const token = jwt.sign(
+                { user_id: user._id, email, type: user.user_type },
+                process.env.TOKEN_KEY,
+                {
+                    expiresIn: "2h",
+                }
+            );
+
+            // save user token
+            user.token = token;
+
+            // user
+            res.status(200).json(user);
+        }
+        res.status(400).send("Invalid Credentials");
+    } catch (error) {
+        console.log(error.message);
+        res.send(error.message);
+    }
+}
+
+module.exports = { register, login };
