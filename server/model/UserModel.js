@@ -6,10 +6,10 @@ const userSchema = new mongoose.Schema(
         last_name: { type: String, required: true },
         email: { type: String, unique: true, required: true },
         password: { type: String, required: true },
-        date_of_birth: { type: Date },
+        date_of_birth: { type: Date, required: true },
         phone_number: { type: String, required: true },
         photo: { type: String },
-        user_type: { type: Number },
+        user_type: { type: String, default: "patient" },
         location: {
             latitude: { type: Number },
             longitude: { type: Number },
