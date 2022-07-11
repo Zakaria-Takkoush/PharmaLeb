@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 // import validator function from validator file
-const { validateRegister } = require("../config/validator");
+const { validateRegister, validateLogin } = require("../config/validator");
 
 // Register a new user
 
@@ -78,6 +78,12 @@ async function login(req, res) {
         // Validate user input
         if (!(email && password)) {
             res.status(400).send("Input required");
+        }
+
+        // Validate using Joi
+        const { value, error } = validateLogin(req.body);
+        if (error) {
+            return res.json(error.details);
         }
 
         // Validate if user exists in our database

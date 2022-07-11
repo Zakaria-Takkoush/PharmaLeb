@@ -18,7 +18,16 @@ const registerSchema = Joi.object({
     phone_number: Joi.number().min(8).required(),
 });
 
+// Login Validation Schema
+const loginSchema = Joi.object({
+    email: Joi.string().min(6).required().email(),
+    password: Joi.string().min(6).required(),
+});
+
 // Validate Register Credentials according to schema
 const validateRegister = validateCredentials(registerSchema);
 
-module.exports = { validateRegister };
+// Validate Login Credentials according to schema
+const validateLogin = validateCredentials(loginSchema);
+
+module.exports = { validateRegister, validateLogin };
