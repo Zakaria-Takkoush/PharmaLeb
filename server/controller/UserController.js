@@ -21,11 +21,6 @@ async function register(req, res) {
             location,
         } = req.body;
 
-        // Validate user input
-        // if (!(email && password && first_name && last_name)) {
-        //     res.status(400).send("All input is required");
-        // }
-
         // Validate using Joi
         const { value, error } = validateRegister(req.body);
         if (error) {
@@ -39,7 +34,7 @@ async function register(req, res) {
             return res.status(409).send("User Already Exists. Please Login");
         }
 
-        //Encrypt user password
+        // Encrypt user password
         encryptedPassword = await bcrypt.hash(password, 10);
 
         // Create user in database
@@ -62,6 +57,7 @@ async function register(req, res) {
                 expiresIn: "2h",
             }
         );
+
         // save user token
         user.token = token;
 
@@ -72,5 +68,7 @@ async function register(req, res) {
         res.json(error.message);
     }
 }
+
+// Login
 
 module.exports = { register };
