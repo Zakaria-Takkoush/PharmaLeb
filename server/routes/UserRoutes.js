@@ -1,5 +1,8 @@
 const express = require("express");
-const { addFavorite } = require("../controller/FavoritesController");
+const {
+    addFavorite,
+    getFavorites,
+} = require("../controller/FavoritesController");
 const router = express.Router();
 const { register, login } = require("../controller/UserController");
 const verifyToken = require("../middleware/auth");
@@ -18,9 +21,9 @@ router.get("/", verifyToken, (req, res) => {
 });
 
 // Favorites:
+router.get("/fav/:id", getFavorites);
 
 // Add a favorite
-
 router.post("/fav/:id", addFavorite);
 
 module.exports = router;

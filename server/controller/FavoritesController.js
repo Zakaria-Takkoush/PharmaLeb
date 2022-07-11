@@ -1,5 +1,22 @@
 const User = require("../model/UserModel");
 
+// Get all favorites of a certain user
+async function getFavorites(req, res) {
+    try {
+        const user = await User.findById(req.params.id);
+        const favorites = user.favorites;
+        return res.status(200).json({
+            user: user.email,
+            "favoriteCount:": favorites.length,
+            "favorites:": favorites,
+        });
+    } catch (error) {
+        console.log(error.message);
+        res.status(404).json({ Error: error.message });
+    }
+}
+
+// Add a favorite
 async function addFavorite(req, res) {
     try {
         const user = await User.findById(req.params.id);
@@ -26,4 +43,4 @@ async function addFavorite(req, res) {
     }
 }
 
-module.exports = { addFavorite };
+module.exports = { addFavorite, getFavorites };
