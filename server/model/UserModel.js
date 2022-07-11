@@ -16,8 +16,10 @@ const userSchema = new mongoose.Schema(
         },
         favorites: [
             {
-                type: mongoose.Types.ObjectId,
-                ref: "Medicine",
+                medicine: {
+                    type: mongoose.Types.ObjectId,
+                    ref: "Medicine",
+                },
             },
         ],
         token: { type: String },
