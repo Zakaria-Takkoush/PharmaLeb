@@ -2,21 +2,10 @@ const User = require("../model/UserModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Register a new user
+// import validator function from validator file
+const { validateRegister } = require("../config/validator");
 
-// Validation Schema (using JOI):
-const Joi = require("joi");
-const registerSchema = Joi.object({
-    first_name: Joi.string().min(3).max(30).required().alphanum(),
-    last_name: Joi.string().min(3).max(30).required().alphanum(),
-    email: Joi.string().min(6).required().email(),
-    password: Joi.string().min(6).required(),
-    repeat_password: Joi.ref("password"),
-    photo: Joi.string().min(0),
-    date_of_birth: Joi.date(),
-    location: Joi.object().required(),
-    phone_number: Joi.number().min(8).required(),
-});
+// Register a new user
 
 async function register(req, res) {
     try {
@@ -38,9 +27,7 @@ async function register(req, res) {
         // }
 
         // Validate using Joi
-        const { value, error } = registerSchema.validate(req.body, {
-            abortEarly: false,
-        });
+        const { value, error } = validateRegister(req.body);
         if (error) {
             return res.json(error.details);
         }
