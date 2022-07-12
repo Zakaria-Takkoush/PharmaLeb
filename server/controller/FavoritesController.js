@@ -43,4 +43,30 @@ async function addFavorite(req, res) {
     }
 }
 
-module.exports = { addFavorite, getFavorites };
+// Delete a favorite
+async function deleteFavorite(req, res) {
+    try {
+        // Find user by its id
+        const user = await User.findById(req.params.id);
+
+        // Find the favorite by its unique id
+        const favorite = user.favorites.id(req.body.id);
+        if (!favorite) {
+            return res.status(404).json("Favorite not found");
+        }
+
+        // delete favorite
+        await favorite.remove();
+
+        // Save User
+        await user.save();
+        return res
+            .status(200)
+            .json({ status: "User Favorites updated successfully" });
+    } catch (error) {
+        console.log(error.message);
+        res.json({ Error: error.message });
+    }
+}
+
+module.exports = { addFavorite, getFavorites, deleteFavorite };
