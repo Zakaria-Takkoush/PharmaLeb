@@ -3,9 +3,9 @@ const {
     addFavorite,
     getFavorites,
     deleteFavorite,
-} = require("../controller/FavoritesController");
+} = require("../controllers/FavoriteController");
 const router = express.Router();
-const { register, login } = require("../controller/UserController");
+const { register, login } = require("../controllers/UserController");
 const verifyToken = require("../middleware/auth");
 
 // Register Route

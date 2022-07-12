@@ -1,4 +1,4 @@
-const User = require("../model/UserModel");
+const User = require("../models/UserModel");
 
 // Get all favorites of a certain user
 async function getFavorites(req, res) {

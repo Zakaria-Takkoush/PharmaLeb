@@ -1,51 +1,57 @@
 const express = require("express");
+
+// Import Pharmacy Functions
 const {
     registerPharmacy,
     removePharmacy,
     editPharmacy,
     removeAllPharmacies,
     getPharmacies,
-    getItemsByPharmID,
     getPharmacy,
+} = require("../controllers/PharmacyController");
+
+// Import Item Functions
+const {
+    getItemsByPharmID,
     addItemToPharmacy,
     removeItemFromPharmacy,
     updateItemStock,
     findMedicineAtPharmacies,
-} = require("../controller/PharmacyController");
+} = require("../controllers/ItemController");
 
 // authentication middleware
 const verifyToken = require("../middleware/auth");
 
 const router = express.Router();
 
-// Get all
+// Get all pharmacies
 router.get("/", getPharmacies);
 
-// Get a Pharmacy
+// Get a Pharmacy (pass its id as param)
 router.get("/:id", getPharmacy);
 
 // Add a pharmacy
 router.post("/", registerPharmacy);
 
-// Delete a pharmacy
+// Delete a pharmacy (pass its id as param)
 router.delete("/:id", removePharmacy);
 
-// Edit a pharmacy
+// Edit a pharmacy (pass its id as param)
 router.put("/:id", editPharmacy);
 
 // Get a pharmacy stock items
 router.get("/:id/items", getItemsByPharmID);
 
-// Add an item to pharmacy
+// Add an item to pharmacy (pass medicine id as param)
 router.post("/:id/add_item", addItemToPharmacy);
 
-// Remove an item from pharmacy
+// Remove an item from pharmacy (pass ITEM id as param)
 router.delete("/:id/delete_item", removeItemFromPharmacy);
 
-// Update an item stock
+// Update an item stock (pass ITEM id as param)
 router.put("/:id/edit_stock", updateItemStock);
 
-// Find all pharmacies having a medicine
+// Find all pharmacies having a medicine (pass MEDICINE id as param)
 router.get("/available/:id", findMedicineAtPharmacies);
 
 // Delete All (testing and admin)

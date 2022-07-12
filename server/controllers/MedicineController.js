@@ -1,4 +1,4 @@
-const Medicine = require("../model/MedicineModel");
+const Medicine = require("../models/MedicineModel");
 
 // Get all medicines --- typically pre-defined
 
@@ -24,3 +24,5 @@ async function addMedicine(req, res) {
 }
 
 module.exports = { getMedicines, addMedicine };
+
+// Backend: Separated items into a new controller and added comments

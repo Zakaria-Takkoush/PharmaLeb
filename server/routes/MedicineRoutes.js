@@ -2,7 +2,7 @@ const express = require("express");
 const {
     getMedicines,
     addMedicine,
-} = require("../controller/MedicineController");
+} = require("../controllers/MedicineController");
 const router = express.Router();
 
 // Get all medicines
