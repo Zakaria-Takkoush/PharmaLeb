@@ -10,6 +10,7 @@ const {
     addItemToPharmacy,
     removeItemFromPharmacy,
     updateItemStock,
+    findMedicineAtPharmacies,
 } = require("../controller/PharmacyController");
 
 // authentication middleware
@@ -21,10 +22,15 @@ const router = express.Router();
 router.get("/", getPharmacies);
 
 // Get a Pharmacy
-
 router.get("/:id", getPharmacy);
+
+// Add a pharmacy
 router.post("/", registerPharmacy);
+
+// Delete a pharmacy
 router.delete("/:id", removePharmacy);
+
+// Edit a pharmacy
 router.put("/:id", editPharmacy);
 
 // Get a pharmacy stock items
@@ -38,6 +44,9 @@ router.delete("/:id/delete_item", removeItemFromPharmacy);
 
 // Update an item stock
 router.put("/:id/edit_stock", updateItemStock);
+
+// Find all pharmacies having a medicine
+router.get("/available/:id", findMedicineAtPharmacies);
 
 // Delete All (testing and admin)
 router.delete("/", removeAllPharmacies);

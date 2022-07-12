@@ -163,6 +163,26 @@ async function updateItemStock(req, res) {
     }
 }
 
+// Get all pharmacies having a certain medicine
+async function findMedicineAtPharmacies(req, res) {
+    try {
+        const pharmacies = await Pharmacy.find();
+        let available = [];
+        for (let i = 0; i < pharmacies.length; i++) {
+            for (let j = 0; j < pharmacies[i].items.length; j++) {
+                if (pharmacies[i].items[j].item == req.params.id) {
+                    available.push(pharmacies[i]);
+                }
+            }
+        }
+        // return list of pharmacies having the medicine available
+        return res.json({ found_at: available.length, pharmacies: available });
+    } catch (error) {
+        console.log(error.message);
+        res.json({ Error: error.message });
+    }
+}
+
 module.exports = {
     registerPharmacy,
     removePharmacy,
@@ -174,4 +194,5 @@ module.exports = {
     addItemToPharmacy,
     removeItemFromPharmacy,
     updateItemStock,
+    findMedicineAtPharmacies,
 };
