@@ -24,5 +24,3 @@ async function addMedicine(req, res) {
 }
 
 module.exports = { getMedicines, addMedicine };
-
-// Backend: Separated items into a new controller and added comments

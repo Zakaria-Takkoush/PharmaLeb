@@ -112,4 +112,59 @@ async function login(req, res) {
     }
 }
 
-module.exports = { register, login };
+async function editProfile(req, res) {
+    try {
+        // Get user input
+        const {
+            first_name,
+            last_name,
+            email,
+            password,
+            phone_number,
+            date_of_birth,
+            photo,
+            location,
+        } = req.body;
+
+        // Validate using Joi
+        const { value, error } = validateRegister(req.body);
+        if (error) {
+            return res.json(error.details);
+        }
+
+        // Encrypt user password
+        encryptedPassword = await bcrypt.hash(password, 10);
+
+        // Get and update user
+        const user = await User.findByIdAndUpdate(req.params.id, {
+            first_name,
+            last_name,
+            date_of_birth,
+            photo,
+            phone_number,
+            location,
+            email: email.toLowerCase(), // sanitize: convert email to lowercase
+            password: encryptedPassword,
+        });
+
+        // Create token
+        const token = jwt.sign(
+            { user_id: user._id, email, type: user.user_type },
+            process.env.TOKEN_KEY,
+            {
+                expiresIn: "2h",
+            }
+        );
+
+        // save user token
+        user.token = token;
+
+        // return new user
+        res.status(201).json({ status: "updated successfully", user });
+    } catch (error) {
+        console.log(error.message);
+        res.send(error.message);
+    }
+}
+
+module.exports = { register, login, editProfile };

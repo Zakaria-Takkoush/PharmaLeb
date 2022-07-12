@@ -5,16 +5,21 @@ const {
     deleteFavorite,
 } = require("../controllers/FavoriteController");
 const router = express.Router();
-const { register, login } = require("../controllers/UserController");
+const {
+    register,
+    login,
+    editProfile,
+} = require("../controllers/UserController");
 const verifyToken = require("../middleware/auth");
 
 // Register Route
-
 router.post("/register", register);
 
 // Login Route
-
 router.post("/login", login);
+
+// Edit Profile
+router.post("/edit_prof/:id", editProfile);
 
 // Get the user from token
 router.get("/", verifyToken, (req, res) => {
