@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-export const BlueButton = ({ text, onPress }) => {
+export const GreenButton = ({ text, onPress }) => {
     return (
         <TouchableOpacity style={styles.button} onPress={onPress}>
             <Text style={styles.button_text}>{text}</Text>
@@ -10,7 +10,7 @@ export const BlueButton = ({ text, onPress }) => {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: "#009FFF",
+        backgroundColor: "#40C73D",
         borderRadius: 20,
         padding: 10,
         width: 200,

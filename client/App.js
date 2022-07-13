@@ -13,6 +13,7 @@ import {
 // logo
 import logo from "./assets/logo/Logo.jpg";
 import { BlueButton } from "./components/BlueButton";
+import { GreenButton } from "./components/GreenButton";
 
 export default function App() {
     const [user, setUser] = useState({});
@@ -44,15 +45,12 @@ export default function App() {
                     <Text style={styles.forgot}>Forgot password?</Text>
                 </TouchableOpacity>
             </View>
+
             {/* sign in button */}
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.button_text}>Sign in</Text>
-            </TouchableOpacity>
+            <BlueButton text="Sign In" />
+
             {/* register button */}
-            <TouchableOpacity style={styles.button_green}>
-                <Text style={styles.button_text}>Sign Up!</Text>
-            </TouchableOpacity>
-            <BlueButton text={"Hello"} />
+            <GreenButton text="Sign Up!" />
         </View>
     );
 }
@@ -68,26 +66,6 @@ const styles = StyleSheet.create({
         width: 305,
         height: 159,
         marginBottom: 10,
-    },
-    button: {
-        marginTop: 20,
-        backgroundColor: "#009FFF",
-        borderRadius: 20,
-        padding: 10,
-        marginBottom: 30,
-        width: 150,
-    },
-    button_green: {
-        backgroundColor: "#40C73D",
-        borderRadius: 20,
-        padding: 10,
-        width: 150,
-    },
-    button_text: {
-        textAlign: "center",
-        fontWeight: "bold",
-        fontSize: 20,
-        color: "white",
     },
     label: {
         textAlign: "left",
