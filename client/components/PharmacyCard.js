@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 export const PharmacyCard = () => {
     return (
@@ -7,6 +8,12 @@ export const PharmacyCard = () => {
             <Text style={styles.name}>Pharmacy Name</Text>
             <Text style={styles.detail}>Location - Distance Away</Text>
             <Text style={styles.detail}>Available Stock</Text>
+            <Ionicons
+                style={styles.icon}
+                name="call"
+                size={35}
+                color="#40C73D"
+            />
         </TouchableOpacity>
     );
 };
@@ -30,5 +37,10 @@ const styles = StyleSheet.create({
     },
     detail: {
         fontSize: 16,
+    },
+    icon: {
+        position: "absolute",
+        right: 15,
+        top: 15,
     },
 });
