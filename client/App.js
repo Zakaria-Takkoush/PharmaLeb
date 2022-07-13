@@ -14,6 +14,7 @@ import {
 import logo from "./assets/logo/Logo.jpg";
 import { BlueButton } from "./components/BlueButton";
 import { GreenButton } from "./components/GreenButton";
+import { PharmacyCard } from "./components/PharmacyCard";
 
 export default function App() {
     const [user, setUser] = useState({});
@@ -51,6 +52,9 @@ export default function App() {
 
             {/* register button */}
             <GreenButton text="Sign Up!" />
+
+            <PharmacyCard />
+            <PharmacyCard />
         </View>
     );
 }
