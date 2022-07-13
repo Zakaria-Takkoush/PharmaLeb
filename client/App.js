@@ -7,10 +7,12 @@ import {
     View,
     TouchableOpacity,
     TextInput,
-    Button,
+    ScrollView,
+    FlatList,
 } from "react-native";
 // logo
 import logo from "./assets/logo/Logo.jpg";
+import { BlueButton } from "./components/BlueButton";
 
 export default function App() {
     const [user, setUser] = useState({});
@@ -38,7 +40,9 @@ export default function App() {
                         setUser({ ...user, password: value });
                     }}
                 />
-                <Text style={styles.forgot}>Forgot password?</Text>
+                <TouchableOpacity>
+                    <Text style={styles.forgot}>Forgot password?</Text>
+                </TouchableOpacity>
             </View>
             {/* sign in button */}
             <TouchableOpacity style={styles.button}>
@@ -48,6 +52,7 @@ export default function App() {
             <TouchableOpacity style={styles.button_green}>
                 <Text style={styles.button_text}>Sign Up!</Text>
             </TouchableOpacity>
+            <BlueButton text={"Hello"} />
         </View>
     );
 }
@@ -103,5 +108,12 @@ const styles = StyleSheet.create({
     forgot: {
         color: "#009FFF",
         textDecorationLine: "underline",
+    },
+    member: {
+        textAlign: "left",
+        backgroundColor: "wheat",
+        fontSize: 25,
+        padding: 10,
+        marginVertical: 10,
     },
 });
