@@ -9,6 +9,8 @@ import {
     TextInput,
     ScrollView,
     FlatList,
+    TouchableWithoutFeedback,
+    Keyboard,
 } from "react-native";
 // logo
 import logo from "./assets/logo/Logo.jpg";
@@ -20,42 +22,48 @@ export default function App() {
     const [user, setUser] = useState({});
 
     return (
-        <View style={styles.container}>
-            {/* logo */}
-            <Image source={logo} style={styles.logo} />
-            {/* login form */}
-            <View style={styles.form}>
-                <Text style={styles.label}>Email:</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your email..."
-                    onChangeText={(value) => {
-                        setUser({ ...user, email: value });
-                    }}
-                />
-                <Text style={styles.label}>Password:</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your password..."
-                    secureTextEntry={true} // password
-                    onChangeText={(value) => {
-                        setUser({ ...user, password: value });
-                    }}
-                />
-                <TouchableOpacity>
-                    <Text style={styles.forgot}>Forgot password?</Text>
-                </TouchableOpacity>
+        <TouchableWithoutFeedback
+            onPress={() => {
+                Keyboard.dismiss();
+            }}
+        >
+            <View style={styles.container}>
+                {/* logo */}
+                <Image source={logo} style={styles.logo} />
+                {/* login form */}
+                <View style={styles.form}>
+                    <Text style={styles.label}>Email:</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your email..."
+                        onChangeText={(value) => {
+                            setUser({ ...user, email: value });
+                        }}
+                    />
+                    <Text style={styles.label}>Password:</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your password..."
+                        secureTextEntry={true} // password
+                        onChangeText={(value) => {
+                            setUser({ ...user, password: value });
+                        }}
+                    />
+                    <TouchableOpacity>
+                        <Text style={styles.forgot}>Forgot password?</Text>
+                    </TouchableOpacity>
+                </View>
+
+                {/* sign in button */}
+                <BlueButton text="Sign In" />
+
+                {/* register button */}
+                <GreenButton text="Sign Up!" />
+
+                <PharmacyCard />
+                <PharmacyCard />
             </View>
-
-            {/* sign in button */}
-            <BlueButton text="Sign In" />
-
-            {/* register button */}
-            <GreenButton text="Sign Up!" />
-
-            <PharmacyCard />
-            <PharmacyCard />
-        </View>
+        </TouchableWithoutFeedback>
     );
 }
 
