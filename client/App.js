@@ -17,6 +17,8 @@ import logo from "./assets/logo/Logo.jpg";
 import { BlueButton } from "./components/BlueButton";
 import { GreenButton } from "./components/GreenButton";
 import { PharmacyCard } from "./components/PharmacyCard";
+// import global styles
+import globalStyles from "./styles/GlobalStyles";
 
 export default function App() {
     const [user, setUser] = useState({});
@@ -27,7 +29,7 @@ export default function App() {
                 Keyboard.dismiss();
             }}
         >
-            <View style={styles.container}>
+            <View style={globalStyles.container}>
                 {/* logo */}
                 <Image source={logo} style={styles.logo} />
                 {/* login form */}
@@ -68,12 +70,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
     logo: {
         width: 305,
         height: 159,
