@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
     Image,
@@ -18,7 +17,7 @@ import { PharmacyCard } from "./components/PharmacyCard";
 // import global styles
 import globalStyles from "./styles/GlobalStyles";
 
-export default function App() {
+export const LogIn = () => {
     const [user, setUser] = useState({});
 
     return (
@@ -65,7 +64,7 @@ export default function App() {
             </View>
         </TouchableWithoutFeedback>
     );
-}
+};
 
 const styles = StyleSheet.create({
     logo: {
