@@ -10,12 +10,12 @@ import {
     Keyboard,
 } from "react-native";
 // logo
-import logo from "./assets/logo/Logo.jpg";
-import { BlueButton } from "./components/BlueButton";
-import { GreenButton } from "./components/GreenButton";
-import { PharmacyCard } from "./components/PharmacyCard";
+import logo from "../assets/logo/Logo.jpg";
+import { BlueButton } from "../components/BlueButton";
+import { GreenButton } from "../components/GreenButton";
+import { PharmacyCard } from "../components/PharmacyCard";
 // import global styles
-import globalStyles from "./styles/GlobalStyles";
+import globalStyles from "../styles/GlobalStyles";
 
 export const LogIn = () => {
     const [user, setUser] = useState({});

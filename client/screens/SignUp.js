@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableWithoutFeedback, View } from "react-native";
+import { TouchableWithoutFeedback, View, StyleSheet } from "react-native";
 import { BlueButton } from "../components/BlueButton";
 
 export const SignUp = () => {

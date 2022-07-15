@@ -12,7 +12,7 @@ export const PharmacyCard = () => {
                 style={styles.icon}
                 name="call"
                 size={35}
-                color="#40C73D"
+                color="#009FFF"
             />
         </TouchableOpacity>
     );
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         alignSelf: "stretch",
         marginHorizontal: 20,
         marginVertical: 8,
-        height: 100,
+        height: 120,
         backgroundColor: "white",
         borderRadius: 20,
         paddingHorizontal: 20,
