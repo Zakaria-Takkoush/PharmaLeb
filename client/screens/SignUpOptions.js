@@ -20,7 +20,10 @@ export const SignUp = ({ navigation }) => {
             />
 
             {/* register button */}
-            <BlueButton text="Pharmacist" />
+            <BlueButton
+                text="Pharmacist"
+                onPress={() => navigation.navigate("Register as a Pharmacist")}
+            />
         </View>
     );
 };
