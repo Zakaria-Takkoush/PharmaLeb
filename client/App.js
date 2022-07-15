@@ -1,4 +1,4 @@
-import { LoginStack } from "./routes/LoginStack";
+import { LoginStack } from "./navigation/LoginStack";
 
 export default function App() {
     return <LoginStack />;
