@@ -57,7 +57,7 @@ export const LogIn = () => {
                 <BlueButton text="Sign In" />
 
                 {/* register button */}
-                <GreenButton text="Sign Up!" />
+                <GreenButton onPress={navigation.navigate} text="Sign Up!" />
 
                 {/* <PharmacyCard />
                 <PharmacyCard /> */}
