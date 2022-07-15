@@ -30,18 +30,18 @@ export const LogIn = () => {
                 {/* logo */}
                 <Image source={logo} style={styles.logo} />
                 {/* login form */}
-                <View style={styles.form}>
-                    <Text style={styles.label}>Email:</Text>
+                <View style={globalStyles.form}>
+                    <Text style={globalStyles.label}>Email:</Text>
                     <TextInput
-                        style={styles.input}
+                        style={globalStyles.input}
                         placeholder="Enter your email..."
                         onChangeText={(value) => {
                             setUser({ ...user, email: value });
                         }}
                     />
-                    <Text style={styles.label}>Password:</Text>
+                    <Text style={globalStyles.label}>Password:</Text>
                     <TextInput
-                        style={styles.input}
+                        style={globalStyles.input}
                         placeholder="Enter your password..."
                         secureTextEntry={true} // password
                         onChangeText={(value) => {
@@ -59,8 +59,8 @@ export const LogIn = () => {
                 {/* register button */}
                 <GreenButton text="Sign Up!" />
 
-                <PharmacyCard />
-                <PharmacyCard />
+                {/* <PharmacyCard />
+                <PharmacyCard /> */}
             </View>
         </TouchableWithoutFeedback>
     );
@@ -71,21 +71,6 @@ const styles = StyleSheet.create({
         width: 305,
         height: 159,
         marginBottom: 10,
-    },
-    label: {
-        textAlign: "left",
-        fontSize: 14,
-        marginBottom: 5,
-        marginTop: 10,
-        fontWeight: "bold",
-    },
-    input: {
-        borderColor: "#959595",
-        borderWidth: 1,
-        borderRadius: 10,
-        width: 300,
-        padding: 10,
-        margin: 5,
     },
     forgot: {
         color: "#009FFF",
