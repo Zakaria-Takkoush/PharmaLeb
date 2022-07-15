@@ -1,14 +1,5 @@
 import React from "react";
-import {
-    Image,
-    StyleSheet,
-    Text,
-    View,
-    TouchableOpacity,
-    TextInput,
-    TouchableWithoutFeedback,
-    Keyboard,
-} from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { BlueButton } from "../components/BlueButton";
 import logo from "../assets/logo/Logo.jpg";
 import globalStyles from "../styles/GlobalStyles";
@@ -20,7 +11,7 @@ export const SignUp = () => {
             <Image source={logo} style={styles.logo} />
 
             {/* text label */}
-            <Text>I am a:</Text>
+            <Text style={styles.text}>I am a:</Text>
 
             {/* sign in button */}
             <BlueButton text="Patient" />
@@ -35,6 +26,10 @@ const styles = StyleSheet.create({
     logo: {
         width: 305,
         height: 159,
-        marginBottom: 10,
+        marginBottom: 150,
+    },
+    text: {
+        fontWeight: "bold",
+        fontSize: 18,
     },
 });
