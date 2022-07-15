@@ -16,7 +16,30 @@ import { BlueButton } from "../components/BlueButton";
 import globalStyles from "../styles/GlobalStyles";
 
 export const SignUpPatient = () => {
-    const [user, setUser] = useState({});
+    const initialState = {
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        confirm_password: "",
+        date_of_birth: "",
+    };
+
+    const [
+        {
+            first_name,
+            last_name,
+            email,
+            password,
+            confirm_password,
+            date_of_birth,
+        },
+        setUser,
+    ] = useState(initialState);
+
+    const handleCLick = () => {
+        console.log(user);
+    };
 
     return (
         <TouchableWithoutFeedback
@@ -33,14 +56,29 @@ export const SignUpPatient = () => {
 
                 {/* SignUp form */}
                 <View style={globalStyles.form}>
-                    <Text style={globalStyles.label}>Name:</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="Enter your name..."
-                        onChangeText={(value) => {
-                            setUser({ ...user, name: value });
-                        }}
-                    />
+                    <View style={styles.fullname}>
+                        <View style={styles.fname}>
+                            <Text style={globalStyles.label}>First Name:</Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="First Name..."
+                                onChangeText={(value) => {
+                                    setUser({ ...user, first_name: value });
+                                }}
+                            />
+                        </View>
+
+                        <View style={styles.lname}>
+                            <Text style={globalStyles.label}>Last Name:</Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="Last Name..."
+                                onChangeText={(value) => {
+                                    setUser({ ...user, last_name: value });
+                                }}
+                            />
+                        </View>
+                    </View>
 
                     <Text style={globalStyles.label}>Email:</Text>
                     <TextInput
@@ -74,7 +112,7 @@ export const SignUpPatient = () => {
                     <Text style={globalStyles.label}>Date of Birth:</Text>
                     <TextInput
                         style={globalStyles.input}
-                        placeholder="Enter your password..."
+                        placeholder="YYYY-MM-DD"
                         onChangeText={(value) => {
                             setUser({ ...user, date_of_birth: value });
                         }}
@@ -82,7 +120,7 @@ export const SignUpPatient = () => {
                 </View>
 
                 {/* Create Account button */}
-                <BlueButton text="Create Account!" />
+                <BlueButton text="Create Account!" onPress={handleCLick} />
             </View>
         </TouchableWithoutFeedback>
     );
@@ -98,5 +136,16 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: "bold",
         color: "#009FFF",
+    },
+    fullname: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    fname: {
+        flex: 1,
+    },
+    lname: {
+        flex: 1,
     },
 });
