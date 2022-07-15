@@ -17,7 +17,7 @@ import { PharmacyCard } from "../components/PharmacyCard";
 // import global styles
 import globalStyles from "../styles/GlobalStyles";
 
-export const LogIn = () => {
+export const LogIn = ({ navigation }) => {
     const [user, setUser] = useState({});
 
     return (
@@ -57,7 +57,10 @@ export const LogIn = () => {
                 <BlueButton text="Sign In" />
 
                 {/* register button */}
-                <GreenButton text="Sign Up!" />
+                <GreenButton
+                    text="Sign Up!"
+                    onPress={() => navigation.navigate("Sign Up")}
+                />
 
                 {/* <PharmacyCard />
                 <PharmacyCard /> */}

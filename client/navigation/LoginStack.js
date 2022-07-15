@@ -10,12 +10,12 @@ export const LoginStack = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen name="Log In" component={LogIn} />
+                <Stack.Screen name="Sign Up" component={SignUp} />
                 <Stack.Screen
                     name="Register as a User"
                     component={SignUpPatient}
                 />
-                <Stack.Screen name="Sign Up" component={SignUp} />
-                <Stack.Screen name="Log In" component={LogIn} />
             </Stack.Navigator>
         </NavigationContainer>
     );
