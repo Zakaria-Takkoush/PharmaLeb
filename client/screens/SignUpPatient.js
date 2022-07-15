@@ -14,6 +14,7 @@ import logo from "../assets/logo/Logo.jpg";
 import { BlueButton } from "../components/BlueButton";
 // import global styles
 import globalStyles from "../styles/GlobalStyles";
+import { Ionicons } from "@expo/vector-icons";
 
 export const SignUpPatient = () => {
     const initialState = {
@@ -25,17 +26,7 @@ export const SignUpPatient = () => {
         date_of_birth: "",
     };
 
-    const [
-        {
-            first_name,
-            last_name,
-            email,
-            password,
-            confirm_password,
-            date_of_birth,
-        },
-        setUser,
-    ] = useState(initialState);
+    const [user, setUser] = useState(initialState);
 
     const handleCLick = () => {
         console.log(user);
@@ -117,6 +108,12 @@ export const SignUpPatient = () => {
                             setUser({ ...user, date_of_birth: value });
                         }}
                     />
+
+                    <Text style={globalStyles.label}>Location:</Text>
+                    <TouchableOpacity style={styles.location}>
+                        <Ionicons name="location" size={30} color="#009FFF" />
+                        <Text>Choose on Map</Text>
+                    </TouchableOpacity>
                 </View>
 
                 {/* Create Account button */}
@@ -147,5 +144,10 @@ const styles = StyleSheet.create({
     },
     lname: {
         flex: 1,
+    },
+    location: {
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignItems: "center",
     },
 });
