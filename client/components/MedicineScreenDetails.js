@@ -1,10 +1,11 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 import medicine from "../assets/panadol.png";
 
-export const MedicineCard = () => {
+export const MedicineScreenDetails = () => {
     return (
-        <TouchableOpacity style={styles.card}>
+        <View style={styles.container}>
             <View style={styles.left}>
                 <Image source={medicine} style={styles.image} />
             </View>
@@ -13,37 +14,43 @@ export const MedicineCard = () => {
                 <Text style={styles.detail}>Code</Text>
                 <Text style={styles.detail}>Dosage</Text>
             </View>
-        </TouchableOpacity>
+            <FontAwesome
+                style={styles.icon}
+                name="star-o"
+                size={35}
+                color="#009FFF"
+            />
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    card: {
+    container: {
         alignSelf: "stretch",
         marginHorizontal: 20,
         marginVertical: 8,
-        height: 120,
-        backgroundColor: "white",
+        height: 150,
         borderRadius: 20,
         paddingHorizontal: 20,
         paddingVertical: 14,
-        elevation: 5,
         position: "relative",
         justifyContent: "flex-start",
         alignItems: "center",
         flexDirection: "row",
     },
     image: {
-        width: 80,
-        height: 80,
+        width: 120,
+        height: 120,
         borderRadius: 20,
+        borderWidth: 2,
+        borderColor: "#009FFF",
     },
     name: {
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: "bold",
     },
     detail: {
-        fontSize: 16,
+        fontSize: 20,
     },
     icon: {
         position: "absolute",
@@ -51,9 +58,6 @@ const styles = StyleSheet.create({
         bottom: 15,
     },
     left: {
-        flex: 1,
-    },
-    right: {
-        flex: 2,
+        marginRight: 20,
     },
 });
