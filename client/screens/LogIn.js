@@ -54,7 +54,10 @@ export const LogIn = ({ navigation }) => {
                 </View>
 
                 {/* sign in button */}
-                <BlueButton text="Sign In" />
+                <BlueButton
+                    text="Sign In"
+                    onPress={() => navigation.navigate("Patient")}
+                />
 
                 {/* register button */}
                 <GreenButton

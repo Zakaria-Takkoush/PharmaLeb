@@ -5,6 +5,7 @@ import { RegisterPharmacy } from "../screens/RegisterPharmacy";
 import { SignUp } from "../screens/SignUpOptions";
 import { SignUpPatient } from "../screens/SignUpPatient";
 import { SignUpPHarmacist } from "../screens/SignUpPharmacist";
+import { PatientBottomTab } from "./PatientBottomTab";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ export const LoginStack = () => {
                     name="Register Pharmacy"
                     component={RegisterPharmacy}
                 />
+                <Stack.Screen name="Patient" component={PatientBottomTab} />
             </Stack.Navigator>
         </NavigationContainer>
     );
