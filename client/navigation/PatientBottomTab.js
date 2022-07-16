@@ -12,7 +12,15 @@ const Tab = createBottomTabNavigator();
 
 export const PatientBottomTab = () => {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator
+            initialRouteName="HomeScreen"
+            tabBarOptions={{
+                showLabel: false,
+                allowFontScaling: false,
+                keyboardHidesTabBar: true,
+                shadowColor: "#FFF",
+            }}
+        >
             <Tab.Screen
                 name="Home"
                 component={Home}
