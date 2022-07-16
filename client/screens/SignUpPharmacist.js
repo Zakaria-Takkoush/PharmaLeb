@@ -16,7 +16,7 @@ import { BlueButton } from "../components/BlueButton";
 import globalStyles from "../styles/GlobalStyles";
 import { Ionicons } from "@expo/vector-icons";
 
-export const SignUpPHarmacist = () => {
+export const SignUpPHarmacist = ({ navigation }) => {
     const initialState = {
         first_name: "",
         last_name: "",
@@ -117,7 +117,13 @@ export const SignUpPHarmacist = () => {
                 </View>
 
                 {/* Create Account button */}
-                <BlueButton text="Register Pharmacy" onPress={handleCLick} />
+                <BlueButton
+                    text="Register Pharmacy"
+                    onPress={() => {
+                        handleCLick;
+                        navigation.navigate("Register Pharmacy");
+                    }}
+                />
             </View>
         </TouchableWithoutFeedback>
     );
