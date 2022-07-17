@@ -1,6 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Import Screens
+import { PharmacistStockStack } from "./PharmacistStockStack";
+import { Profile } from "../screens/Pharmacist/Profile";
+import { Chat } from "../screens/Pharmacist/Chat";
+import { EditPharmacy } from "../screens/Pharmacist/EditPharmacy";
 
 // Import Icons
 import { Ionicons } from "@expo/vector-icons";
@@ -9,7 +13,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
-export const PatientBottomTab = () => {
+export const PharmacistBottomTab = () => {
     return (
         <Tab.Navigator
             initialRouteName="Stock"
@@ -25,7 +29,7 @@ export const PatientBottomTab = () => {
             {/* Stock Tab */}
             <Tab.Screen
                 name="Stock"
-                component={ManageStock}
+                component={PharmacistStockStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <MaterialIcons
@@ -55,7 +59,7 @@ export const PatientBottomTab = () => {
             {/* Edit Pharmacy Tab */}
             <Tab.Screen
                 name="Pharmacy"
-                component={ManagePharmacy}
+                component={EditPharmacy}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <MaterialIcons
