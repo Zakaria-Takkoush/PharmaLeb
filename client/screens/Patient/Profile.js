@@ -12,7 +12,8 @@ import {
 } from "react-native";
 import globalStyles from "../../styles/GlobalStyles";
 import { Ionicons } from "@expo/vector-icons";
-import defaultPic from "../../assets/default_profile_pic.svg";
+import defaultPic from "../../assets/default_profile_pic.png";
+import { BlueButton } from "../../components/BlueButton";
 
 export const Profile = () => {
     return (
@@ -53,7 +54,7 @@ export const Profile = () => {
                     }}
                 />
 
-                <Text style={globalStyles.label}>Password:</Text>
+                <Text style={globalStyles.label}>New Password:</Text>
                 <TextInput
                     style={globalStyles.input}
                     placeholder="Enter your password..."
@@ -63,7 +64,7 @@ export const Profile = () => {
                     }}
                 />
 
-                <Text style={globalStyles.label}>Confirm Password:</Text>
+                <Text style={globalStyles.label}>Confirm new Password:</Text>
                 <TextInput
                     style={globalStyles.input}
                     placeholder="Enter your password..."
@@ -97,6 +98,9 @@ export const Profile = () => {
                     <Text>Choose on Map</Text>
                 </TouchableOpacity>
             </ScrollView>
+
+            {/* Submit changes */}
+            <BlueButton text="Save Changes" />
         </View>
     );
 };
@@ -105,7 +109,8 @@ const styles = StyleSheet.create({
     pic: {
         width: 150,
         height: 150,
-        marginBottom: 10,
+        marginVertical: 10,
+        alignSelf: "center",
     },
     header: {
         fontSize: 25,
