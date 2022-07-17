@@ -1,8 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+// Import Screens
 import { Chat } from "../screens/Patient/Chat";
 import { Favorites } from "../screens/Patient/Favorites";
 import { Home } from "../screens/Patient/Home";
 import { Profile } from "../screens/Patient/Profile";
+
+// Import Icons
 import { FontAwesome } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -13,54 +17,71 @@ const Tab = createBottomTabNavigator();
 export const PatientBottomTab = () => {
     return (
         <Tab.Navigator
-            initialRouteName="HomeScreen"
-            tabBarOptions={{
-                showLabel: false,
+            initialRouteName="Home"
+            screenOptions={{
+                tabBarShowLabel: false,
                 allowFontScaling: false,
-                keyboardHidesTabBar: true,
-                shadowColor: "#FFF",
+                tabBarHideOnKeyboard: true,
+                tabBarActiveTintColor: "#009FFF",
+                tabBarInactiveTintColor: "#959595",
+                tabBarStyle: { height: 55 },
             }}
         >
+            {/* Home Tab */}
             <Tab.Screen
                 name="Home"
                 component={Home}
                 options={{
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <Entypo name="home" size={35} color="#959595" />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Favorites"
-                component={Favorites}
-                options={{
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <FontAwesome name="star" size={35} color="#959595" />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Chats"
-                component={Chat}
-                options={{
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <Ionicons
-                            name="chatbubble-ellipses"
+                    tabBarIcon: ({ focused }) => (
+                        <Entypo
+                            name="home"
                             size={35}
-                            color="#959595"
+                            color={focused ? "#009FFF" : "#959595"}
                         />
                     ),
                 }}
             />
+
+            {/* Favorites Tab */}
+            <Tab.Screen
+                name="Favorites"
+                component={Favorites}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <FontAwesome
+                            name="star"
+                            size={35}
+                            color={focused ? "#009FFF" : "#959595"}
+                        />
+                    ),
+                }}
+            />
+
+            {/* Chats Tab */}
+            <Tab.Screen
+                name="Chats"
+                component={Chat}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Ionicons
+                            name="chatbubble-ellipses"
+                            size={35}
+                            color={focused ? "#009FFF" : "#959595"}
+                        />
+                    ),
+                }}
+            />
+
+            {/* Profile Tab */}
             <Tab.Screen
                 name="Profile"
                 component={Profile}
                 options={{
-                    tabBarIcon: ({ focused, color, size }) => (
+                    tabBarIcon: ({ focused }) => (
                         <FontAwesome5
                             name="user-alt"
                             size={35}
-                            color="#959595"
+                            color={focused ? "#009FFF" : "#959595"}
                         />
                     ),
                 }}
