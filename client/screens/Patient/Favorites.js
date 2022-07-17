@@ -1,11 +1,16 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 import globalStyles from "../../styles/GlobalStyles";
+import { FavoriteCard } from "../../components/FavoriteCard";
 
 export const Favorites = () => {
     return (
-        <View style={globalStyles.container}>
-            <Text> FAVORITES </Text>
+        <View style={globalStyles.pageContainer}>
+            <ScrollView style={globalStyles.itemList}>
+                <FavoriteCard />
+                <FavoriteCard />
+                <FavoriteCard />
+            </ScrollView>
         </View>
     );
 };
