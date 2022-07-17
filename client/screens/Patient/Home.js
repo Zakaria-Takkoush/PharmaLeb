@@ -4,7 +4,7 @@ import globalStyles from "../../styles/GlobalStyles";
 import { BlueButton } from "../../components/BlueButton";
 import { MedicineCard } from "../../components/MedicineCard";
 
-export const Home = () => {
+export const Home = ({ navigation }) => {
     return (
         <View style={globalStyles.pageContainer}>
             <View style={styles.search}>
@@ -15,8 +15,8 @@ export const Home = () => {
                 <BlueButton text="Search" />
             </View>
             <ScrollView style={globalStyles.itemList}>
-                <MedicineCard />
-                <MedicineCard />
+                <MedicineCard navigation={navigation} />
+                <MedicineCard navigation={navigation} />
             </ScrollView>
         </View>
     );

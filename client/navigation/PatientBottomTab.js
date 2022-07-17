@@ -5,6 +5,7 @@ import { Chat } from "../screens/Patient/Chat";
 import { Favorites } from "../screens/Patient/Favorites";
 import { Home } from "../screens/Patient/Home";
 import { Profile } from "../screens/Patient/Profile";
+import { PatientHomeStack } from "./PatientHomeStack";
 
 // Import Icons
 import { FontAwesome } from "@expo/vector-icons";
@@ -30,7 +31,7 @@ export const PatientBottomTab = () => {
             {/* Home Tab */}
             <Tab.Screen
                 name="Home"
-                component={Home}
+                component={PatientHomeStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Entypo
