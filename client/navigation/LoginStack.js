@@ -15,7 +15,11 @@ export const LoginStack = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Log In" component={LogIn} />
+                <Stack.Screen
+                    name="Log In"
+                    component={LogIn}
+                    options={{ headerShown: false }}
+                />
                 <Stack.Screen name="Sign Up" component={SignUp} />
                 <Stack.Screen
                     name="Register as a User"
@@ -28,11 +32,13 @@ export const LoginStack = () => {
                 <Stack.Screen
                     name="Register Pharmacy"
                     component={RegisterPharmacy}
+                    // options={{ headerShown: false }}
                 />
                 <Stack.Screen name="Patient" component={PatientBottomTab} />
                 <Stack.Screen
                     name="Pharmacist"
                     component={PharmacistBottomTab}
+                    // options={{ headerShown: false }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
