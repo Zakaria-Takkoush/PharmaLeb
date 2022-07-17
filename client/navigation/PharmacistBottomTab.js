@@ -38,6 +38,7 @@ export const PharmacistBottomTab = () => {
                             color={focused ? "#009FFF" : "#959595"}
                         />
                     ),
+                    headerShown: false,
                 }}
             />
 

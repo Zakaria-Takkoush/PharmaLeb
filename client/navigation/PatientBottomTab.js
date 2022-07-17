@@ -40,6 +40,7 @@ export const PatientBottomTab = () => {
                             color={focused ? "#009FFF" : "#959595"}
                         />
                     ),
+                    headerShown: false,
                 }}
             />
 
