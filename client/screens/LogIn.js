@@ -10,7 +10,7 @@ import {
     Keyboard,
 } from "react-native";
 // logo
-import logo from "../assets/logo/Logo.jpg";
+import logo from "../assets/logo/logo.png";
 import { BlueButton } from "../components/BlueButton";
 import { GreenButton } from "../components/GreenButton";
 // import global styles
