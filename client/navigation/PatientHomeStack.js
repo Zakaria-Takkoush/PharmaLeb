@@ -3,6 +3,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Home } from "../screens/Patient/Home";
 import { MedicineScreen } from "../screens/Patient/MedicineScreen";
 
+// In this file, we are creating a stack within the home tab
+// where pressing each medicine navigates to the medicine page
+
 const Stack = createNativeStackNavigator();
 
 export const PatientHomeStack = () => {
