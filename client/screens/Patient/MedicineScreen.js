@@ -4,7 +4,7 @@ import { MedicineScreenDetails } from "../../components/MedicineScreenDetails";
 import { PharmacyCard } from "../../components/PharmacyCard";
 import globalStyles from "../../styles/GlobalStyles";
 
-const MedicineScreen = () => {
+export const MedicineScreen = () => {
     return (
         <View style={globalStyles.pageContainer}>
             <MedicineScreenDetails />
@@ -18,8 +18,6 @@ const MedicineScreen = () => {
         </View>
     );
 };
-
-export default MedicineScreen;
 
 const styles = StyleSheet.create({
     text: {
