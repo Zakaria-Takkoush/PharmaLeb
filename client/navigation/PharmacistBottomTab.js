@@ -33,7 +33,7 @@ export const PharmacistBottomTab = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <MaterialIcons
-                            name="medical"
+                            name="medical-services"
                             size={35}
                             color={focused ? "#009FFF" : "#959595"}
                         />

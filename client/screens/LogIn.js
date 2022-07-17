@@ -19,6 +19,8 @@ import globalStyles from "../styles/GlobalStyles";
 export const LogIn = ({ navigation }) => {
     const [user, setUser] = useState({});
 
+    let isPatient = false;
+
     return (
         <TouchableWithoutFeedback
             onPress={() => {
@@ -55,7 +57,11 @@ export const LogIn = ({ navigation }) => {
                 {/* sign in button */}
                 <BlueButton
                     text="Sign In"
-                    onPress={() => navigation.navigate("Patient")}
+                    onPress={() =>
+                        navigation.navigate(
+                            isPatient ? "Patient" : "Pharmacist"
+                        )
+                    }
                 />
 
                 {/* register button */}
