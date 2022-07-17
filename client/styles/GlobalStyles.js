@@ -26,6 +26,16 @@ const globalStyles = StyleSheet.create({
         marginTop: 10,
         fontWeight: "bold",
     },
+
+    // Navigation Pages
+    pageContainer: {
+        justifyContent: "flex-start",
+        alignItems: "center",
+    },
+    itemList: {
+        alignSelf: "stretch",
+        padding: 10,
+    },
 });
 
 export default globalStyles;
