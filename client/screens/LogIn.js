@@ -13,7 +13,6 @@ import {
 import logo from "../assets/logo/Logo.jpg";
 import { BlueButton } from "../components/BlueButton";
 import { GreenButton } from "../components/GreenButton";
-import { PharmacyCard } from "../components/PharmacyCard";
 // import global styles
 import globalStyles from "../styles/GlobalStyles";
 
