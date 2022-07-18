@@ -33,7 +33,7 @@ export const MedicineStock = () => {
                 <TextInput
                     style={[styles.inputStock, globalStyles.input]}
                     onChangeText={(value) => setStock(parseInt(value))}
-                    vale={stock}
+                    value={stock.toString()}
                     keyboardType="numeric"
                 />
                 <Ionicons
