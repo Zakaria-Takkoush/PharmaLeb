@@ -6,7 +6,7 @@ export const MedicineCardStock = ({ navigation }) => {
     return (
         <TouchableOpacity
             style={styles.card}
-            // onPress={() => navigation.navigate("Medicine")}
+            onPress={() => navigation.navigate("Medicine Stock")}
         >
             <View style={styles.left}>
                 <Image source={medicine} style={styles.image} />

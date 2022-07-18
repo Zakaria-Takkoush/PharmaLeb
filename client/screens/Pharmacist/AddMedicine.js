@@ -10,7 +10,7 @@ import globalStyles from "../../styles/GlobalStyles";
 // Import blue button
 import { BlueButton } from "../../components/BlueButton";
 
-export const Stock = () => {
+export const AddMedicine = () => {
     return (
         <View style={globalStyles.pageContainer}>
             <View style={styles.search}>

@@ -12,7 +12,7 @@ import { BlueButton } from "../../components/BlueButton";
 
 import { Ionicons } from "@expo/vector-icons";
 
-export const Stock = () => {
+export const Stock = ({ navigation }) => {
     return (
         <View style={globalStyles.pageContainer}>
             <View style={styles.search}>
@@ -23,7 +23,7 @@ export const Stock = () => {
                 <BlueButton text="Search" />
             </View>
             <ScrollView style={globalStyles.itemList}>
-                <MedicineCardStock />
+                <MedicineCardStock navigation={navigation} />
             </ScrollView>
             {/* <Ionicons
                 style={styles.icon}
@@ -31,7 +31,10 @@ export const Stock = () => {
                 size={50}
                 color="#009FFF"
             /> */}
-            <BlueButton text="Add Item" />
+            <BlueButton
+                text="Add Item"
+                onPress={() => navigation.navigate("Add Item")}
+            />
         </View>
     );
 };
