@@ -32,13 +32,16 @@ export const LoginStack = () => {
                 <Stack.Screen
                     name="Register Pharmacy"
                     component={RegisterPharmacy}
-                    // options={{ headerShown: false }}
                 />
-                <Stack.Screen name="Patient" component={PatientBottomTab} />
+                <Stack.Screen
+                    name="Patient"
+                    component={PatientBottomTab}
+                    options={{ headerShown: false }}
+                />
                 <Stack.Screen
                     name="Pharmacist"
                     component={PharmacistBottomTab}
-                    // options={{ headerShown: false }}
+                    options={{ headerShown: false }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
