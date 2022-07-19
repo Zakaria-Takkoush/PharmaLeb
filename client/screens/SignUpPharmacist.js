@@ -8,123 +8,276 @@ import {
     TextInput,
     TouchableWithoutFeedback,
     Keyboard,
+    ScrollView,
 } from "react-native";
+
 // logo
-import logo from "../assets/logo/Logo.jpg";
+import logo from "../assets/logo/logo.png";
+
+// import custom button
 import { BlueButton } from "../components/BlueButton";
+
 // import global styles
 import globalStyles from "../styles/GlobalStyles";
+
+// import icons
 import { Ionicons } from "@expo/vector-icons";
 
-export const SignUpPHarmacist = ({ navigation }) => {
-    const initialState = {
+// import axios file
+import axiosAPI from "../apis/axiosAPI";
+
+// import formik
+import { Formik } from "formik";
+
+// import yup for form validation
+import * as yup from "yup";
+
+// create yup validation schema
+const registerSchema = yup.object({
+    first_name: yup
+        .string()
+        .min(3, "First name must be at least 3 characters.")
+        .max(30, "First name must be at most 30 characters.")
+        .required("First name is required."),
+    last_name: yup
+        .string()
+        .min(3, "Last name must be at least 3 characters.")
+        .max(30, "Last name must be at most 30 characters.")
+        .required("Last name is required."),
+    email: yup
+        .string()
+        .email("Email is not valid")
+        .required("Email is required."),
+    password: yup
+        .string()
+        .min(6, "Password should be at least 6 characters long.")
+        .required("Password is required."),
+    confirm_password: yup
+        .string()
+        .oneOf([yup.ref("password"), null], "Passwords do not match."),
+    date_of_birth: yup.date("Enter a valid date"),
+    phone_number: yup.number().min(8).required("Phone number is required."),
+});
+
+export const SignUpPharmacist = ({ navigation }) => {
+    const initialValues = {
         first_name: "",
         last_name: "",
         email: "",
         password: "",
         confirm_password: "",
         date_of_birth: "",
+        phone_number: "",
     };
 
-    const [user, setUser] = useState(initialState);
+    // if an error comes from the backend, handle it...
+    // eg: user already exists
 
-    const handleCLick = () => {
-        console.log(user);
+    // is there an error?
+    const [isError, setIsError] = useState(false);
+    // error message
+    const [errorMessage, setErrorMessage] = useState("");
+
+    // set all User Data
+    const registerUser = (data) => {
+        let user = {
+            ...data,
+            user_type: "pharmacist",
+            location: { latitude: 12, longitude: 12 },
+        };
+        postUser(user);
+    };
+
+    // Post user to Database
+    const postUser = async (user) => {
+        try {
+            const res = await axiosAPI.post("/users/register", user);
+            console.log(res.data);
+            alert(
+                `Welcome to PharmaLeb ${res.data.first_name}... Now add your pharmacy details`
+            );
+            navigation.navigate("Register Pharmacy");
+        } catch (error) {
+            console.log(error.response.data);
+            alert(error.response.data);
+        }
     };
 
     return (
         <TouchableWithoutFeedback
+            // remove keyboard when touching the screen
             onPress={() => {
                 Keyboard.dismiss();
             }}
         >
-            <View style={globalStyles.container}>
-                {/* logo */}
-                <Image source={logo} style={styles.logo} />
+            <Formik
+                initialValues={initialValues}
+                onSubmit={(values, actions) => {
+                    registerUser(values);
+                    actions.resetForm();
+                }}
+                validationSchema={registerSchema}
+            >
+                {(props) => (
+                    <View style={globalStyles.container}>
+                        {/* Logo */}
+                        <Image source={logo} style={styles.logo} />
 
-                {/* Title */}
-                <Text style={styles.header}>Register as a Pharmacist</Text>
+                        {/* Title */}
+                        <Text style={styles.header}>
+                            Register as a Pharmacist
+                        </Text>
 
-                {/* SignUp form */}
-                <View style={globalStyles.form}>
-                    <View style={styles.fullname}>
-                        <View style={styles.fname}>
-                            <Text style={globalStyles.label}>First Name:</Text>
+                        {/* SignUp form */}
+                        <ScrollView style={globalStyles.form}>
+                            <View style={styles.fullname}>
+                                <View style={styles.fname}>
+                                    <Text style={globalStyles.label}>
+                                        First Name:
+                                    </Text>
+                                    <TextInput
+                                        style={globalStyles.input}
+                                        placeholder="First Name..."
+                                        onChangeText={props.handleChange(
+                                            "first_name"
+                                        )}
+                                        value={props.values.first_name}
+                                    />
+                                    {/* Check validation */}
+                                    {props.touched.first_name &&
+                                        props.errors.first_name && (
+                                            <Text style={styles.error}>
+                                                {props.errors.first_name}
+                                            </Text>
+                                        )}
+                                </View>
+
+                                <View style={styles.lname}>
+                                    <Text style={globalStyles.label}>
+                                        Last Name:
+                                    </Text>
+                                    <TextInput
+                                        style={globalStyles.input}
+                                        placeholder="Last Name..."
+                                        onChangeText={props.handleChange(
+                                            "last_name"
+                                        )}
+                                        value={props.values.last_name}
+                                    />
+                                    {/* Check validation */}
+                                    {props.touched.last_name &&
+                                        props.errors.last_name && (
+                                            <Text style={styles.error}>
+                                                {props.errors.last_name}
+                                            </Text>
+                                        )}
+                                </View>
+                            </View>
+
+                            <Text style={globalStyles.label}>Email:</Text>
                             <TextInput
                                 style={globalStyles.input}
-                                placeholder="First Name..."
-                                onChangeText={(value) => {
-                                    setUser({ ...user, first_name: value });
-                                }}
+                                placeholder="Enter your email..."
+                                onChangeText={props.handleChange("email")}
+                                value={props.values.email}
                             />
-                        </View>
+                            {/* Check validation */}
+                            {props.touched.email && props.errors.email && (
+                                <Text style={styles.error}>
+                                    {props.errors.email}
+                                </Text>
+                            )}
 
-                        <View style={styles.lname}>
-                            <Text style={globalStyles.label}>Last Name:</Text>
+                            <Text style={globalStyles.label}>Password:</Text>
                             <TextInput
                                 style={globalStyles.input}
-                                placeholder="Last Name..."
-                                onChangeText={(value) => {
-                                    setUser({ ...user, last_name: value });
-                                }}
+                                placeholder="Enter your password..."
+                                secureTextEntry={true} // password
+                                onChangeText={props.handleChange("password")}
+                                value={props.values.password}
                             />
-                        </View>
+                            {/* Check validation */}
+                            {props.touched.password &&
+                                props.errors.password && (
+                                    <Text style={styles.error}>
+                                        {props.errors.password}
+                                    </Text>
+                                )}
+
+                            <Text style={globalStyles.label}>
+                                Confirm Password:
+                            </Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="Enter your password..."
+                                secureTextEntry={true} // password
+                                onChangeText={props.handleChange(
+                                    "confirm_password"
+                                )}
+                                value={props.values.confirm_password}
+                            />
+                            {/* Check validation */}
+                            {props.touched.confirm_password &&
+                                props.errors.confirm_password && (
+                                    <Text style={styles.error}>
+                                        {props.errors.confirm_password}
+                                    </Text>
+                                )}
+
+                            <Text style={globalStyles.label}>
+                                Date of Birth:
+                            </Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="YYYY-MM-DD"
+                                onChangeText={props.handleChange(
+                                    "date_of_birth"
+                                )}
+                                value={props.values.date_of_birth}
+                            />
+                            {/* Check validation */}
+                            {props.touched.date_of_birth &&
+                                props.errors.date_of_birth && (
+                                    <Text style={styles.error}>
+                                        {props.errors.date_of_birth}
+                                    </Text>
+                                )}
+
+                            <Text style={globalStyles.label}>
+                                Phone Number:
+                            </Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="Enter your phone number..."
+                                onChangeText={props.handleChange(
+                                    "phone_number"
+                                )}
+                                value={props.values.phone_number}
+                            />
+                            {/* Check validation */}
+                            {props.touched.phone_number &&
+                                props.errors.phone_number && (
+                                    <Text style={styles.error}>
+                                        {props.errors.phone_number}
+                                    </Text>
+                                )}
+
+                            <Text style={globalStyles.label}>Location:</Text>
+                            <TouchableOpacity style={styles.location}>
+                                <Ionicons
+                                    name="location"
+                                    size={30}
+                                    color="#009FFF"
+                                />
+                                <Text>Choose on Map</Text>
+                            </TouchableOpacity>
+                        </ScrollView>
+
+                        {/* Create Account button */}
+                        <BlueButton text="Next" onPress={props.handleSubmit} />
                     </View>
-
-                    <Text style={globalStyles.label}>Email:</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="Enter your email..."
-                        onChangeText={(value) => {
-                            setUser({ ...user, email: value });
-                        }}
-                    />
-
-                    <Text style={globalStyles.label}>Password:</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="Enter your password..."
-                        secureTextEntry={true} // password
-                        onChangeText={(value) => {
-                            setUser({ ...user, password: value });
-                        }}
-                    />
-
-                    <Text style={globalStyles.label}>Confirm Password:</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="Enter your password..."
-                        secureTextEntry={true} // password
-                        onChangeText={(value) => {
-                            setUser({ ...user, confirm_password: value });
-                        }}
-                    />
-
-                    <Text style={globalStyles.label}>Date of Birth:</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="YYYY-MM-DD"
-                        onChangeText={(value) => {
-                            setUser({ ...user, date_of_birth: value });
-                        }}
-                    />
-
-                    <Text style={globalStyles.label}>Location:</Text>
-                    <TouchableOpacity style={styles.location}>
-                        <Ionicons name="location" size={30} color="#009FFF" />
-                        <Text>Choose on Map</Text>
-                    </TouchableOpacity>
-                </View>
-
-                {/* Create Account button */}
-                <BlueButton
-                    text="Register Pharmacy"
-                    onPress={() => {
-                        handleCLick;
-                        navigation.navigate("Register Pharmacy");
-                    }}
-                />
-            </View>
+                )}
+            </Formik>
         </TouchableWithoutFeedback>
     );
 };
@@ -155,5 +308,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
+    },
+    error: {
+        color: "tomato",
+        fontSize: 12,
+        fontWeight: "bold",
     },
 });

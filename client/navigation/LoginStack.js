@@ -4,7 +4,7 @@ import { LogIn } from "../screens/LogIn";
 import { RegisterPharmacy } from "../screens/RegisterPharmacy";
 import { SignUp } from "../screens/SignUpOptions";
 import { SignUpPatient } from "../screens/SignUpPatient";
-import { SignUpPHarmacist } from "../screens/SignUpPharmacist";
+import { SignUpPharmacist } from "../screens/SignUpPharmacist";
 import { PatientBottomTab } from "./PatientBottomTab";
 import { PatientScreens } from "./PatientScreens";
 import { PharmacistBottomTab } from "./PharmacistBottomTab";
@@ -27,7 +27,7 @@ export const LoginStack = () => {
                 />
                 <Stack.Screen
                     name="Register as a Pharmacist"
-                    component={SignUpPHarmacist}
+                    component={SignUpPharmacist}
                 />
                 <Stack.Screen
                     name="Register Pharmacy"
