@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { BlueButton } from "../components/BlueButton";
-import logo from "../assets/logo/Logo.jpg";
+import logo from "../assets/logo/logo.png";
 import globalStyles from "../styles/GlobalStyles";
 
 export const SignUp = ({ navigation }) => {
