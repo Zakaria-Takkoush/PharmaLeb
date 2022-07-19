@@ -19,12 +19,13 @@ async function register(req, res) {
             date_of_birth,
             photo,
             location,
+            user_type,
         } = req.body;
 
         // Validate using Joi
         const { value, error } = validateRegister(req.body);
         if (error) {
-            return res.json(error.details);
+            return res.json(error.details[0].message);
         }
 
         // Validate if user already exists in database
@@ -47,6 +48,7 @@ async function register(req, res) {
             location,
             email: email.toLowerCase(), // sanitize: convert email to lowercase
             password: encryptedPassword,
+            user_type,
         });
 
         // Create token
@@ -64,7 +66,7 @@ async function register(req, res) {
         // return new user
         res.status(201).json(user);
     } catch (error) {
-        console.log(error.message);
+        // console.log(error.message);
         res.send(error.message);
     }
 }
@@ -83,7 +85,7 @@ async function login(req, res) {
         // Validate using Joi
         const { value, error } = validateLogin(req.body);
         if (error) {
-            return res.json(error.details);
+            return res.json(error.details[0].message);
         }
 
         // Validate if user exists in our database

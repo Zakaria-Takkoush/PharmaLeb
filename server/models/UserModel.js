@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
         date_of_birth: { type: Date, required: true },
         phone_number: { type: String, required: true },
         photo: { type: String },
-        user_type: { type: String, default: "patient" },
+        user_type: { type: String, required: true },
         location: {
             latitude: { type: Number },
             longitude: { type: Number },

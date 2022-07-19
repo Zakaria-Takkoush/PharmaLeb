@@ -16,6 +16,7 @@ const registerSchema = Joi.object({
     date_of_birth: Joi.date(),
     location: Joi.object().required(),
     phone_number: Joi.number().min(8).required(),
+    user_type: Joi.string().required(),
 });
 
 // Login Validation Schema
