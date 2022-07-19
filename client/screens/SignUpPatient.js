@@ -20,6 +20,9 @@ import { Ionicons } from "@expo/vector-icons";
 // import formik
 import { Formik } from "formik";
 
+// import axios file
+import axiosAPI from "../apis/axiosAPI";
+
 export const SignUpPatient = () => {
     // const initialState = {
     //     first_name: "",
@@ -44,8 +47,13 @@ export const SignUpPatient = () => {
     };
 
     // Post to Database
-    const postUser = (user) => {
-        console.log(user);
+    const postUser = async (user) => {
+        try {
+            const res = await axiosAPI.post("/users/register", user);
+            console.log(res.data);
+        } catch (error) {
+            console.log(error.response.data);
+        }
     };
 
     return (
