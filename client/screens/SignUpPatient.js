@@ -10,29 +10,65 @@ import {
     Keyboard,
     ScrollView,
 } from "react-native";
+
 // logo
 import logo from "../assets/logo/logo.png";
+
+// import custom button
 import { BlueButton } from "../components/BlueButton";
+
 // import global styles
 import globalStyles from "../styles/GlobalStyles";
-import { Ionicons } from "@expo/vector-icons";
 
-// import formik
-import { Formik } from "formik";
+// import icons
+import { Ionicons } from "@expo/vector-icons";
 
 // import axios file
 import axiosAPI from "../apis/axiosAPI";
 
+// import formik
+import { Formik } from "formik";
+
+// import yup for form validation
+import * as yup from "yup";
+
+// create yup validation schema
+const registerSchema = yup.object({
+    first_name: yup
+        .string()
+        .min(3, "First name must be at least 3 characters.")
+        .max(30, "First name must be at most 30 characters.")
+        .required("First name is required."),
+    last_name: yup
+        .string()
+        .min(3, "Last name must be at least 3 characters.")
+        .max(30, "Last name must be at most 30 characters.")
+        .required("Last name is required."),
+    email: yup
+        .string()
+        .email("Email is not valid")
+        .required("Email is required."),
+    password: yup
+        .string()
+        .min(6, "Password should be at least 6 characters long.")
+        .required("Password is required."),
+    confirm_password: yup
+        .string()
+        .oneOf([yup.ref("password"), null], "Passwords do not match."),
+    date_of_birth: yup.date("Enter a valid date"),
+    phone_number: yup.number().min(8).required("Phone number is required."),
+});
+
 export const SignUpPatient = () => {
-    // const initialState = {
-    //     first_name: "",
-    //     last_name: "",
-    //     email: "",
-    //     password: "",
-    //     confirm_password: "",
-    //     date_of_birth: "",
-    //     phone_number: "",
-    // };
+    const initialValues = {
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        confirm_password: "",
+        date_of_birth: "",
+        phone_number: "",
+    };
 
     // const [user, setUser] = useState(initialState);
 
@@ -63,19 +99,12 @@ export const SignUpPatient = () => {
             }}
         >
             <Formik
-                initialValues={{
-                    first_name: "",
-                    last_name: "",
-                    email: "",
-                    password: "",
-                    confirm_password: "",
-                    date_of_birth: "",
-                    phone_number: "",
-                }}
+                initialValues={initialValues}
                 onSubmit={(values, actions) => {
                     registerUser(values);
                     actions.resetForm();
                 }}
+                validationSchema={registerSchema}
             >
                 {(props) => (
                     <View style={globalStyles.container}>
@@ -100,6 +129,13 @@ export const SignUpPatient = () => {
                                         )}
                                         value={props.values.first_name}
                                     />
+                                    {/* Check validation */}
+                                    {props.touched.first_name &&
+                                        props.errors.first_name && (
+                                            <Text style={styles.error}>
+                                                {props.errors.first_name}
+                                            </Text>
+                                        )}
                                 </View>
 
                                 <View style={styles.lname}>
@@ -114,6 +150,13 @@ export const SignUpPatient = () => {
                                         )}
                                         value={props.values.last_name}
                                     />
+                                    {/* Check validation */}
+                                    {props.touched.last_name &&
+                                        props.errors.last_name && (
+                                            <Text style={styles.error}>
+                                                {props.errors.last_name}
+                                            </Text>
+                                        )}
                                 </View>
                             </View>
 
@@ -124,6 +167,12 @@ export const SignUpPatient = () => {
                                 onChangeText={props.handleChange("email")}
                                 value={props.values.email}
                             />
+                            {/* Check validation */}
+                            {props.touched.email && props.errors.email && (
+                                <Text style={styles.error}>
+                                    {props.errors.email}
+                                </Text>
+                            )}
 
                             <Text style={globalStyles.label}>Password:</Text>
                             <TextInput
@@ -133,6 +182,13 @@ export const SignUpPatient = () => {
                                 onChangeText={props.handleChange("password")}
                                 value={props.values.password}
                             />
+                            {/* Check validation */}
+                            {props.touched.password &&
+                                props.errors.password && (
+                                    <Text style={styles.error}>
+                                        {props.errors.password}
+                                    </Text>
+                                )}
 
                             <Text style={globalStyles.label}>
                                 Confirm Password:
@@ -146,6 +202,13 @@ export const SignUpPatient = () => {
                                 )}
                                 value={props.values.confirm_password}
                             />
+                            {/* Check validation */}
+                            {props.touched.confirm_password &&
+                                props.errors.confirm_password && (
+                                    <Text style={styles.error}>
+                                        {props.errors.confirm_password}
+                                    </Text>
+                                )}
 
                             <Text style={globalStyles.label}>
                                 Date of Birth:
@@ -158,6 +221,13 @@ export const SignUpPatient = () => {
                                 )}
                                 value={props.values.date_of_birth}
                             />
+                            {/* Check validation */}
+                            {props.touched.date_of_birth &&
+                                props.errors.date_of_birth && (
+                                    <Text style={styles.error}>
+                                        {props.errors.date_of_birth}
+                                    </Text>
+                                )}
 
                             <Text style={globalStyles.label}>
                                 Phone Number:
@@ -170,6 +240,13 @@ export const SignUpPatient = () => {
                                 )}
                                 value={props.values.phone_number}
                             />
+                            {/* Check validation */}
+                            {props.touched.phone_number &&
+                                props.errors.phone_number && (
+                                    <Text style={styles.error}>
+                                        {props.errors.phone_number}
+                                    </Text>
+                                )}
 
                             <Text style={globalStyles.label}>Location:</Text>
                             <TouchableOpacity style={styles.location}>
@@ -220,5 +297,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
+    },
+    error: {
+        color: "tomato",
+        fontSize: 12,
+        fontWeight: "bold",
     },
 });
