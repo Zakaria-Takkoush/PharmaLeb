@@ -33,7 +33,18 @@ export const SignUpPatient = () => {
 
     // const [user, setUser] = useState(initialState);
 
-    const handleCLick = () => {
+    // set all User Data
+    const registerUser = (data) => {
+        let user = {
+            ...data,
+            user_type: "patient",
+            location: { latitude: 12, longitude: 12 },
+        };
+        postUser(user);
+    };
+
+    // Post to Database
+    const postUser = (user) => {
         console.log(user);
     };
 
@@ -53,7 +64,7 @@ export const SignUpPatient = () => {
                     date_of_birth: "",
                     phone_number: "",
                 }}
-                onSubmit={(values) => console.log(values)}
+                onSubmit={(values) => registerUser(values)}
             >
                 {(props) => (
                     <View style={globalStyles.container}>
