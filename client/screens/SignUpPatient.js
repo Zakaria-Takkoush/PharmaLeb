@@ -72,7 +72,10 @@ export const SignUpPatient = () => {
                     date_of_birth: "",
                     phone_number: "",
                 }}
-                onSubmit={(values) => registerUser(values)}
+                onSubmit={(values, actions) => {
+                    registerUser(values);
+                    actions.resetForm();
+                }}
             >
                 {(props) => (
                     <View style={globalStyles.container}>
