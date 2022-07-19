@@ -59,7 +59,7 @@ const registerSchema = yup.object({
     phone_number: yup.number().min(8).required("Phone number is required."),
 });
 
-export const SignUpPatient = () => {
+export const SignUpPatient = ({ navigation }) => {
     const initialValues = {
         first_name: "",
         last_name: "",
@@ -72,6 +72,14 @@ export const SignUpPatient = () => {
 
     // const [user, setUser] = useState(initialState);
 
+    // if an error comes from the backend, handle it...
+    // eg: user already exists
+
+    // is there an error?
+    const [isError, setIsError] = useState(false);
+    // error message
+    const [errorMessage, setErrorMessage] = useState("");
+
     // set all User Data
     const registerUser = (data) => {
         let user = {
@@ -82,18 +90,26 @@ export const SignUpPatient = () => {
         postUser(user);
     };
 
-    // Post to Database
+    // Post user to Database
     const postUser = async (user) => {
         try {
             const res = await axiosAPI.post("/users/register", user);
             console.log(res.data);
+            alert(
+                `Welcome to PharmaLeb ${res.data.first_name}... Now login into your account`
+            );
+            navigation.navigate("Log In");
         } catch (error) {
             console.log(error.response.data);
+            // setIsError(true);
+            // setErrorMessage(error.response.data);
+            alert(error.response.data);
         }
     };
 
     return (
         <TouchableWithoutFeedback
+            // remove keyboard when touching the screen
             onPress={() => {
                 Keyboard.dismiss();
             }}
@@ -108,7 +124,7 @@ export const SignUpPatient = () => {
             >
                 {(props) => (
                     <View style={globalStyles.container}>
-                        {/* logo */}
+                        {/* Logo */}
                         <Image source={logo} style={styles.logo} />
 
                         {/* Title */}
