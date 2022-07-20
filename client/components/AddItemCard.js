@@ -3,7 +3,7 @@ import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import medicine from "../assets/panadol.png";
 import { Ionicons } from "@expo/vector-icons";
 
-export const AddItemCard = ({ navigation }) => {
+export const AddItemCard = ({ navigation, data }) => {
     return (
         <TouchableOpacity
             style={styles.card}
@@ -13,9 +13,9 @@ export const AddItemCard = ({ navigation }) => {
                 <Image source={medicine} style={styles.image} />
             </View>
             <View style={styles.right}>
-                <Text style={styles.name}>Medicine Name</Text>
-                <Text style={styles.detail}>Code</Text>
-                <Text style={styles.detail}>Dosage</Text>
+                <Text style={styles.name}>{data.name}</Text>
+                <Text style={styles.detail}>{data.code}</Text>
+                <Text style={styles.detail}>{data.dosage}</Text>
             </View>
             <Ionicons
                 style={styles.icon}
