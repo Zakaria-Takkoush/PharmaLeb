@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     Image,
     StyleSheet,
@@ -10,37 +10,56 @@ import {
     Keyboard,
 } from "react-native";
 // logo
-import logo from "../assets/logo/Logo.jpg";
+import logo from "../assets/logo/logo.png";
+
+// import button
 import { BlueButton } from "../components/BlueButton";
+
 // import global styles
 import globalStyles from "../styles/GlobalStyles";
+
+// import icons
 import { Ionicons } from "@expo/vector-icons";
 
-import * as SecureStore from "expo-secure-store";
+// import secure store functions
+import { getValueFor } from "../stores/SecureStore";
 
-export const RegisterPharmacy = () => {
+// import axios file
+import axiosAPI from "../apis/axiosAPI";
+
+// import formik
+import { Formik } from "formik";
+
+export const RegisterPharmacy = ({ navigation }) => {
     useEffect(() => {
         const getAuth = async () => {
-            const token = await SecureStore.getItemAsync("token");
-            const userID = await SecureStore.getItemAsync("user_id");
-            console.log(userID);
+            const pharmacist = await getValueFor("user_id");
+            console.log(pharmacist);
         };
         getAuth();
     }, []);
 
-    const initialState = {
+    const initialValues = {
         name: "",
         phone_number: "",
-        address: "",
+        city: "",
+        street: "",
+        owner: "",
     };
 
-    const [city, setCity] = useState("");
-    const [street, setStreet] = useState("");
-    // const [address, setAddress] = useState(city + " - " + street);
+    const getOwner = async () => {
+        const pharmacist = await getValueFor("user_id");
+        return pharmacist;
+    };
 
-    const [pharmacy, setPharmacy] = useState(initialState);
-
-    const handleCLick = () => {
+    const register = async (data) => {
+        let pharmacy = {
+            name: data.name,
+            phone_number: data.phone_number,
+            address: `${data.city} - ${data.street}`,
+            owner: await getOwner(),
+            location: { latitude: 12, longitude: 12 },
+        };
         console.log(pharmacy);
     };
 
@@ -50,67 +69,80 @@ export const RegisterPharmacy = () => {
                 Keyboard.dismiss();
             }}
         >
-            <View style={globalStyles.container}>
-                {/* logo */}
-                <Image source={logo} style={styles.logo} />
+            <Formik
+                initialValues={initialValues}
+                onSubmit={(values, actions) => {
+                    register(values);
+                    actions.resetForm();
+                }}
+            >
+                {(props) => (
+                    <View style={globalStyles.container}>
+                        {/* logo */}
+                        <Image source={logo} style={styles.logo} />
 
-                {/* Title */}
-                <Text style={styles.header}>Add your Pharmacy</Text>
+                        {/* Title */}
+                        <Text style={styles.header}>Add your Pharmacy</Text>
 
-                {/* SignUp form */}
-                <View style={globalStyles.form}>
-                    <Text style={globalStyles.label}>Pharmacy Name</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="Enter Pharmacy Name..."
-                        onChangeText={(value) => {
-                            setPharmacy({ ...pharmacy, name: value });
-                        }}
-                    />
+                        {/* SignUp form */}
+                        <View style={globalStyles.form}>
+                            <Text style={globalStyles.label}>
+                                Pharmacy Name
+                            </Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="Enter Pharmacy Name..."
+                                onChangeText={props.handleChange("name")}
+                                value={props.values.name}
+                            />
 
-                    <Text style={globalStyles.label}>Full Address:</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="City..."
-                        onChangeText={(value) => {
-                            setCity(value);
-                            setPharmacy({
-                                ...pharmacy,
-                                address: city + " - " + street,
-                            });
-                        }}
-                    />
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="Street..."
-                        onChangeText={(value) => {
-                            setStreet(value);
-                            setPharmacy({
-                                ...pharmacy,
-                                address: city + " - " + street,
-                            });
-                        }}
-                    />
+                            <Text style={globalStyles.label}>
+                                Full Address:
+                            </Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="City..."
+                                onChangeText={props.handleChange("city")}
+                                value={props.values.city}
+                            />
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="Street..."
+                                onChangeText={props.handleChange("street")}
+                                value={props.values.street}
+                            />
 
-                    <Text style={globalStyles.label}>Phone Number:</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="Enter phone number..."
-                        onChangeText={(value) => {
-                            setPharmacy({ ...pharmacy, phone_number: value });
-                        }}
-                    />
+                            <Text style={globalStyles.label}>
+                                Phone Number:
+                            </Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="Enter phone number..."
+                                onChangeText={props.handleChange(
+                                    "phone_number"
+                                )}
+                                value={props.values.phone_number}
+                            />
 
-                    <Text style={globalStyles.label}>Location:</Text>
-                    <TouchableOpacity style={styles.location}>
-                        <Ionicons name="location" size={30} color="#009FFF" />
-                        <Text>Choose on Map</Text>
-                    </TouchableOpacity>
-                </View>
+                            <Text style={globalStyles.label}>Location:</Text>
+                            <TouchableOpacity style={styles.location}>
+                                <Ionicons
+                                    name="location"
+                                    size={30}
+                                    color="#009FFF"
+                                />
+                                <Text>Choose on Map</Text>
+                            </TouchableOpacity>
+                        </View>
 
-                {/* Create Account button */}
-                <BlueButton text="Register Pharmacy" onPress={handleCLick} />
-            </View>
+                        {/* Create Account button */}
+                        <BlueButton
+                            text="Register Pharmacy"
+                            onPress={props.handleSubmit}
+                        />
+                    </View>
+                )}
+            </Formik>
         </TouchableWithoutFeedback>
     );
 };
