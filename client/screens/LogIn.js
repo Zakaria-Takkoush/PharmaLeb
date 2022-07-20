@@ -46,17 +46,6 @@ export const LogIn = ({ navigation }) => {
         password: "",
     };
 
-    const [user, setUser] = useState(initialValues);
-
-    // let isPatient = false;
-
-    // set input data (from inputs)
-    const setUserData = (data) => {
-        setUser(data);
-        console.log(user);
-        postLogIn(user);
-    };
-
     // login function (post to database and get token)
     const postLogIn = async (user) => {
         try {
@@ -74,8 +63,6 @@ export const LogIn = ({ navigation }) => {
             }
         } catch (error) {
             console.log(error.response.data);
-            // setIsError(true);
-            // setErrorMessage(error.response.data);
             alert(error.response.data);
         }
     };
@@ -89,7 +76,7 @@ export const LogIn = ({ navigation }) => {
             <Formik
                 initialValues={initialValues}
                 onSubmit={(values, actions) => {
-                    setUserData(values);
+                    postLogIn(values);
                     actions.resetForm();
                 }}
                 validationSchema={logInSchema}
