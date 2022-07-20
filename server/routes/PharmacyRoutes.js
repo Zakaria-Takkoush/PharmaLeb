@@ -8,6 +8,7 @@ const {
     removeAllPharmacies,
     getPharmacies,
     getPharmacy,
+    getPharmacyByOwnerID,
 } = require("../controllers/PharmacyController");
 
 // Import Item Functions
@@ -29,6 +30,9 @@ router.get("/", getPharmacies);
 
 // Get a Pharmacy (pass its id as param)
 router.get("/:id", getPharmacy);
+
+// Get a pharmacy by its owner's id (pass its owner id as param)
+router.get("/owner/:id", getPharmacyByOwnerID);
 
 // Add a pharmacy
 router.post("/", verifyToken, registerPharmacy);

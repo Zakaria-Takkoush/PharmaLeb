@@ -83,6 +83,17 @@ async function getPharmacy(req, res) {
     }
 }
 
+// Get a pharmacy knowing its owner
+async function getPharmacyByOwnerID(req, res) {
+    try {
+        const pharmacy = await Pharmacy.findOne({ owner: req.params.id });
+        return res.json(pharmacy);
+    } catch (error) {
+        console.log(error.message);
+        res.json(error.message);
+    }
+}
+
 module.exports = {
     registerPharmacy,
     removePharmacy,
@@ -90,4 +101,5 @@ module.exports = {
     removeAllPharmacies,
     getPharmacies,
     getPharmacy,
+    getPharmacyByOwnerID,
 };
