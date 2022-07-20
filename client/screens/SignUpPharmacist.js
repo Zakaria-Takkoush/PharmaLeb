@@ -29,6 +29,9 @@ import axiosAPI from "../apis/axiosAPI";
 // import formik
 import { Formik } from "formik";
 
+// import secure store
+import { saveItem } from "../stores/SecureStore";
+
 // import yup for form validation
 import * as yup from "yup";
 
@@ -96,6 +99,7 @@ export const SignUpPharmacist = ({ navigation }) => {
             alert(
                 `Welcome to PharmaLeb ${res.data.first_name}... Now add your pharmacy details`
             );
+            saveItem("user_id", res.data._id);
             navigation.navigate("Register Pharmacy");
         } catch (error) {
             console.log(error.response.data);

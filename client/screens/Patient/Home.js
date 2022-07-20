@@ -3,13 +3,17 @@ import { Text, View, TextInput, StyleSheet, ScrollView } from "react-native";
 import globalStyles from "../../styles/GlobalStyles";
 import { BlueButton } from "../../components/BlueButton";
 import { MedicineCard } from "../../components/MedicineCard";
-import * as SecureStore from "expo-secure-store";
+
+// import secure store functions
+import { getValueFor } from "../../stores/SecureStore";
 
 export const Home = ({ navigation }) => {
     useEffect(() => {
         const getToken = async () => {
-            const token = await SecureStore.getItemAsync("token");
-            const userID = await SecureStore.getItemAsync("user_id");
+            const token = await getValueFor("token");
+            const userID = await getValueFor("user_id");
+            console.log(userID);
+            console.log(token);
         };
         getToken();
     }, []);

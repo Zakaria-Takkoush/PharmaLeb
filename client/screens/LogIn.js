@@ -41,12 +41,7 @@ const logInSchema = yup.object({
 });
 
 // import Secure Store to store the token
-import * as SecureStore from "expo-secure-store";
-
-// expo secure store storing function:
-const storeItem = async (key, value) => {
-    await SecureStore.setItemAsync(key, value);
-};
+import { saveItem } from "../stores/SecureStore";
 
 export const LogIn = ({ navigation }) => {
     const initialValues = {
@@ -62,8 +57,8 @@ export const LogIn = ({ navigation }) => {
             alert(`Welcome ${loggedUser.first_name}`);
 
             // store token in secure store
-            storeItem("token", loggedUser.token);
-            storeItem("user_id", loggedUser._id);
+            saveItem("token", loggedUser.token);
+            saveItem("user_id", loggedUser._id);
 
             // check user type and navigate accordingly
             console.log(loggedUser);

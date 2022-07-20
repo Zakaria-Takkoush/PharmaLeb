@@ -16,7 +16,18 @@ import { BlueButton } from "../components/BlueButton";
 import globalStyles from "../styles/GlobalStyles";
 import { Ionicons } from "@expo/vector-icons";
 
+import * as SecureStore from "expo-secure-store";
+
 export const RegisterPharmacy = () => {
+    useEffect(() => {
+        const getAuth = async () => {
+            const token = await SecureStore.getItemAsync("token");
+            const userID = await SecureStore.getItemAsync("user_id");
+            console.log(userID);
+        };
+        getAuth();
+    }, []);
+
     const initialState = {
         name: "",
         phone_number: "",
