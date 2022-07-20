@@ -42,7 +42,10 @@ const pharmacySchema = yup.object({
         .required("Pharmacy name is required."),
     city: yup.string().required("City is required."),
     street: yup.string().required("Street is required."),
-    phone_number: yup.number().min(8).required("Phone number is required."),
+    phone_number: yup
+        .number()
+        .min(8, "Enter a valid phone number")
+        .required("Phone number is required."),
 });
 
 export const RegisterPharmacy = ({ navigation }) => {
@@ -127,6 +130,12 @@ export const RegisterPharmacy = ({ navigation }) => {
                                 onChangeText={props.handleChange("name")}
                                 value={props.values.name}
                             />
+                            {/* Check validation */}
+                            {props.touched.name && props.errors.name && (
+                                <Text style={styles.error}>
+                                    {props.errors.name}
+                                </Text>
+                            )}
 
                             <Text style={globalStyles.label}>
                                 Full Address:
@@ -137,12 +146,25 @@ export const RegisterPharmacy = ({ navigation }) => {
                                 onChangeText={props.handleChange("city")}
                                 value={props.values.city}
                             />
+                            {/* Check validation */}
+                            {props.touched.city && props.errors.city && (
+                                <Text style={styles.error}>
+                                    {props.errors.city}
+                                </Text>
+                            )}
+
                             <TextInput
                                 style={globalStyles.input}
                                 placeholder="Street..."
                                 onChangeText={props.handleChange("street")}
                                 value={props.values.street}
                             />
+                            {/* Check validation */}
+                            {props.touched.street && props.errors.street && (
+                                <Text style={styles.error}>
+                                    {props.errors.street}
+                                </Text>
+                            )}
 
                             <Text style={globalStyles.label}>
                                 Phone Number:
@@ -155,6 +177,13 @@ export const RegisterPharmacy = ({ navigation }) => {
                                 )}
                                 value={props.values.phone_number}
                             />
+                            {/* Check validation */}
+                            {props.touched.phone_number &&
+                                props.errors.phone_number && (
+                                    <Text style={styles.error}>
+                                        {props.errors.phone_number}
+                                    </Text>
+                                )}
 
                             <Text style={globalStyles.label}>Location:</Text>
                             <TouchableOpacity style={styles.location}>
@@ -194,5 +223,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
+    },
+    error: {
+        color: "tomato",
+        fontSize: 12,
+        fontWeight: "bold",
     },
 });
