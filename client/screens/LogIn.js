@@ -40,6 +40,14 @@ const logInSchema = yup.object({
         .required("Password is required."),
 });
 
+// import Secure Store to store the token
+import * as SecureStore from "expo-secure-store";
+
+// expo secure store storing function:
+const storeItem = async (key, value) => {
+    await SecureStore.setItemAsync(key, value);
+};
+
 export const LogIn = ({ navigation }) => {
     const initialValues = {
         email: "",
@@ -52,6 +60,10 @@ export const LogIn = ({ navigation }) => {
             const res = await axiosAPI.post("/users/login", user);
             const loggedUser = res.data.user;
             alert(`Welcome ${loggedUser.first_name}`);
+
+            // store token in secure store
+            storeItem("token", loggedUser.token);
+
             // check user type and navigate accordingly
             console.log(loggedUser);
             if (loggedUser.user_type === "patient") {
