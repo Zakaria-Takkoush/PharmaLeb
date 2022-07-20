@@ -64,11 +64,13 @@ export const LogIn = ({ navigation }) => {
             const loggedUser = res.data.user;
             alert(`Welcome ${loggedUser.first_name}`);
             // check user type and navigate accordingly
+            console.log(loggedUser);
             if (loggedUser.user_type === "patient") {
-                navigation.navigate("Patient");
+                // use replace instead of navigate to prevent going back to login screen
+                navigation.replace("Patient");
             }
             if (loggedUser.user_type === "pharmacist") {
-                navigation.navigate("Pharmacist");
+                navigation.replace("Pharmacist");
             }
         } catch (error) {
             console.log(error.response.data);
