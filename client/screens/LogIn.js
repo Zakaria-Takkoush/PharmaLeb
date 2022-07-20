@@ -63,6 +63,7 @@ export const LogIn = ({ navigation }) => {
 
             // store token in secure store
             storeItem("token", loggedUser.token);
+            storeItem("user_id", loggedUser._id);
 
             // check user type and navigate accordingly
             console.log(loggedUser);

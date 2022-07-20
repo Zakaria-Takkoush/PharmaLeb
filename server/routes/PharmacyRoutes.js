@@ -31,7 +31,7 @@ router.get("/", getPharmacies);
 router.get("/:id", getPharmacy);
 
 // Add a pharmacy
-router.post("/", registerPharmacy);
+router.post("/", verifyToken, registerPharmacy);
 
 // Delete a pharmacy (pass its id as param)
 router.delete("/:id", removePharmacy);

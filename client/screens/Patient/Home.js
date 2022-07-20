@@ -6,14 +6,10 @@ import { MedicineCard } from "../../components/MedicineCard";
 import * as SecureStore from "expo-secure-store";
 
 export const Home = ({ navigation }) => {
-    async function getToken() {
-        const token = await SecureStore.getItemAsync("token");
-    }
-
     useEffect(() => {
         const getToken = async () => {
             const token = await SecureStore.getItemAsync("token");
-            console.log(token);
+            const userID = await SecureStore.getItemAsync("user_id");
         };
         getToken();
     }, []);

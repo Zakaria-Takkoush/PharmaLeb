@@ -5,7 +5,7 @@ const pharmacySchema = new mongoose.Schema(
         name: { type: String, required: true },
         phone_number: { type: String, required: true },
         address: { type: String, required: true },
-        owner: { type: mongoose.Types.ObjectId, ref: "User" },
+        owner: { type: mongoose.Types.ObjectId, ref: "User", required: true },
         location: {
             latitude: { type: Number },
             longitude: { type: Number },
