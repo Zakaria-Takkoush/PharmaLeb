@@ -22,7 +22,7 @@ import globalStyles from "../styles/GlobalStyles";
 import { Ionicons } from "@expo/vector-icons";
 
 // import secure store functions
-import { getValueFor } from "../stores/SecureStore";
+import { getValueFor, saveItem } from "../stores/SecureStore";
 
 // import axios file
 import axiosAPI from "../apis/axiosAPI";
@@ -89,9 +89,12 @@ export const RegisterPharmacy = ({ navigation }) => {
                     "x-access-token": token,
                 },
             });
-            console.log(res.data);
-            // navigate to pharmacist page
-            navigation.navigate("Pharmacist");
+            const registeredPharm = res.data;
+            alert(
+                `${registeredPharm.name} Pharmacy added successfully... Now login into your account`
+            );
+            // navigate back to login page
+            navigation.replace("Log In");
         } catch (error) {
             console.log(error.response.data);
         }
