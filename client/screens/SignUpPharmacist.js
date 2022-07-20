@@ -100,6 +100,7 @@ export const SignUpPharmacist = ({ navigation }) => {
                 `Welcome to PharmaLeb ${res.data.first_name}... Now add your pharmacy details`
             );
             saveItem("user_id", res.data._id);
+            saveItem("token", res.data.token);
             navigation.navigate("Register Pharmacy");
         } catch (error) {
             console.log(error.response.data);

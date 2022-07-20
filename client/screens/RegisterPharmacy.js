@@ -30,11 +30,26 @@ import axiosAPI from "../apis/axiosAPI";
 // import formik
 import { Formik } from "formik";
 
+// import yup validator
+import * as yup from "yup";
+
+// create yup validation schema
+const pharmacySchema = yup.object({
+    name: yup
+        .string()
+        .min(3, "Pharmacy name must be at least 3 characters.")
+        .max(30, "Pharmacy name must be at most 30 characters.")
+        .required("Pharmacy name is required."),
+    city: yup.string().required("City is required."),
+    street: yup.string().required("Street is required."),
+    phone_number: yup.number().min(8).required("Phone number is required."),
+});
+
 export const RegisterPharmacy = ({ navigation }) => {
     useEffect(() => {
         const getAuth = async () => {
             const pharmacist = await getValueFor("user_id");
-            console.log(pharmacist);
+            const token = await getValueFor("token");
         };
         getAuth();
     }, []);
@@ -60,7 +75,23 @@ export const RegisterPharmacy = ({ navigation }) => {
             owner: await getOwner(),
             location: { latitude: 12, longitude: 12 },
         };
-        console.log(pharmacy);
+        postPharmacy(pharmacy);
+    };
+
+    const postPharmacy = async (pharmacy) => {
+        try {
+            const token = await getValueFor("token");
+            const res = await axiosAPI.post("/pharmacies", pharmacy, {
+                headers: {
+                    "x-access-token": token,
+                },
+            });
+            console.log(res.data);
+            // navigate to pharmacist page
+            navigation.navigate("Pharmacist");
+        } catch (error) {
+            console.log(error.response.data);
+        }
     };
 
     return (
@@ -75,6 +106,7 @@ export const RegisterPharmacy = ({ navigation }) => {
                     register(values);
                     actions.resetForm();
                 }}
+                validationSchema={pharmacySchema}
             >
                 {(props) => (
                     <View style={globalStyles.container}>
