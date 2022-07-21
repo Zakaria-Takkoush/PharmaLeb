@@ -11,8 +11,11 @@ import globalStyles from "../../styles/GlobalStyles";
 import { BlueButton } from "../../components/BlueButton";
 
 import { Ionicons } from "@expo/vector-icons";
+import { useRoute } from "@react-navigation/native";
 
-export const Stock = ({ navigation }) => {
+export const Stock = ({ navigation, route }) => {
+    // const id = route.params.user_id;
+    // console.log(id);
     return (
         <View style={globalStyles.pageContainer}>
             <View style={styles.search}>

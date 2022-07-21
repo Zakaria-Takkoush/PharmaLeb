@@ -6,5 +6,9 @@ export const saveItem = async (key, value) => {
 
 export const getValueFor = async (key) => {
     let result = await SecureStore.getItemAsync(key);
-    return result;
+    if (result) {
+        return result;
+    } else {
+        console.log("no result matching in store");
+    }
 };

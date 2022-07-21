@@ -79,7 +79,7 @@ async function getPharmacy(req, res) {
         return res.status(200).json(pharmacy);
     } catch (error) {
         console.log(error.message);
-        res.error.json(error);
+        res.json(error);
     }
 }
 

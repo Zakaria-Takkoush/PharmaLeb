@@ -68,11 +68,21 @@ export const LogIn = ({ navigation }) => {
             }
             if (loggedUser.user_type === "pharmacist") {
                 navigation.replace("Pharmacist");
+                // get their pharmacy and save it in store
+                getPharmacy(loggedUser._id);
             }
         } catch (error) {
             console.log(error.response.data);
             alert(error.response.data);
         }
+    };
+
+    // get the pharmacy ID knowing the user (fro pharmacists only)
+    const getPharmacy = async (pharmacist) => {
+        const res = await axiosAPI.get(`/pharmacies/owner/${pharmacist}`);
+        const pharmacy = await res.data;
+        saveItem("pharmacy_id", pharmacy._id);
+        console.log(pharmacy);
     };
 
     return (

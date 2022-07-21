@@ -17,33 +17,30 @@ import { useEffect, useState } from "react";
 const Tab = createBottomTabNavigator();
 
 export const PharmacistBottomTab = () => {
-    const [pharmacist, setPharmacist] = useState("");
+    const [user, setUser] = useState("");
     const [pharmacy, setPharmacy] = useState("");
 
     // get the pharmacist ID from secure store
     const getPharmacistData = async () => {
         const user = await getValueFor("user_id");
-        return user;
+        const pharmacy = await getValueFor("pharmacy_id");
+        setUser(user);
+        setPharmacy(pharmacy);
     };
 
-    // get the pharmacy ID knowing the user
-    const getPharmacy = async () => {
-        const res = await axiosAPI.get(`/pharmacies/owner/${pharmacist}`);
-        const pharmacy = await res.data;
-        saveItem("pharmacy_id", pharmacy._id);
-        return pharmacy;
-    };
+    console.log("user: " + user);
+    console.log("pharmacy: " + pharmacy);
+
+    // get the pharmacy ID knowing the user --- moved to login
+    // const getPharmacy = async () => {
+    //     const res = await axiosAPI.get(`/pharmacies/owner/${pharmacist}`);
+    //     const pharmacy = await res.data;
+    //     saveItem("pharmacy_id", pharmacy._id);
+    //     return pharmacy;
+    // };
 
     useEffect(() => {
-        const getData = async () => {
-            const pharmacist = await getPharmacistData();
-            setPharmacist(pharmacist);
-            console.log(pharmacist);
-            const pharmacy = await getPharmacy();
-            setPharmacy(pharmacy);
-            console.log(pharmacy);
-        };
-        getData();
+        getPharmacistData();
     }, []);
 
     return (
@@ -72,6 +69,7 @@ export const PharmacistBottomTab = () => {
                     ),
                     headerShown: false,
                 }}
+                initialParams={{ user_id: 42 }}
             />
 
             {/* Chats Tab */}
