@@ -2,19 +2,20 @@ import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import medicine from "../assets/panadol.png";
 
-export const MedicineCard = ({ navigation }) => {
+export const MedicineCard = ({ navigation, details }) => {
     return (
         <TouchableOpacity
             style={styles.card}
-            onPress={() => navigation.navigate("Medicine")}
+            onPress={() => navigation.navigate("Medicine", details)}
         >
             <View style={styles.left}>
                 <Image source={medicine} style={styles.image} />
             </View>
             <View style={styles.right}>
-                <Text style={styles.name}>Medicine Name</Text>
-                <Text style={styles.detail}>Code</Text>
-                <Text style={styles.detail}>Dosage</Text>
+                <Text style={styles.name}>{details.name}</Text>
+                <Text style={styles.detail}>Code: {details.code}</Text>
+                <Text style={styles.detail}>Dosage: {details.dosage}</Text>
+                <Text style={styles.detail}>Price: {details.price}</Text>
             </View>
         </TouchableOpacity>
     );
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
         alignSelf: "stretch",
         marginHorizontal: 20,
         marginVertical: 8,
-        height: 120,
+        minHeight: 120,
         backgroundColor: "white",
         borderRadius: 20,
         paddingHorizontal: 20,
