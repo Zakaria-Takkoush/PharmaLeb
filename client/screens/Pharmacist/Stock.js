@@ -1,5 +1,12 @@
-import { StyleSheet, TextInput, Text, ScrollView, View } from "react-native";
-import React from "react";
+import {
+    StyleSheet,
+    TextInput,
+    Text,
+    ScrollView,
+    View,
+    FlatList,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 
 // import medicine edit card
 import { MedicineCardStock } from "../../components/MedicineCardStock";
@@ -11,11 +18,28 @@ import globalStyles from "../../styles/GlobalStyles";
 import { BlueButton } from "../../components/BlueButton";
 
 import { Ionicons } from "@expo/vector-icons";
-import { useRoute } from "@react-navigation/native";
+import { getValueFor } from "../../stores/SecureStore";
+import axiosAPI from "../../apis/axiosAPI";
 
-export const Stock = ({ navigation, route }) => {
-    // const id = route.params.user_id;
-    // console.log(id);
+export const Stock = ({ navigation }) => {
+    const [items, setItems] = useState([]);
+
+    // fetch pharmacy's stock
+    const getStock = async () => {
+        const pharmacy = await getValueFor("pharmacy_id");
+        const res = await axiosAPI.get(`/pharmacies/${pharmacy}/items`);
+        const items = res.data.items;
+        return items;
+    };
+
+    useEffect(() => {
+        const getData = async () => {
+            const itemsFromServer = await getStock();
+            setItems(itemsFromServer);
+        };
+        getData();
+    }, []);
+
     return (
         <View style={globalStyles.pageContainer}>
             <View style={styles.search}>
@@ -25,9 +49,16 @@ export const Stock = ({ navigation, route }) => {
                 />
                 <BlueButton text="Search" />
             </View>
-            <ScrollView style={globalStyles.itemList}>
-                <MedicineCardStock navigation={navigation} />
-            </ScrollView>
+            {/* <MedicineCardStock navigation={navigation} /> */}
+            <FlatList
+                style={globalStyles.itemList}
+                keyExtractor={(item) => item._id}
+                data={items}
+                renderItem={({ item }) => (
+                    <MedicineCardStock navigation={navigation} item={item} />
+                )}
+            />
+            {/* </ScrollView> */}
             {/* <Ionicons
                 style={styles.icon}
                 name="ios-add-circle"

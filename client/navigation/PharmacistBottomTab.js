@@ -69,7 +69,6 @@ export const PharmacistBottomTab = () => {
                     ),
                     headerShown: false,
                 }}
-                initialParams={{ user_id: 42 }}
             />
 
             {/* Chats Tab */}
