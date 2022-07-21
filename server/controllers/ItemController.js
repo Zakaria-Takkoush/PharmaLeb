@@ -3,12 +3,18 @@ const Pharmacy = require("../models/PharmacyModel");
 // Get Items of a specific pharmacy
 async function getItemsByPharmID(req, res) {
     try {
-        const pharmacy = await Pharmacy.findById(req.params.id);
+        const pharmacy = await Pharmacy.findById(req.params.id).populate({
+            path: "items",
+            populate: {
+                path: "item",
+                model: "Medicine",
+            },
+        }); // used populate to get medicine info directly
         const items = pharmacy.items;
         return res.status(200).json({
             pharmacy: pharmacy.name,
-            "itemCount:": items.length,
-            "items:": items,
+            itemCount: items.length,
+            items: items,
         });
     } catch (error) {
         console.log(error.message);
