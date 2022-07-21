@@ -4,10 +4,11 @@ import { MedicineScreenDetails } from "../../components/MedicineScreenDetails";
 import { PharmacyCard } from "../../components/PharmacyCard";
 import globalStyles from "../../styles/GlobalStyles";
 
-export const MedicineScreen = () => {
+export const MedicineScreen = ({ route }) => {
+    const medicine = route.params;
     return (
         <View style={globalStyles.pageContainer}>
-            <MedicineScreenDetails />
+            <MedicineScreenDetails details={medicine} />
             <Text style={styles.text}>Available at:</Text>
             <ScrollView style={globalStyles.itemList}>
                 <PharmacyCard />
