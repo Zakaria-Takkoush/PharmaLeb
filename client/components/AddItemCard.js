@@ -2,14 +2,38 @@ import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import medicine from "../assets/panadol.png";
 import { Ionicons } from "@expo/vector-icons";
+import { getValueFor } from "../stores/SecureStore";
+import axiosAPI from "../apis/axiosAPI";
 
 export const AddItemCard = ({ navigation, data }) => {
-    console.log(data);
+    //handlePress
+    const handlePress = () => {
+        postItem();
+    };
+
+    // add medicine to pharmacy
+    const postItem = async () => {
+        const pharmacy = await getValueFor("pharmacy_id");
+        try {
+            const res = await axiosAPI.post(
+                `/pharmacies/${pharmacy}/add_item`,
+                {
+                    item: data._id,
+                }
+            );
+            if (res.data.added_item) {
+                alert("Medicine added to your stock!");
+            } else {
+                alert(res.data);
+            }
+            console.log(res.data);
+        } catch (error) {
+            console.log(error.response.data);
+        }
+    };
+
     return (
-        <TouchableOpacity
-            style={styles.card}
-            onPress={() => alert("Item Added to Stock!")}
-        >
+        <TouchableOpacity style={styles.card} onPress={handlePress}>
             <View style={styles.left}>
                 <Image source={medicine} style={styles.image} />
             </View>

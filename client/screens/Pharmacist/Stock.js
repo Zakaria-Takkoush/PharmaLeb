@@ -63,10 +63,12 @@ export const Stock = ({ navigation }) => {
                 size={50}
                 color="#009FFF"
             /> */}
-            <BlueButton
-                text="Add Item"
-                onPress={() => navigation.navigate("Add Item")}
-            />
+            <View>
+                <BlueButton
+                    text="Add Item"
+                    onPress={() => navigation.navigate("Add Item")}
+                />
+            </View>
         </View>
     );
 };
