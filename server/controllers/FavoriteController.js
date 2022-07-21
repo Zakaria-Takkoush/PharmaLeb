@@ -3,12 +3,15 @@ const User = require("../models/UserModel");
 // Get all favorites of a certain user
 async function getFavorites(req, res) {
     try {
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.params.id).populate({
+            path: "favorites",
+            populate: { path: "medicine", model: "Medicine" },
+        });
         const favorites = user.favorites;
         return res.status(200).json({
             user: user.email,
-            "favoriteCount:": favorites.length,
-            "favorites:": favorites,
+            favoriteCount: favorites.length,
+            favorites: favorites,
         });
     } catch (error) {
         console.log(error.message);
