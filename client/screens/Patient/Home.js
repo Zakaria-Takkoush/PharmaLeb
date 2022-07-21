@@ -1,21 +1,35 @@
-import React, { useEffect } from "react";
-import { Text, View, TextInput, StyleSheet, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+    Text,
+    View,
+    TextInput,
+    StyleSheet,
+    ScrollView,
+    FlatList,
+} from "react-native";
 import globalStyles from "../../styles/GlobalStyles";
 import { BlueButton } from "../../components/BlueButton";
 import { MedicineCard } from "../../components/MedicineCard";
 
 // import secure store functions
 import { getValueFor } from "../../stores/SecureStore";
+import axiosAPI from "../../apis/axiosAPI";
 
 export const Home = ({ navigation }) => {
+    const [medicines, setMedicines] = useState([]);
+
+    // get all medicines api
+    const getMedicines = async () => {
+        const res = await axiosAPI.get(`/medicines`);
+        return res.data;
+    };
+
     useEffect(() => {
-        const getToken = async () => {
-            const token = await getValueFor("token");
-            const userID = await getValueFor("user_id");
-            console.log(userID);
-            console.log(token);
+        const getData = async () => {
+            const medicinesFromServer = await getMedicines();
+            setMedicines(medicinesFromServer);
         };
-        getToken();
+        getData();
     }, []);
 
     return (
@@ -27,10 +41,14 @@ export const Home = ({ navigation }) => {
                 />
                 <BlueButton text="Search" />
             </View>
-            <ScrollView style={globalStyles.itemList}>
-                <MedicineCard navigation={navigation} />
-                <MedicineCard navigation={navigation} />
-            </ScrollView>
+            <FlatList
+                style={globalStyles.itemList}
+                keyExtractor={(item) => item._id}
+                data={medicines}
+                renderItem={({ item }) => (
+                    <MedicineCard navigation={navigation} details={item} />
+                )}
+            />
         </View>
     );
 };
