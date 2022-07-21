@@ -1,18 +1,20 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import medicine from "../assets/panadol.png";
+import pic from "../assets/panadol.png";
 
-export const FavoriteCard = () => {
+export const FavoriteCard = ({ data }) => {
+    const medicine = data.medicine;
     return (
         <TouchableOpacity style={styles.card}>
             <View style={styles.left}>
-                <Image source={medicine} style={styles.image} />
+                <Image source={pic} style={styles.image} />
             </View>
             <View style={styles.right}>
-                <Text style={styles.name}>Medicine Name</Text>
-                <Text style={styles.detail}>Code</Text>
-                <Text style={styles.detail}>Dosage</Text>
+                <Text style={styles.name}>{medicine.name}</Text>
+                <Text style={styles.detail}>{medicine.code}</Text>
+                <Text style={styles.detail}>{medicine.dosage}</Text>
+                <Text style={styles.detail}>{medicine.price}</Text>
             </View>
             <FontAwesome
                 style={styles.icon}
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
         alignSelf: "stretch",
         marginHorizontal: 20,
         marginVertical: 8,
-        height: 120,
+        minHeight: 120,
         backgroundColor: "white",
         borderRadius: 20,
         paddingHorizontal: 20,
