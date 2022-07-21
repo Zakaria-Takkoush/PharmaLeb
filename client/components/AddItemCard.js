@@ -4,6 +4,7 @@ import medicine from "../assets/panadol.png";
 import { Ionicons } from "@expo/vector-icons";
 
 export const AddItemCard = ({ navigation, data }) => {
+    console.log(data);
     return (
         <TouchableOpacity
             style={styles.card}
@@ -16,6 +17,7 @@ export const AddItemCard = ({ navigation, data }) => {
                 <Text style={styles.name}>{data.name}</Text>
                 <Text style={styles.detail}>{data.code}</Text>
                 <Text style={styles.detail}>{data.dosage}</Text>
+                <Text style={styles.detail}>{data.price}</Text>
             </View>
             <Ionicons
                 style={styles.icon}
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
         alignSelf: "stretch",
         marginHorizontal: 20,
         marginVertical: 8,
-        height: 120,
+        minHeight: 120,
         backgroundColor: "white",
         borderRadius: 20,
         paddingHorizontal: 20,
