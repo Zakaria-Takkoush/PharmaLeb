@@ -9,19 +9,53 @@ import globalStyles from "../../styles/GlobalStyles";
 
 // import icons
 import { Ionicons } from "@expo/vector-icons";
+import { BlueButton } from "../../components/BlueButton";
+import axiosAPI from "../../apis/axiosAPI";
+import { getValueFor } from "../../stores/SecureStore";
 
-export const MedicineStock = () => {
-    const [stock, setStock] = useState(0);
+export const MedicineStock = ({ route }) => {
+    // get item from params
+    const item = route.params;
+
+    // onPress of update button
+    const handlePress = () => {
+        updateStock();
+    };
+
+    // stock state
+    const [stock, setStock] = useState(item.stock);
+
+    // change stock
     const increment = () => {
         setStock(stock + 1);
     };
     const decrement = () => {
-        setStock(stock - 1);
+        if (stock > 0) {
+            setStock(stock - 1);
+        }
+    };
+
+    // update stock API
+    const updateStock = async () => {
+        const pharmacy = await getValueFor("pharmacy_id");
+        try {
+            const res = await axiosAPI.put(
+                `/pharmacies/${pharmacy}/edit_stock`,
+                {
+                    id: item._id,
+                    stock: stock,
+                }
+            );
+            console.log(res.data);
+            alert("Stock updated!");
+        } catch (error) {
+            console.log(error.response.data);
+        }
     };
 
     return (
         <View style={globalStyles.pageContainer}>
-            <ItemScreenDetails />
+            <ItemScreenDetails details={item.item} />
             <Text style={styles.text}>Stock: {stock}</Text>
             <View style={styles.editStock}>
                 <Ionicons
@@ -43,6 +77,7 @@ export const MedicineStock = () => {
                     onPress={increment}
                 />
             </View>
+            <BlueButton text="Update Stock" onPress={handlePress} />
         </View>
     );
 };

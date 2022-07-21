@@ -3,16 +3,16 @@ import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import medicine from "../assets/panadol.png";
 
-export const ItemScreenDetails = () => {
+export const ItemScreenDetails = ({ details }) => {
     return (
         <View style={styles.container}>
             <View style={styles.left}>
                 <Image source={medicine} style={styles.image} />
             </View>
             <View style={styles.right}>
-                <Text style={styles.name}>Medicine Name</Text>
-                <Text style={styles.detail}>Code</Text>
-                <Text style={styles.detail}>Dosage</Text>
+                <Text style={styles.name}>{details.name}</Text>
+                <Text style={styles.detail}>Code: {details.code}</Text>
+                <Text style={styles.detail}>Dosage {details.dosage}</Text>
             </View>
         </View>
     );
