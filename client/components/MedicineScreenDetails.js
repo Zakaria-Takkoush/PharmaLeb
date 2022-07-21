@@ -2,8 +2,27 @@ import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import medicine from "../assets/panadol.png";
+import axiosAPI from "../apis/axiosAPI";
+import { getValueFor } from "../stores/SecureStore";
 
 export const MedicineScreenDetails = ({ details }) => {
+    // add to favorites
+    const addFavorite = async () => {
+        const user = await getValueFor("user_id");
+        try {
+            const res = await axiosAPI.post(`users/fav/${user}`, {
+                medicine: details._id,
+            });
+            if (res.data.favorite_added) {
+                alert(`Added to Favorites!`);
+            } else {
+                alert(res.data);
+            }
+        } catch (error) {
+            console.log(error.response.data);
+        }
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.left}>
@@ -20,6 +39,7 @@ export const MedicineScreenDetails = ({ details }) => {
                 name="star-o"
                 size={35}
                 color="#009FFF"
+                onPress={addFavorite}
             />
         </View>
     );
