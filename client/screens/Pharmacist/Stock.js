@@ -49,7 +49,6 @@ export const Stock = ({ navigation }) => {
                 />
                 <BlueButton text="Search" />
             </View>
-            {/* <MedicineCardStock navigation={navigation} /> */}
             <FlatList
                 style={globalStyles.itemList}
                 keyExtractor={(item) => item._id}
@@ -58,7 +57,6 @@ export const Stock = ({ navigation }) => {
                     <MedicineCardStock navigation={navigation} item={item} />
                 )}
             />
-            {/* </ScrollView> */}
             {/* <Ionicons
                 style={styles.icon}
                 name="ios-add-circle"

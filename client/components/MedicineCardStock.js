@@ -1,21 +1,22 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
-import medicine from "../assets/panadol.png";
+import pic from "../assets/panadol.png";
 
-export const MedicineCardStock = ({ navigation }) => {
+export const MedicineCardStock = ({ navigation, item }) => {
+    let medicine = item.item;
     return (
         <TouchableOpacity
             style={styles.card}
-            onPress={() => navigation.navigate("Medicine Stock")}
+            onPress={() => navigation.navigate("Medicine Stock", item)}
         >
             <View style={styles.left}>
-                <Image source={medicine} style={styles.image} />
+                <Image source={pic} style={styles.image} />
             </View>
             <View style={styles.right}>
-                <Text style={styles.name}>Medicine Name</Text>
-                <Text style={styles.detail}>Code:</Text>
-                <Text style={styles.detail}>Dosage:</Text>
-                <Text style={styles.detail}>Stock:</Text>
+                <Text style={styles.name}>Medicine Name: {medicine.name}</Text>
+                <Text style={styles.detail}>Code: {medicine.code}</Text>
+                <Text style={styles.detail}>Dosage: {medicine.dosage}</Text>
+                <Text style={styles.detail}>Stock: {item.stock}</Text>
             </View>
         </TouchableOpacity>
     );
