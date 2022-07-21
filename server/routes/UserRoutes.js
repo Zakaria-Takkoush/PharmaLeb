@@ -32,7 +32,7 @@ router.get("/fav/:id", getFavorites);
 // Add a favorite
 router.post("/fav/:id", addFavorite);
 
-// Delete a favorite
+// Delete a favorite (pass user_id as param and fav_id in the body)
 router.delete("/fav/:id", deleteFavorite);
 
 module.exports = router;

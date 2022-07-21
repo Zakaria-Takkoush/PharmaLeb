@@ -2,9 +2,27 @@ import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import pic from "../assets/panadol.png";
+import axiosAPI from "../apis/axiosAPI";
+import { getValueFor } from "../stores/SecureStore";
 
 export const FavoriteCard = ({ data }) => {
     const medicine = data.medicine;
+
+    // delete favorite
+    const removeFavorite = async () => {
+        const user = await getValueFor("user_id");
+        try {
+            const res = await axiosAPI.delete(`/users/fav/${user}`, {
+                data: {
+                    id: data._id,
+                },
+            });
+            alert("Favorite Removed");
+        } catch (error) {
+            console.log(error.message.data);
+        }
+    };
+
     return (
         <TouchableOpacity style={styles.card}>
             <View style={styles.left}>
@@ -21,6 +39,7 @@ export const FavoriteCard = ({ data }) => {
                 name="remove"
                 size={30}
                 color="red"
+                onPress={removeFavorite}
             />
         </TouchableOpacity>
     );
