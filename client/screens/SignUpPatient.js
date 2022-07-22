@@ -10,7 +10,10 @@ import {
     Keyboard,
     ScrollView,
     Modal,
+    Dimensions,
 } from "react-native";
+
+import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
 
 // logo
 import logo from "../assets/logo/logo.png";
@@ -90,12 +93,24 @@ export const SignUpPatient = ({ navigation }) => {
     // Map modal visibility set
     const [isMapOpen, setIsMapOpen] = useState(false);
 
+    // Map properties
+    const { width, height } = Dimensions.get("window");
+    const aspectRatio = width / height;
+    const latDelta = 0.02;
+    const longDelta = latDelta * aspectRatio;
+    const initialRegion = {
+        latitude: 33.896359,
+        longitude: 35.479829,
+        latitudeDelta: latDelta,
+        longitudeDelta: longDelta,
+    };
+
     // set all User Data
     const registerUser = (data) => {
         let user = {
             ...data,
             user_type: "patient",
-            location: { latitude: 12, longitude: 12 },
+            location: location,
         };
         postUser(user);
     };
@@ -298,11 +313,30 @@ export const SignUpPatient = ({ navigation }) => {
 
                         {/* Map Modal (to set location) */}
                         <Modal visible={isMapOpen} animationType="slide">
-                            <Text>Map Pin Picker</Text>
+                            <Text>Set your location</Text>
+                            <MapView
+                                provider={PROVIDER_GOOGLE}
+                                style={styles.map}
+                                showsUserLocation={true}
+                                initialRegion={initialRegion}
+                            >
+                                <Marker
+                                    coordinate={{
+                                        latitude: 33.896359,
+                                        longitude: 35.479829,
+                                    }}
+                                    pinColor="#009FFF"
+                                    draggable={true}
+                                    onDragEnd={(e) => {
+                                        setLocation(e.nativeEvent.coordinate);
+                                    }}
+                                ></Marker>
+                            </MapView>
                             <BlueButton
                                 text="Set Location"
                                 onPress={() => {
                                     setIsMapOpen(false);
+                                    console.log(location);
                                 }}
                             />
                             <BlueButton
@@ -350,5 +384,10 @@ const styles = StyleSheet.create({
         color: "tomato",
         fontSize: 12,
         fontWeight: "bold",
+    },
+
+    map: {
+        width: "100%",
+        height: "50%",
     },
 });
