@@ -9,6 +9,7 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
     ScrollView,
+    Modal,
 } from "react-native";
 
 // logo
@@ -85,6 +86,9 @@ export const SignUpPatient = ({ navigation }) => {
         latitude: 33.896359,
         longitude: 35.479829,
     });
+
+    // Map modal visibility set
+    const [isMapOpen, setIsMapOpen] = useState(false);
 
     // set all User Data
     const registerUser = (data) => {
@@ -271,7 +275,12 @@ export const SignUpPatient = ({ navigation }) => {
                                 )}
 
                             <Text style={globalStyles.label}>Location:</Text>
-                            <TouchableOpacity style={styles.location}>
+                            <TouchableOpacity
+                                style={styles.location}
+                                onPress={() => {
+                                    setIsMapOpen(true);
+                                }}
+                            >
                                 <Ionicons
                                     name="location"
                                     size={30}
@@ -286,6 +295,17 @@ export const SignUpPatient = ({ navigation }) => {
                             text="Create Account!"
                             onPress={props.handleSubmit}
                         />
+
+                        {/* Map Modal (to set location) */}
+                        <Modal visible={isMapOpen}>
+                            <Text>Map Pin Picker</Text>
+                            <BlueButton
+                                text="Set Location"
+                                onPress={() => {
+                                    setIsMapOpen(false);
+                                }}
+                            />
+                        </Modal>
                     </View>
                 )}
             </Formik>
