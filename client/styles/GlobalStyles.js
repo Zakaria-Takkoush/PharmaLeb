@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 const globalStyles = StyleSheet.create({
     container: {
@@ -35,6 +35,25 @@ const globalStyles = StyleSheet.create({
     itemList: {
         alignSelf: "stretch",
         padding: 10,
+    },
+
+    // Modal
+    modalHeader: {
+        fontSize: 20,
+        fontWeight: "bold",
+        textAlign: "center",
+        marginVertical: 10,
+        color: "#009FFF",
+    },
+    modalContainer: {
+        width: Dimensions.get("window").width,
+        height: Dimensions.get("window").height,
+    },
+
+    // Map
+    map: {
+        width: "100%",
+        height: "50%",
     },
 });
 

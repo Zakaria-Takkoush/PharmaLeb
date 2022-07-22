@@ -313,38 +313,44 @@ export const SignUpPatient = ({ navigation }) => {
 
                         {/* Map Modal (to set location) */}
                         <Modal visible={isMapOpen} animationType="slide">
-                            <Text>Set your location</Text>
-                            <MapView
-                                provider={PROVIDER_GOOGLE}
-                                style={styles.map}
-                                showsUserLocation={true}
-                                initialRegion={initialRegion}
-                            >
-                                <Marker
-                                    coordinate={{
-                                        latitude: 33.896359,
-                                        longitude: 35.479829,
+                            <View style={globalStyles.container}>
+                                <Text style={globalStyles.modalHeader}>
+                                    Set your location
+                                </Text>
+                                <MapView
+                                    provider={PROVIDER_GOOGLE}
+                                    style={globalStyles.map}
+                                    showsUserLocation={true}
+                                    initialRegion={initialRegion}
+                                >
+                                    <Marker
+                                        coordinate={{
+                                            latitude: 33.896359,
+                                            longitude: 35.479829,
+                                        }}
+                                        pinColor="#009FFF"
+                                        draggable={true}
+                                        onDragEnd={(e) => {
+                                            setLocation(
+                                                e.nativeEvent.coordinate
+                                            );
+                                        }}
+                                    ></Marker>
+                                </MapView>
+                                <BlueButton
+                                    text="Set Location"
+                                    onPress={() => {
+                                        setIsMapOpen(false);
+                                        console.log(location);
                                     }}
-                                    pinColor="#009FFF"
-                                    draggable={true}
-                                    onDragEnd={(e) => {
-                                        setLocation(e.nativeEvent.coordinate);
+                                />
+                                <BlueButton
+                                    text="Close"
+                                    onPress={() => {
+                                        setIsMapOpen(false);
                                     }}
-                                ></Marker>
-                            </MapView>
-                            <BlueButton
-                                text="Set Location"
-                                onPress={() => {
-                                    setIsMapOpen(false);
-                                    console.log(location);
-                                }}
-                            />
-                            <BlueButton
-                                text="Close"
-                                onPress={() => {
-                                    setIsMapOpen(false);
-                                }}
-                            />
+                                />
+                            </View>
                         </Modal>
                     </View>
                 )}
@@ -384,10 +390,5 @@ const styles = StyleSheet.create({
         color: "tomato",
         fontSize: 12,
         fontWeight: "bold",
-    },
-
-    map: {
-        width: "100%",
-        height: "50%",
     },
 });

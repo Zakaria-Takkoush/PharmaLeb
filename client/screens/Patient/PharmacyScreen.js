@@ -63,8 +63,6 @@ export const PharmacyScreen = ({ route }) => {
 
 const styles = StyleSheet.create({
     map: {
-        // width: Dimensions.get("window").width,
-        // height: Dimensions.get("window").height,
         width: "100%",
         height: "50%",
     },
