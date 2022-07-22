@@ -54,6 +54,7 @@ const globalStyles = StyleSheet.create({
     map: {
         width: "100%",
         height: "50%",
+        marginVertical: 15,
     },
 });
 
