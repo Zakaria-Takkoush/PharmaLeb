@@ -104,6 +104,7 @@ export const SignUpPatient = ({ navigation }) => {
         latitudeDelta: latDelta,
         longitudeDelta: longDelta,
     };
+    const [region, setRegion] = useState(initialRegion);
 
     // set all User Data
     const registerUser = (data) => {
@@ -322,11 +323,15 @@ export const SignUpPatient = ({ navigation }) => {
                                     style={globalStyles.map}
                                     showsUserLocation={true}
                                     initialRegion={initialRegion}
+                                    region={region}
+                                    onRegionChangeComplete={(e) => {
+                                        setRegion(e);
+                                    }}
                                 >
                                     <Marker
                                         coordinate={{
-                                            latitude: 33.896359,
-                                            longitude: 35.479829,
+                                            latitude: region.latitude,
+                                            longitude: region.longitude,
                                         }}
                                         pinColor="#009FFF"
                                         draggable={true}
@@ -334,6 +339,10 @@ export const SignUpPatient = ({ navigation }) => {
                                             setLocation(
                                                 e.nativeEvent.coordinate
                                             );
+                                            setRegion({
+                                                ...initialRegion,
+                                                ...e.nativeEvent.coordinate,
+                                            });
                                         }}
                                     ></Marker>
                                 </MapView>
