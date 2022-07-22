@@ -80,6 +80,12 @@ export const SignUpPatient = ({ navigation }) => {
     // error message
     const [errorMessage, setErrorMessage] = useState("");
 
+    // set user location
+    const [location, setLocation] = useState({
+        latitude: 33.896359,
+        longitude: 35.479829,
+    });
+
     // set all User Data
     const registerUser = (data) => {
         let user = {
