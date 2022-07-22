@@ -5,7 +5,7 @@ import { PharmacyCard } from "../../components/PharmacyCard";
 import globalStyles from "../../styles/GlobalStyles";
 import axiosAPI from "../../apis/axiosAPI";
 
-export const MedicineScreen = ({ route }) => {
+export const MedicineScreen = ({ route, navigation }) => {
     const medicine = route.params;
 
     const [pharmacies, setPharmacies] = useState([]);
@@ -40,7 +40,11 @@ export const MedicineScreen = ({ route }) => {
                 keyExtractor={(item) => item._id}
                 data={pharmacies}
                 renderItem={({ item }) => (
-                    <PharmacyCard details={item} medicine={medicine._id} />
+                    <PharmacyCard
+                        details={item}
+                        medicine={medicine._id}
+                        navigation={navigation}
+                    />
                 )}
             />
         </View>

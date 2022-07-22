@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-export const PharmacyCard = ({ details, medicine }) => {
+export const PharmacyCard = ({ details, medicine, navigation }) => {
     // console.log(medicine);
     // console.log(details);
 
@@ -22,7 +22,10 @@ export const PharmacyCard = ({ details, medicine }) => {
     // setItemStock(items[index].stock);
 
     return (
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity
+            style={styles.card}
+            onPress={() => navigation.navigate("Pharmacy")}
+        >
             <Text style={styles.name}>{details.name}</Text>
             <Text style={styles.detail}>Location - Distance Away</Text>
             <Text style={styles.detail}>Available Stock: {stock}</Text>
