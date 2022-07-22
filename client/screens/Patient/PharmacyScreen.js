@@ -32,8 +32,8 @@ export const PharmacyScreen = ({ route }) => {
     const latDelta = 0.02;
     const longDelta = latDelta * aspectRatio;
     const initialRegion = {
-        latitude: 33.896359,
-        longitude: 35.479829,
+        latitude: pharmacyDetails.location.latitude,
+        longitude: pharmacyDetails.location.longitude,
         latitudeDelta: latDelta,
         longitudeDelta: longDelta,
     };
@@ -52,7 +52,10 @@ export const PharmacyScreen = ({ route }) => {
                 initialRegion={initialRegion}
             >
                 <Marker
-                    coordinate={{ latitude: 33.896359, longitude: 35.479829 }}
+                    coordinate={{
+                        latitude: pharmacyDetails.location.latitude,
+                        longitude: pharmacyDetails.location.longitude,
+                    }}
                     title={pharmacyDetails.name}
                     pinColor="#009FFF"
                 ></Marker>
