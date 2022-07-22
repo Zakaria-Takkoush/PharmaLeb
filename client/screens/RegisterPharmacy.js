@@ -8,7 +8,13 @@ import {
     TextInput,
     TouchableWithoutFeedback,
     Keyboard,
+    Modal,
+    Dimensions,
 } from "react-native";
+
+// import map tools and components
+import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
+
 // logo
 import logo from "../assets/logo/logo.png";
 
@@ -65,18 +71,42 @@ export const RegisterPharmacy = ({ navigation }) => {
         owner: "",
     };
 
-    const getOwner = async () => {
-        const pharmacist = await getValueFor("user_id");
-        return pharmacist;
-    };
+    // const getOwner = async () => {
+    //     const pharmacist = await getValueFor("user_id");
+    //     return pharmacist;
+    // };
 
+    // set pharmacy location
+    const [location, setLocation] = useState({
+        latitude: 33.896359,
+        longitude: 35.479829,
+    });
+
+    // Map modal visibility set
+    const [isMapOpen, setIsMapOpen] = useState(false);
+
+    // Map properties
+    const { width, height } = Dimensions.get("window");
+    const aspectRatio = width / height;
+    const latDelta = 0.02;
+    const longDelta = latDelta * aspectRatio;
+    const initialRegion = {
+        latitude: 33.896359,
+        longitude: 35.479829,
+        latitudeDelta: latDelta,
+        longitudeDelta: longDelta,
+    };
+    const [region, setRegion] = useState(initialRegion);
+
+    // Set pharmacy data to post
     const register = async (data) => {
+        const user = await getValueFor("user_id");
         let pharmacy = {
             name: data.name,
             phone_number: data.phone_number,
             address: `${data.city} - ${data.street}`,
-            owner: await getOwner(),
-            location: { latitude: 12, longitude: 12 },
+            owner: user,
+            location: location,
         };
         postPharmacy(pharmacy);
     };
