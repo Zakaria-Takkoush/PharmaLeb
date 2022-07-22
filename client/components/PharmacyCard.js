@@ -24,7 +24,7 @@ export const PharmacyCard = ({ details, medicine, navigation }) => {
     return (
         <TouchableOpacity
             style={styles.card}
-            onPress={() => navigation.navigate("Pharmacy")}
+            onPress={() => navigation.navigate("Pharmacy", { details, stock })}
         >
             <Text style={styles.name}>{details.name}</Text>
             <Text style={styles.detail}>Location - Distance Away</Text>
