@@ -297,10 +297,16 @@ export const SignUpPatient = ({ navigation }) => {
                         />
 
                         {/* Map Modal (to set location) */}
-                        <Modal visible={isMapOpen}>
+                        <Modal visible={isMapOpen} animationType="slide">
                             <Text>Map Pin Picker</Text>
                             <BlueButton
                                 text="Set Location"
+                                onPress={() => {
+                                    setIsMapOpen(false);
+                                }}
+                            />
+                            <BlueButton
+                                text="Close"
                                 onPress={() => {
                                     setIsMapOpen(false);
                                 }}
