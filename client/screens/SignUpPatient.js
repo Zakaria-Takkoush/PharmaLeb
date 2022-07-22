@@ -13,6 +13,7 @@ import {
     Dimensions,
 } from "react-native";
 
+// import map tools and components
 import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
 
 // logo
@@ -326,6 +327,10 @@ export const SignUpPatient = ({ navigation }) => {
                                     region={region}
                                     onRegionChangeComplete={(e) => {
                                         setRegion(e);
+                                        setLocation({
+                                            latitude: e.latitude,
+                                            longitude: e.longitude,
+                                        });
                                     }}
                                 >
                                     <Marker

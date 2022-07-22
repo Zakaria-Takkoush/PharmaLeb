@@ -9,7 +9,12 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
     ScrollView,
+    Modal,
+    Dimensions,
 } from "react-native";
+
+// import map tools and components
+import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
 
 // logo
 import logo from "../assets/logo/logo.png";
@@ -81,12 +86,34 @@ export const SignUpPharmacist = ({ navigation }) => {
     // error message
     const [errorMessage, setErrorMessage] = useState("");
 
+    // set user location
+    const [location, setLocation] = useState({
+        latitude: 33.896359,
+        longitude: 35.479829,
+    });
+
+    // Map modal visibility set
+    const [isMapOpen, setIsMapOpen] = useState(false);
+
+    // Map properties
+    const { width, height } = Dimensions.get("window");
+    const aspectRatio = width / height;
+    const latDelta = 0.02;
+    const longDelta = latDelta * aspectRatio;
+    const initialRegion = {
+        latitude: 33.896359,
+        longitude: 35.479829,
+        latitudeDelta: latDelta,
+        longitudeDelta: longDelta,
+    };
+    const [region, setRegion] = useState(initialRegion);
+
     // set all User Data
     const registerUser = (data) => {
         let user = {
             ...data,
             user_type: "pharmacist",
-            location: { latitude: 12, longitude: 12 },
+            location: location,
         };
         postUser(user);
     };
@@ -268,7 +295,12 @@ export const SignUpPharmacist = ({ navigation }) => {
                                 )}
 
                             <Text style={globalStyles.label}>Location:</Text>
-                            <TouchableOpacity style={styles.location}>
+                            <TouchableOpacity
+                                style={styles.location}
+                                onPress={() => {
+                                    setIsMapOpen(true);
+                                }}
+                            >
                                 <Ionicons
                                     name="location"
                                     size={30}
@@ -280,6 +312,60 @@ export const SignUpPharmacist = ({ navigation }) => {
 
                         {/* Create Account button */}
                         <BlueButton text="Next" onPress={props.handleSubmit} />
+
+                        {/* Map Modal (to set location) */}
+                        <Modal visible={isMapOpen} animationType="slide">
+                            <View style={globalStyles.container}>
+                                <Text style={globalStyles.modalHeader}>
+                                    Set your location
+                                </Text>
+                                <MapView
+                                    provider={PROVIDER_GOOGLE}
+                                    style={globalStyles.map}
+                                    showsUserLocation={true}
+                                    initialRegion={initialRegion}
+                                    region={region}
+                                    onRegionChangeComplete={(e) => {
+                                        setRegion(e);
+                                        setLocation({
+                                            latitude: e.latitude,
+                                            longitude: e.longitude,
+                                        });
+                                    }}
+                                >
+                                    <Marker
+                                        coordinate={{
+                                            latitude: region.latitude,
+                                            longitude: region.longitude,
+                                        }}
+                                        pinColor="#009FFF"
+                                        draggable={true}
+                                        onDragEnd={(e) => {
+                                            setLocation(
+                                                e.nativeEvent.coordinate
+                                            );
+                                            setRegion({
+                                                ...initialRegion,
+                                                ...e.nativeEvent.coordinate,
+                                            });
+                                        }}
+                                    ></Marker>
+                                </MapView>
+                                <BlueButton
+                                    text="Set Location"
+                                    onPress={() => {
+                                        setIsMapOpen(false);
+                                        console.log(location);
+                                    }}
+                                />
+                                <BlueButton
+                                    text="Close"
+                                    onPress={() => {
+                                        setIsMapOpen(false);
+                                    }}
+                                />
+                            </View>
+                        </Modal>
                     </View>
                 )}
             </Formik>
