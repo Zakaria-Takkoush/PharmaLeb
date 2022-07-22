@@ -54,6 +54,7 @@ export const PharmacyScreen = ({ route }) => {
                 <Marker
                     coordinate={{ latitude: 33.896359, longitude: 35.479829 }}
                     title={pharmacyDetails.name}
+                    pinColor="#009FFF"
                 ></Marker>
             </MapView>
         </View>
