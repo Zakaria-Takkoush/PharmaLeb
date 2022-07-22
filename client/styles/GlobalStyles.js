@@ -27,6 +27,16 @@ const globalStyles = StyleSheet.create({
         fontWeight: "bold",
     },
 
+    // Text
+    contentHeader: {
+        fontSize: 25,
+        fontWeight: "bold",
+        color: "#009FFF",
+    },
+    contentDetails: {
+        fontSize: 18,
+    },
+
     // Navigation Pages
     pageContainer: {
         justifyContent: "flex-start",

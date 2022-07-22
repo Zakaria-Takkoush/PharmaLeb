@@ -40,9 +40,18 @@ export const PharmacyScreen = ({ route }) => {
 
     return (
         <View style={globalStyles.pageContainer}>
-            <Text>{pharmacyDetails.name}</Text>
-            <Text>Available Stock: {stock}</Text>
-            <Text>Phone Number: {pharmacyDetails.phone_number}</Text>
+            <Text style={globalStyles.contentHeader}>
+                {pharmacyDetails.name}
+            </Text>
+            <Text style={globalStyles.contentDetails}>
+                Phone Number: {pharmacyDetails.phone_number}
+            </Text>
+            <Text style={globalStyles.contentDetails}>
+                Address: {pharmacyDetails.address}
+            </Text>
+            <Text style={globalStyles.contentDetails}>
+                Available Stock: {stock}
+            </Text>
             <BlueButton text="Call" onPress={openDialScreen} />
             <BlueButton text="Chat" />
             <MapView
