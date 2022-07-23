@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 
 // import medicine edit card
 import { MedicineCardStock } from "../../components/MedicineCardStock";
+import { useIsFocused } from "@react-navigation/native";
 
 // import global styles
 import globalStyles from "../../styles/GlobalStyles";
@@ -22,6 +23,9 @@ import { getValueFor } from "../../stores/SecureStore";
 import axiosAPI from "../../apis/axiosAPI";
 
 export const Stock = ({ navigation }) => {
+    // // use isFocused to update the screen whenever loaded
+    const isFocused = useIsFocused();
+
     const [items, setItems] = useState([]);
 
     // fetch pharmacy's stock
@@ -38,7 +42,7 @@ export const Stock = ({ navigation }) => {
             setItems(itemsFromServer);
         };
         getData();
-    }, []);
+    }, [[isFocused]]);
 
     return (
         <View style={globalStyles.pageContainer}>
