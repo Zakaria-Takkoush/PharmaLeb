@@ -31,14 +31,29 @@ export const MedicineScreen = ({ route, navigation }) => {
         getData();
     }, []);
 
+    // filter pharmacies with only available stock for this medicine
+    const pharmaciesWithStock = [];
+    for (let i = 0; i < pharmacies.length; i++) {
+        let items = pharmacies[i].items;
+        for (let j = 0; j < items.length; j++) {
+            if (items[j].item === medicine._id && items[j].stock > 0)
+                pharmaciesWithStock.push(pharmacies[i]);
+        }
+    }
+
     return (
         <View style={globalStyles.pageContainer}>
             <MedicineScreenDetails details={medicine} />
-            <Text style={styles.text}>Available at:</Text>
+            {pharmaciesWithStock.length > 0 ? (
+                <Text style={styles.text}>Available at:</Text>
+            ) : (
+                <Text style={styles.text}>Not available right now</Text>
+            )}
+
             <FlatList
                 style={globalStyles.itemList}
                 keyExtractor={(item) => item._id}
-                data={pharmacies}
+                data={pharmaciesWithStock}
                 renderItem={({ item }) => (
                     <PharmacyCard
                         details={item}
