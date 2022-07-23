@@ -54,7 +54,7 @@ const pharmacySchema = yup.object({
 
 export const EditPharmacy = () => {
     // pharmacy data
-    const [pharmacyData, setPharmacyData] = useState({ ...initialValues });
+    const [pharmacyData, setPharmacyData] = useState(null);
 
     // split address
     // const [city, street] = pharmacyData.address.split(" - ");
@@ -73,27 +73,25 @@ export const EditPharmacy = () => {
 
     // get Data on load
     useEffect(() => {
-        if (pharmacyData) {
-            const getData = async () => {
-                const pharmacyFromServer = await fetchPharmacy();
-                setPharmacyData(pharmacyFromServer);
-            };
-            getData();
-        }
+        const getData = async () => {
+            const pharmacyFromServer = await fetchPharmacy();
+            setPharmacyData(pharmacyFromServer);
+        };
+        getData();
     }, [pharmacyData]);
 
     const initialValues = {
-        name: pharmacyData.name,
-        phone_number: pharmacyData.phone_number,
-        city: pharmacyData.address?.split(" - ")[0],
-        street: pharmacyData.address?.split(" - ")[1],
+        name: pharmacyData?.name,
+        phone_number: pharmacyData?.phone_number,
+        city: pharmacyData?.address?.split(" - ")[0],
+        street: pharmacyData?.address?.split(" - ")[1],
     };
 
     // MAP
     // set pharmacy location
     const [location, setLocation] = useState({
-        latitude: pharmacyData.location?.latitude,
-        longitude: pharmacyData.location?.longitude,
+        latitude: pharmacyData?.location?.latitude,
+        longitude: pharmacyData?.location?.longitude,
     });
 
     // Map modal visibility set
@@ -105,8 +103,8 @@ export const EditPharmacy = () => {
     const latDelta = 0.02;
     const longDelta = latDelta * aspectRatio;
     const initialRegion = {
-        // latitude: pharmacyData.location?.latitude,
-        // longitude: pharmacyData.location?.longitude,
+        // latitude: pharmacyData?.location?.latitude,
+        // longitude: pharmacyData?.location?.longitude,
         latitude: 33.88863,
         longitude: 35.49548,
         latitudeDelta: latDelta,
@@ -120,7 +118,7 @@ export const EditPharmacy = () => {
             phone_number: data.phone_number,
             address: `${data.city} - ${data.street}`,
             location: location,
-            owner: pharmacyData.owner,
+            owner: pharmacyData?.owner,
         };
         editPharmacy(editedData);
     };
@@ -150,168 +148,177 @@ export const EditPharmacy = () => {
                 <Text style={styles.header}>Edit your Pharmacy</Text>
 
                 {/* SignUp form */}
-                <Formik
-                    initialValues={initialValues}
-                    onSubmit={(values, actions) => {
-                        handleSubmit(values);
-                        actions.resetForm();
-                    }}
-                    validationSchema={pharmacySchema}
-                    enableReinitialize={true}
-                >
-                    {(props) => (
-                        <View style={globalStyles.form}>
-                            <Text style={globalStyles.label}>
-                                Pharmacy Name
-                            </Text>
-                            <TextInput
-                                style={globalStyles.input}
-                                placeholder="Enter Pharmacy Name..."
-                                onChangeText={props.handleChange("name")}
-                                value={props.values.name}
-                                defaultValue={pharmacyData.name}
-                            />
-                            {/* Check validation */}
-                            {props.touched.name && props.errors.name && (
-                                <Text style={styles.error}>
-                                    {props.errors.name}
+                {pharmacyData && (
+                    <Formik
+                        initialValues={initialValues}
+                        onSubmit={(values, actions) => {
+                            handleSubmit(values);
+                            actions.resetForm();
+                        }}
+                        validationSchema={pharmacySchema}
+                        enableReinitialize={true}
+                    >
+                        {(props) => (
+                            <View style={globalStyles.form}>
+                                <Text style={globalStyles.label}>
+                                    Pharmacy Name
                                 </Text>
-                            )}
-
-                            <Text style={globalStyles.label}>
-                                Full Address:
-                            </Text>
-                            <TextInput
-                                style={globalStyles.input}
-                                placeholder="City..."
-                                onChangeText={props.handleChange("city")}
-                                value={props.values.city}
-                                defaultValue={
-                                    pharmacyData.address
-                                    // pharmacyData.address.split(" - ")[0]
-                                }
-                            />
-                            {/* Check validation */}
-                            {props.touched.city && props.errors.city && (
-                                <Text style={styles.error}>
-                                    {props.errors.city}
-                                </Text>
-                            )}
-
-                            <TextInput
-                                style={globalStyles.input}
-                                placeholder="Street..."
-                                onChangeText={props.handleChange("street")}
-                                value={props.values.street}
-                                defaultValue={
-                                    pharmacyData.address
-                                    // pharmacyData.address.split(" - ")[1]
-                                }
-                            />
-                            {/* Check validation */}
-                            {props.touched.street && props.errors.street && (
-                                <Text style={styles.error}>
-                                    {props.errors.street}
-                                </Text>
-                            )}
-
-                            <Text style={globalStyles.label}>
-                                Phone Number:
-                            </Text>
-                            <TextInput
-                                style={globalStyles.input}
-                                placeholder="Enter phone number..."
-                                onChangeText={props.handleChange(
-                                    "phone_number"
-                                )}
-                                value={props.values.phone_number}
-                                defaultValue={pharmacyData.phone_number}
-                            />
-                            {/* Check validation */}
-                            {props.touched.phone_number &&
-                                props.errors.phone_number && (
-                                    <Text style={styles.error}>
-                                        {props.errors.phone_number}
-                                    </Text>
-                                )}
-
-                            <Text style={globalStyles.label}>Location:</Text>
-                            <TouchableOpacity
-                                style={styles.location}
-                                onPress={() => {
-                                    setIsMapOpen(true);
-                                }}
-                            >
-                                <Ionicons
-                                    name="location"
-                                    size={30}
-                                    color="#009FFF"
+                                <TextInput
+                                    style={globalStyles.input}
+                                    placeholder="Enter Pharmacy Name..."
+                                    onChangeText={props.handleChange("name")}
+                                    value={props.values.name}
+                                    defaultValue={pharmacyData.name}
                                 />
-                                <Text>Choose on Map</Text>
-                            </TouchableOpacity>
-
-                            {/* Create Account button */}
-                            <BlueButton
-                                text="Submit Changes"
-                                onPress={props.handleSubmit}
-                            />
-
-                            {/* Map Modal (to set location) */}
-                            <Modal visible={isMapOpen} animationType="slide">
-                                <View style={globalStyles.container}>
-                                    <Text style={globalStyles.modalHeader}>
-                                        Set your location
+                                {/* Check validation */}
+                                {props.touched.name && props.errors.name && (
+                                    <Text style={styles.error}>
+                                        {props.errors.name}
                                     </Text>
-                                    <MapView
-                                        provider={PROVIDER_GOOGLE}
-                                        style={globalStyles.map}
-                                        showsUserLocation={true}
-                                        initialRegion={initialRegion}
-                                        region={region}
-                                        onRegionChangeComplete={(e) => {
-                                            setRegion(e);
-                                            setLocation({
-                                                latitude: e.latitude,
-                                                longitude: e.longitude,
-                                            });
-                                        }}
-                                    >
-                                        <Marker
-                                            coordinate={{
-                                                latitude: region.latitude,
-                                                longitude: region.longitude,
-                                            }}
-                                            pinColor="#009FFF"
-                                            draggable={true}
-                                            onDragEnd={(e) => {
-                                                setLocation(
-                                                    e.nativeEvent.coordinate
-                                                );
-                                                setRegion({
-                                                    ...initialRegion,
-                                                    ...e.nativeEvent.coordinate,
+                                )}
+
+                                <Text style={globalStyles.label}>
+                                    Full Address:
+                                </Text>
+                                <TextInput
+                                    style={globalStyles.input}
+                                    placeholder="City..."
+                                    onChangeText={props.handleChange("city")}
+                                    value={props.values.city}
+                                    defaultValue={
+                                        pharmacyData.address
+                                        // pharmacyData.address.split(" - ")[0]
+                                    }
+                                />
+                                {/* Check validation */}
+                                {props.touched.city && props.errors.city && (
+                                    <Text style={styles.error}>
+                                        {props.errors.city}
+                                    </Text>
+                                )}
+
+                                <TextInput
+                                    style={globalStyles.input}
+                                    placeholder="Street..."
+                                    onChangeText={props.handleChange("street")}
+                                    value={props.values.street}
+                                    defaultValue={
+                                        pharmacyData.address
+                                        // pharmacyData.address.split(" - ")[1]
+                                    }
+                                />
+                                {/* Check validation */}
+                                {props.touched.street &&
+                                    props.errors.street && (
+                                        <Text style={styles.error}>
+                                            {props.errors.street}
+                                        </Text>
+                                    )}
+
+                                <Text style={globalStyles.label}>
+                                    Phone Number:
+                                </Text>
+                                <TextInput
+                                    style={globalStyles.input}
+                                    placeholder="Enter phone number..."
+                                    onChangeText={props.handleChange(
+                                        "phone_number"
+                                    )}
+                                    value={props.values.phone_number}
+                                    defaultValue={pharmacyData.phone_number}
+                                />
+                                {/* Check validation */}
+                                {props.touched.phone_number &&
+                                    props.errors.phone_number && (
+                                        <Text style={styles.error}>
+                                            {props.errors.phone_number}
+                                        </Text>
+                                    )}
+
+                                <Text style={globalStyles.label}>
+                                    Location:
+                                </Text>
+                                <TouchableOpacity
+                                    style={styles.location}
+                                    onPress={() => {
+                                        setIsMapOpen(true);
+                                    }}
+                                >
+                                    <Ionicons
+                                        name="location"
+                                        size={30}
+                                        color="#009FFF"
+                                    />
+                                    <Text>Choose on Map</Text>
+                                </TouchableOpacity>
+
+                                {/* Create Account button */}
+                                <BlueButton
+                                    text="Submit Changes"
+                                    onPress={props.handleSubmit}
+                                />
+
+                                {/* Map Modal (to set location) */}
+                                <Modal
+                                    visible={isMapOpen}
+                                    animationType="slide"
+                                >
+                                    <View style={globalStyles.container}>
+                                        <Text style={globalStyles.modalHeader}>
+                                            Set your location
+                                        </Text>
+                                        <MapView
+                                            provider={PROVIDER_GOOGLE}
+                                            style={globalStyles.map}
+                                            showsUserLocation={true}
+                                            initialRegion={initialRegion}
+                                            region={region}
+                                            onRegionChangeComplete={(e) => {
+                                                setRegion(e);
+                                                setLocation({
+                                                    latitude: e.latitude,
+                                                    longitude: e.longitude,
                                                 });
                                             }}
-                                        ></Marker>
-                                    </MapView>
-                                    <BlueButton
-                                        text="Set Location"
-                                        onPress={() => {
-                                            setIsMapOpen(false);
-                                            console.log(location);
-                                        }}
-                                    />
-                                    <BlueButton
-                                        text="Close"
-                                        onPress={() => {
-                                            setIsMapOpen(false);
-                                        }}
-                                    />
-                                </View>
-                            </Modal>
-                        </View>
-                    )}
-                </Formik>
+                                        >
+                                            <Marker
+                                                coordinate={{
+                                                    latitude: region.latitude,
+                                                    longitude: region.longitude,
+                                                }}
+                                                pinColor="#009FFF"
+                                                draggable={true}
+                                                onDragEnd={(e) => {
+                                                    setLocation(
+                                                        e.nativeEvent.coordinate
+                                                    );
+                                                    setRegion({
+                                                        ...initialRegion,
+                                                        ...e.nativeEvent
+                                                            .coordinate,
+                                                    });
+                                                }}
+                                            ></Marker>
+                                        </MapView>
+                                        <BlueButton
+                                            text="Set Location"
+                                            onPress={() => {
+                                                setIsMapOpen(false);
+                                                console.log(location);
+                                            }}
+                                        />
+                                        <BlueButton
+                                            text="Close"
+                                            onPress={() => {
+                                                setIsMapOpen(false);
+                                            }}
+                                        />
+                                    </View>
+                                </Modal>
+                            </View>
+                        )}
+                    </Formik>
+                )}
             </View>
         </TouchableWithoutFeedback>
     );
