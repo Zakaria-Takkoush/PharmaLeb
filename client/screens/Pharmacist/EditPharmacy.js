@@ -83,16 +83,16 @@ export const EditPharmacy = () => {
     const initialValues = {
         name: pharmacyData.name,
         phone_number: pharmacyData.phone_number,
-        city: pharmacyData.address,
-        street: pharmacyData.address,
+        city: pharmacyData.address?.split(" - ")[0],
+        street: pharmacyData.address?.split(" - ")[1],
         owner: pharmacyData.owner,
     };
 
     // MAP
     // set pharmacy location
     const [location, setLocation] = useState({
-        // latitude: pharmacyData.location.latitude,
-        // longitude: pharmacyData.location.longitude,
+        latitude: pharmacyData.location?.latitude,
+        longitude: pharmacyData.location?.longitude,
     });
 
     // Map modal visibility set
@@ -104,8 +104,8 @@ export const EditPharmacy = () => {
     const latDelta = 0.02;
     const longDelta = latDelta * aspectRatio;
     const initialRegion = {
-        // latitude: pharmacyData.location.latitude,
-        // longitude: pharmacyData.location.longitude,
+        latitude: pharmacyData.location?.latitude,
+        longitude: pharmacyData.location?.longitude,
         latitudeDelta: latDelta,
         longitudeDelta: longDelta,
     };
@@ -114,8 +114,6 @@ export const EditPharmacy = () => {
     const handleSubmit = (data) => {
         console.log(data);
     };
-
-    console.log(pharmacyData.location);
 
     return (
         <TouchableWithoutFeedback
