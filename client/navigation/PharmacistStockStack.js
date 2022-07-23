@@ -14,7 +14,19 @@ const Stack = createNativeStackNavigator();
 export const PharmacistStockStack = () => {
     return (
         <NavigationContainer independent="true">
-            <Stack.Navigator initialRouteName="Items">
+            <Stack.Navigator
+                initialRouteName="Items"
+                screenOptions={{
+                    headerStyle: {
+                        backgroundColor: "#009FFF",
+                    },
+                    headerTintColor: "#fff",
+                    headerTitleAlign: "center",
+                    headerTitleStyle: {
+                        fontWeight: "bold",
+                    },
+                }}
+            >
                 <Stack.Screen name="Items" component={Stock} />
                 <Stack.Screen name="Medicine Stock" component={MedicineStock} />
                 <Stack.Screen name="Add Item" component={AddMedicine} />
