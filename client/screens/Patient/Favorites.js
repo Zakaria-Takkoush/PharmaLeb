@@ -6,7 +6,7 @@ import { getValueFor } from "../../stores/SecureStore";
 import axiosAPI from "../../apis/axiosAPI";
 import { useIsFocused } from "@react-navigation/native";
 
-export const Favorites = () => {
+export const Favorites = ({ navigation }) => {
     const [favorites, setFavorites] = useState([]);
 
     // use isFocused for screen reload on focus
@@ -38,7 +38,9 @@ export const Favorites = () => {
                 style={globalStyles.itemList}
                 keyExtractor={(item) => item._id}
                 data={favorites}
-                renderItem={({ item }) => <FavoriteCard data={item} />}
+                renderItem={({ item }) => (
+                    <FavoriteCard navigation={navigation} data={item} />
+                )}
             />
         </View>
     );
