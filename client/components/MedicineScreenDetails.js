@@ -48,23 +48,22 @@ export const MedicineScreenDetails = ({ details }) => {
 const styles = StyleSheet.create({
     container: {
         alignSelf: "stretch",
-        marginHorizontal: 20,
         marginVertical: 8,
-        height: 150,
+        minHeight: 150,
         borderRadius: 20,
         paddingHorizontal: 20,
         paddingVertical: 14,
         position: "relative",
-        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
         flexDirection: "row",
     },
     image: {
         width: 120,
         height: 120,
-        borderRadius: 20,
-        borderWidth: 2,
-        borderColor: "#009FFF",
+        // borderRadius: 20,
+        // borderWidth: 2,
+        // borderColor: "#009FFF",
     },
     name: {
         fontSize: 22,
@@ -79,6 +78,9 @@ const styles = StyleSheet.create({
         bottom: 15,
     },
     left: {
-        marginRight: 20,
+        flexBasis: "40%",
+    },
+    right: {
+        flexBasis: "60%",
     },
 });
