@@ -6,6 +6,7 @@ import { Favorites } from "../screens/Patient/Favorites";
 import { Home } from "../screens/Patient/Home";
 import { Profile } from "../screens/Patient/Profile";
 import { PatientHomeStack } from "./PatientHomeStack";
+import { PatientFavoritesStack } from "./PatientFavoritesStack";
 
 // Import Icons
 import { FontAwesome } from "@expo/vector-icons";
@@ -47,7 +48,7 @@ export const PatientBottomTab = () => {
             {/* Favorites Tab */}
             <Tab.Screen
                 name="Favorites"
-                component={Favorites}
+                component={PatientFavoritesStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <FontAwesome
@@ -56,6 +57,7 @@ export const PatientBottomTab = () => {
                             color={focused ? "#009FFF" : "#959595"}
                         />
                     ),
+                    headerShown: false,
                 }}
             />
 

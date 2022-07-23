@@ -9,7 +9,7 @@ import { PharmacyScreen } from "../screens/Patient/PharmacyScreen";
 
 const Stack = createNativeStackNavigator();
 
-export const PatientHomeStack = () => {
+export const PatientFavoritesStack = () => {
     return (
         <NavigationContainer independent="true">
             <Stack.Navigator initialRouteName="Home">
