@@ -58,6 +58,7 @@ export const Favorites = ({ navigation }) => {
                         navigation={navigation}
                         data={item}
                         canRemove={canRemove}
+                        setFavorites={setFavorites}
                     />
                 )}
             />

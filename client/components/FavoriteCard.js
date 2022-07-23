@@ -5,7 +5,7 @@ import pic from "../assets/panadol.png";
 import axiosAPI from "../apis/axiosAPI";
 import { getValueFor } from "../stores/SecureStore";
 
-export const FavoriteCard = ({ data, navigation, canRemove }) => {
+export const FavoriteCard = ({ data, navigation, canRemove, setFavorites }) => {
     const medicine = data.medicine;
 
     // delete favorite
@@ -18,6 +18,7 @@ export const FavoriteCard = ({ data, navigation, canRemove }) => {
                 },
             });
             alert("Favorite Removed");
+            filterAfterDelete(data._id);
         } catch (error) {
             console.log(error.message.data);
         }
