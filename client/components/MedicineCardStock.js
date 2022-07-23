@@ -13,7 +13,7 @@ export const MedicineCardStock = ({ navigation, item }) => {
                 <Image source={pic} style={styles.image} />
             </View>
             <View style={styles.right}>
-                <Text style={styles.name}>Medicine Name: {medicine.name}</Text>
+                <Text style={styles.name}>{medicine.name}</Text>
                 <Text style={styles.detail}>Code: {medicine.code}</Text>
                 <Text style={styles.detail}>Dosage: {medicine.dosage}</Text>
                 <Text style={styles.detail}>Stock: {item.stock}</Text>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         alignSelf: "stretch",
         marginHorizontal: 20,
         marginVertical: 8,
-        height: 140,
+        minHeight: 120,
         backgroundColor: "white",
         borderRadius: 20,
         paddingHorizontal: 20,
