@@ -4,9 +4,13 @@ import globalStyles from "../../styles/GlobalStyles";
 import { FavoriteCard } from "../../components/FavoriteCard";
 import { getValueFor } from "../../stores/SecureStore";
 import axiosAPI from "../../apis/axiosAPI";
+import { useIsFocused } from "@react-navigation/native";
 
 export const Favorites = () => {
     const [favorites, setFavorites] = useState([]);
+
+    // use isFocused for screen reload on focus
+    const isFocused = useIsFocused();
 
     // fetch favorites api
     const fetchFavorites = async () => {
@@ -26,7 +30,7 @@ export const Favorites = () => {
             setFavorites(favoritesFromServer);
         };
         getData();
-    }, []);
+    }, [isFocused]);
 
     return (
         <View style={globalStyles.pageContainer}>
