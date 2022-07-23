@@ -23,6 +23,12 @@ export const FavoriteCard = ({ data, navigation, canRemove }) => {
         }
     };
 
+    const filterAfterDelete = (id) => {
+        setFavorites((prevFavorites) =>
+            prevFavorites.filter((favorite) => favorite._id != id)
+        );
+    };
+
     return (
         <TouchableOpacity
             style={styles.card}
