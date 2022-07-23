@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 
+import { useFocusEffect } from "@react-navigation/native";
+
 // import map tools and components
 import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
 
@@ -52,7 +54,10 @@ const pharmacySchema = yup.object({
 
 export const EditPharmacy = () => {
     // pharmacy data
-    const [pharmacyData, setPharmacyData] = useState({});
+    const [pharmacyData, setPharmacyData] = useState({ ...initialValues });
+
+    // split address
+    // const [city, street] = pharmacyData.address.split(" - ");
 
     // get pharmacy data
     const fetchPharmacy = async () => {
@@ -75,6 +80,18 @@ export const EditPharmacy = () => {
         getData();
     }, []);
 
+    const initialValues = {
+        name: pharmacyData.name,
+        phone_number: pharmacyData.phone_number,
+        city: pharmacyData.address,
+        street: pharmacyData.address,
+        owner: pharmacyData.owner,
+    };
+
+    const handleSubmit = (data) => {
+        console.log(data);
+    };
+
     return (
         <TouchableWithoutFeedback
             onPress={() => {
@@ -86,61 +103,104 @@ export const EditPharmacy = () => {
                 <Text style={styles.header}>Edit your Pharmacy</Text>
 
                 {/* SignUp form */}
-                <View style={globalStyles.form}>
-                    <Text style={globalStyles.label}>Pharmacy Name</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="Enter Pharmacy Name..."
-                        onChangeText={(value) => {
-                            setPharmacy({ ...pharmacy, name: value });
-                        }}
-                    />
+                <Formik
+                    initialValues={initialValues}
+                    onSubmit={(values, actions) => {
+                        handleSubmit(values);
+                        actions.resetForm();
+                    }}
+                    validationSchema={pharmacySchema}
+                >
+                    {(props) => (
+                        <View style={globalStyles.form}>
+                            <Text style={globalStyles.label}>
+                                Pharmacy Name
+                            </Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="Enter Pharmacy Name..."
+                                onChangeText={props.handleChange("name")}
+                                value={props.values.name}
+                                defaultValue={pharmacyData.name}
+                            />
+                            {/* Check validation */}
+                            {props.touched.name && props.errors.name && (
+                                <Text style={styles.error}>
+                                    {props.errors.name}
+                                </Text>
+                            )}
 
-                    <Text style={globalStyles.label}>Full Address:</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="City..."
-                        onChangeText={(value) => {
-                            setCity(value);
-                            setPharmacy({
-                                ...pharmacy,
-                                address: city + " - " + street,
-                            });
-                        }}
-                    />
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="Street..."
-                        onChangeText={(value) => {
-                            setStreet(value);
-                            setPharmacy({
-                                ...pharmacy,
-                                address: city + " - " + street,
-                            });
-                        }}
-                    />
+                            <Text style={globalStyles.label}>
+                                Full Address:
+                            </Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="City..."
+                                onChangeText={props.handleChange("city")}
+                                value={pharmacyData.address.split(" - ")[0]}
+                                defaultValue={pharmacyData.address}
+                            />
+                            {/* Check validation */}
+                            {props.touched.city && props.errors.city && (
+                                <Text style={styles.error}>
+                                    {props.errors.city}
+                                </Text>
+                            )}
 
-                    <Text style={globalStyles.label}>Phone Number:</Text>
-                    <TextInput
-                        style={globalStyles.input}
-                        placeholder="Enter phone number..."
-                        onChangeText={(value) => {
-                            setPharmacy({ ...pharmacy, phone_number: value });
-                        }}
-                    />
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="Street..."
+                                onChangeText={props.handleChange("street")}
+                                value={props.values.street}
+                                defaultValue={
+                                    pharmacyData.address.split(" - ")[1]
+                                }
+                            />
+                            {/* Check validation */}
+                            {props.touched.street && props.errors.street && (
+                                <Text style={styles.error}>
+                                    {props.errors.street}
+                                </Text>
+                            )}
 
-                    <Text style={globalStyles.label}>Location:</Text>
-                    <TouchableOpacity style={styles.location}>
-                        <Ionicons name="location" size={30} color="#009FFF" />
-                        <Text>Choose on Map</Text>
-                    </TouchableOpacity>
-                </View>
+                            <Text style={globalStyles.label}>
+                                Phone Number:
+                            </Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder="Enter phone number..."
+                                onChangeText={props.handleChange(
+                                    "phone_number"
+                                )}
+                                value={props.values.phone_number}
+                                defaultValue={pharmacyData.phone_number}
+                            />
+                            {/* Check validation */}
+                            {props.touched.phone_number &&
+                                props.errors.phone_number && (
+                                    <Text style={styles.error}>
+                                        {props.errors.phone_number}
+                                    </Text>
+                                )}
 
-                {/* Create Account button */}
-                <BlueButton
-                    text="Submit Changes"
-                    onPress={() => alert("Hello")}
-                />
+                            <Text style={globalStyles.label}>Location:</Text>
+                            <TouchableOpacity style={styles.location}>
+                                <Ionicons
+                                    name="location"
+                                    size={30}
+                                    color="#009FFF"
+                                />
+                                <Text>Choose on Map</Text>
+                            </TouchableOpacity>
+
+                            {/* Create Account button */}
+                            <BlueButton
+                                text="Submit Changes"
+                                onPress={props.handleSubmit}
+                            />
+                        </View>
+                    )}
+                </Formik>
             </View>
         </TouchableWithoutFeedback>
     );
@@ -161,5 +221,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
+    },
+    error: {
+        color: "tomato",
+        fontSize: 12,
+        fontWeight: "bold",
     },
 });
