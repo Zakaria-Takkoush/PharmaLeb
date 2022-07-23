@@ -73,12 +73,14 @@ export const EditPharmacy = () => {
 
     // get Data on load
     useEffect(() => {
-        const getData = async () => {
-            const pharmacyFromServer = await fetchPharmacy();
-            setPharmacyData(pharmacyFromServer);
-        };
-        getData();
-    }, []);
+        if (pharmacyData) {
+            const getData = async () => {
+                const pharmacyFromServer = await fetchPharmacy();
+                setPharmacyData(pharmacyFromServer);
+            };
+            getData();
+        }
+    }, [pharmacyData]);
 
     const initialValues = {
         name: pharmacyData.name,
