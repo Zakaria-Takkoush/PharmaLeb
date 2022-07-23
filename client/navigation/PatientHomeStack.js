@@ -12,7 +12,19 @@ const Stack = createNativeStackNavigator();
 export const PatientHomeStack = () => {
     return (
         <NavigationContainer independent="true">
-            <Stack.Navigator initialRouteName="Home">
+            <Stack.Navigator
+                initialRouteName="Home"
+                screenOptions={{
+                    headerStyle: {
+                        backgroundColor: "#009FFF",
+                    },
+                    headerTintColor: "#fff",
+                    headerTitleAlign: "center",
+                    headerTitleStyle: {
+                        fontWeight: "bold",
+                    },
+                }}
+            >
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name="Medicine" component={MedicineScreen} />
                 <Stack.Screen name="Pharmacy" component={PharmacyScreen} />

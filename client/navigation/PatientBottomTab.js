@@ -27,6 +27,14 @@ export const PatientBottomTab = () => {
                 tabBarActiveTintColor: "#009FFF",
                 tabBarInactiveTintColor: "#959595",
                 tabBarStyle: { height: 55 },
+                headerStyle: {
+                    backgroundColor: "#009FFF",
+                },
+                headerTintColor: "#fff",
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                },
             }}
         >
             {/* Home Tab */}
