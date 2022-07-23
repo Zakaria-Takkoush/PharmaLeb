@@ -110,6 +110,7 @@ export const EditPharmacy = () => {
                         actions.resetForm();
                     }}
                     validationSchema={pharmacySchema}
+                    enableReinitialize={true}
                 >
                     {(props) => (
                         <View style={globalStyles.form}>
@@ -137,8 +138,11 @@ export const EditPharmacy = () => {
                                 style={globalStyles.input}
                                 placeholder="City..."
                                 onChangeText={props.handleChange("city")}
-                                value={pharmacyData.address.split(" - ")[0]}
-                                defaultValue={pharmacyData.address}
+                                value={props.values.city}
+                                defaultValue={
+                                    pharmacyData.address
+                                    // pharmacyData.address.split(" - ")[0]
+                                }
                             />
                             {/* Check validation */}
                             {props.touched.city && props.errors.city && (
@@ -153,7 +157,8 @@ export const EditPharmacy = () => {
                                 onChangeText={props.handleChange("street")}
                                 value={props.values.street}
                                 defaultValue={
-                                    pharmacyData.address.split(" - ")[1]
+                                    pharmacyData.address
+                                    // pharmacyData.address.split(" - ")[1]
                                 }
                             />
                             {/* Check validation */}
