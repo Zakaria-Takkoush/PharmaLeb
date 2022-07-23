@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, ScrollView, FlatList } from "react-native";
+import { Text, View, ScrollView, FlatList, StyleSheet } from "react-native";
 import globalStyles from "../../styles/GlobalStyles";
 import { FavoriteCard } from "../../components/FavoriteCard";
 import { getValueFor } from "../../stores/SecureStore";
 import axiosAPI from "../../apis/axiosAPI";
 import { useIsFocused } from "@react-navigation/native";
+import { Feather } from "@expo/vector-icons";
 
 export const Favorites = ({ navigation }) => {
     const [favorites, setFavorites] = useState([]);
@@ -34,6 +35,10 @@ export const Favorites = ({ navigation }) => {
 
     return (
         <View style={globalStyles.pageContainer}>
+            <View style={styles.topHeader}>
+                <Text style={styles.topHeaderText}>Your Favorites</Text>
+                <Feather name="edit" size={35} color="#009FFF" />
+            </View>
             <FlatList
                 style={globalStyles.itemList}
                 keyExtractor={(item) => item._id}
@@ -45,3 +50,20 @@ export const Favorites = ({ navigation }) => {
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    topHeader: {
+        marginHorizontal: 30,
+        marginVertical: 10,
+        paddingHorizontal: 5,
+        alignSelf: "stretch",
+        height: 40,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    topHeaderText: {
+        fontSize: 20,
+        fontWeight: "bold",
+    },
+});
