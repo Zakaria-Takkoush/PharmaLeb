@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Text, View, ScrollView, FlatList, StyleSheet } from "react-native";
 import globalStyles from "../../styles/GlobalStyles";
 import { FavoriteCard } from "../../components/FavoriteCard";
 import { getValueFor } from "../../stores/SecureStore";
 import axiosAPI from "../../apis/axiosAPI";
-import { useIsFocused } from "@react-navigation/native";
+import { useFocusEffect, useIsFocused } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
-export const Favorites = ({ navigation }) => {
+export const Favorites = ({ navigation, route }) => {
     const [favorites, setFavorites] = useState([]);
 
     // use isFocused for screen reload on focus
@@ -28,13 +28,15 @@ export const Favorites = ({ navigation }) => {
         }
     };
 
-    useEffect(() => {
-        const getData = async () => {
-            const favoritesFromServer = await fetchFavorites();
-            setFavorites(favoritesFromServer);
-        };
-        getData();
-    }, [isFocused]);
+    useFocusEffect(
+        useCallback(() => {
+            const getData = async () => {
+                const favoritesFromServer = await fetchFavorites();
+                setFavorites(favoritesFromServer);
+            };
+            getData();
+        }, [])
+    );
 
     return (
         <View style={globalStyles.pageContainer}>
