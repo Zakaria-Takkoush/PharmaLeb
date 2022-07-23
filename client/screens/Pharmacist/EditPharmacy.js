@@ -88,9 +88,34 @@ export const EditPharmacy = () => {
         owner: pharmacyData.owner,
     };
 
+    // MAP
+    // set pharmacy location
+    const [location, setLocation] = useState({
+        // latitude: pharmacyData.location.latitude,
+        // longitude: pharmacyData.location.longitude,
+    });
+
+    // Map modal visibility set
+    const [isMapOpen, setIsMapOpen] = useState(false);
+
+    // Map properties
+    const { width, height } = Dimensions.get("window");
+    const aspectRatio = width / height;
+    const latDelta = 0.02;
+    const longDelta = latDelta * aspectRatio;
+    const initialRegion = {
+        // latitude: pharmacyData.location.latitude,
+        // longitude: pharmacyData.location.longitude,
+        latitudeDelta: latDelta,
+        longitudeDelta: longDelta,
+    };
+    const [region, setRegion] = useState(initialRegion);
+
     const handleSubmit = (data) => {
         console.log(data);
     };
+
+    console.log(pharmacyData.location);
 
     return (
         <TouchableWithoutFeedback
