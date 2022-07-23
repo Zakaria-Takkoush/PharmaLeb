@@ -21,6 +21,7 @@ import { BlueButton } from "../../components/BlueButton";
 import { Ionicons } from "@expo/vector-icons";
 import { getValueFor } from "../../stores/SecureStore";
 import axiosAPI from "../../apis/axiosAPI";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Stock = ({ navigation }) => {
     // // use isFocused to update the screen whenever loaded
@@ -45,7 +46,7 @@ export const Stock = ({ navigation }) => {
     }, [[isFocused]]);
 
     return (
-        <View style={globalStyles.pageContainer}>
+        <SafeAreaView style={globalStyles.pageContainer}>
             <View style={styles.search}>
                 <TextInput
                     style={globalStyles.input}
@@ -73,7 +74,7 @@ export const Stock = ({ navigation }) => {
                     onPress={() => navigation.navigate("Add Item")}
                 />
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 

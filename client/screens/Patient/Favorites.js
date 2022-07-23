@@ -6,6 +6,7 @@ import { getValueFor } from "../../stores/SecureStore";
 import axiosAPI from "../../apis/axiosAPI";
 import { useFocusEffect, useIsFocused } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Favorites = ({ navigation, route }) => {
     const [favorites, setFavorites] = useState([]);
@@ -39,7 +40,7 @@ export const Favorites = ({ navigation, route }) => {
     );
 
     return (
-        <View style={globalStyles.pageContainer}>
+        <SafeAreaView style={globalStyles.pageContainer}>
             <View style={styles.topHeader}>
                 <Text style={styles.topHeaderText}>Your Favorites</Text>
                 <Feather
@@ -64,7 +65,7 @@ export const Favorites = ({ navigation, route }) => {
                     />
                 )}
             />
-        </View>
+        </SafeAreaView>
     );
 };
 

@@ -14,6 +14,7 @@ import { MedicineCard } from "../../components/MedicineCard";
 // import secure store functions
 import { getValueFor } from "../../stores/SecureStore";
 import axiosAPI from "../../apis/axiosAPI";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Home = ({ navigation }) => {
     const [medicines, setMedicines] = useState([]);
@@ -33,7 +34,7 @@ export const Home = ({ navigation }) => {
     }, []);
 
     return (
-        <View style={globalStyles.pageContainer}>
+        <SafeAreaView style={globalStyles.pageContainer}>
             <View style={styles.search}>
                 <TextInput
                     style={globalStyles.input}
@@ -49,7 +50,7 @@ export const Home = ({ navigation }) => {
                     <MedicineCard navigation={navigation} details={item} />
                 )}
             />
-        </View>
+        </SafeAreaView>
     );
 };
 
