@@ -13,6 +13,8 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { useCallback, useEffect } from "react";
+import { useFocusEffect, useIsFocused } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
