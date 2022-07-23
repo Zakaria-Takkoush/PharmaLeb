@@ -54,7 +54,11 @@ export const Favorites = ({ navigation }) => {
                 keyExtractor={(item) => item._id}
                 data={favorites}
                 renderItem={({ item }) => (
-                    <FavoriteCard navigation={navigation} data={item} />
+                    <FavoriteCard
+                        navigation={navigation}
+                        data={item}
+                        canRemove={canRemove}
+                    />
                 )}
             />
         </View>

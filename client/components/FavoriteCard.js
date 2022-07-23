@@ -5,7 +5,7 @@ import pic from "../assets/panadol.png";
 import axiosAPI from "../apis/axiosAPI";
 import { getValueFor } from "../stores/SecureStore";
 
-export const FavoriteCard = ({ data, navigation }) => {
+export const FavoriteCard = ({ data, navigation, canRemove }) => {
     const medicine = data.medicine;
 
     // delete favorite
@@ -37,13 +37,15 @@ export const FavoriteCard = ({ data, navigation }) => {
                 <Text style={styles.detail}>{medicine.dosage}</Text>
                 <Text style={styles.detail}>{medicine.price}</Text>
             </View>
-            <FontAwesome
-                style={styles.icon}
-                name="remove"
-                size={30}
-                color="red"
-                onPress={removeFavorite}
-            />
+            {canRemove && (
+                <FontAwesome
+                    style={styles.icon}
+                    name="remove"
+                    size={30}
+                    color="tomato"
+                    onPress={removeFavorite}
+                />
+            )}
         </TouchableOpacity>
     );
 };
