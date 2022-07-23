@@ -85,7 +85,6 @@ export const EditPharmacy = () => {
         phone_number: pharmacyData.phone_number,
         city: pharmacyData.address?.split(" - ")[0],
         street: pharmacyData.address?.split(" - ")[1],
-        owner: pharmacyData.owner,
     };
 
     // MAP
@@ -104,15 +103,38 @@ export const EditPharmacy = () => {
     const latDelta = 0.02;
     const longDelta = latDelta * aspectRatio;
     const initialRegion = {
-        latitude: pharmacyData.location?.latitude,
-        longitude: pharmacyData.location?.longitude,
+        // latitude: pharmacyData.location?.latitude,
+        // longitude: pharmacyData.location?.longitude,
+        latitude: 33.88863,
+        longitude: 35.49548,
         latitudeDelta: latDelta,
         longitudeDelta: longDelta,
     };
     const [region, setRegion] = useState(initialRegion);
 
     const handleSubmit = (data) => {
-        console.log(data);
+        const editedData = {
+            name: data.name,
+            phone_number: data.phone_number,
+            address: `${data.city} - ${data.street}`,
+            location: location,
+            owner: pharmacyData.owner,
+        };
+        editPharmacy(editedData);
+    };
+
+    // edit pharmacy
+    const editPharmacy = async (data) => {
+        try {
+            const res = await axiosAPI.put(
+                `/pharmacies/${pharmacyData._id}`,
+                data
+            );
+            console.log(res.data);
+            alert("Pharmacy edited successfully");
+        } catch (error) {
+            console.log(error.response.data);
+        }
     };
 
     return (
@@ -212,7 +234,12 @@ export const EditPharmacy = () => {
                                 )}
 
                             <Text style={globalStyles.label}>Location:</Text>
-                            <TouchableOpacity style={styles.location}>
+                            <TouchableOpacity
+                                style={styles.location}
+                                onPress={() => {
+                                    setIsMapOpen(true);
+                                }}
+                            >
                                 <Ionicons
                                     name="location"
                                     size={30}
@@ -226,6 +253,60 @@ export const EditPharmacy = () => {
                                 text="Submit Changes"
                                 onPress={props.handleSubmit}
                             />
+
+                            {/* Map Modal (to set location) */}
+                            <Modal visible={isMapOpen} animationType="slide">
+                                <View style={globalStyles.container}>
+                                    <Text style={globalStyles.modalHeader}>
+                                        Set your location
+                                    </Text>
+                                    <MapView
+                                        provider={PROVIDER_GOOGLE}
+                                        style={globalStyles.map}
+                                        showsUserLocation={true}
+                                        initialRegion={initialRegion}
+                                        region={region}
+                                        onRegionChangeComplete={(e) => {
+                                            setRegion(e);
+                                            setLocation({
+                                                latitude: e.latitude,
+                                                longitude: e.longitude,
+                                            });
+                                        }}
+                                    >
+                                        <Marker
+                                            coordinate={{
+                                                latitude: region.latitude,
+                                                longitude: region.longitude,
+                                            }}
+                                            pinColor="#009FFF"
+                                            draggable={true}
+                                            onDragEnd={(e) => {
+                                                setLocation(
+                                                    e.nativeEvent.coordinate
+                                                );
+                                                setRegion({
+                                                    ...initialRegion,
+                                                    ...e.nativeEvent.coordinate,
+                                                });
+                                            }}
+                                        ></Marker>
+                                    </MapView>
+                                    <BlueButton
+                                        text="Set Location"
+                                        onPress={() => {
+                                            setIsMapOpen(false);
+                                            console.log(location);
+                                        }}
+                                    />
+                                    <BlueButton
+                                        text="Close"
+                                        onPress={() => {
+                                            setIsMapOpen(false);
+                                        }}
+                                    />
+                                </View>
+                            </Modal>
                         </View>
                     )}
                 </Formik>
