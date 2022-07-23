@@ -5,7 +5,7 @@ import pic from "../assets/panadol.png";
 import axiosAPI from "../apis/axiosAPI";
 import { getValueFor } from "../stores/SecureStore";
 
-export const FavoriteCard = ({ data }) => {
+export const FavoriteCard = ({ data, navigation }) => {
     const medicine = data.medicine;
 
     // delete favorite
@@ -24,7 +24,10 @@ export const FavoriteCard = ({ data }) => {
     };
 
     return (
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity
+            style={styles.card}
+            onPress={() => navigation.navigate("Medicine", medicine)}
+        >
             <View style={styles.left}>
                 <Image source={pic} style={styles.image} />
             </View>
