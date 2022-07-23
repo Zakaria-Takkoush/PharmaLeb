@@ -13,6 +13,9 @@ export const Favorites = ({ navigation }) => {
     // use isFocused for screen reload on focus
     const isFocused = useIsFocused();
 
+    // Enable removing favorites
+    const [canRemove, setCanRemove] = useState(false);
+
     // fetch favorites api
     const fetchFavorites = async () => {
         const user = await getValueFor("user_id");
@@ -37,7 +40,14 @@ export const Favorites = ({ navigation }) => {
         <View style={globalStyles.pageContainer}>
             <View style={styles.topHeader}>
                 <Text style={styles.topHeaderText}>Your Favorites</Text>
-                <Feather name="edit" size={35} color="#009FFF" />
+                <Feather
+                    name="edit"
+                    size={35}
+                    color="#009FFF"
+                    onPress={() => {
+                        setCanRemove(!canRemove);
+                    }}
+                />
             </View>
             <FlatList
                 style={globalStyles.itemList}
