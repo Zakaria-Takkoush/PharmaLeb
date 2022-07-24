@@ -5,7 +5,13 @@ import pic from "../assets/panadol.png";
 import axiosAPI from "../apis/axiosAPI";
 import { getValueFor } from "../stores/SecureStore";
 
-export const FavoriteCard = ({ data, navigation, canRemove, setFavorites }) => {
+export const FavoriteCard = ({
+    data,
+    navigation,
+    canRemove,
+    setFavorites,
+    setSearchResults,
+}) => {
     const medicine = data.medicine;
 
     // delete favorite
@@ -26,6 +32,9 @@ export const FavoriteCard = ({ data, navigation, canRemove, setFavorites }) => {
 
     const filterAfterDelete = (id) => {
         setFavorites((prevFavorites) =>
+            prevFavorites.filter((favorite) => favorite._id != id)
+        );
+        setSearchResults((prevFavorites) =>
             prevFavorites.filter((favorite) => favorite._id != id)
         );
     };
