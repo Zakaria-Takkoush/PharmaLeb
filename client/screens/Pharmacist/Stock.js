@@ -29,6 +29,20 @@ export const Stock = ({ navigation }) => {
 
     const [items, setItems] = useState([]);
 
+    // initialize search results array
+    const [searchResults, setSearchResults] = useState([]);
+
+    // on search input change
+    const handleSearchChange = (value) => {
+        if (!value) {
+            setSearchResults(items);
+        }
+        const resultsArray = items.filter((item) =>
+            item.item.name.toLowerCase().includes(value.toLowerCase())
+        );
+        setSearchResults(resultsArray);
+    };
+
     // fetch pharmacy's stock
     const getStock = async () => {
         const pharmacy = await getValueFor("pharmacy_id");
@@ -41,9 +55,10 @@ export const Stock = ({ navigation }) => {
         const getData = async () => {
             const itemsFromServer = await getStock();
             setItems(itemsFromServer);
+            setSearchResults(itemsFromServer);
         };
         getData();
-    }, [[isFocused]]);
+    }, []);
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
@@ -51,13 +66,14 @@ export const Stock = ({ navigation }) => {
                 <TextInput
                     style={globalStyles.input}
                     placeholder="Search items..."
+                    onChangeText={(value) => handleSearchChange(value)}
                 />
                 <BlueButton text="Search" />
             </View>
             <FlatList
                 style={globalStyles.itemList}
                 keyExtractor={(item) => item._id}
-                data={items}
+                data={searchResults}
                 renderItem={({ item }) => (
                     <MedicineCardStock navigation={navigation} item={item} />
                 )}
