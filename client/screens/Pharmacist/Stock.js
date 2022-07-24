@@ -5,6 +5,7 @@ import {
     ScrollView,
     View,
     FlatList,
+    TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 
@@ -61,7 +62,9 @@ export const Stock = ({ navigation }) => {
     }, [isFocused]);
 
     return (
-        <SafeAreaView style={globalStyles.pageContainer}>
+        <SafeAreaView
+            style={{ ...globalStyles.pageContainer, position: "relative" }}
+        >
             <View style={styles.search}>
                 <TextInput
                     style={globalStyles.input}
@@ -77,18 +80,14 @@ export const Stock = ({ navigation }) => {
                     <MedicineCardStock navigation={navigation} item={item} />
                 )}
             />
-            {/* <Ionicons
-                style={styles.icon}
-                name="ios-add-circle"
-                size={50}
-                color="#009FFF"
-            /> */}
-            <View>
-                <BlueButton
-                    text="Add Item"
+            <TouchableOpacity style={styles.icon}>
+                <Ionicons
+                    name="ios-add-circle"
+                    size={60}
+                    color="#009FFF"
                     onPress={() => navigation.navigate("Add Item")}
                 />
-            </View>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 };
@@ -99,7 +98,16 @@ const styles = StyleSheet.create({
         alignSelf: "stretch",
     },
     icon: {
-        right: 0,
-        bottom: 20,
+        position: "absolute",
+        right: 20,
+        bottom: 90,
+        borderRadius: 50,
+        backgroundColor: "white",
+        borderWidth: 1,
+        borderColor: "black",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        height: 58,
+        width: 58,
     },
 });
