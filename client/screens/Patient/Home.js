@@ -19,6 +19,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export const Home = ({ navigation }) => {
     const [medicines, setMedicines] = useState([]);
 
+    // initialize search results array
+    const [searchResults, setSearchResults] = useState([]);
+
     // get all medicines api
     const getMedicines = async () => {
         const res = await axiosAPI.get(`/medicines`);
@@ -29,9 +32,12 @@ export const Home = ({ navigation }) => {
         const getData = async () => {
             const medicinesFromServer = await getMedicines();
             setMedicines(medicinesFromServer);
+            setSearchResults(medicinesFromServer);
         };
         getData();
     }, []);
+
+    console.log(searchResults);
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
