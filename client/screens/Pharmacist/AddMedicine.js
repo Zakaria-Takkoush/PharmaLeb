@@ -19,6 +19,7 @@ import { BlueButton } from "../../components/BlueButton";
 
 // import axios
 import axiosAPI from "../../apis/axiosAPI";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export const AddMedicine = () => {
     // medicine list
@@ -40,7 +41,7 @@ export const AddMedicine = () => {
     }, []);
 
     return (
-        <View style={globalStyles.pageContainer}>
+        <SafeAreaView style={globalStyles.pageContainer}>
             <View style={styles.search}>
                 <TextInput
                     style={globalStyles.input}
@@ -54,12 +55,7 @@ export const AddMedicine = () => {
                 data={medicines}
                 renderItem={({ item }) => <AddItemCard data={item} />}
             />
-            {/* <AddItemCard />
-                <AddItemCard />
-                <AddItemCard />
-                <AddItemCard />
-                <AddItemCard /> */}
-        </View>
+        </SafeAreaView>
     );
 };
 
