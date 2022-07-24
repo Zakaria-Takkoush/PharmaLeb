@@ -1,5 +1,10 @@
 import { LoginStack } from "./navigation/LoginStack";
+import UserProvider from "./stores/UserContext";
 
 export default function App() {
-    return <LoginStack />;
+    return (
+        <UserProvider>
+            <LoginStack />
+        </UserProvider>
+    );
 }
