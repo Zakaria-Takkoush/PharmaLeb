@@ -58,8 +58,17 @@ export const Favorites = ({ navigation, route }) => {
                 setSearchResults(favoritesFromServer);
             };
             getData();
-        }, [])
+        }, [isFocused])
     );
+
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         const favoritesFromServer = await fetchFavorites();
+    //         setFavorites(favoritesFromServer);
+    //         setSearchResults(favoritesFromServer);
+    //     };
+    //     getData();
+    // }, [isFocused]);
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
