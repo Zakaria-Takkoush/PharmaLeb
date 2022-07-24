@@ -1,5 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Text, View, ScrollView, FlatList, StyleSheet } from "react-native";
+import {
+    Text,
+    View,
+    ScrollView,
+    FlatList,
+    StyleSheet,
+    TextInput,
+} from "react-native";
 import globalStyles from "../../styles/GlobalStyles";
 import { FavoriteCard } from "../../components/FavoriteCard";
 import { getValueFor } from "../../stores/SecureStore";
@@ -16,6 +23,20 @@ export const Favorites = ({ navigation, route }) => {
 
     // Enable removing favorites
     const [canRemove, setCanRemove] = useState(false);
+
+    // initialize search results array
+    const [searchResults, setSearchResults] = useState([]);
+
+    // on search input change
+    const handleSearchChange = (value) => {
+        if (!value) {
+            setSearchResults(favorites);
+        }
+        const resultsArray = favorites.filter((favorite) =>
+            favorite.medicine.name.toLowerCase().includes(value.toLowerCase())
+        );
+        setSearchResults(resultsArray);
+    };
 
     // fetch favorites api
     const fetchFavorites = async () => {
@@ -34,6 +55,7 @@ export const Favorites = ({ navigation, route }) => {
             const getData = async () => {
                 const favoritesFromServer = await fetchFavorites();
                 setFavorites(favoritesFromServer);
+                setSearchResults(favoritesFromServer);
             };
             getData();
         }, [])
@@ -41,6 +63,12 @@ export const Favorites = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
+            <View style={styles.search}>
+                <TextInput
+                    style={globalStyles.input}
+                    placeholder="Search favorites..."
+                />
+            </View>
             <View style={styles.topHeader}>
                 <Text style={styles.topHeaderText}>Your Favorites</Text>
                 <Feather
@@ -83,5 +111,9 @@ const styles = StyleSheet.create({
     topHeaderText: {
         fontSize: 20,
         fontWeight: "bold",
+    },
+    search: {
+        paddingHorizontal: 30,
+        alignSelf: "stretch",
     },
 });
