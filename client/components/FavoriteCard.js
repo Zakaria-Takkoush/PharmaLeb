@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 // import pic from "../assets/panadol.png";
 import axiosAPI from "../apis/axiosAPI";
 import { getValueFor } from "../stores/SecureStore";
+import { FavoritesContext } from "../stores/FavoritesContext";
 
 export const FavoriteCard = ({
     data,
     navigation,
     canRemove,
-    setFavorites,
     setSearchResults,
 }) => {
     const medicine = data.medicine;
+
+    const { favorites, setFavorites } = useContext(FavoritesContext);
 
     // delete favorite
     const removeFavorite = async () => {

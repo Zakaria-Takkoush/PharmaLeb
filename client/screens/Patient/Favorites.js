@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
     Text,
     View,
@@ -14,9 +14,11 @@ import axiosAPI from "../../apis/axiosAPI";
 import { useFocusEffect, useIsFocused } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { FavoritesContext } from "../../stores/FavoritesContext";
 
 export const Favorites = ({ navigation, route }) => {
-    const [favorites, setFavorites] = useState([]);
+    // const [favorites, setFavorites] = useState([]);
+    const { favorites, setFavorites } = useContext(FavoritesContext);
 
     // use isFocused for screen reload on focus
     const isFocused = useIsFocused();
@@ -50,25 +52,25 @@ export const Favorites = ({ navigation, route }) => {
         }
     };
 
-    useFocusEffect(
-        useCallback(() => {
-            const getData = async () => {
-                const favoritesFromServer = await fetchFavorites();
-                setFavorites(favoritesFromServer);
-                setSearchResults(favoritesFromServer);
-            };
-            getData();
-        }, [isFocused])
-    );
+    // useFocusEffect(
+    //     useCallback(() => {
+    //         const getData = async () => {
+    //             const favoritesFromServer = await fetchFavorites();
+    //             setFavorites(favoritesFromServer);
+    //             setSearchResults(favoritesFromServer);
+    //         };
+    //         getData();
+    //     }, [])
+    // );
 
-    // useEffect(() => {
-    //     const getData = async () => {
-    //         const favoritesFromServer = await fetchFavorites();
-    //         setFavorites(favoritesFromServer);
-    //         setSearchResults(favoritesFromServer);
-    //     };
-    //     getData();
-    // }, [isFocused]);
+    useEffect(() => {
+        const getData = async () => {
+            const favoritesFromServer = await fetchFavorites();
+            setFavorites(favoritesFromServer);
+            setSearchResults(favoritesFromServer);
+        };
+        getData();
+    }, [isFocused]);
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
@@ -99,7 +101,6 @@ export const Favorites = ({ navigation, route }) => {
                         navigation={navigation}
                         data={item}
                         canRemove={canRemove}
-                        setFavorites={setFavorites}
                         setSearchResults={setSearchResults}
                     />
                 )}
