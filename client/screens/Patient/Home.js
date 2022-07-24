@@ -22,6 +22,17 @@ export const Home = ({ navigation }) => {
     // initialize search results array
     const [searchResults, setSearchResults] = useState([]);
 
+    // on search input change
+    const handleSearchChange = (value) => {
+        if (!value) {
+            setSearchResults(medicines);
+        }
+        const resultsArray = medicines.filter((medicine) =>
+            medicine.name.toLowerCase().includes(value.toLowerCase())
+        );
+        setSearchResults(resultsArray);
+    };
+
     // get all medicines api
     const getMedicines = async () => {
         const res = await axiosAPI.get(`/medicines`);
@@ -37,14 +48,13 @@ export const Home = ({ navigation }) => {
         getData();
     }, []);
 
-    console.log(searchResults);
-
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
             <View style={styles.search}>
                 <TextInput
                     style={globalStyles.input}
                     placeholder="Search for medicine..."
+                    onChangeText={(value) => handleSearchChange(value)}
                 />
                 <BlueButton text="Search" />
             </View>
