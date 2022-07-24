@@ -25,6 +25,20 @@ export const AddMedicine = () => {
     // medicine list
     const [medicines, setMedicines] = useState([]);
 
+    // initialize search results array
+    const [searchResults, setSearchResults] = useState([]);
+
+    // on search input change
+    const handleSearchChange = (value) => {
+        if (!value) {
+            setSearchResults(medicines);
+        }
+        const resultsArray = medicines.filter((medicine) =>
+            medicine.name.toLowerCase().includes(value.toLowerCase())
+        );
+        setSearchResults(resultsArray);
+    };
+
     // get medicine list
     const getMedicines = async () => {
         const res = await axiosAPI.get("/medicines");
@@ -36,6 +50,7 @@ export const AddMedicine = () => {
         const getData = async () => {
             const medicinesFromServer = await getMedicines();
             setMedicines(medicinesFromServer);
+            setSearchResults(medicinesFromServer);
         };
         getData();
     }, []);
