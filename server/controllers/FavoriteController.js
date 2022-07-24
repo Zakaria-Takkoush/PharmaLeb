@@ -1,4 +1,5 @@
 const User = require("../models/UserModel");
+const Medicine = require("../models/MedicineModel");
 
 // Get all favorites of a certain user
 async function getFavorites(req, res) {
@@ -36,10 +37,9 @@ async function addFavorite(req, res) {
 
         // if favorite does not exist, add it to the array and save
         user.favorites.push(favoriteToAdd);
+        const favorite = user.favorites[user.favorites.length - 1];
         await user.save();
-        return res
-            .status(201)
-            .json({ user: user, favorite_added: favoriteToAdd });
+        return res.status(201).json({ favorite_added: favorite });
     } catch (error) {
         console.log(error.message);
         res.json({ Error: error.message });
