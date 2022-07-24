@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import pic from "../assets/panadol.png";
+// import pic from "../assets/panadol.png";
 import axiosAPI from "../apis/axiosAPI";
 import { getValueFor } from "../stores/SecureStore";
 
@@ -45,7 +45,7 @@ export const FavoriteCard = ({
             onPress={() => navigation.navigate("Medicine", medicine)}
         >
             <View style={styles.left}>
-                <Image source={pic} style={styles.image} />
+                <Image source={{ uri: medicine.image }} style={styles.image} />
             </View>
             <View style={styles.right}>
                 <Text style={styles.name}>{medicine.name}</Text>
