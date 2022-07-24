@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
     Image,
     StyleSheet,
@@ -42,12 +42,15 @@ const logInSchema = yup.object({
 
 // import Secure Store to store the token
 import { saveItem } from "../stores/SecureStore";
+import { UserContext } from "../stores/UserContext";
 
 export const LogIn = ({ navigation }) => {
     const initialValues = {
         email: "",
         password: "",
     };
+
+    const { setUserData } = useContext(UserContext);
 
     // login function (post to database and get token)
     const postLogIn = async (user) => {
@@ -60,8 +63,10 @@ export const LogIn = ({ navigation }) => {
             saveItem("token", loggedUser.token);
             saveItem("user_id", loggedUser._id);
 
+            // save data in user context store
+            setUserData(loggedUser);
+
             // check user type and navigate accordingly
-            console.log(loggedUser);
             if (loggedUser.user_type === "patient") {
                 // use replace instead of navigate to prevent going back to login screen
                 navigation.replace("Patient");

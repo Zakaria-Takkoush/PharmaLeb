@@ -8,16 +8,60 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
     ScrollView,
+    Modal,
+    Dimensions,
 } from "react-native";
-import { useState } from "react";
+
+// import map tools and components
+import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
+
+import { useContext, useEffect, useState } from "react";
 import globalStyles from "../../styles/GlobalStyles";
 import { Ionicons } from "@expo/vector-icons";
 import defaultPic from "../../assets/default_profile_pic.png";
 import { BlueButton } from "../../components/BlueButton";
 
+// import image picker
 import * as ImagePicker from "expo-image-picker";
 
+import axiosAPI from "../../apis/axiosAPI";
+
+// import formik
+import { Formik } from "formik";
+// import yup for form validation
+import * as yup from "yup";
+import { getValueFor } from "../../stores/SecureStore";
+import { UserContext } from "../../stores/UserContext";
+
+// create yup validation schema
+const registerSchema = yup.object({
+    first_name: yup
+        .string()
+        .min(3, "First name must be at least 3 characters.")
+        .max(30, "First name must be at most 30 characters.")
+        .required("First name is required."),
+    last_name: yup
+        .string()
+        .min(3, "Last name must be at least 3 characters.")
+        .max(30, "Last name must be at most 30 characters.")
+        .required("Last name is required."),
+    email: yup
+        .string()
+        .email("Email is not valid")
+        .required("Email is required."),
+    password: yup
+        .string()
+        .min(6, "Password should be at least 6 characters long.")
+        .required("Password is required."),
+    confirm_password: yup
+        .string()
+        .oneOf([yup.ref("password"), null], "Passwords do not match."),
+    date_of_birth: yup.date("Enter a valid date"),
+    phone_number: yup.number().min(8).required("Phone number is required."),
+});
+
 export const Profile = () => {
+    // image state
     const [selectedImage, setSelectedImage] = useState(null);
 
     // image picker
@@ -39,6 +83,51 @@ export const Profile = () => {
 
         setSelectedImage({ localUri: pickerResult.uri });
     };
+
+    // Initial field values
+    const initialValues = {
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        confirm_password: "",
+        date_of_birth: "",
+        phone_number: "",
+    };
+
+    // set user location
+    const [location, setLocation] = useState({
+        latitude: 33.896359,
+        longitude: 35.479829,
+    });
+
+    // Map modal visibility set
+    const [isMapOpen, setIsMapOpen] = useState(false);
+
+    // Map properties
+    const { width, height } = Dimensions.get("window");
+    const aspectRatio = width / height;
+    const latDelta = 0.02;
+    const longDelta = latDelta * aspectRatio;
+    const initialRegion = {
+        latitude: 33.896359,
+        longitude: 35.479829,
+        latitudeDelta: latDelta,
+        longitudeDelta: longDelta,
+    };
+    const [region, setRegion] = useState(initialRegion);
+
+    // set all User Data
+    const handleSubmit = (data) => {
+        let user = {
+            ...data,
+            // user_type: "pharmacist",
+            location: location,
+        };
+    };
+
+    // get user data
+    const { userData } = useContext(UserContext);
 
     return (
         <View style={globalStyles.container}>
