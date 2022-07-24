@@ -61,7 +61,7 @@ export const Home = ({ navigation }) => {
             <FlatList
                 style={globalStyles.itemList}
                 keyExtractor={(item) => item._id}
-                data={medicines}
+                data={searchResults}
                 renderItem={({ item }) => (
                     <MedicineCard navigation={navigation} details={item} />
                 )}
