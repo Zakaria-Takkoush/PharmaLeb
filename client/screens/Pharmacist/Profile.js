@@ -9,6 +9,7 @@ import {
     Keyboard,
     ScrollView,
 } from "react-native";
+import { useState } from "react";
 import globalStyles from "../../styles/GlobalStyles";
 import { Ionicons } from "@expo/vector-icons";
 import defaultPic from "../../assets/default_profile_pic.png";
@@ -17,6 +18,8 @@ import { BlueButton } from "../../components/BlueButton";
 import * as ImagePicker from "expo-image-picker";
 
 export const Profile = () => {
+    const [selectedImage, setSelectedImage] = useState(null);
+
     // image picker
     let openImagePickerAsync = async () => {
         let permissionResult =
@@ -29,12 +32,25 @@ export const Profile = () => {
 
         let pickerResult = await ImagePicker.launchImageLibraryAsync();
         console.log(pickerResult);
+
+        if (pickerResult.cancelled === true) {
+            return;
+        }
+
+        setSelectedImage({ localUri: pickerResult.uri });
     };
 
     return (
         <View style={globalStyles.container}>
             <ScrollView style={globalStyles.form}>
-                <Image source={defaultPic} style={styles.pic} />
+                {selectedImage ? (
+                    <Image
+                        source={{ uri: selectedImage.localUri }}
+                        style={styles.pic}
+                    />
+                ) : (
+                    <Image source={defaultPic} style={styles.pic} />
+                )}
                 <BlueButton text="Pick image" onPress={openImagePickerAsync} />
 
                 <View style={styles.fullname}>
@@ -127,6 +143,7 @@ const styles = StyleSheet.create({
         height: 150,
         marginVertical: 10,
         alignSelf: "center",
+        borderRadius: 100,
     },
     header: {
         fontSize: 25,
