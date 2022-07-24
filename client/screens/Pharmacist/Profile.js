@@ -14,11 +14,28 @@ import { Ionicons } from "@expo/vector-icons";
 import defaultPic from "../../assets/default_profile_pic.png";
 import { BlueButton } from "../../components/BlueButton";
 
+import * as ImagePicker from "expo-image-picker";
+
 export const Profile = () => {
+    // image picker
+    let openImagePickerAsync = async () => {
+        let permissionResult =
+            await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+        if (permissionResult.granted === false) {
+            alert("Permission to access camera roll is required!");
+            return;
+        }
+
+        let pickerResult = await ImagePicker.launchImageLibraryAsync();
+        console.log(pickerResult);
+    };
+
     return (
         <View style={globalStyles.container}>
             <ScrollView style={globalStyles.form}>
                 <Image source={defaultPic} style={styles.pic} />
+                <BlueButton text="Pick image" onPress={openImagePickerAsync} />
 
                 <View style={styles.fullname}>
                     <View style={styles.fname}>
