@@ -58,7 +58,7 @@ export const Stock = ({ navigation }) => {
             setSearchResults(itemsFromServer);
         };
         getData();
-    }, []);
+    }, [isFocused]);
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>

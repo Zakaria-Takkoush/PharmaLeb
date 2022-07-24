@@ -17,32 +17,6 @@ import { useEffect, useState } from "react";
 const Tab = createBottomTabNavigator();
 
 export const PharmacistBottomTab = () => {
-    const [user, setUser] = useState("");
-    const [pharmacy, setPharmacy] = useState("");
-
-    // get the pharmacist ID from secure store
-    const getPharmacistData = async () => {
-        const user = await getValueFor("user_id");
-        const pharmacy = await getValueFor("pharmacy_id");
-        setUser(user);
-        setPharmacy(pharmacy);
-    };
-
-    console.log("user: " + user);
-    console.log("pharmacy: " + pharmacy);
-
-    // get the pharmacy ID knowing the user --- moved to login
-    // const getPharmacy = async () => {
-    //     const res = await axiosAPI.get(`/pharmacies/owner/${pharmacist}`);
-    //     const pharmacy = await res.data;
-    //     saveItem("pharmacy_id", pharmacy._id);
-    //     return pharmacy;
-    // };
-
-    useEffect(() => {
-        getPharmacistData();
-    }, []);
-
     return (
         <Tab.Navigator
             initialRouteName="Stock"
