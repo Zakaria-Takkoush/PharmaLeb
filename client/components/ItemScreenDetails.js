@@ -1,13 +1,18 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import medicine from "../assets/panadol.png";
+// import pic from "../assets/panadol.png";
 
 export const ItemScreenDetails = ({ details }) => {
     return (
         <View style={styles.container}>
             <View style={styles.left}>
-                <Image source={medicine} style={styles.image} />
+                <Image
+                    source={{
+                        uri: details.image,
+                    }}
+                    style={styles.image}
+                />
             </View>
             <View style={styles.right}>
                 <Text style={styles.name}>{details.name}</Text>
