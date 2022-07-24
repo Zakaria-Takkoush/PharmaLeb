@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
-import medicine from "../assets/panadol.png";
+// import medicine from "../assets/panadol.png";
 import { Ionicons } from "@expo/vector-icons";
 import { getValueFor } from "../stores/SecureStore";
 import axiosAPI from "../apis/axiosAPI";
@@ -35,7 +35,7 @@ export const AddItemCard = ({ navigation, data }) => {
     return (
         <TouchableOpacity style={styles.card} onPress={handlePress}>
             <View style={styles.left}>
-                <Image source={medicine} style={styles.image} />
+                <Image source={{ uri: data.image }} style={styles.image} />
             </View>
             <View style={styles.right}>
                 <Text style={styles.name}>{data.name}</Text>
