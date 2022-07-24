@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
-import pic from "../assets/panadol.png";
+// import pic from "../assets/panadol.png";
 
 export const MedicineCardStock = ({ navigation, item }) => {
     let medicine = item.item;
@@ -10,7 +10,7 @@ export const MedicineCardStock = ({ navigation, item }) => {
             onPress={() => navigation.navigate("Medicine Stock", item)}
         >
             <View style={styles.left}>
-                <Image source={pic} style={styles.image} />
+                <Image source={{ uri: medicine.image }} style={styles.image} />
             </View>
             <View style={styles.right}>
                 <Text style={styles.name}>{medicine.name}</Text>
