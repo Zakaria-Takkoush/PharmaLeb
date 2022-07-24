@@ -61,13 +61,16 @@ export const AddMedicine = () => {
                 <TextInput
                     style={globalStyles.input}
                     placeholder="Search items..."
+                    onChangeText={(value) => {
+                        handleSearchChange(value);
+                    }}
                 />
                 <BlueButton text="Search" />
             </View>
             <FlatList
                 style={globalStyles.itemList}
                 keyExtractor={(item) => item._id}
-                data={medicines}
+                data={searchResults}
                 renderItem={({ item }) => <AddItemCard data={item} />}
             />
         </SafeAreaView>
