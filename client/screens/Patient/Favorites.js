@@ -67,6 +67,7 @@ export const Favorites = ({ navigation, route }) => {
                 <TextInput
                     style={globalStyles.input}
                     placeholder="Search favorites..."
+                    onChangeText={(value) => handleSearchChange(value)}
                 />
             </View>
             <View style={styles.topHeader}>
@@ -83,13 +84,14 @@ export const Favorites = ({ navigation, route }) => {
             <FlatList
                 style={globalStyles.itemList}
                 keyExtractor={(item) => item._id}
-                data={favorites}
+                data={searchResults}
                 renderItem={({ item }) => (
                     <FavoriteCard
                         navigation={navigation}
                         data={item}
                         canRemove={canRemove}
                         setFavorites={setFavorites}
+                        setSearchResults={setSearchResults}
                     />
                 )}
             />
