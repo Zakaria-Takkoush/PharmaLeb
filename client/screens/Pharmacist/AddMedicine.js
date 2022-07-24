@@ -65,7 +65,6 @@ export const AddMedicine = () => {
                         handleSearchChange(value);
                     }}
                 />
-                <BlueButton text="Search" />
             </View>
             <FlatList
                 style={globalStyles.itemList}

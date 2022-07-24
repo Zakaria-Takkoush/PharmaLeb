@@ -56,7 +56,6 @@ export const Home = ({ navigation }) => {
                     placeholder="Search for medicine..."
                     onChangeText={(value) => handleSearchChange(value)}
                 />
-                <BlueButton text="Search" />
             </View>
             <FlatList
                 style={globalStyles.itemList}

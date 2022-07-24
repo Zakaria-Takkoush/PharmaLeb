@@ -68,7 +68,6 @@ export const Stock = ({ navigation }) => {
                     placeholder="Search items..."
                     onChangeText={(value) => handleSearchChange(value)}
                 />
-                <BlueButton text="Search" />
             </View>
             <FlatList
                 style={globalStyles.itemList}
