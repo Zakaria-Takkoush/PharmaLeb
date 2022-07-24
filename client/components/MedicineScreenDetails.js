@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 // import pic from "../assets/panadol.png";
@@ -6,6 +6,9 @@ import axiosAPI from "../apis/axiosAPI";
 import { getValueFor } from "../stores/SecureStore";
 
 export const MedicineScreenDetails = ({ details }) => {
+    // add to favorites state check
+    const [isAdded, setIsAdded] = useState(false);
+
     // add to favorites
     const addFavorite = async () => {
         const user = await getValueFor("user_id");
@@ -15,6 +18,7 @@ export const MedicineScreenDetails = ({ details }) => {
             });
             if (res.data.favorite_added) {
                 alert(`Added to Favorites!`);
+                setIsAdded(true);
             } else {
                 alert(res.data);
             }
@@ -34,13 +38,22 @@ export const MedicineScreenDetails = ({ details }) => {
                 <Text style={styles.detail}>{details.dosage}</Text>
                 <Text style={styles.detail}>{details.price}</Text>
             </View>
-            <FontAwesome
-                style={styles.icon}
-                name="star-o"
-                size={35}
-                color="#009FFF"
-                onPress={addFavorite}
-            />
+            {isAdded ? (
+                <FontAwesome
+                    style={styles.icon}
+                    name="star"
+                    size={35}
+                    color="#009FFF"
+                />
+            ) : (
+                <FontAwesome
+                    style={styles.icon}
+                    name="star-o"
+                    size={35}
+                    color="#009FFF"
+                    onPress={addFavorite}
+                />
+            )}
         </View>
     );
 };
