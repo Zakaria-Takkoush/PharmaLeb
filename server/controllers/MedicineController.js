@@ -23,4 +23,15 @@ async function addMedicine(req, res) {
     }
 }
 
-module.exports = { getMedicines, addMedicine };
+// Get a medicine
+
+async function getMedicine(req, res) {
+    try {
+        const medicine = await Medicine.findById(req.params.id);
+        return res.json(medicine);
+    } catch (error) {
+        res.json(error);
+    }
+}
+
+module.exports = { getMedicines, addMedicine, getMedicine };
