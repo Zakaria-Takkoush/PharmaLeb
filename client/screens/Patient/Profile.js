@@ -356,6 +356,7 @@ const styles = StyleSheet.create({
         height: 150,
         marginVertical: 10,
         alignSelf: "center",
+        borderRadius: 100,
     },
     header: {
         fontSize: 25,
