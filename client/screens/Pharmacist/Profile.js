@@ -127,8 +127,24 @@ export const Profile = () => {
             location: location,
             photo: selectedImage ? selectedImage.localUri : userData.photo,
         };
-        console.log(user);
+        postEdit(user);
     };
+
+    // post edits to backend
+    const postEdit = async (data) => {
+        try {
+            const res = await axiosAPI.put(
+                `/users/edit_prof/${userData._id}`,
+                data
+            );
+            console.log(res.data);
+            alert("Profile Updated Successfully!");
+        } catch (error) {
+            console.log(error.response.data);
+        }
+    };
+
+    // router.post("/edit_prof/:id", editProfile);
 
     // get user data on load (from context)
     useEffect(() => {
