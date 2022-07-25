@@ -120,8 +120,8 @@ async function editProfile(req, res) {
         const {
             first_name,
             last_name,
-            email,
-            password,
+            // email,
+            // password,
             phone_number,
             date_of_birth,
             photo,
@@ -129,13 +129,13 @@ async function editProfile(req, res) {
         } = req.body;
 
         // Validate using Joi
-        const { value, error } = validateRegister(req.body);
-        if (error) {
-            return res.json(error.details);
-        }
+        // const { value, error } = validateRegister(req.body);
+        // if (error) {
+        //     return res.json(error.details);
+        // }
 
         // Encrypt user password
-        encryptedPassword = await bcrypt.hash(password, 10);
+        // encryptedPassword = await bcrypt.hash(password, 10);
 
         // Get and update user
         const user = await User.findByIdAndUpdate(req.params.id, {
@@ -145,23 +145,23 @@ async function editProfile(req, res) {
             photo,
             phone_number,
             location,
-            email: email.toLowerCase(), // sanitize: convert email to lowercase
-            password: encryptedPassword,
+            // email: email.toLowerCase(), // sanitize: convert email to lowercase
+            // password: encryptedPassword,
         });
 
-        // Create token
-        const token = jwt.sign(
-            { user_id: user._id, email, type: user.user_type },
-            process.env.TOKEN_KEY,
-            {
-                expiresIn: "2h",
-            }
-        );
+        // // Create token
+        // const token = jwt.sign(
+        //     { user_id: user._id, email, type: user.user_type },
+        //     process.env.TOKEN_KEY,
+        //     {
+        //         expiresIn: "2h",
+        //     }
+        // );
 
-        // save user token
-        user.token = token;
+        // // save user token
+        // user.token = token;
 
-        // return new user
+        // return user edits
         res.status(201).json({ status: "updated successfully", user });
     } catch (error) {
         console.log(error.message);

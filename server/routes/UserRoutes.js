@@ -19,7 +19,7 @@ router.post("/register", register);
 router.post("/login", login);
 
 // Edit Profile
-router.post("/edit_prof/:id", editProfile);
+router.put("/edit_prof/:id", editProfile);
 
 // Get the user from token
 router.get("/", verifyToken, (req, res) => {
