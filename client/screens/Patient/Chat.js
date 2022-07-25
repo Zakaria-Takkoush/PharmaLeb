@@ -63,7 +63,8 @@ export const Chat = () => {
             onSend={(messages) => onSend(messages)}
             user={{
                 _id: userData._id,
-                avatar: "https://i.pravatar.cc/300",
+                avatar: userData.photo,
+                name: userData.first_name,
             }}
         />
     );
