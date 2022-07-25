@@ -14,3 +14,4 @@ syntax.txt
 # macOS
 .DS_Store
 
+.env
