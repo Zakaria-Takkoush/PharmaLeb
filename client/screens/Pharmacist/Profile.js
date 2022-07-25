@@ -86,13 +86,13 @@ export const Profile = () => {
 
     // Initial field values
     const initialValues = {
-        first_name: "",
-        last_name: "",
-        email: "",
-        password: "",
-        confirm_password: "",
-        date_of_birth: "",
-        phone_number: "",
+        first_name: userData?.first_name,
+        last_name: userData?.last_name,
+        email: userData?.email,
+        password: userData?.password,
+        confirm_password: userData?.password,
+        date_of_birth: userData?.date_of_birth.split("T")[0],
+        phone_number: userData?.phone_number,
     };
 
     // set user location
@@ -124,6 +124,7 @@ export const Profile = () => {
             // user_type: "pharmacist",
             location: location,
         };
+        console.log(user);
     };
 
     // get user data
@@ -131,95 +132,122 @@ export const Profile = () => {
 
     return (
         <View style={globalStyles.container}>
-            <ScrollView style={globalStyles.form}>
-                {selectedImage ? (
-                    <Image
-                        source={{ uri: selectedImage.localUri }}
-                        style={styles.pic}
-                    />
-                ) : (
-                    <Image source={defaultPic} style={styles.pic} />
+            <Formik
+                initialValues={initialValues}
+                onSubmit={(values, actions) => {
+                    handleSubmit(values);
+                }}
+                validationSchema={registerSchema}
+                enableReinitialize={true}
+            >
+                {(props) => (
+                    <ScrollView style={globalStyles.form}>
+                        {selectedImage ? (
+                            <Image
+                                source={{ uri: selectedImage.localUri }}
+                                style={styles.pic}
+                            />
+                        ) : (
+                            <Image source={defaultPic} style={styles.pic} />
+                        )}
+                        <BlueButton
+                            text="Pick image"
+                            onPress={openImagePickerAsync}
+                        />
+
+                        <View style={styles.fullname}>
+                            <View style={styles.fname}>
+                                <Text style={globalStyles.label}>
+                                    First Name:
+                                </Text>
+                                <TextInput
+                                    style={globalStyles.input}
+                                    placeholder="First Name..."
+                                    onChangeText={props.handleChange(
+                                        "first_name"
+                                    )}
+                                    value={props.values.first_name}
+                                    defaultValue={userData.first_name}
+                                />
+                            </View>
+
+                            <View style={styles.lname}>
+                                <Text style={globalStyles.label}>
+                                    Last Name:
+                                </Text>
+                                <TextInput
+                                    style={globalStyles.input}
+                                    placeholder="Last Name..."
+                                    onChangeText={props.handleChange(
+                                        "last_name"
+                                    )}
+                                    value={props.values.last_name}
+                                    defaultValue={userData.last_name}
+                                />
+                            </View>
+                        </View>
+
+                        <Text style={globalStyles.label}>Email:</Text>
+                        <TextInput
+                            style={globalStyles.input}
+                            placeholder="Enter your email..."
+                            onChangeText={props.handleChange("email")}
+                            value={props.values.email}
+                            defaultValue={userData.email}
+                        />
+
+                        {/* <Text style={globalStyles.label}>New Password:</Text>
+                        <TextInput
+                            style={globalStyles.input}
+                            placeholder="Enter your password..."
+                            secureTextEntry={true} // password
+                            onChangeText={props.handleChange("password")}
+                            value={props.values.password}
+                            defaultValue={userData.password}
+                        />
+
+                        <Text style={globalStyles.label}>
+                            Confirm new Password:
+                        </Text>
+                        <TextInput
+                            style={globalStyles.input}
+                            placeholder="Enter your password..."
+                            secureTextEntry={true} // password
+                            onChangeText={props.handleChange("password")}
+                            value={props.values.password}
+                            defaultValue={userData.password}
+                        /> */}
+
+                        <Text style={globalStyles.label}>Date of Birth:</Text>
+                        <TextInput
+                            style={globalStyles.input}
+                            placeholder="YYYY-MM-DD"
+                            onChangeText={props.handleChange("date_of_birth")}
+                            value={props.values.date_of_birth}
+                            defaultValue={userData.date_of_birth.split("T")[0]}
+                        />
+
+                        <Text style={globalStyles.label}>Phone Number:</Text>
+                        <TextInput
+                            style={globalStyles.input}
+                            placeholder="Enter your phone number..."
+                            onChangeText={props.handleChange("phone_number")}
+                            value={props.values.phone_number}
+                            defaultValue={userData.phone_number}
+                        />
+
+                        <Text style={globalStyles.label}>Edit Location:</Text>
+                        <TouchableOpacity style={styles.location}>
+                            <Ionicons
+                                name="location"
+                                size={30}
+                                color="#009FFF"
+                            />
+                            <Text>Choose on Map</Text>
+                        </TouchableOpacity>
+                    </ScrollView>
                 )}
-                <BlueButton text="Pick image" onPress={openImagePickerAsync} />
-
-                <View style={styles.fullname}>
-                    <View style={styles.fname}>
-                        <Text style={globalStyles.label}>First Name:</Text>
-                        <TextInput
-                            style={globalStyles.input}
-                            placeholder="First Name..."
-                            onChangeText={(value) => {
-                                setUser({ ...user, first_name: value });
-                            }}
-                        />
-                    </View>
-
-                    <View style={styles.lname}>
-                        <Text style={globalStyles.label}>Last Name:</Text>
-                        <TextInput
-                            style={globalStyles.input}
-                            placeholder="Last Name..."
-                            onChangeText={(value) => {
-                                setUser({ ...user, last_name: value });
-                            }}
-                        />
-                    </View>
-                </View>
-
-                <Text style={globalStyles.label}>Email:</Text>
-                <TextInput
-                    style={globalStyles.input}
-                    placeholder="Enter your email..."
-                    onChangeText={(value) => {
-                        setUser({ ...user, email: value });
-                    }}
-                />
-
-                <Text style={globalStyles.label}>New Password:</Text>
-                <TextInput
-                    style={globalStyles.input}
-                    placeholder="Enter your password..."
-                    secureTextEntry={true} // password
-                    onChangeText={(value) => {
-                        setUser({ ...user, password: value });
-                    }}
-                />
-
-                <Text style={globalStyles.label}>Confirm new Password:</Text>
-                <TextInput
-                    style={globalStyles.input}
-                    placeholder="Enter your password..."
-                    secureTextEntry={true} // password
-                    onChangeText={(value) => {
-                        setUser({ ...user, confirm_password: value });
-                    }}
-                />
-
-                <Text style={globalStyles.label}>Date of Birth:</Text>
-                <TextInput
-                    style={globalStyles.input}
-                    placeholder="YYYY-MM-DD"
-                    onChangeText={(value) => {
-                        setUser({ ...user, date_of_birth: value });
-                    }}
-                />
-
-                <Text style={globalStyles.label}>Phone Number:</Text>
-                <TextInput
-                    style={globalStyles.input}
-                    placeholder="Enter your phone number..."
-                    onChangeText={(value) => {
-                        setUser({ ...user, phone_number: value });
-                    }}
-                />
-
-                <Text style={globalStyles.label}>Edit Location:</Text>
-                <TouchableOpacity style={styles.location}>
-                    <Ionicons name="location" size={30} color="#009FFF" />
-                    <Text>Choose on Map</Text>
-                </TouchableOpacity>
-            </ScrollView>
-
+            </Formik>
             {/* Submit changes */}
             <BlueButton text="Save Changes" />
         </View>
