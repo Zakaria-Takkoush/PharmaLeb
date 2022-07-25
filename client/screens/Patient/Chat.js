@@ -1,12 +1,14 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 import { ChatCard } from "../../components/ChatCard";
 import globalStyles from "../../styles/GlobalStyles";
 
 export const Chat = () => {
     return (
-        <View style={globalStyles.container}>
+        <SafeAreaView style={globalStyles.pageContainer}>
             <ChatCard />
-        </View>
+            <ChatCard />
+            <ChatCard />
+        </SafeAreaView>
     );
 };
