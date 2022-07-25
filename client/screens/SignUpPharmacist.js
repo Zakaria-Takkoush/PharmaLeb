@@ -210,6 +210,8 @@ export const SignUpPharmacist = ({ navigation }) => {
                             <TextInput
                                 style={globalStyles.input}
                                 placeholder="Enter your email..."
+                                autoCapitalize="none"
+                                keyboardType="email-address"
                                 onChangeText={props.handleChange("email")}
                                 value={props.values.email}
                             />
