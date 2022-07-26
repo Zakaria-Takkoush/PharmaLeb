@@ -6,6 +6,7 @@ import {
     FlatList,
     StyleSheet,
     TextInput,
+    TouchableOpacity,
 } from "react-native";
 import globalStyles from "../../styles/GlobalStyles";
 import { FavoriteCard } from "../../components/FavoriteCard";
@@ -52,17 +53,6 @@ export const Favorites = ({ navigation, route }) => {
         }
     };
 
-    // useFocusEffect(
-    //     useCallback(() => {
-    //         const getData = async () => {
-    //             const favoritesFromServer = await fetchFavorites();
-    //             setFavorites(favoritesFromServer);
-    //             setSearchResults(favoritesFromServer);
-    //         };
-    //         getData();
-    //     }, [])
-    // );
-
     useEffect(() => {
         const getData = async () => {
             const favoritesFromServer = await fetchFavorites();
@@ -83,14 +73,24 @@ export const Favorites = ({ navigation, route }) => {
             </View>
             <View style={styles.topHeader}>
                 <Text style={styles.topHeaderText}>Your Favorites</Text>
-                <Feather
-                    name="edit"
-                    size={35}
-                    color="#009FFF"
-                    onPress={() => {
-                        setCanRemove(!canRemove);
-                    }}
-                />
+                {!canRemove ? (
+                    <Feather
+                        name="edit"
+                        size={35}
+                        color="#009FFF"
+                        onPress={() => {
+                            setCanRemove(!canRemove);
+                        }}
+                    />
+                ) : (
+                    <TouchableOpacity
+                        onPress={() => {
+                            setCanRemove(!canRemove);
+                        }}
+                    >
+                        <Text style={styles.cancelRemove}>Cancel</Text>
+                    </TouchableOpacity>
+                )}
             </View>
             <FlatList
                 style={globalStyles.itemList}
@@ -127,5 +127,9 @@ const styles = StyleSheet.create({
     search: {
         paddingHorizontal: 30,
         alignSelf: "stretch",
+    },
+    cancelRemove: {
+        color: "#009FFF",
+        fontWeight: "bold",
     },
 });
