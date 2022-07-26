@@ -11,9 +11,21 @@ import globalStyles from "../../styles/GlobalStyles";
 import { BlueButton } from "../../components/BlueButton";
 import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
 
-export const PharmacyScreen = ({ route }) => {
+import { collection, addDoc, getFirestore } from "../../config/firebase";
+
+export const PharmacyScreen = ({ navigation, route }) => {
     const stock = route.params.stock;
     const pharmacyDetails = route.params.details;
+
+    // Create a new chat room
+    const createChat = async () => {
+        const db = getFirestore();
+        await addDoc(collection(db, "chats"), {
+            chatName: pharmacyDetails.name,
+        })
+            .then(() => navigation.goBack())
+            .catch((error) => alert(error.message));
+    };
 
     // Link to phone dialer
     const openDialScreen = () => {
@@ -53,7 +65,7 @@ export const PharmacyScreen = ({ route }) => {
                 Available Stock: {stock}
             </Text>
             <BlueButton text="Call" onPress={openDialScreen} />
-            <BlueButton text="Chat" />
+            <BlueButton text="Chat" onPress={createChat} />
             <MapView
                 provider={PROVIDER_GOOGLE}
                 style={styles.map}
