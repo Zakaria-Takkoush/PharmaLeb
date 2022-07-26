@@ -48,3 +48,66 @@
   gap: 5px;
   margin: 10px;
 }
+
+/* Add medicine */
+
+.add-medicine {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  width: 100%;
+  margin: 10px 0; 
+}
+
+.add-medicine-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4%;
+  padding: 10px;
+}
+
+.add-medicine-form > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px;
+  gap: 5px;
+}
+
+.add-header {
+  text-align: center;
+}
+
+/* Utilities */
+.submit-add {
+  background-color: #009FFF;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.submit-add:hover {
+  background-color: #000F99;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type=text] {
+  padding: 5px;
+  font-size: 15px;
+  border: 1px solid #009FFF;
+}
+
+input[type=text]:focus {
+  border: 2px solid #000F99;
+  outline: none;
+  color: #000F99;
+}

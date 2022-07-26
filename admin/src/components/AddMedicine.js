@@ -16,8 +16,8 @@ const AddMedicine = () => {
 
     return (
         <div className="add-medicine">
-            <h2>Add a medicine</h2>
-            <form onSubmit={handleSubmit}>
+            <h2 className="add-header">Add a medicine</h2>
+            <form className="add-medicine-form" onSubmit={handleSubmit}>
                 <div className="medicine-name">
                     <label>Name:</label>
                     <input
@@ -49,7 +49,7 @@ const AddMedicine = () => {
                     />
                 </div>
                 <div className="medicine-price">
-                    <label>Price:</label>
+                    <label>Price: (LL)</label>
                     <input
                         type="text"
                         value={medicine.price}
@@ -57,10 +57,9 @@ const AddMedicine = () => {
                             setMedicine({ ...medicine, price: e.target.value })
                         }
                     />
-                    <span>L.L.</span>
                 </div>
                 <div className="medicine-image">
-                    <label>Code:</label>
+                    <label>Image URL:</label>
                     <input
                         type="text"
                         value={medicine.image}
