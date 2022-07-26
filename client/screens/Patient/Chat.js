@@ -1,71 +1,55 @@
-import { SafeAreaView, Text, View } from "react-native";
+import {
+    SafeAreaView,
+    Text,
+    View,
+    TouchableOpacity,
+    StyleSheet,
+} from "react-native";
 import { ChatCard } from "../../components/ChatCard";
 import globalStyles from "../../styles/GlobalStyles";
-import {
-    useState,
-    useEffect,
-    useLayoutEffect,
-    useCallback,
-    useContext,
-} from "react";
-import {
-    collection,
-    addDoc,
-    orderBy,
-    query,
-    onSnapshot,
-} from "firebase/firestore";
-import { database } from "../../config/firebase";
 
-import { GiftedChat } from "react-native-gifted-chat";
-
-import { UserContext } from "../../stores/UserContext";
+import { useState, useEffect } from "react";
 
 export const Chat = () => {
-    const [messages, setMessages] = useState([]);
+    const [threads, setThreads] = useState([]);
 
-    const { userData } = useContext(UserContext);
-
-    useEffect(() => {
-        const collectionRef = collection(database, "chats");
-        const q = query(collectionRef, orderBy("createdAt", "desc"));
-
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            setMessages(
-                querySnapshot.docs.map((doc) => ({
-                    _id: doc.data()._id,
-                    createdAt: doc.data().createdAt.toDate(),
-                    text: doc.data().text,
-                    user: doc.data().user,
-                }))
-            );
-        });
-        return () => unsubscribe();
-    }, []);
-
-    const onSend = useCallback((messages = []) => {
-        setMessages((previousMessages) =>
-            GiftedChat.append(previousMessages, messages)
-        );
-        const { _id, createdAt, text, user } = messages[0];
-        addDoc(collection(database, "chats"), {
-            _id,
-            createdAt,
-            text,
-            user,
-        });
-    }, []);
+    useEffect(() => {}, []);
 
     return (
-        <GiftedChat
-            messages={messages}
-            showAvatarForEveryMessage={true}
-            onSend={(messages) => onSend(messages)}
-            user={{
-                _id: userData._id,
-                avatar: userData.photo,
-                name: userData.first_name,
-            }}
-        />
+        <SafeAreaView style={globalStyles.pageContainer}>
+            <TouchableOpacity style={styles.comChat}>
+                <Text style={styles.title}>Community Chat</Text>
+                <Text style={styles.text}>
+                    Enter the community chat and ask for a medicine...
+                </Text>
+            </TouchableOpacity>
+            <ChatCard />
+            <ChatCard />
+            <ChatCard />
+        </SafeAreaView>
     );
 };
+
+const styles = StyleSheet.create({
+    comChat: {
+        alignSelf: "stretch",
+        height: 100,
+        backgroundColor: "#009FFF",
+        borderRadius: 20,
+        marginHorizontal: 15,
+        marginVertical: 15,
+        padding: 20,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    title: {
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "bold",
+    },
+    text: {
+        fontSize: 16,
+        color: "#fff",
+        textAlign: "center",
+    },
+});
