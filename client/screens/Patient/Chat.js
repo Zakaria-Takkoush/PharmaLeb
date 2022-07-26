@@ -10,10 +10,28 @@ import globalStyles from "../../styles/GlobalStyles";
 
 import { useState, useEffect } from "react";
 
-export const Chat = ({ navigation }) => {
-    const [threads, setThreads] = useState([]);
+import { collection, getFirestore, onSnapshot } from "../../config/firebase";
 
-    useEffect(() => {}, []);
+export const Chat = ({ navigation }) => {
+    const [chats, setChats] = useState([]);
+    const db = getFirestore();
+
+    useEffect(
+        () =>
+            onSnapshot(collection(db, "chats"), (snapshot) => {
+                setChats(
+                    snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+                );
+            }),
+        []
+    );
+
+    const enterChat = (id, chatName) => {
+        navigation.navigate("Chat Screen", {
+            id,
+            chatName,
+        });
+    };
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
@@ -26,9 +44,15 @@ export const Chat = ({ navigation }) => {
                     Enter the community chat and ask for a medicine...
                 </Text>
             </TouchableOpacity>
-            <ChatCard />
-            <ChatCard />
-            <ChatCard />
+
+            {chats.map(({ id, chatName }) => (
+                <ChatCard
+                    key={id}
+                    id={id}
+                    chatName={chatName}
+                    enterChat={enterChat}
+                />
+            ))}
         </SafeAreaView>
     );
 };
