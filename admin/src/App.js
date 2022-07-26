@@ -1,9 +1,14 @@
 import "./App.css";
+import AddMedicine from "./components/AddMedicine";
+import Header from "./components/Header";
+import MedicineList from "./components/MedicineList";
 
 function App() {
     return (
         <div className="App">
-            <p>Hello React</p>
+            <Header />
+            <AddMedicine />
+            <MedicineList />
         </div>
     );
 }
