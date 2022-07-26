@@ -1,7 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AddMedicine = () => {
-    return <div>AddMedicine</div>;
+    const [medicine, setMedicine] = useState({
+        name: "",
+        code: "",
+        dosage: "",
+        price: "",
+        image: "",
+    });
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(medicine);
+    };
+
+    return (
+        <div className="add-medicine">
+            <h2>Add a medicine</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="medicine-name">
+                    <label>Name:</label>
+                    <input
+                        type="text"
+                        value={medicine.name}
+                        onChange={(e) =>
+                            setMedicine({ ...medicine, name: e.target.value })
+                        }
+                    />
+                </div>
+                <div className="medicine-code">
+                    <label>Code:</label>
+                    <input
+                        type="text"
+                        value={medicine.code}
+                        onChange={(e) =>
+                            setMedicine({ ...medicine, code: e.target.value })
+                        }
+                    />
+                </div>
+                <div className="medicine-dosage">
+                    <label>Dosage:</label>
+                    <input
+                        type="text"
+                        value={medicine.dosage}
+                        onChange={(e) =>
+                            setMedicine({ ...medicine, dosage: e.target.value })
+                        }
+                    />
+                </div>
+                <div className="medicine-price">
+                    <label>Price:</label>
+                    <input
+                        type="text"
+                        value={medicine.price}
+                        onChange={(e) =>
+                            setMedicine({ ...medicine, price: e.target.value })
+                        }
+                    />
+                    <span>L.L.</span>
+                </div>
+                <div className="medicine-image">
+                    <label>Code:</label>
+                    <input
+                        type="text"
+                        value={medicine.image}
+                        onChange={(e) =>
+                            setMedicine({ ...medicine, image: e.target.value })
+                        }
+                    />
+                </div>
+                <div>
+                    <input
+                        className="submit-add"
+                        type="submit"
+                        value={"Add Medicine"}
+                    />
+                </div>
+            </form>
+        </div>
+    );
 };
 
 export default AddMedicine;
