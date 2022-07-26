@@ -24,3 +24,16 @@
 .header-title {
   color: white;
 }
+
+/* Medicine */
+.medicine-card {
+  display: flex;
+  width: 100%;
+  border: 1px solid #009FFF;
+  gap: 2%;
+}
+
+.medicine-card > div {
+  flex-basis: 10%;
+  flex-grow: 0;
+}
