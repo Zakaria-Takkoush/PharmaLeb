@@ -3,7 +3,7 @@ import Medicine from "./Medicine";
 
 const MedicineList = () => {
     return (
-        <div>
+        <div className="medicine-list">
             <Medicine />
             <Medicine />
         </div>
