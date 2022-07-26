@@ -10,14 +10,17 @@ import globalStyles from "../../styles/GlobalStyles";
 
 import { useState, useEffect } from "react";
 
-export const Chat = () => {
+export const Chat = ({ navigation }) => {
     const [threads, setThreads] = useState([]);
 
     useEffect(() => {}, []);
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
-            <TouchableOpacity style={styles.comChat}>
+            <TouchableOpacity
+                style={styles.comChat}
+                onPress={() => navigation.navigate("Community Chat")}
+            >
                 <Text style={styles.title}>Community Chat</Text>
                 <Text style={styles.text}>
                     Enter the community chat and ask for a medicine...
