@@ -10,23 +10,21 @@ const Stack = createNativeStackNavigator();
 
 export const PatientChatStack = () => {
     return (
-        <NavigationContainer independent="true">
-            <Stack.Navigator
-                initialRouteName="Chat"
-                screenOptions={{
-                    headerStyle: {
-                        backgroundColor: "#009FFF",
-                    },
-                    headerTintColor: "#fff",
-                    headerTitleAlign: "center",
-                    headerTitleStyle: {
-                        fontWeight: "bold",
-                    },
-                }}
-            >
-                <Stack.Screen name="Chat" component={Chat} />
-                <Stack.Screen name="Community Chat" component={CommunityChat} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Stack.Navigator
+            initialRouteName="Chat"
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: "#009FFF",
+                },
+                headerTintColor: "#fff",
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                },
+            }}
+        >
+            <Stack.Screen name="Chat" component={Chat} />
+            <Stack.Screen name="Community Chat" component={CommunityChat} />
+        </Stack.Navigator>
     );
 };

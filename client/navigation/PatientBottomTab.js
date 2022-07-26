@@ -7,6 +7,7 @@ import { Home } from "../screens/Patient/Home";
 import { Profile } from "../screens/Patient/Profile";
 import { PatientHomeStack } from "./PatientHomeStack";
 import { PatientFavoritesStack } from "./PatientFavoritesStack";
+import { PatientChatStack } from "./PatientChatStack";
 
 // Import Icons
 import { FontAwesome } from "@expo/vector-icons";
@@ -23,7 +24,7 @@ export const PatientBottomTab = () => {
     return (
         <FavoritesProvider>
             <Tab.Navigator
-                initialRouteName="Home"
+                initialRouteName="Home Stack"
                 screenOptions={{
                     tabBarShowLabel: false,
                     allowFontScaling: false,
@@ -43,7 +44,7 @@ export const PatientBottomTab = () => {
             >
                 {/* Home Tab */}
                 <Tab.Screen
-                    name="Home"
+                    name="Home Stack"
                     component={PatientHomeStack}
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -59,7 +60,7 @@ export const PatientBottomTab = () => {
 
                 {/* Favorites Tab */}
                 <Tab.Screen
-                    name="Favorites"
+                    name="Favorites Stack"
                     component={PatientFavoritesStack}
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -75,8 +76,8 @@ export const PatientBottomTab = () => {
 
                 {/* Chats Tab */}
                 <Tab.Screen
-                    name="Chats"
-                    component={Chat}
+                    name="Chats Stack"
+                    component={PatientChatStack}
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <Ionicons
@@ -85,6 +86,7 @@ export const PatientBottomTab = () => {
                                 color={focused ? "#009FFF" : "#959595"}
                             />
                         ),
+                        headerShown: false,
                     }}
                 />
 

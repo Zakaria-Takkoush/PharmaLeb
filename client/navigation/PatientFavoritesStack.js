@@ -13,24 +13,22 @@ const Stack = createNativeStackNavigator();
 
 export const PatientFavoritesStack = () => {
     return (
-        <NavigationContainer independent="true">
-            <Stack.Navigator
-                initialRouteName="Home"
-                screenOptions={{
-                    headerStyle: {
-                        backgroundColor: "#009FFF",
-                    },
-                    headerTintColor: "#fff",
-                    headerTitleAlign: "center",
-                    headerTitleStyle: {
-                        fontWeight: "bold",
-                    },
-                }}
-            >
-                <Stack.Screen name="Favorites" component={Favorites} />
-                <Stack.Screen name="Medicine" component={MedicineScreen} />
-                <Stack.Screen name="Pharmacy" component={PharmacyScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Stack.Navigator
+            initialRouteName="Home"
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: "#009FFF",
+                },
+                headerTintColor: "#fff",
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                },
+            }}
+        >
+            <Stack.Screen name="Favorites" component={Favorites} />
+            <Stack.Screen name="Medicine" component={MedicineScreen} />
+            <Stack.Screen name="Pharmacy" component={PharmacyScreen} />
+        </Stack.Navigator>
     );
 };
