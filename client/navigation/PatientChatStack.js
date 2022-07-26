@@ -26,7 +26,13 @@ export const PatientChatStack = () => {
         >
             <Stack.Screen name="Chat" component={Chat} />
             <Stack.Screen name="Community Chat" component={CommunityChat} />
-            <Stack.Screen name="Chat Screen" component={ChatScreen} />
+            <Stack.Screen
+                name="Chat Screen"
+                component={ChatScreen}
+                options={({ route }) => ({
+                    title: route.params.chatName,
+                })}
+            />
         </Stack.Navigator>
     );
 };
