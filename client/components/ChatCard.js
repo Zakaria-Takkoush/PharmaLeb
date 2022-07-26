@@ -7,7 +7,6 @@ import {
     query,
     orderBy,
 } from "../config/firebase";
-import { Avatar, ListItem } from "@rneui/base";
 
 export const ChatCard = ({ id, chatName, enterChat }) => {
     const [chatMessages, setChatMessages] = useState([]);
@@ -28,7 +27,11 @@ export const ChatCard = ({ id, chatName, enterChat }) => {
     );
 
     return (
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity
+            style={styles.card}
+            onPress={() => enterChat(id, chatName)}
+            key={id}
+        >
             <Text style={styles.chatName}>{chatName}</Text>
         </TouchableOpacity>
     );
