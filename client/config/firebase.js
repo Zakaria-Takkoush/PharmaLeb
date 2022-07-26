@@ -1,6 +1,13 @@
-import { initializeApp } from "firebase/app";
-// import { getAuth } from 'firebase/auth';
-import { getFirestore } from "firebase/firestore";
+import { initializeApp, getApps } from "firebase/app";
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    onSnapshot,
+    serverTimestamp,
+    query,
+    orderBy,
+} from "firebase/firestore";
 import Constants from "expo-constants";
 
 // Firebase config
@@ -15,7 +22,14 @@ const firebaseConfig = {
 };
 
 // initialize firebase
-initializeApp(firebaseConfig);
+if (!getApps().length) initializeApp(firebaseConfig);
 
-// export const auth = getAuth();
-export const database = getFirestore();
+export {
+    collection,
+    addDoc,
+    getFirestore,
+    onSnapshot,
+    serverTimestamp,
+    query,
+    orderBy,
+};
