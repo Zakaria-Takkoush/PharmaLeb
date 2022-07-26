@@ -1,4 +1,5 @@
 import React from "react";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
 const Medicine = () => {
     return (
@@ -8,8 +9,16 @@ const Medicine = () => {
             <div className="code">Medicine Code</div>
             <div className="dosage">Medicine Dosage</div>
             <div className="price">Medicine Price</div>
-            <div className="edit">Edit</div>
-            <div className="delete">Delete</div>
+            <div className="edit">
+                <button>
+                    Edit <AiFillEdit color="#009FFF" size={18} />
+                </button>
+            </div>
+            <div className="delete">
+                <button>
+                    Delete <AiFillDelete color="tomato" size={18} />
+                </button>
+            </div>
         </div>
     );
 };

@@ -111,3 +111,11 @@ input[type=text]:focus {
   outline: none;
   color: #000F99;
 }
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  padding: 2px;
+  font-weight: bolder
+}
