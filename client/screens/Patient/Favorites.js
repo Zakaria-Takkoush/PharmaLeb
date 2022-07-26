@@ -60,6 +60,7 @@ export const Favorites = ({ navigation, route }) => {
             setSearchResults(favoritesFromServer);
         };
         getData();
+        setCanRemove(false);
     }, [isFocused]);
 
     return (
@@ -72,7 +73,12 @@ export const Favorites = ({ navigation, route }) => {
                 />
             </View>
             <View style={styles.topHeader}>
-                <Text style={styles.topHeaderText}>Your Favorites</Text>
+                {favorites.length > 0 ? (
+                    <Text style={styles.topHeaderText}>Your Favorites</Text>
+                ) : (
+                    <Text style={styles.topHeaderText}>No Favorites...</Text>
+                )}
+
                 {!canRemove ? (
                     <Feather
                         name="edit"
