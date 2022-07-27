@@ -4,11 +4,32 @@ import { MedicineScreenDetails } from "../../components/MedicineScreenDetails";
 import { PharmacyCard } from "../../components/PharmacyCard";
 import globalStyles from "../../styles/GlobalStyles";
 import axiosAPI from "../../apis/axiosAPI";
+import { getValueFor } from "../../stores/SecureStore";
 
 export const MedicineScreen = ({ route, navigation }) => {
     const medicine = route.params;
 
     const [pharmacies, setPharmacies] = useState([]);
+
+    const sendNotification = async () => {
+        const pushToken = await getValueFor("push_token");
+        const message = {
+            to: pushToken,
+            sound: "default",
+            title: `Available Medicine!`,
+            body: `${medicine.name}`,
+        };
+
+        await fetch("https://exp.host/--/api/v2/push/send", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Accept-encoding": "gzip, deflate",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(message),
+        });
+    };
 
     // get pharmacies having this medicine
     const fetchPharmacies = async () => {
@@ -29,6 +50,7 @@ export const MedicineScreen = ({ route, navigation }) => {
             setPharmacies(pharmaciesFromServer);
         };
         getData();
+        // sendNotification();
     }, []);
 
     // filter pharmacies with only available stock for this medicine
@@ -39,6 +61,11 @@ export const MedicineScreen = ({ route, navigation }) => {
             if (items[j].item === medicine._id && items[j].stock > 0)
                 pharmaciesWithStock.push(pharmacies[i]);
         }
+    }
+
+    // send notification only if the medicine is available
+    if (pharmaciesWithStock.length > 0) {
+        sendNotification();
     }
 
     return (
