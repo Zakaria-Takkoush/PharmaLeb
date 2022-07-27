@@ -16,6 +16,8 @@ import { getValueFor } from "../../stores/SecureStore";
 import axiosAPI from "../../apis/axiosAPI";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import PushNotificationsComponent from "../../config/notifications";
+
 export const Home = ({ navigation }) => {
     const [medicines, setMedicines] = useState([]);
 
@@ -65,6 +67,7 @@ export const Home = ({ navigation }) => {
                     <MedicineCard navigation={navigation} details={item} />
                 )}
             />
+            <PushNotificationsComponent />
         </SafeAreaView>
     );
 };
