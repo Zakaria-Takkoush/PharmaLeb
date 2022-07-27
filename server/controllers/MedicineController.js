@@ -51,7 +51,8 @@ async function editMedicine(req, res) {
     try {
         const medicine = await Medicine.findByIdAndUpdate(
             req.params.id,
-            req.body
+            req.body,
+            { new: true }
         );
         if (!medicine) {
             return res.status(404).json("Not Found");
