@@ -31,6 +31,8 @@
 
 .header-title {
   color: white;
+  padding: 10px;
+  text-align: center;
 }
 
 /* Medicine Card */
@@ -164,4 +166,15 @@ button {
   border: none;
   padding: 2px;
   font-weight: bolder
+}
+
+@media only screen and (max-width: 850px) {
+  .header {
+    height: fit-content;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+  .logo {
+    position: static;
+  }
 }
