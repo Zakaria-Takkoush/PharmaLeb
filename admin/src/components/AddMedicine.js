@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axiosAPI from "../api/axiosAPI";
 
 const AddMedicine = () => {
     const [medicine, setMedicine] = useState({
@@ -34,10 +35,18 @@ const AddMedicine = () => {
             price: `${medicine.price} L.L`,
         };
         console.log(data);
+        addMedicine(data);
         clearFields();
     };
 
-    const addMedicine = (data) => {};
+    const addMedicine = async (data) => {
+        try {
+            const res = await axiosAPI.post("/medicines", data);
+            const medicineAdded = res.data;
+        } catch (error) {
+            console.log(error.response.data);
+        }
+    };
 
     return (
         <div className="add-medicine">

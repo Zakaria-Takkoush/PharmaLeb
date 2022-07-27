@@ -5,7 +5,11 @@ const Medicine = ({ medicine }) => {
     return (
         <div className="medicine-card">
             <div className="image">
-                <img className="medicine-img" src={medicine.image} />
+                <img
+                    className="medicine-img"
+                    src={medicine.image}
+                    alt="No Image"
+                />
             </div>
             <div className="name">{medicine.name}</div>
             <div className="code">{medicine.code}</div>
