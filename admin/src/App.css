@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+/* Page Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 /* Header */
 .header {
   height: 100px;
@@ -12,6 +19,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 100%;
 }
 
 .logo {
@@ -68,8 +76,9 @@
 .add-medicine-form {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 4%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 10px;
 }
 

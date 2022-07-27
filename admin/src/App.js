@@ -25,8 +25,16 @@ function App() {
     return (
         <>
             <Header />
-            <AddMedicine medicines={medicines} setMedicines={setMedicines} />
-            <MedicineList medicines={medicines} setMedicines={setMedicines} />
+            <div className="container">
+                <AddMedicine
+                    medicines={medicines}
+                    setMedicines={setMedicines}
+                />
+                <MedicineList
+                    medicines={medicines}
+                    setMedicines={setMedicines}
+                />
+            </div>
         </>
     );
 }
