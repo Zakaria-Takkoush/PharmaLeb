@@ -6,7 +6,6 @@ import { SignUp } from "../screens/SignUpOptions";
 import { SignUpPatient } from "../screens/SignUpPatient";
 import { SignUpPharmacist } from "../screens/SignUpPharmacist";
 import { PatientBottomTab } from "./PatientBottomTab";
-import { PatientScreens } from "./PatientScreens";
 import { PharmacistBottomTab } from "./PharmacistBottomTab";
 
 const Stack = createNativeStackNavigator();
