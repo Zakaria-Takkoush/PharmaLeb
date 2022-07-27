@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axiosAPI from "../api/axiosAPI";
 
-const AddMedicine = () => {
+const AddMedicine = ({ medicines, setMedicines }) => {
     const [medicine, setMedicine] = useState({
         name: "",
         code: "",
@@ -43,6 +43,7 @@ const AddMedicine = () => {
         try {
             const res = await axiosAPI.post("/medicines", data);
             const medicineAdded = res.data;
+            setMedicines([...medicines, medicineAdded]);
         } catch (error) {
             console.log(error.response.data);
         }
