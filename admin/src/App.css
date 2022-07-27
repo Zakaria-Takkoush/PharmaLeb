@@ -94,6 +94,29 @@
   text-align: center;
 }
 
+/* Edit Medicine */
+
+.edit-medicine {
+  display: none;
+}
+
+.edit-medicine-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+}
+
+.edit-medicine-form > div{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px;
+  gap: 5px;
+}
+
 /* Utilities */
 .submit-add {
   background-color: #009FFF;
