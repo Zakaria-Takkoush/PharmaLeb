@@ -9,9 +9,20 @@ const AddMedicine = () => {
         image: "",
     });
 
+    const clearFields = () => {
+        setMedicine({
+            name: "",
+            code: "",
+            dosage: "",
+            price: "",
+            image: "",
+        });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(medicine);
+        clearFields();
     };
 
     return (
