@@ -21,9 +21,23 @@ const AddMedicine = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(medicine);
+        if (
+            medicine.name === "" ||
+            medicine.dosage === "" ||
+            medicine.code === "" ||
+            medicine.price === ""
+        ) {
+            alert("Enter all fields!");
+        }
+        const data = {
+            ...medicine,
+            price: `${medicine.price} L.L`,
+        };
+        console.log(data);
         clearFields();
     };
+
+    const addMedicine = (data) => {};
 
     return (
         <div className="add-medicine">
