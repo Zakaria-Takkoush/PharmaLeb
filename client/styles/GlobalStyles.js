@@ -45,6 +45,7 @@ const globalStyles = StyleSheet.create({
     itemList: {
         alignSelf: "stretch",
         padding: 10,
+        marginBottom: 50,
     },
 
     // Modal
