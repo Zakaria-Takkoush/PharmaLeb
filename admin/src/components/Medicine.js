@@ -6,6 +6,9 @@ const Medicine = ({ medicine, medicines, setMedicines }) => {
     const [edited, setEdited] = useState({ ...medicine });
     const [canEdit, setCanEdit] = useState(false);
 
+    // Open edit form
+    const toggleEditForm = () => [setCanEdit(!canEdit)];
+
     // Delete medicine
     const handleDelete = () => {
         deleteMedicine();
@@ -39,7 +42,7 @@ const Medicine = ({ medicine, medicines, setMedicines }) => {
                 <div className="dosage">{medicine.dosage}</div>
                 <div className="price">{medicine.price}</div>
                 <div className="edit">
-                    <button>
+                    <button onClick={toggleEditForm}>
                         Edit <AiFillEdit color="#009FFF" size={18} />
                     </button>
                 </div>
@@ -49,7 +52,11 @@ const Medicine = ({ medicine, medicines, setMedicines }) => {
                     </button>
                 </div>
             </div>
-            <div className="edit-medicine">
+            <div
+                className={
+                    canEdit ? "edit-medicine-open" : "edit-medicine-closed"
+                }
+            >
                 <form className="edit-medicine-form">
                     <div className="medicine-name">
                         <label>Name:</label>

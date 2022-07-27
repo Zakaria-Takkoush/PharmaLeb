@@ -96,8 +96,12 @@
 
 /* Edit Medicine */
 
-.edit-medicine {
+.edit-medicine-closed {
   display: none;
+}
+
+.edit-medicine-open {
+  display: block;
 }
 
 .edit-medicine-form {
