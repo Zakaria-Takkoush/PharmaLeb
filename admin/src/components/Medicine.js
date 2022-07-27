@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import axiosAPI from "../api/axiosAPI";
 
-const Medicine = ({ medicine, medicines, setMedicines }) => {
+const Medicine = ({ medicine, setMedicines }) => {
     const [edited, setEdited] = useState({ ...medicine });
     const [canEdit, setCanEdit] = useState(false);
 
@@ -22,7 +22,16 @@ const Medicine = ({ medicine, medicines, setMedicines }) => {
                 `/medicines/${medicine._id}`,
                 edited
             );
-            console.log(res.data);
+            const editedMedicine = res.data.updated;
+            // Modify UI after edit
+            setMedicines((prevMedicines) => {
+                const tempMedicines = [...prevMedicines];
+                const index = tempMedicines.findIndex(
+                    (medicine) => medicine._id === editedMedicine._id
+                );
+                tempMedicines[index] = editedMedicine;
+                return tempMedicines;
+            });
         } catch (error) {
             console.log(error.response.data);
         }

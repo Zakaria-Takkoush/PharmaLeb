@@ -8,7 +8,6 @@ const MedicineList = ({ medicines, setMedicines }) => {
                 <Medicine
                     key={medicine._id}
                     medicine={medicine}
-                    medicines={medicines}
                     setMedicines={setMedicines}
                 />
             ))}

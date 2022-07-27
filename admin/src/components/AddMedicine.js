@@ -34,7 +34,6 @@ const AddMedicine = ({ medicines, setMedicines }) => {
             ...medicine,
             price: `${medicine.price} L.L`,
         };
-        console.log(data);
         addMedicine(data);
         clearFields();
     };
