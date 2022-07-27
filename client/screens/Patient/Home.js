@@ -21,6 +21,9 @@ import PushNotificationsComponent from "../../config/notifications";
 export const Home = ({ navigation }) => {
     const [medicines, setMedicines] = useState([]);
 
+    // notifications expo token
+    const [expoPushToken, setExpoPushToken] = useState("");
+
     // initialize search results array
     const [searchResults, setSearchResults] = useState([]);
 
@@ -67,7 +70,10 @@ export const Home = ({ navigation }) => {
                     <MedicineCard navigation={navigation} details={item} />
                 )}
             />
-            <PushNotificationsComponent />
+            <PushNotificationsComponent
+                expoPushToken={expoPushToken}
+                setExpoPushToken={setExpoPushToken}
+            />
         </SafeAreaView>
     );
 };

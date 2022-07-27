@@ -11,8 +11,11 @@ Notifications.setNotificationHandler({
     }),
 });
 
-export default function PushNotificationsComponent() {
-    const [expoPushToken, setExpoPushToken] = useState("");
+export default function PushNotificationsComponent({
+    setExpoPushToken,
+    expoPushToken,
+}) {
+    // const [expoPushToken, setExpoPushToken] = useState("");
     const [notification, setNotification] = useState(false);
     const notificationListener = useRef();
     const responseListener = useRef();
@@ -43,7 +46,6 @@ export default function PushNotificationsComponent() {
             Notifications.removeNotificationSubscription(
                 responseListener.current
             );
-            console.log(expoPushToken);
         };
     }, []);
 
