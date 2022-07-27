@@ -4,6 +4,7 @@ const {
     addMedicine,
     getMedicine,
     deleteMedicine,
+    editMedicine,
 } = require("../controllers/MedicineController");
 const router = express.Router();
 
@@ -18,5 +19,8 @@ router.post("/", addMedicine);
 
 // Delete a medicine
 router.delete("/:id", deleteMedicine);
+
+// Edit a medicine
+router.put("/:id", editMedicine);
 
 module.exports = router;

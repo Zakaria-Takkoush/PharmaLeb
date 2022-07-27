@@ -46,4 +46,29 @@ async function deleteMedicine(req, res) {
     }
 }
 
-module.exports = { getMedicines, addMedicine, getMedicine, deleteMedicine };
+// Edit a medicine
+async function editMedicine(req, res) {
+    try {
+        const medicine = await Medicine.findByIdAndUpdate(
+            req.params.id,
+            req.body
+        );
+        if (!medicine) {
+            return res.status(404).json("Not Found");
+        }
+        return res.json({
+            status: "success",
+            updated: medicine,
+        });
+    } catch (error) {
+        res.json({ Error: error.message });
+    }
+}
+
+module.exports = {
+    getMedicines,
+    addMedicine,
+    getMedicine,
+    deleteMedicine,
+    editMedicine,
+};
