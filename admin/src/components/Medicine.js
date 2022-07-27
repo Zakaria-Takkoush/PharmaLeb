@@ -1,7 +1,26 @@
 import React from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import axiosAPI from "../api/axiosAPI";
 
-const Medicine = ({ medicine }) => {
+const Medicine = ({ medicine, medicines, setMedicines }) => {
+    // Delete medicine
+    const handleDelete = () => {
+        deleteMedicine();
+    };
+
+    // Delete API
+    const deleteMedicine = async () => {
+        try {
+            const res = await axiosAPI.delete(`/medicines/${medicine._id}`);
+            const deleted = res.data.deleted;
+            setMedicines((prevMedicines) =>
+                prevMedicines.filter((medicine) => medicine._id !== deleted._id)
+            );
+        } catch (error) {
+            console.log(error.response.data);
+        }
+    };
+
     return (
         <div className="medicine-card">
             <div className="image">
@@ -21,7 +40,7 @@ const Medicine = ({ medicine }) => {
                 </button>
             </div>
             <div className="delete">
-                <button>
+                <button onClick={handleDelete}>
                     Delete <AiFillDelete color="tomato" size={18} />
                 </button>
             </div>
