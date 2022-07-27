@@ -187,4 +187,15 @@ button {
     padding: 5px;
   }
 
+  .medicine-card {
+    flex-direction: column;
+    width: fit-content;
+    gap: 5px;
+  }
+
+  .medicine-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 }
