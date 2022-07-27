@@ -9,6 +9,25 @@ const Medicine = ({ medicine, medicines, setMedicines }) => {
     // Open edit form
     const toggleEditForm = () => [setCanEdit(!canEdit)];
 
+    // Edit Medicine
+    const handleEdit = (e) => {
+        e.preventDefault();
+        editMedicine();
+    };
+
+    // Edit API
+    const editMedicine = async () => {
+        try {
+            const res = await axiosAPI.put(
+                `/medicines/${medicine._id}`,
+                edited
+            );
+            console.log(res.data);
+        } catch (error) {
+            console.log(error.response.data);
+        }
+    };
+
     // Delete medicine
     const handleDelete = () => {
         deleteMedicine();
@@ -34,7 +53,7 @@ const Medicine = ({ medicine, medicines, setMedicines }) => {
                     <img
                         className="medicine-img"
                         src={medicine.image}
-                        alt="No Image"
+                        alt="NA"
                     />
                 </div>
                 <div className="name">{medicine.name}</div>
@@ -57,7 +76,7 @@ const Medicine = ({ medicine, medicines, setMedicines }) => {
                     canEdit ? "edit-medicine-open" : "edit-medicine-closed"
                 }
             >
-                <form className="edit-medicine-form">
+                <form className="edit-medicine-form" onSubmit={handleEdit}>
                     <div className="medicine-name">
                         <label>Name:</label>
                         <input
