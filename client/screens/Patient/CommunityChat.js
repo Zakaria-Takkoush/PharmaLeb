@@ -47,7 +47,7 @@ export const CommunityChat = () => {
             GiftedChat.append(previousMessages, messages)
         );
         const { _id, createdAt, text, user } = messages[0];
-        addDoc(collection(database, "chats"), {
+        addDoc(collection(db, "chats"), {
             _id,
             createdAt,
             text,
