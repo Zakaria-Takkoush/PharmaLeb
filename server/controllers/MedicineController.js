@@ -24,14 +24,26 @@ async function addMedicine(req, res) {
 }
 
 // Get a medicine
-
 async function getMedicine(req, res) {
     try {
         const medicine = await Medicine.findById(req.params.id);
         return res.json(medicine);
     } catch (error) {
-        res.json(error);
+        res.json({ Error: error.message });
     }
 }
 
-module.exports = { getMedicines, addMedicine, getMedicine };
+// Delete a medicine
+async function deleteMedicine(req, res) {
+    try {
+        const medicine = await Medicine.findByIdAndDelete(req.params.id);
+        if (!medicine) {
+            return res.status(404).json("Not Found");
+        }
+        return res.json({ status: "success", deleted: medicine });
+    } catch (error) {
+        res.json({ Error: error.message });
+    }
+}
+
+module.exports = { getMedicines, addMedicine, getMedicine, deleteMedicine };
