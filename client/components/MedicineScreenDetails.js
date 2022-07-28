@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 // import pic from "../assets/panadol.png";
@@ -11,6 +11,17 @@ export const MedicineScreenDetails = ({ details }) => {
     const [isAdded, setIsAdded] = useState(false);
 
     const { favorites, setFavorites } = useContext(FavoritesContext);
+
+    // Check if this item is in the user's favorites list
+    // Then set the item as isAdded
+    const checkFavorite = () => {
+        for (let i = 0; i < favorites.length; i++) {
+            if (favorites[i].medicine._id === details._id) {
+                setIsAdded(true);
+                break;
+            }
+        }
+    };
 
     // add to favorites
     const addFavorite = async () => {
@@ -38,6 +49,10 @@ export const MedicineScreenDetails = ({ details }) => {
             console.log(error.response.data);
         }
     };
+
+    useEffect(() => {
+        checkFavorite();
+    }, []);
 
     return (
         <View style={styles.container}>
