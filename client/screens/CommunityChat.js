@@ -12,11 +12,11 @@ import {
     query,
     onSnapshot,
 } from "firebase/firestore";
-import { getFirestore } from "../../config/firebase";
+import { getFirestore } from "../config/firebase";
 
 import { GiftedChat } from "react-native-gifted-chat";
 
-import { UserContext } from "../../stores/UserContext";
+import { UserContext } from "../stores/UserContext";
 
 export const CommunityChat = () => {
     const [messages, setMessages] = useState([]);
@@ -26,7 +26,7 @@ export const CommunityChat = () => {
     const db = getFirestore();
 
     useEffect(() => {
-        const collectionRef = collection(db, "chats");
+        const collectionRef = collection(db, "community_chats");
         const q = query(collectionRef, orderBy("createdAt", "desc"));
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -47,7 +47,7 @@ export const CommunityChat = () => {
             GiftedChat.append(previousMessages, messages)
         );
         const { _id, createdAt, text, user } = messages[0];
-        addDoc(collection(db, "chats"), {
+        addDoc(collection(db, "community_chats"), {
             _id,
             createdAt,
             text,

@@ -3,16 +3,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // Import Screens
 import { PharmacistStockStack } from "./PharmacistStockStack";
 import { Profile } from "../screens/Pharmacist/Profile";
-import { Chat } from "../screens/Pharmacist/Chat";
 import { EditPharmacy } from "../screens/Pharmacist/EditPharmacy";
+import { PharmacistChatStack } from "./PharmacistChatStack";
 
 // Import Icons
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import axiosAPI from "../apis/axiosAPI";
-import { getValueFor, saveItem } from "../stores/SecureStore";
-import { useEffect, useState } from "react";
 
 const Tab = createBottomTabNavigator();
 
@@ -55,8 +52,8 @@ export const PharmacistBottomTab = () => {
 
             {/* Chats Tab */}
             <Tab.Screen
-                name="Chat"
-                component={Chat}
+                name="Chat Stack"
+                component={PharmacistChatStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Ionicons
@@ -65,6 +62,7 @@ export const PharmacistBottomTab = () => {
                             color={focused ? "#009FFF" : "#959595"}
                         />
                     ),
+                    headerShown: false,
                 }}
             />
 

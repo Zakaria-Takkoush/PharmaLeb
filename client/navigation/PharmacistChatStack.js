@@ -1,8 +1,7 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { Chat } from "../screens/Patient/Chat";
-import { ChatScreen } from "../screens/Patient/ChatScreen";
+import { Chat } from "../screens/Pharmacist/Chat";
+import { ChatScreen } from "../screens/Pharmacist/ChatScreen";
 import { CommunityChat } from "../screens/CommunityChat";
 
 // In this file, we are creating a stack within the home tab
@@ -10,7 +9,7 @@ import { CommunityChat } from "../screens/CommunityChat";
 
 const Stack = createNativeStackNavigator();
 
-export const PatientChatStack = () => {
+export const PharmacistChatStack = () => {
     return (
         <Stack.Navigator
             initialRouteName="Chat"
