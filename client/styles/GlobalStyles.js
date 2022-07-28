@@ -32,6 +32,7 @@ const globalStyles = StyleSheet.create({
         fontSize: 25,
         fontWeight: "bold",
         color: "#009FFF",
+        marginVertical: 10,
     },
     contentDetails: {
         fontSize: 18,

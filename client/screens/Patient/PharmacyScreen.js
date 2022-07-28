@@ -5,11 +5,13 @@ import {
     Linking,
     Platform,
     Dimensions,
+    TouchableOpacity,
 } from "react-native";
 import React from "react";
 import globalStyles from "../../styles/GlobalStyles";
 import { BlueButton } from "../../components/BlueButton";
 import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
+import { Ionicons } from "@expo/vector-icons";
 
 import { collection, addDoc, getFirestore } from "../../config/firebase";
 
@@ -70,8 +72,20 @@ export const PharmacyScreen = ({ navigation, route }) => {
                 Available Stock: {stock}
             </Text>
 
-            <BlueButton text="Call" onPress={openDialScreen} />
-            <BlueButton text="Chat" onPress={createChat} />
+            <View style={styles.actions}>
+                {/* <BlueButton text="Call" onPress={openDialScreen} />
+                <BlueButton text="Chat" onPress={createChat} /> */}
+                <TouchableOpacity onPress={openDialScreen}>
+                    <Ionicons name="call" size={50} color="#009FFF" />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={createChat}>
+                    <Ionicons
+                        name="chatbox-ellipses-outline"
+                        size={50}
+                        color="#009FFF"
+                    />
+                </TouchableOpacity>
+            </View>
 
             <MapView
                 provider={PROVIDER_GOOGLE}
@@ -96,5 +110,12 @@ const styles = StyleSheet.create({
     map: {
         width: "100%",
         height: "50%",
+    },
+    actions: {
+        alignSelf: "stretch",
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        marginVertical: 20,
     },
 });
