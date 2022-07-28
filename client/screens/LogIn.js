@@ -141,11 +141,11 @@ export const LogIn = ({ navigation }) => {
                                     </Text>
                                 )}
 
-                            <TouchableOpacity>
+                            {/* <TouchableOpacity>
                                 <Text style={styles.forgot}>
                                     Forgot password?
                                 </Text>
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
                         </View>
 
                         {/* sign in button */}

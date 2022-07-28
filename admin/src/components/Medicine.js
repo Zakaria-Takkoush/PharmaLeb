@@ -12,16 +12,17 @@ const Medicine = ({ medicine, setMedicines }) => {
     // Edit Medicine
     const handleEdit = (e) => {
         e.preventDefault();
-        editMedicine();
+        const data = {
+            ...edited,
+            price: edited.price + " L.L",
+        };
+        editMedicine(data);
     };
 
     // Edit API
-    const editMedicine = async () => {
+    const editMedicine = async (data) => {
         try {
-            const res = await axiosAPI.put(
-                `/medicines/${medicine._id}`,
-                edited
-            );
+            const res = await axiosAPI.put(`/medicines/${medicine._id}`, data);
             const editedMedicine = res.data.updated;
             // Modify UI after edit
             setMedicines((prevMedicines) => {
