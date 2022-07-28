@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { UserContext } from "../stores/UserContext";
@@ -9,11 +9,16 @@ export const PharmacyCard = ({ details, medicine, navigation }) => {
 
     // Find the distance of pharmacy with respect to user
     // haversine library helps in calculating the distance between 2 locations on earth
+    const [distance, setDistance] = useState(0);
 
-    const pharmacyLocation = details.location;
-    const userLocation = userData.location;
-    const calculateDIstance = haversine(userLocation, pharmacyLocation);
-    const distance = (calculateDIstance / 1000).toFixed(2);
+    const findDistance = () => {
+        const pharmacyLocation = details.location;
+        const userLocation = userData.location;
+        const calculateDIstance = haversine(userLocation, pharmacyLocation);
+        // convert distance to km (2 decimal places)
+        const distanceAway = (calculateDIstance / 1000).toFixed(2);
+        setDistance(distanceAway);
+    };
 
     // Loop through items of the pharmacy and find the stock of this medicine
     let stock = 0;
@@ -28,10 +33,16 @@ export const PharmacyCard = ({ details, medicine, navigation }) => {
     // });
     // setItemStock(items[index].stock);
 
+    useEffect(() => {
+        findDistance();
+    }, []);
+
     return (
         <TouchableOpacity
             style={styles.card}
-            onPress={() => navigation.navigate("Pharmacy", { details, stock })}
+            onPress={() =>
+                navigation.navigate("Pharmacy", { details, stock, distance })
+            }
         >
             <Text style={styles.name}>{details.name}</Text>
             <Text style={styles.detail}>{distance} km away</Text>

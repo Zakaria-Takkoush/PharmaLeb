@@ -16,6 +16,7 @@ import { collection, addDoc, getFirestore } from "../../config/firebase";
 export const PharmacyScreen = ({ navigation, route }) => {
     const stock = route.params.stock;
     const pharmacyDetails = route.params.details;
+    const distance = route.params.distance;
 
     // Create a new chat room
     const createChat = async () => {
@@ -62,10 +63,16 @@ export const PharmacyScreen = ({ navigation, route }) => {
                 Address: {pharmacyDetails.address}
             </Text>
             <Text style={globalStyles.contentDetails}>
+                {distance} km far away
+            </Text>
+
+            <Text style={globalStyles.contentDetails}>
                 Available Stock: {stock}
             </Text>
+
             <BlueButton text="Call" onPress={openDialScreen} />
             <BlueButton text="Chat" onPress={createChat} />
+
             <MapView
                 provider={PROVIDER_GOOGLE}
                 style={styles.map}
