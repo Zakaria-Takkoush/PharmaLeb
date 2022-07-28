@@ -21,13 +21,16 @@ export const PharmacyCard = ({ details, medicine, navigation }) => {
     };
 
     // Loop through items of the pharmacy and find the stock of this medicine
-    let stock = 0;
-    let items = details.items;
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].item === medicine) {
-            stock = items[i].stock;
+    const [stock, setStock] = useState(0);
+    const findStock = () => {
+        let items = details.items;
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].item === medicine) {
+                setStock(items[i].stock);
+            }
         }
-    }
+    };
+
     // const index = items.findIndex((item) => {
     //     return item.item === medicine;
     // });
@@ -35,6 +38,7 @@ export const PharmacyCard = ({ details, medicine, navigation }) => {
 
     useEffect(() => {
         findDistance();
+        findStock();
     }, []);
 
     return (
