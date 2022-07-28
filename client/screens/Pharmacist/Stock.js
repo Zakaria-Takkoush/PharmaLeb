@@ -100,11 +100,8 @@ const styles = StyleSheet.create({
     icon: {
         position: "absolute",
         right: 20,
-        bottom: 90,
+        bottom: 40,
         borderRadius: 50,
-        // backgroundColor: "white",
-        // borderWidth: 1,
-        // borderColor: "black",
         justifyContent: "center",
         alignItems: "center",
         height: 58,

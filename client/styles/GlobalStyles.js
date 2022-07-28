@@ -41,11 +41,11 @@ const globalStyles = StyleSheet.create({
     pageContainer: {
         justifyContent: "flex-start",
         alignItems: "center",
+        flex: 1,
     },
     itemList: {
         alignSelf: "stretch",
         padding: 10,
-        marginBottom: 50,
     },
 
     // Modal
