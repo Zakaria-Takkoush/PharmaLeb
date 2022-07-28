@@ -116,6 +116,8 @@ export const LogIn = ({ navigation }) => {
                                 placeholder="Enter your email..."
                                 onChangeText={props.handleChange("email")}
                                 value={props.values.email}
+                                keyboardType="email-address"
+                                autoCapitalize="none"
                             />
                             {/* Check validation */}
                             {props.touched.email && props.errors.email && (
