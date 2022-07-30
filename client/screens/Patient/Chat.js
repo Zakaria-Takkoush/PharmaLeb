@@ -8,23 +8,41 @@ import {
 import { ChatCard } from "../../components/ChatCard";
 import globalStyles from "../../styles/GlobalStyles";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
-import { collection, getFirestore, onSnapshot } from "../../config/firebase";
+import {
+    collection,
+    getFirestore,
+    onSnapshot,
+    getDocs,
+    query,
+    where,
+} from "../../config/firebase";
+import { UserContext } from "../../stores/UserContext";
 
 export const Chat = ({ navigation }) => {
+    const { userData } = useContext(UserContext);
+
     const [chats, setChats] = useState([]);
+
     const db = getFirestore();
 
-    useEffect(
-        () =>
-            onSnapshot(collection(db, "chats"), (snapshot) => {
-                setChats(
-                    snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-                );
-            }),
-        []
-    );
+    const getChats = async () => {
+        const q = query(
+            collection(db, "chats"),
+            where("user", "==", userData._id)
+        );
+        const querySnapshot = await getDocs(q);
+        let chats = [];
+        querySnapshot.forEach((doc) => {
+            chats.push({ id: doc.id, ...doc.data() });
+        });
+        setChats(chats);
+    };
+
+    useEffect(() => {
+        getChats();
+    }, []);
 
     const enterChat = (id, chatName) => {
         navigation.navigate("Chat Screen", {

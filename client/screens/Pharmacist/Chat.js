@@ -14,6 +14,8 @@ import { collection, getFirestore, onSnapshot } from "../../config/firebase";
 
 export const Chat = ({ navigation }) => {
     const [chats, setChats] = useState([]);
+
+    // get db from firestore
     const db = getFirestore();
 
     useEffect(

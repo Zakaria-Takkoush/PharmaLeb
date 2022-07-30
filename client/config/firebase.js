@@ -7,6 +7,8 @@ import {
     serverTimestamp,
     query,
     orderBy,
+    getDocs,
+    where,
 } from "firebase/firestore";
 import Constants from "expo-constants";
 
@@ -32,4 +34,6 @@ export {
     serverTimestamp,
     query,
     orderBy,
+    getDocs,
+    where,
 };
