@@ -56,6 +56,9 @@ export const Home = ({ navigation }) => {
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
             <View style={styles.search}>
+                <Text style={globalStyles.contentHeader}>
+                    Explore Medicines...
+                </Text>
                 <TextInput
                     style={globalStyles.input}
                     placeholder="Search for medicine..."
