@@ -7,7 +7,7 @@ import {
     Dimensions,
     TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import globalStyles from "../../styles/GlobalStyles";
 import { BlueButton } from "../../components/BlueButton";
 import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
@@ -15,7 +15,11 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { collection, addDoc, getFirestore } from "../../config/firebase";
 
+import { UserContext } from "../../stores/UserContext";
+
 export const PharmacyScreen = ({ navigation, route }) => {
+    const { userData } = useContext(UserContext);
+
     const stock = route.params.stock;
     const pharmacyDetails = route.params.details;
     const distance = route.params.distance;
@@ -23,8 +27,10 @@ export const PharmacyScreen = ({ navigation, route }) => {
     // Create a new chat room
     const createChat = async () => {
         const db = getFirestore();
-        await addDoc(collection(db, "chats"), {
+        addDoc(collection(db, "chats"), {
             chatName: pharmacyDetails.name,
+            user: userData._id,
+            pharmacy: pharmacyDetails._id,
         })
             .then(() => navigation.goBack())
             .catch((error) => alert(error.message));
