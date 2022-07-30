@@ -40,7 +40,7 @@ export const CommunityChat = () => {
             );
         });
         return () => unsubscribe();
-    }, []);
+    }, [messages]);
 
     const onSend = useCallback((messages = []) => {
         setMessages((previousMessages) =>
@@ -59,6 +59,7 @@ export const CommunityChat = () => {
         <GiftedChat
             messages={messages}
             showAvatarForEveryMessage={true}
+            renderUsernameOnMessage={true}
             onSend={(messages) => onSend(messages)}
             user={{
                 _id: userData._id,
