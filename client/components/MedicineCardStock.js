@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
-// import pic from "../assets/panadol.png";
 
 export const MedicineCardStock = ({ navigation, item }) => {
     let medicine = item.item;
