@@ -63,11 +63,11 @@ export const Chat = ({ navigation }) => {
                 </Text>
             </TouchableOpacity>
 
-            {chats.map(({ id, chatName }) => (
+            {chats.map(({ id, pharmacyName }) => (
                 <ChatCard
                     key={id}
                     id={id}
-                    chatName={chatName}
+                    pharmacyName={pharmacyName}
                     enterChat={enterChat}
                 />
             ))}

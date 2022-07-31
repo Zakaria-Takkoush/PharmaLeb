@@ -9,6 +9,8 @@ import {
     orderBy,
     getDocs,
     where,
+    doc,
+    getDoc,
 } from "firebase/firestore";
 import Constants from "expo-constants";
 
@@ -36,4 +38,6 @@ export {
     orderBy,
     getDocs,
     where,
+    doc,
+    getDoc,
 };

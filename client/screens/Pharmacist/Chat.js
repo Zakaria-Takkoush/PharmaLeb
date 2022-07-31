@@ -10,23 +10,39 @@ import globalStyles from "../../styles/GlobalStyles";
 
 import { useState, useEffect } from "react";
 
-import { collection, getFirestore, onSnapshot } from "../../config/firebase";
+import {
+    collection,
+    getFirestore,
+    onSnapshot,
+    getDocs,
+    query,
+    where,
+} from "../../config/firebase";
+import { ChatCardPharmacist } from "../../components/ChatCardPharmacist";
+import { getValueFor } from "../../stores/SecureStore";
 
 export const Chat = ({ navigation }) => {
     const [chats, setChats] = useState([]);
 
-    // get db from firestore
     const db = getFirestore();
 
-    useEffect(
-        () =>
-            onSnapshot(collection(db, "chats"), (snapshot) => {
-                setChats(
-                    snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-                );
-            }),
-        []
-    );
+    const getChats = async () => {
+        const pharmacyID = await getValueFor("pharmacy_id");
+        const q = query(
+            collection(db, "chats"),
+            where("pharmacy", "==", pharmacyID)
+        );
+        const querySnapshot = await getDocs(q);
+        let chats = [];
+        querySnapshot.forEach((doc) => {
+            chats.push({ id: doc.id, ...doc.data() });
+        });
+        setChats(chats);
+    };
+
+    useEffect(() => {
+        getChats();
+    }, []);
 
     const enterChat = (id, chatName) => {
         navigation.navigate("Chat Screen", {
@@ -47,11 +63,11 @@ export const Chat = ({ navigation }) => {
                 </Text>
             </TouchableOpacity>
 
-            {chats.map(({ id, chatName }) => (
-                <ChatCard
+            {chats.map(({ id, userName }) => (
+                <ChatCardPharmacist
                     key={id}
                     id={id}
-                    chatName={chatName}
+                    userName={userName}
                     enterChat={enterChat}
                 />
             ))}
