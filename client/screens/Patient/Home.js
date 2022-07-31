@@ -10,6 +10,7 @@ import {
 import globalStyles from "../../styles/GlobalStyles";
 import { BlueButton } from "../../components/BlueButton";
 import { MedicineCard } from "../../components/MedicineCard";
+import { Loading } from "../../components/Loading";
 
 // import secure store functions
 import { getValueFor } from "../../stores/SecureStore";
@@ -20,6 +21,8 @@ import PushNotificationsComponent from "../../config/notifications";
 
 export const Home = ({ navigation }) => {
     const [medicines, setMedicines] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(true);
 
     // notifications expo token
     const [expoPushToken, setExpoPushToken] = useState("");
@@ -51,7 +54,12 @@ export const Home = ({ navigation }) => {
             setSearchResults(medicinesFromServer);
         };
         getData();
+        setIsLoading(false);
     }, []);
+
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
