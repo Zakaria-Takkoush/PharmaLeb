@@ -22,10 +22,14 @@ import { ChatCardPharmacist } from "../../components/ChatCardPharmacist";
 import { getValueFor } from "../../stores/SecureStore";
 
 import { useIsFocused } from "@react-navigation/native";
+import { Loading } from "../../components/Loading";
 
 export const Chat = ({ navigation }) => {
     const [chats, setChats] = useState([]);
 
+    const [isLoading, setIsLoading] = useState(true);
+
+    // from react-navigation
     const isFocused = useIsFocused();
 
     const db = getFirestore();
@@ -42,6 +46,7 @@ export const Chat = ({ navigation }) => {
             chats.push({ id: doc.id, ...doc.data() });
         });
         setChats(chats);
+        setIsLoading(false);
     };
 
     useEffect(() => {
@@ -54,6 +59,10 @@ export const Chat = ({ navigation }) => {
             chatName,
         });
     };
+
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
