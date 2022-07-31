@@ -29,13 +29,14 @@ const AddMedicine = ({ medicines, setMedicines }) => {
             medicine.price === ""
         ) {
             alert("Enter all fields!");
+        } else {
+            const data = {
+                ...medicine,
+                price: `${medicine.price} L.L`,
+            };
+            addMedicine(data);
+            clearFields();
         }
-        const data = {
-            ...medicine,
-            price: `${medicine.price} L.L`,
-        };
-        addMedicine(data);
-        clearFields();
     };
 
     const addMedicine = async (data) => {
