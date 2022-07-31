@@ -43,7 +43,7 @@ export const FavoriteCard = ({
 
     return (
         <TouchableOpacity
-            style={styles.card}
+            style={[styles.card, canRemove && styles.removable]}
             onPress={() => navigation.navigate("Medicine", medicine)}
         >
             <View style={styles.left}>
@@ -107,5 +107,9 @@ const styles = StyleSheet.create({
     },
     right: {
         flex: 2,
+    },
+    removable: {
+        borderWidth: 1,
+        borderColor: "tomato",
     },
 });
