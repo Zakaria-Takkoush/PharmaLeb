@@ -21,9 +21,12 @@ import {
     where,
 } from "../../config/firebase";
 import { UserContext } from "../../stores/UserContext";
+import { Loading } from "../../components/Loading";
 
 export const Chat = ({ navigation }) => {
     const { userData } = useContext(UserContext);
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const isFocused = useIsFocused();
 
@@ -42,6 +45,7 @@ export const Chat = ({ navigation }) => {
             chats.push({ id: doc.id, ...doc.data() });
         });
         setChats(chats);
+        setIsLoading(false);
     };
 
     useEffect(() => {
@@ -54,6 +58,10 @@ export const Chat = ({ navigation }) => {
             chatName,
         });
     };
+
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
