@@ -28,7 +28,8 @@ export const PharmacyScreen = ({ navigation, route }) => {
     const createChat = async () => {
         const db = getFirestore();
         addDoc(collection(db, "chats"), {
-            chatName: pharmacyDetails.name,
+            userName: `${userData.first_name} ${userData.last_name}`,
+            pharmacyName: pharmacyDetails.name,
             user: userData._id,
             pharmacy: pharmacyDetails._id,
         })

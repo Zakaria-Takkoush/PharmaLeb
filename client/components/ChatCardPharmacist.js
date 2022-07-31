@@ -8,7 +8,7 @@ import {
     orderBy,
 } from "../config/firebase";
 
-export const ChatCard = ({ id, pharmacyName, enterChat }) => {
+export const ChatCardPharmacist = ({ id, userName, enterChat }) => {
     const [chatMessages, setChatMessages] = useState([]);
     const db = getFirestore();
 
@@ -29,10 +29,10 @@ export const ChatCard = ({ id, pharmacyName, enterChat }) => {
     return (
         <TouchableOpacity
             style={styles.card}
-            onPress={() => enterChat(id, pharmacyName)}
+            onPress={() => enterChat(id, userName)}
             key={id}
         >
-            <Text style={styles.chatName}>{pharmacyName}</Text>
+            <Text style={styles.chatName}>{userName}</Text>
         </TouchableOpacity>
     );
 };
