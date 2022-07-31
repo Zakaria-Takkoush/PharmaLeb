@@ -8,6 +8,7 @@ import {
     TextInput,
     TouchableWithoutFeedback,
     Keyboard,
+    Alert,
 } from "react-native";
 // logo
 import logo from "../assets/logo/logo.png";
@@ -57,7 +58,9 @@ export const LogIn = ({ navigation }) => {
         try {
             const res = await axiosAPI.post("/users/login", user);
             const loggedUser = res.data.user;
-            alert(`Welcome ${loggedUser.first_name}`);
+            Alert.alert("Welcome!", `Hello ${loggedUser.first_name}`, [
+                { text: "OK" },
+            ]);
 
             // store token in secure store
             saveItem("token", loggedUser.token);
