@@ -10,6 +10,8 @@ import globalStyles from "../../styles/GlobalStyles";
 
 import { useState, useEffect, useContext } from "react";
 
+import { useIsFocused } from "@react-navigation/native";
+
 import {
     collection,
     getFirestore,
@@ -22,6 +24,8 @@ import { UserContext } from "../../stores/UserContext";
 
 export const Chat = ({ navigation }) => {
     const { userData } = useContext(UserContext);
+
+    const isFocused = useIsFocused();
 
     const [chats, setChats] = useState([]);
 
@@ -42,7 +46,7 @@ export const Chat = ({ navigation }) => {
 
     useEffect(() => {
         getChats();
-    }, []);
+    }, [isFocused]);
 
     const enterChat = (id, chatName) => {
         navigation.navigate("Chat Screen", {

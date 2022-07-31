@@ -21,8 +21,12 @@ import {
 import { ChatCardPharmacist } from "../../components/ChatCardPharmacist";
 import { getValueFor } from "../../stores/SecureStore";
 
+import { useIsFocused } from "@react-navigation/native";
+
 export const Chat = ({ navigation }) => {
     const [chats, setChats] = useState([]);
+
+    const isFocused = useIsFocused();
 
     const db = getFirestore();
 
@@ -42,7 +46,7 @@ export const Chat = ({ navigation }) => {
 
     useEffect(() => {
         getChats();
-    }, []);
+    }, [isFocused]);
 
     const enterChat = (id, chatName) => {
         navigation.navigate("Chat Screen", {
