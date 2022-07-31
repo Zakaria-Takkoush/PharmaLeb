@@ -16,10 +16,14 @@ import { useFocusEffect, useIsFocused } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FavoritesContext } from "../../stores/FavoritesContext";
+import { Loading } from "../../components/Loading";
 
 export const Favorites = ({ navigation, route }) => {
     // const [favorites, setFavorites] = useState([]);
     const { favorites, setFavorites } = useContext(FavoritesContext);
+
+    // content loading state
+    const [isLoading, setIsLoading] = useState(true);
 
     // use isFocused for screen reload on focus
     const isFocused = useIsFocused();
@@ -61,7 +65,12 @@ export const Favorites = ({ navigation, route }) => {
         };
         getData();
         setCanRemove(false);
+        setIsLoading(false);
     }, [isFocused]);
+
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <SafeAreaView style={globalStyles.pageContainer}>
