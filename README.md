@@ -61,11 +61,19 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 <br><br>
 <img src="./readme/title5.svg"/>
 
-> Using the above mentioned tech stacks and the wireframes built with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes built with figma from the user stories we have, the implementation of the app is shown as below, these are screenshot from the real app
 
-| Landing      | Home/Search      |
-| ------------ | ---------------- |
-| ![Landing]() | ![Home/Search]() |
+| Home/Search      | Favorites      | Chat      | Profile      | Pharmacy      |
+| ---------------- | -------------- | --------- | ------------ | ------------- |
+| ![Home/Search]() | ![Favorites]() | ![Chat]() | ![Profile]() | ![Pharmacy]() |
+
+| Items      | Edit Pharmacy      | Stock      |
+| ---------- | ------------------ | ---------- |
+| ![Items]() | ![Edit Pharmacy]() | ![Stock]() |
+
+<br></br>
+
+> Here are some short gifs from the real app
 
 <br><br>
 <img src="./readme/title6.svg"/>
