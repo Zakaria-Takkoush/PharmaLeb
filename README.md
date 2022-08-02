@@ -36,13 +36,13 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 > Note that i didn't use any styling library or theme, all from scratch and using pure react native components and Stylesheet objects (expect for Gifted Chat)
 
-| Landing                                                                                | Home/Search                                                                               |
-| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+| Home/Search      | Favorites      | Chat      | Profile      | Pharmacy      |
+| ---------------- | -------------- | --------- | ------------ | ------------- |
+| ![Home/Search]() | ![Favorites]() | ![Chat]() | ![Profile]() | ![Pharmacy]() |
 
-| Artists results                                                                                | Artist's Albums                                                                               |
-| ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) |
+| Items      | Edit Pharmacy      | Stock      |
+| ---------- | ------------------ | ---------- |
+| ![Items]() | ![Edit Pharmacy]() | ![Stock]() |
 
 <br><br>
 
@@ -50,8 +50,7 @@
 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
--   This project uses React Native framework that combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces.
-    [React Native](https://reactnative.dev/). It is developed with the help of [Expo CLI](https://expo.dev/).
+-   This project uses React Native framework [React Native](https://reactnative.dev/) that combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces.. It is developed with the help of [Expo CLI](https://expo.dev/).
 -   For persistent storage (database), the app uses [MongoDB](https://www.mongodb.com/).
 -   To send local push notifications, the app uses the expo notifications service [Expo Notifications](https://docs.expo.dev/versions/latest/sdk/notifications/#api).
 -   For chatting service, the app uses [Firebase 9](https://firebase.google.com/) with the Cloud Firestore service that helps dealing with real-time database updates.
@@ -64,9 +63,9 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Using the above mentioned tech stacks and the wireframes built with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing                                                                                | Home/Search                                                                               |
-| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+| Landing      | Home/Search      |
+| ------------ | ---------------- |
+| ![Landing]() | ![Home/Search]() |
 
 <br><br>
 <img src="./readme/title6.svg"/>

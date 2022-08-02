@@ -72,7 +72,7 @@ export const Chat = ({ navigation }) => {
             >
                 <Text style={styles.title}>Community Chat</Text>
                 <Text style={styles.text}>
-                    Enter the community chat and ask for a medicine...
+                    Enter the community chat and get in touch with requests...
                 </Text>
             </TouchableOpacity>
 
