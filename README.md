@@ -16,17 +16,19 @@
 
 ### User Stories
 
-> <b>Patient</b>
+> <b>Patient Stories</b>
 
--   As a patient, I want to search for my medical needs easily without suffering.
--   As a patient, I like to add some medicines as favorites in order to track their availability easily.
--   As a patient, I want to know how far this pharmacy is away from me because time and transportation is crucial to me.
--   I want to turn on notifications to stay updated with the availability of my favorite items.
+-   As a patient, I want to search for my medicine needs easily without suffering.
+-   As a patient, I like to bookmark some medicines as favorites in order to track their availability easily.
+-   As a patient, I want to know how far is this pharmacy because time and transportation are important to me.
+-   As a patient, I want to turn on notifications to stay updated with the availability of my needed medicines.
+-   As a patient, I want to get in touch with pharmacies easily through direct calls or text chatting to discuss medicine availability and delivery.
+-   As a patient, I want to join a community of pharmacists and other patients to ask for certain medicines or medical needs when needed.
 
-> <b>Pharmacist</b>
+> <b>Pharmacist Stories</b>
 
 -   As a pharmacist, I am an empathetic person who wants to help patients find their needs and overcome drug shortage.
--   As a pharmacist, I can register and constantly update my medicine listings, location, and contact number in the app.
+-   As a pharmacist, I want to register and set mu pharmacy location. constantly update my medicine listings, my location, and contact number in the app.
 -   As a pharmacist, I can get in touch with patients through phone calls and live chatting to discuss delivery and answer any questions they might have or to prescribe alternative drugs.
 
 <br><br>
