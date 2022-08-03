@@ -38,22 +38,28 @@
 
 > <b>Patient</b>
 
-<table>
+<table style="width:100%">
   <tr>
     <th style="width:33%; text-align:center">Home/Search </th>
     <th style="width:33%; text-align:center">Medicine</th>
     <th style="width:33%; text-align:center">Pharmacy</th>
   </tr>
+</table>
+<table style="width:100%">
   <tr>
     <td style="width:33%"><img src="./readme/wireframes/patient/Home.png" /></td>
     <td style="width:33%"><img src="./readme/wireframes/patient/Medicine.png" /></td>
     <td style="width:33%"><img src="./readme/wireframes/patient/Pharmacy.png" /></td>
   </tr>
-    <tr>
+</table>
+<table style="width:100%">
+ <tr>
     <th style="width:33%; text-align:center">Favorites </th>
     <th style="width:33%; text-align:center">Chat</th>
     <th style="width:33%; text-align:center">Profile</th>
   </tr>
+</table>
+<table style="width:100%">
   <tr>
     <td style="width:33%"><img src="./readme/wireframes/patient/Favorites.png" /></td>
     <td style="width:33%"><img src="./readme/wireframes/patient/Chat-Patient.png" /></td>
@@ -63,12 +69,14 @@
 
 > <b>Pharmacist</b>
 
-<table>
+<table style="width:100%">
   <tr>
     <th style="width:33%; text-align:center">Items</th>
     <th style="width:33%; text-align:center">Edit Stock</th>
     <th style="width:33%; text-align:center">Edit Pharmacy</th>
   </tr>
+  </table>
+  <table style="width:100%">
   <tr>
     <td style="width:33%"><img src="./readme/wireframes/pharmacist/Stock.png" /></td>
     <td style="width:33%"><img src="./readme/wireframes/pharmacist/Edit-Stock.png" /></td>
