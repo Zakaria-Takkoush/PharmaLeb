@@ -36,6 +36,8 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 > Note that i didn't use any styling library or theme, all from scratch and using pure react native components and Stylesheet objects (expect for Gifted Chat)
 
+> <b>Patient</b>
+
 <table>
   <tr>
     <th style="width:33%; text-align:center">Home/Search </th>
@@ -56,6 +58,21 @@
     <td><img src="./readme/wireframes/patient/Favorites.png" /></td>
     <td><img src="./readme/wireframes/patient/Chat-Patient.png" /></td>
     <td><img src="./readme/wireframes/patient/Profile.png" /></td>
+  </tr>
+</table>
+
+> <b>Pharmacist</b>
+
+<table>
+  <tr>
+    <th style="width:33%; text-align:center">Items</th>
+    <th style="width:33%; text-align:center">Edit Stock</th>
+    <th style="width:33%; text-align:center">Edit Pharmacy</th>
+  </tr>
+  <tr>
+    <td><img src="./readme/wireframes/pharmacist/Stock.png" /></td>
+    <td><img src="./readme/wireframes/pharmacist/Edit-Stock.png" /></td>
+    <td><img src="./readme/wireframes/pharmacist/Edit-Pharmacy.png" /></td>
   </tr>
 </table>
 
