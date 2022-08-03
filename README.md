@@ -45,9 +45,9 @@
     <th style="width:33%; text-align:center">Pharmacy</th>
   </tr>
   <tr>
-    <td style="width:33%"><img src="./readme/wireframes/patient/Home.png" /></td>
-    <td style="width:33%"><img src="./readme/wireframes/patient/Medicine.png" /></td>
-    <td style="width:33%"><img src="./readme/wireframes/patient/Pharmacy.png" /></td>
+    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Home.png" /></td>
+    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Medicine.png" /></td>
+    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Pharmacy.png" /></td>
   </tr>
  <tr>
     <th style="width:33%; text-align:center">Favorites </th>
@@ -55,9 +55,9 @@
     <th style="width:33%; text-align:center">Profile</th>
   </tr>
   <tr>
-    <td style="width:33%"><img width="400px" src="./readme/wireframes/patient/Favorites.png" /></td>
-    <td style="width:33%"><img width="400px" src="./readme/wireframes/patient/Chat-Patient.png" /></td>
-    <td style="width:33%"><img width="400px" src="./readme/wireframes/patient/Profile.png" /></td>
+    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Favorites.png" /></td>
+    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Chat-Patient.png" /></td>
+    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Profile.png" /></td>
   </tr>
 </table>
 
