@@ -28,8 +28,11 @@
 > <b>Pharmacist Stories</b>
 
 -   As a pharmacist, I am an empathetic person who wants to help patients find their needs and overcome drug shortage.
--   As a pharmacist, I want to register and set mu pharmacy location. constantly update my medicine listings, my location, and contact number in the app.
--   As a pharmacist, I can get in touch with patients through phone calls and live chatting to discuss delivery and answer any questions they might have or to prescribe alternative drugs.
+-   As a pharmacist, I want to register and set my pharmacy phone number and location on the map in order to be found easily by users.
+-   As a pharmacist, I want to constantly update my medicine listings and item stock.
+-   As a pharmacist, I need to get in touch with patients through phone calls and live chatting to discuss delivery and answer any questions they might have or to prescribe alternative drugs.
+
+> <b>Admin Stories</b>
 
 <br><br>
 
