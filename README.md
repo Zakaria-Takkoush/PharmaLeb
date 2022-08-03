@@ -88,15 +88,15 @@
 
 <img src="./readme/title4.svg"/>
 
-Here's a brief high-level overview of the tech stack the Well app uses:
+Here's a brief high-level overview of the tech stack PharmaLeb uses:
 
--   This project uses React Native framework [React Native](https://reactnative.dev/) that combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces.. It is developed with the help of [Expo CLI](https://expo.dev/).
--   For persistent storage (database), the app uses [MongoDB](https://www.mongodb.com/).
--   To send local push notifications, the app uses the expo notifications service [Expo Notifications](https://docs.expo.dev/versions/latest/sdk/notifications/#api).
--   For chatting service, the app uses [Firebase 9](https://firebase.google.com/) with the Cloud Firestore service that helps dealing with real-time database updates.
+-   The app [React Native](https://reactnative.dev/) framework that combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces. It is developed with the help of [Expo CLI](https://expo.dev/).
+-   For persistent storage (database), the app uses [MongoDB](https://www.mongodb.com/), a NoSQL database.
 -   For the backend server, the app uses [Node.js](https://nodejs.org/en/) with [Express](https://expressjs.com/) package to build a local server and deal with APIs.
--   The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
--   Google Maps API is used to display users and pharmacies on a map based on their locations.
+-   To send push notifications, the app uses the expo notifications service [Expo Notifications](https://docs.expo.dev/versions/latest/sdk/notifications/#api).
+-   For live text chatting service, the app uses [Firebase 9](https://firebase.google.com/) with the Cloud Firestore that helps dealing with real-time database updates.
+-   The app uses [Google Maps API](https://mapsplatform.google.com/) integrated with React Native to display users and pharmacies locations.
+-   The admin panel was designed with React.
 
 <br><br>
 <img src="./readme/title5.svg"/>
