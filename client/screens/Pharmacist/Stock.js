@@ -66,6 +66,9 @@ export const Stock = ({ navigation }) => {
             style={{ ...globalStyles.pageContainer, position: "relative" }}
         >
             <View style={styles.search}>
+                <Text style={globalStyles.contentHeader}>
+                    Manage your pharmacy items...
+                </Text>
                 <TextInput
                     style={globalStyles.input}
                     placeholder="Search items..."
