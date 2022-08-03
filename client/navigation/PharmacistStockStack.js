@@ -28,7 +28,11 @@ export const PharmacistStockStack = () => {
                 }}
             >
                 <Stack.Screen name="Items" component={Stock} />
-                <Stack.Screen name="Medicine Stock" component={MedicineStock} />
+                <Stack.Screen
+                    name="Medicine Stock"
+                    component={MedicineStock}
+                    options={{ title: "Edit Item Stock" }}
+                />
                 <Stack.Screen name="Add Item" component={AddMedicine} />
             </Stack.Navigator>
         </NavigationContainer>
