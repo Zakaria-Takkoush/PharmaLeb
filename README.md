@@ -36,17 +36,28 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 > Note that i didn't use any styling library or theme, all from scratch and using pure react native components and Stylesheet objects (expect for Gifted Chat)
 
-| Home/Search                                          | Medicine                                             | Pharmacy                                             |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| ![Home/Search](/readme//wireframes/patient/Home.png) | ![Pharmacy](/readme/wireframes/patient/Medicine.png) | ![Medicine](/readme/wireframes/patient/Pharmacy.png) |
-
-| Favorites                                               | Chat                                                 | Profile                                             |
-| ------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------- |
-| ![Favorites](/readme//wireframes/patient/Favorites.png) | ![Chat](/readme/wireframes/patient/Chat-Patient.png) | ![Profile](/readme//wireframes/patient/Profile.png) |
-
-| Items                                             | Edit Stock                                             | Edit Pharmacy                                                      |
-| ------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------ |
-| ![Items](/readme/wireframes/pharmacist/Stock.png) | ![Stock](/readme/wireframes/pharmacist/Edit-Stock.png) | ![Edit Pharmacy ](/readme/wireframes/pharmacist/Edit-Pharmacy.png) |
+<table>
+  <tr>
+    <th style="width:33%; text-align:center">Home/Search </th>
+    <th style="width:33%; text-align:center">Medicine</th>
+    <th style="width:33%; text-align:center">Pharmacy</th>
+  </tr>
+  <tr>
+    <td><img src="./readme/wireframes/patient/Home.png" /></td>
+    <td><img src="./readme/wireframes/patient/Medicine.png" /></td>
+    <td><img src="./readme/wireframes/patient/Pharmacy.png" /></td>
+  </tr>
+    <tr>
+    <th style="width:33%; text-align:center">Favorites </th>
+    <th style="width:33%; text-align:center">Chat</th>
+    <th style="width:33%; text-align:center">Profile</th>
+  </tr>
+  <tr>
+    <td><img src="./readme/wireframes/patient/Favorites.png" /></td>
+    <td><img src="./readme/wireframes/patient/Chat-Patient.png" /></td>
+    <td><img src="./readme/wireframes/patient/Profile.png" /></td>
+  </tr>
+</table>
 
 <br><br>
 
