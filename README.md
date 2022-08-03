@@ -36,13 +36,17 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 > Note that i didn't use any styling library or theme, all from scratch and using pure react native components and Stylesheet objects (expect for Gifted Chat)
 
-| Home/Search      | Favorites      | Chat      | Profile      | Pharmacy      |
-| ---------------- | -------------- | --------- | ------------ | ------------- |
-| ![Home/Search]() | ![Favorites]() | ![Chat]() | ![Profile]() | ![Pharmacy]() |
+| Home/Search                                          | Medicine                                             | Pharmacy                                             |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| ![Home/Search](/readme//wireframes/patient/Home.png) | ![Pharmacy](/readme/wireframes/patient/Medicine.png) | ![Medicine](/readme/wireframes/patient/Pharmacy.png) |
 
-| Items      | Edit Pharmacy      | Stock      |
-| ---------- | ------------------ | ---------- |
-| ![Items]() | ![Edit Pharmacy]() | ![Stock]() |
+| Favorites                                               | Chat                                                 | Profile                                             |
+| ------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------- |
+| ![Favorites](/readme//wireframes/patient/Favorites.png) | ![Chat](/readme/wireframes/patient/Chat-Patient.png) | ![Profile](/readme//wireframes/patient/Profile.png) |
+
+| Items                                             | Edit Stock                                             | Edit Pharmacy                                                      |
+| ------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------ |
+| ![Items](/readme/wireframes/pharmacist/Stock.png) | ![Stock](/readme/wireframes/pharmacist/Edit-Stock.png) | ![Edit Pharmacy ](/readme/wireframes/pharmacist/Edit-Pharmacy.png) |
 
 <br><br>
 
@@ -62,14 +66,6 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 <img src="./readme/title5.svg"/>
 
 > Using the above mentioned tech stacks and the wireframes built with figma from the user stories we have, the implementation of the app is shown as below, these are screenshot from the real app
-
-| Home/Search                                          | Medicine                                             | Pharmacy                                             |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| ![Home/Search](/readme//wireframes/patient/Home.png) | ![Pharmacy](/readme/wireframes/patient/Medicine.png) | ![Medicine](/readme/wireframes/patient/Pharmacy.png) |
-
-| Favorites                                               | Chat                                                 | Profile                                             |
-| ------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------- |
-| ![Favorites](/readme//wireframes/patient/Favorites.png) | ![Chat](/readme/wireframes/patient/Chat-Patient.png) | ![Profile](/readme//wireframes/patient/Profile.png) |
 
 | Items      | Edit Pharmacy      | Stock      |
 | ---------- | ------------------ | ---------- |
