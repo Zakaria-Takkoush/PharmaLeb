@@ -34,6 +34,9 @@
 
 > <b>Admin Stories</b>
 
+-   As an admin, I can access the admin panel where I can manage the medicine list within PharmaLeb app.
+-   As an admin, I can add a medicine, delete a medicine, or update medicine data.
+
 <br><br>
 
 <img src="./readme/title3.svg"/>
