@@ -96,7 +96,8 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
 -   To send push notifications, the app uses the expo notifications service [Expo Notifications](https://docs.expo.dev/versions/latest/sdk/notifications/#api).
 -   For live text chatting service, the app uses [Firebase 9](https://firebase.google.com/) with the Cloud Firestore that helps dealing with real-time database updates.
 -   The app uses [Google Maps API](https://mapsplatform.google.com/) integrated with React Native to display users and pharmacies locations.
--   The admin panel was designed with React.
+    - Note: Due to the lack of a working Google Maps Platform billing account, directions and shortest path features could not be implemented using Google Maps API. Basic features of the [React Native Maps](https://docs.expo.dev/versions/latest/sdk/map-view/) were used instead.
+-   The admin panel was designed with [React](https://reactjs.org/), A JavaScript library for building user interfaces.
 
 <br><br>
 <img src="./readme/title5.svg"/>
