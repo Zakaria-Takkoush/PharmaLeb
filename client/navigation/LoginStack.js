@@ -1,13 +1,18 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+// import screens
 import { LogIn } from "../screens/LogIn";
 import { RegisterPharmacy } from "../screens/RegisterPharmacy";
 import { SignUp } from "../screens/SignUpOptions";
 import { SignUpPatient } from "../screens/SignUpPatient";
 import { SignUpPharmacist } from "../screens/SignUpPharmacist";
+
+// import tabs
 import { PatientBottomTab } from "./PatientBottomTab";
 import { PharmacistBottomTab } from "./PharmacistBottomTab";
 
+// create main stack
 const Stack = createNativeStackNavigator();
 
 export const LoginStack = () => {
