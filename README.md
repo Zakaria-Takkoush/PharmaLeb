@@ -132,6 +132,12 @@ Here are some short gifs from the real app
 | ----------------------------------------- | ---------------------------------------------- | ------------------------------------------ |
 | ![Tabs](/readme/gifs/pharmacist-tabs.gif) | ![Add Medicine](/readme/gifs/add-to-stock.gif) | ![Edit Stock](/readme/gifs/edit-stock.gif) |
 
+> Registration and Logging in
+
+| Sign Up & Validation                                      | Login                            | Register a Pharmacy                        |
+| --------------------------------------------------------- | -------------------------------- | ------------------------------------------ |
+| ![Sign Up](/readme/gifs/register_validation_location.gif) | ![Login](/readme/gifs/login.gif) | ![Validation](/readme/gifs/validation.gif) |
+
 <br><br>
 <img src="./readme/title6.svg"/>
 
