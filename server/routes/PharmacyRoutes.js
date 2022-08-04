@@ -32,7 +32,7 @@ router.get("/", getPharmacies);
 router.get("/:id", verifyToken, getPharmacy);
 
 // Get a pharmacy by its owner's id (pass its owner id as param)
-router.get("/owner/:id", getPharmacyByOwnerID);
+router.get("/owner/:id", verifyToken, getPharmacyByOwnerID);
 
 // Add a pharmacy
 router.post("/", verifyToken, registerPharmacy);
