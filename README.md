@@ -114,13 +114,13 @@ Here are some short gifs from the real app:
 | :---------------------------------------------: | :-----------------------------------------------------: | :-----------------------------------------: |
 | ![Browse](/readme/gifs/search-for-medicine.gif) | ![Availability](/readme/gifs/medicine-availability.gif) | ![Pharmacy](/readme/gifs/call-pharmacy.gif) |
 
-|                 Add a Favorite                 |                  Delete Favorites                   |                  Edit Profile                  |
-| :--------------------------------------------: | :-------------------------------------------------: | :--------------------------------------------: |
-| ![Add Favorite](/readme/gifs/add-favorite.gif) | ![Delete Favorite](/readme/gifs/edit-favorties.gif) | ![Edit Profile](/readme/gifs/edit-profile.gif) |
+|                 Add a Favorite                 |                  Delete Favorites                   |                       Edit Profile                        |
+| :--------------------------------------------: | :-------------------------------------------------: | :-------------------------------------------------------: |
+| ![Add Favorite](/readme/gifs/add-favorite.gif) | ![Delete Favorite](/readme/gifs/edit-favorties.gif) | ![Edit Profile](/readme/gifs/edit-profile-with-image.gif) |
 
 |              Community Chat              |                     Chat                     |                   Notification                   |
 | :--------------------------------------: | :------------------------------------------: | :----------------------------------------------: |
-| ![Chat](/readme/gifs/community-chat.gif) | ![Community Chat](/readme/gifs/chatting.gif) | ![Notifications](/readme/gifs/notiications.g:if) |
+| ![Chat](/readme/gifs/community-chat.gif) | ![Community Chat](/readme/gifs/chatting.gif) | ![Notifications](/readme/gifs/notifications.gif) |
 
 ## Pharmacist Screens
 
@@ -130,9 +130,9 @@ Here are some short gifs from the real app:
 
 ## Registration and Logging in
 
-|                   Sign Up & Validation                    |              Login               |            Register a Pharmacy             |
-| :-------------------------------------------------------: | :------------------------------: | :----------------------------------------: |
-| ![Sign Up](/readme/gifs/register_validation_location.gif) | ![Login](/readme/gifs/login.gif) | ![Validation](/readme/gifs/validation.gif) |
+|                   Sign Up & Validation                    |              Login               |             Register a Pharmacy              |
+| :-------------------------------------------------------: | :------------------------------: | :------------------------------------------: |
+| ![Sign Up](/readme/gifs/register_validation_location.gif) | ![Login](/readme/gifs/login.gif) | ![Validation](/readme/gifs/add-pharmacy.gif) |
 
 ## Admin Panel:
 
@@ -161,8 +161,10 @@ Here are some short gifs from the real app:
     npm install --global expo-cli
     ```
 -   Download Expo Go App on your smartphone:
--   For Android: [Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)
--   For iOS: [Apple App Store](https://apps.apple.com/app/expo-go/id982107779)
+
+> For Android: [Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent).
+
+> For iOS: [Apple App Store](https://apps.apple.com/us/app/expo-go/id982107779).
 
 ### Installation
 
