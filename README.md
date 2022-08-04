@@ -4,13 +4,13 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 
-**[PROJECT PHILOSOPHY](hhttps://github.com/Zakaria-Takkoush/PharmaLeb#-project-philosophy) • [WIREFRAMES](https://github.com/Zakaria-Takkoush/PharmaLeb#-wireframes) • [TECH STACK](https://github.com/Zakaria-Takkoush/PharmaLeb#-tech-stack) • [IMPLEMENTATION](https://github.com/Zakaria-Takkoush/PharmaLeb-impplementation) • [HOW TO RUN?](https://github.com/Zakaria-Takkoush/PharmaLeb#-how-to-run)**
+**[PROJECT PHILOSOPHY](#philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#install)**
 
 </div>
 
 <br><br>
 
-<img src="./readme/title2.svg"/>
+<img src="./readme/title2.svg" id="philosophy"/>
 
 > PharmaLeb is a medicine tracking app right in the palm of your hands. It offers a direct connection between pharmacists and patients. Patients can easily find their needed medicine at the closest pharmacy. All it takes is three easy steps: search, find, and call.
 
@@ -39,7 +39,7 @@
 
 <br><br>
 
-<img src="./readme/title3.svg"/>
+<img src="./readme/title3.svg" id="wireframes"/>
 
 > This design was planned before on paper, then moved to Figma app for the fine details.
 > Note that i didn't use any styling library or theme, all from scratch and using pure react native components and Stylesheet objects (expect for Gifted Chat)
@@ -86,7 +86,7 @@
 
 <br><br>
 
-<img src="./readme/title4.svg"/>
+<img src="./readme/title4.svg" id='tech'/>
 
 Here's a brief high-level overview of the tech stack PharmaLeb uses:
 
@@ -100,7 +100,7 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
 -   The admin panel was designed with [React](https://reactjs.org/), A JavaScript library for building user interfaces.
 
 <br><br>
-<img src="./readme/title5.svg"/>
+<img src="./readme/title5.svg" id='implementation'/>
 
 > Using the above mentioned tech stacks and the wireframes built with figma from the user stories we have, the implementation of the app is shown as below.
 
@@ -141,7 +141,7 @@ Here are some short gifs from the real app:
 | ![Sign Up](/readme/gifs/admin-add-medicine.gif) | ![Login](/readme/gifs/admin-delete.gif) |
 
 <br><br>
-<img src="./readme/title6.svg"/>
+<img src="./readme/title6.svg" id='install'/>
 
 > This is an example of how you may give instructions on setting up your project locally.
 > To get a local copy up and running follow these simple example steps.
