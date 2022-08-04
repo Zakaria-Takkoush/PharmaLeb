@@ -141,14 +141,14 @@ Here are some short gifs from the real app:
 
 ## Admin Panel:
 
-|                 Add a Medicine                  |         Edit/Delete a Medicine          |
-| :---------------------------------------------: | :-------------------------------------: |
-| ![Sign Up](/readme/gifs/admin-add-medicine.gif) | ![Login](/readme/gifs/admin-delete.gif) |
+|                                               Add a Medicine                                               |                                         Edit/Delete a Medicine                                         |
+| :--------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: |
+|                              ![Sign Up](/readme/gifs/admin-add-medicine.gif)                               |                                ![Login](/readme/gifs/admin-delete.gif)                                 |
+| The admin can manage the medicine list displayed in the app. They can add a medicine with all its details. | The admin can also edit an existing medicine data or delete the medicine completely from the database. |
 
 <br><br>
 <img src="./readme/title6.svg" id='install'/>
 
-> This is an example of how you may give instructions on setting up your project locally.
 > To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
