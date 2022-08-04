@@ -1,6 +1,6 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+// import screens
 import { Chat } from "../screens/Patient/Chat";
 import { ChatScreen } from "../screens/Patient/ChatScreen";
 import { CommunityChat } from "../screens/CommunityChat";

@@ -1,12 +1,11 @@
-import { NavigationContainer, useFocusEffect } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useCallback } from "react";
-import { Button } from "react-native";
+
+// import screens
 import { Favorites } from "../screens/Patient/Favorites";
 import { MedicineScreen } from "../screens/Patient/MedicineScreen";
 import { PharmacyScreen } from "../screens/Patient/PharmacyScreen";
 
-// In this file, we are creating a stack within the home tab
+// In this file, we are creating a stack within the favorites tab
 // where pressing each medicine navigates to the medicine page
 
 const Stack = createNativeStackNavigator();
