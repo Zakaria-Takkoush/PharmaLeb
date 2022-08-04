@@ -108,36 +108,36 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
 
 Here are some short gifs from the real app:
 
-> Patient Screens
+## Patient Screens
 
-| Search for Medicine                             | Check Medicine Availability                             | Call Pharmacy                               |
-| ----------------------------------------------- | ------------------------------------------------------- | ------------------------------------------- |
+|               Search for Medicine               |               Check Medicine Availability               |                Call Pharmacy                |
+| :---------------------------------------------: | :-----------------------------------------------------: | :-----------------------------------------: |
 | ![Browse](/readme/gifs/search-for-medicine.gif) | ![Availability](/readme/gifs/medicine-availability.gif) | ![Pharmacy](/readme/gifs/call-pharmacy.gif) |
 
-| Add a Favorite                                 | Delete Favorites                                    | Edit Profile                                   |
-| ---------------------------------------------- | --------------------------------------------------- | ---------------------------------------------- |
+|                 Add a Favorite                 |                  Delete Favorites                   |                  Edit Profile                  |
+| :--------------------------------------------: | :-------------------------------------------------: | :--------------------------------------------: |
 | ![Add Favorite](/readme/gifs/add-favorite.gif) | ![Delete Favorite](/readme/gifs/edit-favorties.gif) | ![Edit Profile](/readme/gifs/edit-profile.gif) |
 
-| Community Chat                           | Chat                                         | Notification                                    |
-| ---------------------------------------- | -------------------------------------------- | ----------------------------------------------- |
-| ![Chat](/readme/gifs/community-chat.gif) | ![Community Chat](/readme/gifs/chatting.gif) | ![Notifications](/readme/gifs/notiications.gif) |
+|              Community Chat              |                     Chat                     |                   Notification                   |
+| :--------------------------------------: | :------------------------------------------: | :----------------------------------------------: |
+| ![Chat](/readme/gifs/community-chat.gif) | ![Community Chat](/readme/gifs/chatting.gif) | ![Notifications](/readme/gifs/notiications.g:if) |
 
-> Pharmacist Screens
+## Pharmacist Screens
 
-| Pharmacist Tabs                           | Add a Medicine                                 | Edit Stock                                 |
-| ----------------------------------------- | ---------------------------------------------- | ------------------------------------------ |
+|              Pharmacist Tabs              |                 Add a Medicine                 |                 Edit Stock                 |
+| :---------------------------------------: | :--------------------------------------------: | :----------------------------------------: |
 | ![Tabs](/readme/gifs/pharmacist-tabs.gif) | ![Add Medicine](/readme/gifs/add-to-stock.gif) | ![Edit Stock](/readme/gifs/edit-stock.gif) |
 
-> Registration and Logging in
+## Registration and Logging in
 
-| Sign Up & Validation                                      | Login                            | Register a Pharmacy                        |
-| --------------------------------------------------------- | -------------------------------- | ------------------------------------------ |
+|                   Sign Up & Validation                    |              Login               |            Register a Pharmacy             |
+| :-------------------------------------------------------: | :------------------------------: | :----------------------------------------: |
 | ![Sign Up](/readme/gifs/register_validation_location.gif) | ![Login](/readme/gifs/login.gif) | ![Validation](/readme/gifs/validation.gif) |
 
-> Admin Panel
+## Admin Panel:
 
-| Add a Medicine                                  | Edit/Delete a Medicine                  |
-| ----------------------------------------------- | --------------------------------------- |
+|                 Add a Medicine                  |         Edit/Delete a Medicine          |
+| :---------------------------------------------: | :-------------------------------------: |
 | ![Sign Up](/readme/gifs/admin-add-medicine.gif) | ![Login](/readme/gifs/admin-delete.gif) |
 
 <br><br>
