@@ -11,6 +11,7 @@ export const MedicineScreen = ({ route, navigation }) => {
 
     const [pharmacies, setPharmacies] = useState([]);
 
+    // send notification function
     const sendNotification = async () => {
         const pushToken = await getValueFor("push_token");
         const message = {
@@ -50,7 +51,6 @@ export const MedicineScreen = ({ route, navigation }) => {
             setPharmacies(pharmaciesFromServer);
         };
         getData();
-        // sendNotification();
     }, []);
 
     // filter pharmacies with only available stock for this medicine
