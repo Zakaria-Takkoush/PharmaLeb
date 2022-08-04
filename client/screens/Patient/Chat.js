@@ -1,10 +1,4 @@
-import {
-    SafeAreaView,
-    Text,
-    View,
-    TouchableOpacity,
-    StyleSheet,
-} from "react-native";
+import { SafeAreaView, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { ChatCard } from "../../components/ChatCard";
 import globalStyles from "../../styles/GlobalStyles";
 
@@ -12,6 +6,7 @@ import { useState, useEffect, useContext } from "react";
 
 import { useIsFocused } from "@react-navigation/native";
 
+// firebase functions
 import {
     collection,
     getFirestore,
@@ -20,8 +15,11 @@ import {
     query,
     where,
 } from "../../config/firebase";
-import { UserContext } from "../../stores/UserContext";
+
+// loading component
 import { Loading } from "../../components/Loading";
+
+import { UserContext } from "../../stores/UserContext";
 
 export const Chat = ({ navigation }) => {
     const { userData } = useContext(UserContext);

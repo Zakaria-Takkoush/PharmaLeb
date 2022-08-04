@@ -1,15 +1,9 @@
-import {
-    SafeAreaView,
-    Text,
-    View,
-    TouchableOpacity,
-    StyleSheet,
-} from "react-native";
-import { ChatCard } from "../../components/ChatCard";
+import { SafeAreaView, Text, TouchableOpacity, StyleSheet } from "react-native";
 import globalStyles from "../../styles/GlobalStyles";
 
 import { useState, useEffect } from "react";
 
+// firebase functions
 import {
     collection,
     getFirestore,
@@ -21,8 +15,10 @@ import {
 import { ChatCardPharmacist } from "../../components/ChatCardPharmacist";
 import { getValueFor } from "../../stores/SecureStore";
 
-import { useIsFocused } from "@react-navigation/native";
+// loading component
 import { Loading } from "../../components/Loading";
+
+import { useIsFocused } from "@react-navigation/native";
 
 export const Chat = ({ navigation }) => {
     const [chats, setChats] = useState([]);
