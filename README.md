@@ -126,6 +126,12 @@ Here are some short gifs from the real app
 | ---------------------------------------- | -------------------------------------------- | ----------------------------------------------- |
 | ![Chat](/readme/gifs/community-chat.gif) | ![Community Chat](/readme/gifs/chatting.gif) | ![Notifications](/readme/gifs/notiications.gif) |
 
+> Pharmacist Screens
+
+| Pharmacist Tabs                           | Add a Medicine                                 | Edit Stock                                 |
+| ----------------------------------------- | ---------------------------------------------- | ------------------------------------------ |
+| ![Tabs](/readme/gifs/pharmacist-tabs.gif) | ![Add Medicine](/readme/gifs/add-to-stock.gif) | ![Edit Stock](/readme/gifs/edit-stock.gif) |
+
 <br><br>
 <img src="./readme/title6.svg"/>
 
