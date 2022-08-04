@@ -118,9 +118,13 @@ Here are some short gifs from the real app
 | ----------------------------------------------- | ------------------------------------------------------- | ------------------------------------------- |
 | ![Browse](/readme/gifs/search-for-medicine.gif) | ![Availability](/readme/gifs/medicine-availability.gif) | ![Pharmacy](/readme/gifs/call-pharmacy.gif) |
 
-| Add a Favorite                                 | Delete Favorites                                    | Edit Profile                               |
-| ---------------------------------------------- | --------------------------------------------------- | ------------------------------------------ |
-| ![Add Favorite](/readme/gifs/add-favorite.gif) | ![Delete Favorite](/readme/gifs/edit-favorties.gif) | ![Pharmacy](/readme/gifs/edit-profile.gif) |
+| Add a Favorite                                 | Delete Favorites                                    | Edit Profile                                   |
+| ---------------------------------------------- | --------------------------------------------------- | ---------------------------------------------- |
+| ![Add Favorite](/readme/gifs/add-favorite.gif) | ![Delete Favorite](/readme/gifs/edit-favorties.gif) | ![Edit Profile](/readme/gifs/edit-profile.gif) |
+
+| Community Chat                           | Chat                                         | Notification                                    |
+| ---------------------------------------- | -------------------------------------------- | ----------------------------------------------- |
+| ![Chat](/readme/gifs/community-chat.gif) | ![Community Chat](/readme/gifs/chatting.gif) | ![Notifications](/readme/gifs/notiications.gif) |
 
 <br><br>
 <img src="./readme/title6.svg"/>
