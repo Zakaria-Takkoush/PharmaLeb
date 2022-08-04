@@ -1,11 +1,4 @@
-import {
-    StyleSheet,
-    TextInput,
-    Text,
-    ScrollView,
-    View,
-    FlatList,
-} from "react-native";
+import { StyleSheet, TextInput, View, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 
 // import add item card
@@ -13,9 +6,6 @@ import { AddItemCard } from "../../components/AddItemCard";
 
 // import global styles
 import globalStyles from "../../styles/GlobalStyles";
-
-// Import blue button
-import { BlueButton } from "../../components/BlueButton";
 
 // import axios
 import axiosAPI from "../../apis/axiosAPI";
