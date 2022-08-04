@@ -2,7 +2,7 @@
 
 <div align="center">
 
-> PharmaLeb, an app that helps securing medication.
+> PharmaLeb, an app that helps securing medical drugs in Lebanon.
 
 **[PROJECT PHILOSOPHY](#philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#install)**
 
@@ -18,24 +18,24 @@
 
 > <b>Patient Stories</b>
 
--   As a patient, I want to search for my medicine needs easily without suffering.
+-   As a patient, I want to search and find medicines without suffering.
 -   As a patient, I like to bookmark some medicines as favorites in order to track their availability easily.
--   As a patient, I want to know how far is this pharmacy because time and transportation are important to me.
--   As a patient, I want to turn on notifications to stay updated with the availability of my needed medicines.
--   As a patient, I want to get in touch with pharmacies easily through direct calls or text chatting to discuss medicine availability and delivery.
+-   As a patient, I want to know how far each pharmacy is because time and transportation are important to me.
+-   As a patient, I want to receive notifications to stay updated with the availability of my needed medicines.
+-   As a patient, I want to get in touch with pharmacies through direct calls or text chatting to discuss medicine availability and delivery.
 -   As a patient, I want to join a community of pharmacists and other patients to ask for certain medicines or medical needs when needed.
 
 > <b>Pharmacist Stories</b>
 
--   As a pharmacist, I am an empathetic person who wants to help patients find their needs and overcome drug shortage.
--   As a pharmacist, I want to register and set my pharmacy phone number and location on the map in order to be found easily by users.
+-   As a pharmacist, I am an empathetic person who wants to help patients find their needs and overcome drug shortage by offering my stock medicines availability to public.
+-   As a pharmacist, I want to register and set my pharmacy phone number and location on the map in order to be found by users.
 -   As a pharmacist, I want to constantly update my medicine listings and item stock.
 -   As a pharmacist, I need to get in touch with patients through phone calls and live chatting to discuss delivery and answer any questions they might have or to prescribe alternative drugs.
 
 > <b>Admin Stories</b>
 
 -   As an admin, I can access the admin panel where I can manage the medicine list within PharmaLeb app.
--   As an admin, I can add a medicine, delete a medicine, or update medicine data.
+-   As an admin, I can add a medicine, delete a medicine, or update medicine data. Medicine data and pricing are taken from the Lebanese Ministry of Public Health.
 
 <br><br>
 
