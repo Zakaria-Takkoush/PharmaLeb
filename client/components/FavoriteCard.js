@@ -19,10 +19,14 @@ export const FavoriteCard = ({
     // delete favorite
     const removeFavorite = async () => {
         const user = await getValueFor("user_id");
+        const token = await getValueFor("token");
         try {
             const res = await axiosAPI.delete(`/users/fav/${user}`, {
                 data: {
                     id: data._id,
+                },
+                headers: {
+                    "x-access-token": token,
                 },
             });
             alert("Favorite Removed");
