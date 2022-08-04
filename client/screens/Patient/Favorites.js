@@ -1,25 +1,27 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
     Text,
     View,
-    ScrollView,
     FlatList,
     StyleSheet,
     TextInput,
     TouchableOpacity,
 } from "react-native";
-import globalStyles from "../../styles/GlobalStyles";
-import { FavoriteCard } from "../../components/FavoriteCard";
-import { getValueFor } from "../../stores/SecureStore";
-import axiosAPI from "../../apis/axiosAPI";
-import { useFocusEffect, useIsFocused } from "@react-navigation/native";
-import { Feather } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FavoritesContext } from "../../stores/FavoritesContext";
+
+import globalStyles from "../../styles/GlobalStyles";
+
+import { FavoriteCard } from "../../components/FavoriteCard";
 import { Loading } from "../../components/Loading";
 
-export const Favorites = ({ navigation, route }) => {
-    // const [favorites, setFavorites] = useState([]);
+import { getValueFor } from "../../stores/SecureStore";
+
+import axiosAPI from "../../apis/axiosAPI";
+import { useIsFocused } from "@react-navigation/native";
+import { Feather } from "@expo/vector-icons";
+import { FavoritesContext } from "../../stores/FavoritesContext";
+
+export const Favorites = ({ navigation }) => {
     const { favorites, setFavorites } = useContext(FavoritesContext);
 
     // content loading state
