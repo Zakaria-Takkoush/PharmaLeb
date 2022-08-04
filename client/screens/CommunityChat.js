@@ -1,10 +1,6 @@
-import {
-    useState,
-    useEffect,
-    useLayoutEffect,
-    useCallback,
-    useContext,
-} from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
+
+// firebase functions
 import {
     collection,
     addDoc,
@@ -14,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { getFirestore } from "../config/firebase";
 
+// import gifted chat package for chatting UI
 import { GiftedChat } from "react-native-gifted-chat";
 
 import { UserContext } from "../stores/UserContext";
@@ -23,6 +20,7 @@ export const CommunityChat = () => {
 
     const { userData } = useContext(UserContext);
 
+    // messages database
     const db = getFirestore();
 
     useEffect(() => {
