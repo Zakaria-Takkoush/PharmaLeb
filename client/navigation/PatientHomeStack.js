@@ -1,5 +1,6 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+// import screens
 import { Home } from "../screens/Patient/Home";
 import { MedicineScreen } from "../screens/Patient/MedicineScreen";
 import { PharmacyScreen } from "../screens/Patient/PharmacyScreen";
