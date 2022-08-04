@@ -14,7 +14,7 @@ import {
 } from "react-native";
 
 // import map tools and components
-import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
 // logo
 import logo from "../assets/logo/logo.png";
@@ -78,14 +78,6 @@ export const SignUpPharmacist = ({ navigation }) => {
         phone_number: "",
     };
 
-    // if an error comes from the backend, handle it...
-    // eg: user already exists
-
-    // is there an error?
-    const [isError, setIsError] = useState(false);
-    // error message
-    const [errorMessage, setErrorMessage] = useState("");
-
     // set user location
     const [location, setLocation] = useState({
         latitude: 33.896359,
@@ -122,7 +114,6 @@ export const SignUpPharmacist = ({ navigation }) => {
     const postUser = async (user) => {
         try {
             const res = await axiosAPI.post("/users/register", user);
-            console.log(res.data);
             alert(
                 `Welcome to PharmaLeb ${res.data.first_name}... Now add your pharmacy details`
             );
