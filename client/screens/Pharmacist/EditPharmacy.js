@@ -115,10 +115,16 @@ export const EditPharmacy = () => {
 
     // edit pharmacy
     const editPharmacy = async (data) => {
+        const token = await getValueFor("token");
         try {
             const res = await axiosAPI.put(
                 `/pharmacies/${pharmacyData._id}`,
-                data
+                data,
+                {
+                    headers: {
+                        "x-access-token": token,
+                    },
+                }
             );
             console.log(res.data);
             alert("Pharmacy edited successfully");
