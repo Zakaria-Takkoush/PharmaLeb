@@ -102,15 +102,11 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
 <br><br>
 <img src="./readme/title5.svg"/>
 
-> Using the above mentioned tech stacks and the wireframes built with figma from the user stories we have, the implementation of the app is shown as below, these are screenshot from the real app
-
-| Items      | Edit Pharmacy      | Stock      |
-| ---------- | ------------------ | ---------- |
-| ![Items]() | ![Edit Pharmacy]() | ![Stock]() |
+> Using the above mentioned tech stacks and the wireframes built with figma from the user stories we have, the implementation of the app is shown as below.
 
 <br></br>
 
-Here are some short gifs from the real app
+Here are some short gifs from the real app:
 
 > Patient Screens
 
@@ -137,6 +133,12 @@ Here are some short gifs from the real app
 | Sign Up & Validation                                      | Login                            | Register a Pharmacy                        |
 | --------------------------------------------------------- | -------------------------------- | ------------------------------------------ |
 | ![Sign Up](/readme/gifs/register_validation_location.gif) | ![Login](/readme/gifs/login.gif) | ![Validation](/readme/gifs/validation.gif) |
+
+> Admin Panel
+
+| Add a Medicine                                  | Edit/Delete a Medicine                  |
+| ----------------------------------------------- | --------------------------------------- |
+| ![Sign Up](/readme/gifs/admin-add-medicine.gif) | ![Login](/readme/gifs/admin-delete.gif) |
 
 <br><br>
 <img src="./readme/title6.svg"/>
