@@ -133,9 +133,15 @@ export const Profile = () => {
     // post edits to backend
     const postEdit = async (data) => {
         try {
+            const token = await getValueFor("token");
             const res = await axiosAPI.put(
                 `/users/edit_prof/${userData._id}`,
-                data
+                data,
+                {
+                    headers: {
+                        "x-access-token": token,
+                    },
+                }
             );
             console.log(res.data);
             alert("Profile Updated Successfully!");
