@@ -1,33 +1,20 @@
-import React, {
-    useContext,
-    useEffect,
-    useLayoutEffect,
-    useState,
-    useCallback,
-} from "react";
-import {
-    StyleSheet,
-    Text,
-    View,
-    Keyboard,
-    TouchableWithoutFeedback,
-    ActivityIndicator,
-} from "react-native";
+import React, { useContext, useEffect, useState, useCallback } from "react";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
+
+// firebase functions
 import {
     collection,
     addDoc,
     getFirestore,
-    serverTimestamp,
     onSnapshot,
     query,
     orderBy,
     doc,
-    getDoc,
 } from "../../config/firebase";
 import { UserContext } from "../../stores/UserContext";
 import { GiftedChat } from "react-native-gifted-chat";
 
-export const ChatScreen = ({ navigation, route }) => {
+export const ChatScreen = ({ route }) => {
     const { userData } = useContext(UserContext);
 
     const chatID = route.params.id;
@@ -43,23 +30,6 @@ export const ChatScreen = ({ navigation, route }) => {
         },
     ]);
 
-    // Send message function
-    // const handleSend = async (newMessage = []) => {
-    //     const text = messages[0].text;
-
-    //     await addDoc(collection(db, `chats/${chatID}`, "messages"), {
-    //         text,
-    //         createdAt: new Date().getTime(),
-    //         user: {
-    //             _id: userData._id,
-    //         },
-    //     })
-    //         .then(() => setMsgInput(""))
-    //         .catch((error) => alert(error.message));
-
-    //     setMessages(GiftedChat.append(messages, newMessage));
-    // };
-
     const onSend = useCallback((messages = []) => {
         setMessages((previousMessages) =>
             GiftedChat.append(previousMessages, messages)
@@ -73,25 +43,6 @@ export const ChatScreen = ({ navigation, route }) => {
             user,
         });
     }, []);
-
-    // useEffect(
-    //     () =>
-    //         onSnapshot(
-    //             query(
-    //                 collection(db, `chats/${route.params.id}`, "messages"),
-    //                 orderBy("timestamp", "desc")
-    //             ),
-    //             (snapshot) => {
-    //                 setMessages(
-    //                     snapshot.docs.map((doc) => ({
-    //                         id: doc.id,
-    //                         ...doc.data(),
-    //                     }))
-    //                 );
-    //             }
-    //         ),
-    //     [route]
-    // );
 
     const getMessages = async () => {
         const docRef = doc(db, "chats", chatID);

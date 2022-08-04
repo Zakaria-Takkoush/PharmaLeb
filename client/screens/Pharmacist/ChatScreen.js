@@ -1,33 +1,20 @@
-import React, {
-    useContext,
-    useEffect,
-    useLayoutEffect,
-    useState,
-    useCallback,
-} from "react";
-import {
-    StyleSheet,
-    Text,
-    View,
-    Keyboard,
-    TouchableWithoutFeedback,
-    ActivityIndicator,
-} from "react-native";
+import React, { useContext, useEffect, useState, useCallback } from "react";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
+
+// firebase functions
 import {
     collection,
     addDoc,
     getFirestore,
-    serverTimestamp,
     onSnapshot,
     query,
     orderBy,
     doc,
-    getDoc,
 } from "../../config/firebase";
 import { UserContext } from "../../stores/UserContext";
 import { GiftedChat } from "react-native-gifted-chat";
 
-export const ChatScreen = ({ navigation, route }) => {
+export const ChatScreen = ({ route }) => {
     const { userData } = useContext(UserContext);
 
     const chatID = route.params.id;
