@@ -1,3 +1,5 @@
+// This file holds global styles used in different app components and screens
+
 import { Dimensions, StyleSheet } from "react-native";
 
 const globalStyles = StyleSheet.create({
