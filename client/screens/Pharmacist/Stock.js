@@ -2,7 +2,6 @@ import {
     StyleSheet,
     TextInput,
     Text,
-    ScrollView,
     View,
     FlatList,
     TouchableOpacity,
@@ -16,9 +15,6 @@ import { useIsFocused } from "@react-navigation/native";
 // import global styles
 import globalStyles from "../../styles/GlobalStyles";
 
-// import blue button
-import { BlueButton } from "../../components/BlueButton";
-
 import { Ionicons } from "@expo/vector-icons";
 import { getValueFor } from "../../stores/SecureStore";
 import axiosAPI from "../../apis/axiosAPI";
@@ -28,6 +24,7 @@ export const Stock = ({ navigation }) => {
     // // use isFocused to update the screen whenever loaded
     const isFocused = useIsFocused();
 
+    // items state
     const [items, setItems] = useState([]);
 
     // initialize search results array
@@ -48,13 +45,17 @@ export const Stock = ({ navigation }) => {
     const getStock = async () => {
         const pharmacy = await getValueFor("pharmacy_id");
         const token = await getValueFor("token");
-        const res = await axiosAPI.get(`/pharmacies/${pharmacy}/items`, {
-            headers: {
-                "x-access-token": token,
-            },
-        });
-        const items = res.data.items;
-        return items;
+        try {
+            const res = await axiosAPI.get(`/pharmacies/${pharmacy}/items`, {
+                headers: {
+                    "x-access-token": token,
+                },
+            });
+            const items = res.data.items;
+            return items;
+        } catch (error) {
+            console.log(error.response.data);
+        }
     };
 
     useEffect(() => {
