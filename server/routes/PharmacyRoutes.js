@@ -29,7 +29,7 @@ const router = express.Router();
 router.get("/", getPharmacies);
 
 // Get a Pharmacy (pass its id as param)
-router.get("/:id", getPharmacy);
+router.get("/:id", verifyToken, getPharmacy);
 
 // Get a pharmacy by its owner's id (pass its owner id as param)
 router.get("/owner/:id", getPharmacyByOwnerID);

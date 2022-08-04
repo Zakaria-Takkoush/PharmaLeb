@@ -42,7 +42,7 @@ const logInSchema = yup.object({
 });
 
 // import Secure Store to store the token
-import { saveItem } from "../stores/SecureStore";
+import { getValueFor, saveItem } from "../stores/SecureStore";
 import { UserContext } from "../stores/UserContext";
 import { PharmacyContext } from "../stores/PharmacyContext";
 
@@ -89,7 +89,12 @@ export const LogIn = ({ navigation }) => {
 
     // get the pharmacy knowing the user (fro pharmacists only)
     const getPharmacy = async (pharmacist) => {
-        const res = await axiosAPI.get(`/pharmacies/owner/${pharmacist}`);
+        const token = await getValueFor("token");
+        const res = await axiosAPI.get(`/pharmacies/owner/${pharmacist}`, {
+            headers: {
+                "x-access-token": token,
+            },
+        });
         const pharmacy = await res.data;
         saveItem("pharmacy_id", pharmacy._id);
         // console.log(pharmacy);
