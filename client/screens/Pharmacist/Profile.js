@@ -318,7 +318,7 @@ export const Profile = () => {
 
                             {/* Submit changes */}
                             <BlueButton
-                                text="Save Changes"
+                                text="Submit Changes"
                                 onPress={props.handleSubmit}
                             />
 
