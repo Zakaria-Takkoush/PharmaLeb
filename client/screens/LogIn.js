@@ -44,6 +44,7 @@ const logInSchema = yup.object({
 // import Secure Store to store the token
 import { saveItem } from "../stores/SecureStore";
 import { UserContext } from "../stores/UserContext";
+import { PharmacyContext } from "../stores/PharmacyContext";
 
 export const LogIn = ({ navigation }) => {
     const initialValues = {
@@ -52,6 +53,7 @@ export const LogIn = ({ navigation }) => {
     };
 
     const { setUserData } = useContext(UserContext);
+    const { setPharmacyData } = useContext(PharmacyContext);
 
     // login function (post to database and get token)
     const postLogIn = async (user) => {
@@ -85,12 +87,13 @@ export const LogIn = ({ navigation }) => {
         }
     };
 
-    // get the pharmacy ID knowing the user (fro pharmacists only)
+    // get the pharmacy knowing the user (fro pharmacists only)
     const getPharmacy = async (pharmacist) => {
         const res = await axiosAPI.get(`/pharmacies/owner/${pharmacist}`);
         const pharmacy = await res.data;
         saveItem("pharmacy_id", pharmacy._id);
-        console.log(pharmacy);
+        // console.log(pharmacy);
+        setPharmacyData(pharmacy);
     };
 
     return (
