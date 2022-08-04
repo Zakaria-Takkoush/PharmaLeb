@@ -13,12 +13,18 @@ export const AddItemCard = ({ navigation, data }) => {
 
     // add medicine to pharmacy
     const postItem = async () => {
+        const token = await getValueFor("token");
         const pharmacy = await getValueFor("pharmacy_id");
         try {
             const res = await axiosAPI.post(
                 `/pharmacies/${pharmacy}/add_item`,
                 {
                     item: data._id,
+                },
+                {
+                    headers: {
+                        "x-access-token": token,
+                    },
                 }
             );
             if (res.data.added_item) {

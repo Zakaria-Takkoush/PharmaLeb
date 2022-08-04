@@ -47,7 +47,7 @@ router.put("/:id", editPharmacy);
 router.get("/:id/items", verifyToken, getItemsByPharmID);
 
 // Add an item to pharmacy (pass medicine id as param)
-router.post("/:id/add_item", addItemToPharmacy);
+router.post("/:id/add_item", verifyToken, addItemToPharmacy);
 
 // Remove an item from pharmacy (pass ITEM id as param)
 router.delete("/:id/delete_item", removeItemFromPharmacy);
