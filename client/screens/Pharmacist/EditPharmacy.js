@@ -9,7 +9,7 @@ import {
     Modal,
     Dimensions,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { useFocusEffect } from "@react-navigation/native";
 
@@ -36,6 +36,7 @@ import { Formik } from "formik";
 
 // import yup validator
 import * as yup from "yup";
+import { PharmacyContext } from "../../stores/PharmacyContext";
 
 // create yup validation schema
 const pharmacySchema = yup.object({
@@ -54,31 +55,22 @@ const pharmacySchema = yup.object({
 
 export const EditPharmacy = () => {
     // pharmacy data
-    const [pharmacyData, setPharmacyData] = useState(null);
+    const { pharmacyData, setPharmacyData } = useContext(PharmacyContext);
 
     // split address
     // const [city, street] = pharmacyData.address.split(" - ");
 
     // get pharmacy data
-    const fetchPharmacy = async () => {
-        const id = await getValueFor("pharmacy_id");
-        try {
-            const res = await axiosAPI.get(`/pharmacies/${id}`);
-            const pharmacy = await res.data;
-            return pharmacy;
-        } catch (error) {
-            console.log(error.response.data);
-        }
-    };
-
-    // get Data on load
-    useEffect(() => {
-        const getData = async () => {
-            const pharmacyFromServer = await fetchPharmacy();
-            setPharmacyData(pharmacyFromServer);
-        };
-        getData();
-    }, [pharmacyData]);
+    // const fetchPharmacy = async () => {
+    //     const id = await getValueFor("pharmacy_id");
+    //     try {
+    //         const res = await axiosAPI.get(`/pharmacies/${id}`);
+    //         const pharmacy = await res.data;
+    //         return pharmacy;
+    //     } catch (error) {
+    //         console.log(error.response.data);
+    //     }
+    // };
 
     const initialValues = {
         name: pharmacyData?.name,
@@ -103,10 +95,8 @@ export const EditPharmacy = () => {
     const latDelta = 0.02;
     const longDelta = latDelta * aspectRatio;
     const initialRegion = {
-        // latitude: pharmacyData?.location?.latitude,
-        // longitude: pharmacyData?.location?.longitude,
-        latitude: 33.88863,
-        longitude: 35.49548,
+        latitude: pharmacyData?.location?.latitude,
+        longitude: pharmacyData?.location?.longitude,
         latitudeDelta: latDelta,
         longitudeDelta: longDelta,
     };
@@ -136,6 +126,14 @@ export const EditPharmacy = () => {
             console.log(error.response.data);
         }
     };
+
+    // get Data on load
+    useEffect(() => {
+        const getData = async () => {
+            await setPharmacyData(pharmacyData);
+        };
+        getData();
+    }, [pharmacyData]);
 
     return (
         <TouchableWithoutFeedback
