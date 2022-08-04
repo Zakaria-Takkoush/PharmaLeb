@@ -13,7 +13,7 @@ import {
 } from "react-native";
 
 // import map tools and components
-import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
 // logo
 import logo from "../assets/logo/logo.png";
@@ -70,11 +70,6 @@ export const RegisterPharmacy = ({ navigation }) => {
         street: "",
         owner: "",
     };
-
-    // const getOwner = async () => {
-    //     const pharmacist = await getValueFor("user_id");
-    //     return pharmacist;
-    // };
 
     // set pharmacy location
     const [location, setLocation] = useState({
