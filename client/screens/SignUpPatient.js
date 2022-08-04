@@ -111,7 +111,6 @@ export const SignUpPatient = ({ navigation }) => {
     const postUser = async (user) => {
         try {
             const res = await axiosAPI.post("/users/register", user);
-            console.log(res.data);
             alert(
                 `Welcome to PharmaLeb ${res.data.first_name}... Now login into your account`
             );
