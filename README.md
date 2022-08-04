@@ -42,7 +42,7 @@
 <img src="./readme/title3.svg" id="wireframes"/>
 
 > This design was planned before on paper, then moved to Figma app for the fine details.
-> Note that i didn't use any styling library or theme, all from scratch and using pure react native components and Stylesheet objects (expect for Gifted Chat)
+> Note that no styling library or theme were used in the app or admin panel. All is done from scratch using pure react native components and Stylesheet objects (expect for Gifted Chat)
 
 > <b>Patient</b>
 
@@ -90,12 +90,12 @@
 
 Here's a brief high-level overview of the tech stack PharmaLeb uses:
 
--   The app [React Native](https://reactnative.dev/) framework that combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces. It is developed with the help of [Expo CLI](https://expo.dev/).
--   For persistent storage (database), the app uses [MongoDB](https://www.mongodb.com/), a NoSQL database.
+-   The app uses [React Native](https://reactnative.dev/) framework that combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces. It is developed with the help of [Expo CLI](https://expo.dev/).
+-   For persistent data storage (database), the app uses [MongoDB](https://www.mongodb.com/), a NoSQL database.
 -   For the backend server, the app uses [Node.js](https://nodejs.org/en/) with [Express](https://expressjs.com/) package to build a local server and deal with APIs.
 -   To send push notifications, the app uses the expo notifications service [Expo Notifications](https://docs.expo.dev/versions/latest/sdk/notifications/#api).
 -   For live text chatting service, the app uses [Firebase 9](https://firebase.google.com/) with the Cloud Firestore that helps dealing with real-time database updates.
--   The app uses [Google Maps API](https://mapsplatform.google.com/) integrated with React Native to display users and pharmacies locations.
+-   The app uses [Google Maps API](https://mapsplatform.google.com/) integrated with React Native to display locations.
     -   Note: Due to the lack of a working Google Maps Platform billing account, directions and shortest path features could not be implemented using Google Maps API. Basic features of the [React Native Maps](https://docs.expo.dev/versions/latest/sdk/map-view/) were used instead.
 -   The admin panel was designed with [React](https://reactjs.org/), A JavaScript library for building user interfaces.
 
