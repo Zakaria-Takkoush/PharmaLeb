@@ -11,10 +11,8 @@ import {
 } from "react-native";
 import React, { useState, useEffect, useContext } from "react";
 
-import { useFocusEffect } from "@react-navigation/native";
-
 // import map tools and components
-import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
 // import global styles
 import globalStyles from "../../styles/GlobalStyles";
@@ -56,21 +54,6 @@ const pharmacySchema = yup.object({
 export const EditPharmacy = () => {
     // pharmacy data
     const { pharmacyData, setPharmacyData } = useContext(PharmacyContext);
-
-    // split address
-    // const [city, street] = pharmacyData.address.split(" - ");
-
-    // get pharmacy data
-    // const fetchPharmacy = async () => {
-    //     const id = await getValueFor("pharmacy_id");
-    //     try {
-    //         const res = await axiosAPI.get(`/pharmacies/${id}`);
-    //         const pharmacy = await res.data;
-    //         return pharmacy;
-    //     } catch (error) {
-    //         console.log(error.response.data);
-    //     }
-    // };
 
     const initialValues = {
         name: pharmacyData?.name,
