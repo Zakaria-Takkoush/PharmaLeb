@@ -1,27 +1,27 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-// Import Screens
-import { Chat } from "../screens/Patient/Chat";
-import { Favorites } from "../screens/Patient/Favorites";
-import { Home } from "../screens/Patient/Home";
+// import Screens
 import { Profile } from "../screens/Patient/Profile";
 import { PatientHomeStack } from "./PatientHomeStack";
 import { PatientFavoritesStack } from "./PatientFavoritesStack";
 import { PatientChatStack } from "./PatientChatStack";
 
-// Import Icons
+// import Icons
 import { FontAwesome } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { useCallback, useEffect } from "react";
-import { useFocusEffect, useIsFocused } from "@react-navigation/native";
+
+// import favorites provider for context
 import FavoritesProvider from "../stores/FavoritesContext";
 
+// create tab
 const Tab = createBottomTabNavigator();
 
 export const PatientBottomTab = () => {
     return (
+        // wrap the patient tab with favorites provider
+        // to use favorites context
         <FavoritesProvider>
             <Tab.Navigator
                 initialRouteName="Home Stack"
@@ -42,7 +42,7 @@ export const PatientBottomTab = () => {
                     },
                 }}
             >
-                {/* Home Tab */}
+                {/* Home Stack Tab */}
                 <Tab.Screen
                     name="Home Stack"
                     component={PatientHomeStack}
@@ -58,7 +58,7 @@ export const PatientBottomTab = () => {
                     }}
                 />
 
-                {/* Favorites Tab */}
+                {/* Favorites Stack Tab */}
                 <Tab.Screen
                     name="Favorites Stack"
                     component={PatientFavoritesStack}
@@ -74,7 +74,7 @@ export const PatientBottomTab = () => {
                     }}
                 />
 
-                {/* Chats Tab */}
+                {/* Chats Stack Tab */}
                 <Tab.Screen
                     name="Chats Stack"
                     component={PatientChatStack}
