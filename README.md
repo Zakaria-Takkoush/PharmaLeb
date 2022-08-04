@@ -127,9 +127,10 @@ Here are some short gifs from the real app:
 
 ## Pharmacist Screens
 
-|              Pharmacist Tabs              |                 Add a Medicine                 |                 Edit Stock                 |
-| :---------------------------------------: | :--------------------------------------------: | :----------------------------------------: |
-| ![Tabs](/readme/gifs/pharmacist-tabs.gif) | ![Add Medicine](/readme/gifs/add-to-stock.gif) | ![Edit Stock](/readme/gifs/edit-stock.gif) |
+|              Pharmacist Tabs              |                                          Add a Medicine                                           |                                           Edit Stock                                            |
+| :---------------------------------------: | :-----------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
+| ![Tabs](/readme/gifs/pharmacist-tabs.gif) |                          ![Add Medicine](/readme/gifs/add-to-stock.gif)                           |                           ![Edit Stock](/readme/gifs/edit-stock.gif)                            |
+|  This is the pharmacist part of the app.  | Pharmacists can add any medicine to their available items from the predefined medicines database. | Each pharmacist can edit the stock of their items whenever there are new arrivals or purchases. |
 
 ## Registration and Logging in
 
