@@ -6,14 +6,12 @@ import {
     View,
     TouchableOpacity,
     TextInput,
-    TouchableWithoutFeedback,
-    Keyboard,
     ScrollView,
     Modal,
     Dimensions,
 } from "react-native";
 // import map tools and components
-import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
 import { useContext, useEffect, useState } from "react";
 import globalStyles from "../../styles/GlobalStyles";
@@ -30,6 +28,8 @@ import axiosAPI from "../../apis/axiosAPI";
 import { Formik } from "formik";
 // import yup for form validation
 import * as yup from "yup";
+
+// stores
 import { getValueFor } from "../../stores/SecureStore";
 import { UserContext } from "../../stores/UserContext";
 
@@ -45,17 +45,6 @@ const registerSchema = yup.object({
         .min(3, "Last name must be at least 3 characters.")
         .max(30, "Last name must be at most 30 characters.")
         .required("Last name is required."),
-    // email: yup
-    //     .string()
-    //     .email("Email is not valid")
-    //     .required("Email is required."),
-    // password: yup
-    //     .string()
-    //     .min(6, "Password should be at least 6 characters long.")
-    //     .required("Password is required."),
-    // confirm_password: yup
-    //     .string()
-    //     .oneOf([yup.ref("password"), null], "Passwords do not match."),
     date_of_birth: yup.date("Enter a valid date"),
     phone_number: yup.number().min(8).required("Phone number is required."),
 });
@@ -90,9 +79,6 @@ export const Profile = () => {
     const initialValues = {
         first_name: userData?.first_name,
         last_name: userData?.last_name,
-        // email: userData?.email,
-        // password: userData?.password,
-        // confirm_password: userData?.password,
         date_of_birth: userData?.date_of_birth.split("T")[0],
         phone_number: userData?.phone_number,
     };
@@ -123,7 +109,6 @@ export const Profile = () => {
     const handleSubmit = (data) => {
         let user = {
             ...data,
-            // user_type: "pharmacist",
             location: location,
             photo: selectedImage ? selectedImage.localUri : userData.photo,
         };
