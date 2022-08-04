@@ -1,16 +1,17 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-// Import Screens
+// import screens
 import { PharmacistStockStack } from "./PharmacistStockStack";
 import { Profile } from "../screens/Pharmacist/Profile";
 import { EditPharmacy } from "../screens/Pharmacist/EditPharmacy";
 import { PharmacistChatStack } from "./PharmacistChatStack";
 
-// Import Icons
+// import icons
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 
+// create tab
 const Tab = createBottomTabNavigator();
 
 export const PharmacistBottomTab = () => {

@@ -4,8 +4,7 @@ import { Chat } from "../screens/Pharmacist/Chat";
 import { ChatScreen } from "../screens/Pharmacist/ChatScreen";
 import { CommunityChat } from "../screens/CommunityChat";
 
-// In this file, we are creating a stack within the home tab
-// where pressing each medicine navigates to the medicine page
+// In this file, we are creating a stack within the pharmacist chat tab
 
 const Stack = createNativeStackNavigator();
 
