@@ -75,16 +75,6 @@ export const SignUpPatient = ({ navigation }) => {
         phone_number: "",
     };
 
-    // const [user, setUser] = useState(initialState);
-
-    // if an error comes from the backend, handle it...
-    // eg: user already exists
-
-    // is there an error?
-    const [isError, setIsError] = useState(false);
-    // error message
-    const [errorMessage, setErrorMessage] = useState("");
-
     // set user location
     const [location, setLocation] = useState({
         latitude: 33.896359,
@@ -128,8 +118,6 @@ export const SignUpPatient = ({ navigation }) => {
             navigation.navigate("Log In");
         } catch (error) {
             console.log(error.response.data);
-            // setIsError(true);
-            // setErrorMessage(error.response.data);
             alert(error.response.data);
         }
     };
