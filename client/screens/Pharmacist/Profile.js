@@ -5,8 +5,6 @@ import {
     View,
     TouchableOpacity,
     TextInput,
-    TouchableWithoutFeedback,
-    Keyboard,
     ScrollView,
     Modal,
     Dimensions,
@@ -24,10 +22,12 @@ import { BlueButton } from "../../components/BlueButton";
 // import image picker
 import * as ImagePicker from "expo-image-picker";
 
+// import axios file
 import axiosAPI from "../../apis/axiosAPI";
 
 // import formik
 import { Formik } from "formik";
+
 // import yup for form validation
 import * as yup from "yup";
 import { getValueFor } from "../../stores/SecureStore";
@@ -45,17 +45,6 @@ const registerSchema = yup.object({
         .min(3, "Last name must be at least 3 characters.")
         .max(30, "Last name must be at most 30 characters.")
         .required("Last name is required."),
-    // email: yup
-    //     .string()
-    //     .email("Email is not valid")
-    //     .required("Email is required."),
-    // password: yup
-    //     .string()
-    //     .min(6, "Password should be at least 6 characters long.")
-    //     .required("Password is required."),
-    // confirm_password: yup
-    //     .string()
-    //     .oneOf([yup.ref("password"), null], "Passwords do not match."),
     date_of_birth: yup.date("Enter a valid date"),
     phone_number: yup.number().min(8).required("Phone number is required."),
 });
@@ -90,9 +79,6 @@ export const Profile = () => {
     const initialValues = {
         first_name: userData?.first_name,
         last_name: userData?.last_name,
-        // email: userData?.email,
-        // password: userData?.password,
-        // confirm_password: userData?.password,
         date_of_birth: userData?.date_of_birth.split("T")[0],
         phone_number: userData?.phone_number,
     };
@@ -123,7 +109,6 @@ export const Profile = () => {
     const handleSubmit = (data) => {
         let user = {
             ...data,
-            // user_type: "pharmacist",
             location: location,
             photo: selectedImage ? selectedImage.localUri : userData.photo,
         };
@@ -149,8 +134,6 @@ export const Profile = () => {
             console.log(error.response.data);
         }
     };
-
-    // router.post("/edit_prof/:id", editProfile);
 
     // get user data on load (from context)
     useEffect(() => {
@@ -231,37 +214,6 @@ export const Profile = () => {
                                         )}
                                 </View>
                             </View>
-
-                            {/* <Text style={globalStyles.label}>Email:</Text>
-                            <TextInput
-                                style={globalStyles.input}
-                                placeholder="Enter your email..."
-                                onChangeText={props.handleChange("email")}
-                                value={props.values.email}
-                                defaultValue={userData.email}
-                            /> */}
-
-                            {/* <Text style={globalStyles.label}>New Password:</Text>
-                        <TextInput
-                            style={globalStyles.input}
-                            placeholder="Enter your password..."
-                            secureTextEntry={true} // password
-                            onChangeText={props.handleChange("password")}
-                            value={props.values.password}
-                            defaultValue={userData.password}
-                        />
-
-                        <Text style={globalStyles.label}>
-                            Confirm new Password:
-                        </Text>
-                        <TextInput
-                            style={globalStyles.input}
-                            placeholder="Enter your password..."
-                            secureTextEntry={true} // password
-                            onChangeText={props.handleChange("password")}
-                            value={props.values.password}
-                            defaultValue={userData.password}
-                        /> */}
 
                             <Text style={globalStyles.label}>
                                 Date of Birth:
