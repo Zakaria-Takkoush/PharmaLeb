@@ -9,10 +9,10 @@ import {
 } from "react-native";
 import React, { useContext } from "react";
 import globalStyles from "../../styles/GlobalStyles";
-import { BlueButton } from "../../components/BlueButton";
-import MapView, { PROVIDER_GOOGLE, Callout, Marker } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { Ionicons } from "@expo/vector-icons";
 
+// firebase functions
 import { collection, addDoc, getFirestore } from "../../config/firebase";
 
 import { UserContext } from "../../stores/UserContext";
@@ -80,8 +80,6 @@ export const PharmacyScreen = ({ navigation, route }) => {
             </Text>
 
             <View style={styles.actions}>
-                {/* <BlueButton text="Call" onPress={openDialScreen} />
-                <BlueButton text="Chat" onPress={createChat} /> */}
                 <TouchableOpacity onPress={openDialScreen}>
                     <Ionicons name="call" size={50} color="#009FFF" />
                 </TouchableOpacity>
