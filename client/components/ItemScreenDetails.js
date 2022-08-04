@@ -1,7 +1,5 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-// import pic from "../assets/panadol.png";
 
 export const ItemScreenDetails = ({ details }) => {
     return (
@@ -39,9 +37,6 @@ const styles = StyleSheet.create({
     image: {
         width: 120,
         height: 120,
-        // borderRadius: 20,
-        // borderWidth: 2,
-        // borderColor: "#009FFF",
     },
     name: {
         fontSize: 22,

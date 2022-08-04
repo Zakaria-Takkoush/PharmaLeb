@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
-// import pic from "../assets/panadol.png";
 
 export const MedicineCard = ({ navigation, details }) => {
     return (

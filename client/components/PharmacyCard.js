@@ -31,11 +31,6 @@ export const PharmacyCard = ({ details, medicine, navigation }) => {
         }
     };
 
-    // const index = items.findIndex((item) => {
-    //     return item.item === medicine;
-    // });
-    // setItemStock(items[index].stock);
-
     useEffect(() => {
         findDistance();
         findStock();

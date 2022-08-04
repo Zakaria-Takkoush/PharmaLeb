@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-// import pic from "../assets/panadol.png";
 import axiosAPI from "../apis/axiosAPI";
 import { getValueFor } from "../stores/SecureStore";
 import { FavoritesContext } from "../stores/FavoritesContext";
@@ -110,9 +109,6 @@ const styles = StyleSheet.create({
     image: {
         width: 120,
         height: 120,
-        // borderRadius: 20,
-        // borderWidth: 2,
-        // borderColor: "#009FFF",
     },
     name: {
         fontSize: 22,
