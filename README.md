@@ -2,7 +2,7 @@
 
 <div align="center">
 
-> Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
+> PharmaLeb, an app that helps securing medication.
 
 **[PROJECT PHILOSOPHY](#philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#install)**
 
@@ -12,7 +12,7 @@
 
 <img src="./readme/title2.svg" id="philosophy"/>
 
-> PharmaLeb is a medicine tracking app right in the palm of your hands. It offers a direct connection between pharmacists and patients. Patients can easily find their needed medicine at the closest pharmacy. All it takes is three easy steps: search, find, and call.
+> Are you suffering to find your medicine? PharmaLeb is a medicine tracking app right in the palm of your hands. It offers a direct connection between pharmacists and patients. Patients can easily find their needed medicine at the closest pharmacy. All it takes is three easy steps: search, find, and call.
 
 ### User Stories
 
@@ -108,7 +108,7 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
 
 Here are some short gifs from the real app:
 
-## Patient Screens
+## Patient Screens:
 
 |                                   Search for Medicine                                    |                                            Check Medicine Availability                                             |                              Call Pharmacy                               |
 | :--------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------: |
@@ -125,14 +125,14 @@ Here are some short gifs from the real app:
 |                                                            ![Chat](/readme/gifs/community-chat.gif)                                                            |                                                       ![Community Chat](/readme/gifs/chatting.gif)                                                        |                                                            ![Notifications](/readme/gifs/notifications.gif)                                                            |
 | The community chat is where all patients and pharmacists can communicate with each other. It is an additional way to find medicines and request medical needs. | One-to-one chat is another way of communication between a patient and a pharmacist. They can discuss availability, reservation, price, and delivery here. | Patients receive push notifications when a medicine in their favorites list becomes available. It keeps patients always updated with their medical needs availability. |
 
-## Pharmacist Screens
+## Pharmacist Screens:
 
 |              Pharmacist Tabs              |                                          Add a Medicine                                           |                                           Edit Stock                                            |
 | :---------------------------------------: | :-----------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
 | ![Tabs](/readme/gifs/pharmacist-tabs.gif) |                          ![Add Medicine](/readme/gifs/add-to-stock.gif)                           |                           ![Edit Stock](/readme/gifs/edit-stock.gif)                            |
 |  This is the pharmacist part of the app.  | Pharmacists can add any medicine to their available items from the predefined medicines database. | Each pharmacist can edit the stock of their items whenever there are new arrivals or purchases. |
 
-## Registration and Logging in
+## Registration and Logging in:
 
 |                                                                                       Sign Up & Validation                                                                                        |                                                                                      Login                                                                                      |                                                                           Register a Pharmacy                                                                            |
 | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
