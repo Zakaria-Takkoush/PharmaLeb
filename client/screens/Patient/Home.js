@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {
-    Text,
-    View,
-    TextInput,
-    StyleSheet,
-    ScrollView,
-    FlatList,
-} from "react-native";
+import { Text, View, TextInput, StyleSheet, FlatList } from "react-native";
 import globalStyles from "../../styles/GlobalStyles";
-import { BlueButton } from "../../components/BlueButton";
 import { MedicineCard } from "../../components/MedicineCard";
 import { Loading } from "../../components/Loading";
 
-// import secure store functions
-import { getValueFor } from "../../stores/SecureStore";
+// import axios file
 import axiosAPI from "../../apis/axiosAPI";
 import { SafeAreaView } from "react-native-safe-area-context";
 
