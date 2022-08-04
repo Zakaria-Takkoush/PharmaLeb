@@ -192,8 +192,3 @@ Here are some short gifs from the real app:
     ```
 
 4. Scan the generated QR code with your camera (ios) or through the Expo Go application (android)
-
-5. Enter your API in `config.js`
-    ```js
-    const API_KEY = "ENTER YOUR API";
-    ```
