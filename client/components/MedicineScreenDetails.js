@@ -26,10 +26,19 @@ export const MedicineScreenDetails = ({ details }) => {
     // add to favorites
     const addFavorite = async () => {
         const user = await getValueFor("user_id");
+        const token = await getValueFor("token");
         try {
-            const res = await axiosAPI.post(`users/fav/${user}`, {
-                medicine: details._id,
-            });
+            const res = await axiosAPI.post(
+                `users/fav/${user}`,
+                {
+                    medicine: details._id,
+                },
+                {
+                    headers: {
+                        "x-access-token": token,
+                    },
+                }
+            );
             if (res.data.favorite_added) {
                 alert(`Added to Favorites!`);
                 setIsAdded(true);
