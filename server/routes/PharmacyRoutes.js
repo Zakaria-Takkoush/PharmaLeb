@@ -53,7 +53,7 @@ router.post("/:id/add_item", verifyToken, addItemToPharmacy);
 router.delete("/:id/delete_item", removeItemFromPharmacy);
 
 // Update an item stock (pass ITEM id as param)
-router.put("/:id/edit_stock", updateItemStock);
+router.put("/:id/edit_stock", verifyToken, updateItemStock);
 
 // Find all pharmacies having a medicine (pass MEDICINE id as param)
 router.get("/available/:id", findMedicineAtPharmacies);

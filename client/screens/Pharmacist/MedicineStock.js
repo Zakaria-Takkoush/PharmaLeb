@@ -37,6 +37,7 @@ export const MedicineStock = ({ route }) => {
 
     // update stock API
     const updateStock = async () => {
+        const token = await getValueFor("token");
         const pharmacy = await getValueFor("pharmacy_id");
         try {
             const res = await axiosAPI.put(
@@ -44,6 +45,11 @@ export const MedicineStock = ({ route }) => {
                 {
                     id: item._id,
                     stock: stock,
+                },
+                {
+                    headers: {
+                        "x-access-token": token,
+                    },
                 }
             );
             console.log(res.data);
