@@ -134,9 +134,10 @@ Here are some short gifs from the real app:
 
 ## Registration and Logging in
 
-|                   Sign Up & Validation                    |              Login               |             Register a Pharmacy              |
-| :-------------------------------------------------------: | :------------------------------: | :------------------------------------------: |
-| ![Sign Up](/readme/gifs/register_validation_location.gif) | ![Login](/readme/gifs/login.gif) | ![Validation](/readme/gifs/add-pharmacy.gif) |
+|                                                                                       Sign Up & Validation                                                                                        |                                                                                      Login                                                                                      |                                                                           Register a Pharmacy                                                                            |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                                     ![Sign Up](/readme/gifs/register_validation_location.gif)                                                                     |                                                                        ![Login](/readme/gifs/login.gif)                                                                         |                                                               ![Validation](/readme/gifs/add-pharmacy.gif)                                                               |
+| Patients and pharmacists can register to PharmaLeb. There are validation rules to ensure secure and genuine data. Users are asked to set their location as it wil be used to calculate distances. | This is the opening app screen. Users can log in and they will be welcomed. The app will automatically direct each user type to their corresponding UI (patient or pharmacist). | After a pharmacist registers their account, they will be asked to register their pharmacy. Of course, pharmacy data should be valid and pharmacy location should be set. |
 
 ## Admin Panel:
 
