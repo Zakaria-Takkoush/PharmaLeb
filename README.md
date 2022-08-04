@@ -110,7 +110,13 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
 
 <br></br>
 
-> Here are some short gifs from the real app
+Here are some short gifs from the real app
+
+> Patient Screens
+
+| Search for Medicine  |  Check Medicine Availability    | Call Pharmacy      |
+| ---------- | ------------------ | ---------- |
+| ![Browse](/readme/gifs/search-for-medicine.gif) | ![Availability](/readme/gifs/medicine-availability.gif) | ![Pharmacy](/readme/gifs/call-pharmacy.gif) |
 
 <br><br>
 <img src="./readme/title6.svg"/>
