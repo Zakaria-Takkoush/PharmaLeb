@@ -10,7 +10,10 @@ import globalStyles from "../../styles/GlobalStyles";
 // import icons
 import { Ionicons } from "@expo/vector-icons";
 import { BlueButton } from "../../components/BlueButton";
+
+// import axios file
 import axiosAPI from "../../apis/axiosAPI";
+
 import { getValueFor } from "../../stores/SecureStore";
 
 export const MedicineStock = ({ route }) => {
