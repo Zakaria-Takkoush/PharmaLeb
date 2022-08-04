@@ -4,13 +4,13 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
     TextInput,
     TouchableWithoutFeedback,
     Keyboard,
     Alert,
 } from "react-native";
-// logo
+
+// import app logo
 import logo from "../assets/logo/logo.png";
 
 // import buttons
@@ -41,7 +41,7 @@ const logInSchema = yup.object({
         .required("Password is required."),
 });
 
-// import Secure Store to store the token
+// import stores and their functions
 import { getValueFor, saveItem } from "../stores/SecureStore";
 import { UserContext } from "../stores/UserContext";
 import { PharmacyContext } from "../stores/PharmacyContext";
@@ -90,15 +90,18 @@ export const LogIn = ({ navigation }) => {
     // get the pharmacy knowing the user (fro pharmacists only)
     const getPharmacy = async (pharmacist) => {
         const token = await getValueFor("token");
-        const res = await axiosAPI.get(`/pharmacies/owner/${pharmacist}`, {
-            headers: {
-                "x-access-token": token,
-            },
-        });
-        const pharmacy = await res.data;
-        saveItem("pharmacy_id", pharmacy._id);
-        // console.log(pharmacy);
-        setPharmacyData(pharmacy);
+        try {
+            const res = await axiosAPI.get(`/pharmacies/owner/${pharmacist}`, {
+                headers: {
+                    "x-access-token": token,
+                },
+            });
+            const pharmacy = await res.data;
+            saveItem("pharmacy_id", pharmacy._id);
+            setPharmacyData(pharmacy);
+        } catch (error) {
+            console.log(error.response.data);
+        }
     };
 
     return (
@@ -151,12 +154,6 @@ export const LogIn = ({ navigation }) => {
                                         {props.errors.password}
                                     </Text>
                                 )}
-
-                            {/* <TouchableOpacity>
-                                <Text style={styles.forgot}>
-                                    Forgot password?
-                                </Text>
-                            </TouchableOpacity> */}
                         </View>
 
                         {/* sign in button */}
@@ -170,9 +167,6 @@ export const LogIn = ({ navigation }) => {
                             text="Sign Up!"
                             onPress={() => navigation.navigate("Sign Up")}
                         />
-
-                        {/* <PharmacyCard />
-                <PharmacyCard /> */}
                     </View>
                 )}
             </Formik>
