@@ -47,7 +47,12 @@ export const Stock = ({ navigation }) => {
     // fetch pharmacy's stock
     const getStock = async () => {
         const pharmacy = await getValueFor("pharmacy_id");
-        const res = await axiosAPI.get(`/pharmacies/${pharmacy}/items`);
+        const token = await getValueFor("token");
+        const res = await axiosAPI.get(`/pharmacies/${pharmacy}/items`, {
+            headers: {
+                "x-access-token": token,
+            },
+        });
         const items = res.data.items;
         return items;
     };

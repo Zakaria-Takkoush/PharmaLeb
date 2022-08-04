@@ -44,7 +44,7 @@ router.delete("/:id", removePharmacy);
 router.put("/:id", editPharmacy);
 
 // Get a pharmacy stock items
-router.get("/:id/items", getItemsByPharmID);
+router.get("/:id/items", verifyToken, getItemsByPharmID);
 
 // Add an item to pharmacy (pass medicine id as param)
 router.post("/:id/add_item", addItemToPharmacy);
