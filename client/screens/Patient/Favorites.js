@@ -48,8 +48,13 @@ export const Favorites = ({ navigation, route }) => {
     // fetch favorites api
     const fetchFavorites = async () => {
         const user = await getValueFor("user_id");
+        const token = await getValueFor("token");
         try {
-            const res = await axiosAPI.get(`/users/fav/${user}`);
+            const res = await axiosAPI.get(`/users/fav/${user}`, {
+                headers: {
+                    "x-access-token": token,
+                },
+            });
             const favorites = res.data.favorites;
             return favorites;
         } catch (error) {

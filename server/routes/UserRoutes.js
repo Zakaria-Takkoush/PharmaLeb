@@ -27,12 +27,12 @@ router.get("/", verifyToken, (req, res) => {
 });
 
 // Favorites:
-router.get("/fav/:id", getFavorites);
+router.get("/fav/:id", verifyToken, getFavorites);
 
 // Add a favorite
-router.post("/fav/:id", addFavorite);
+router.post("/fav/:id", verifyToken, addFavorite);
 
 // Delete a favorite (pass user_id as param and fav_id in the body)
-router.delete("/fav/:id", deleteFavorite);
+router.delete("/fav/:id", verifyToken, deleteFavorite);
 
 module.exports = router;
