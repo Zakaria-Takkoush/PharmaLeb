@@ -110,9 +110,10 @@ Here are some short gifs from the real app:
 
 ## Patient Screens
 
-|               Search for Medicine               |               Check Medicine Availability               |                Call Pharmacy                |
-| :---------------------------------------------: | :-----------------------------------------------------: | :-----------------------------------------: |
-| ![Browse](/readme/gifs/search-for-medicine.gif) | ![Availability](/readme/gifs/medicine-availability.gif) | ![Pharmacy](/readme/gifs/call-pharmacy.gif) |
+|                            Search for Medicine                             |                                                       Check Medicine Availability                                                       |                            Call Pharmacy                            |
+| :------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------: |
+|              ![Browse](/readme/gifs/search-for-medicine.gif)               |                                         ![Availability](/readme/gifs/medicine-availability.gif)                                         |             ![Pharmacy](/readme/gifs/call-pharmacy.gif)             |
+| The patient searches for a medicine and results are filtered in real-time. | The patient will find out what pharmacies selling this medicines. The pharmacy's distance from the patient is calculated and displayed. | The app directly navigates to the phone dialer to call the pharmacy |
 
 |                 Add a Favorite                 |                  Delete Favorites                   |                       Edit Profile                        |
 | :--------------------------------------------: | :-------------------------------------------------: | :-------------------------------------------------------: |
