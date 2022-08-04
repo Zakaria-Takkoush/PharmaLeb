@@ -1,12 +1,13 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
-// import medicine from "../assets/panadol.png";
 import { Ionicons } from "@expo/vector-icons";
 import { getValueFor } from "../stores/SecureStore";
+
+// import axios file for API calls with baseURL
 import axiosAPI from "../apis/axiosAPI";
 
-export const AddItemCard = ({ navigation, data }) => {
-    //handlePress
+export const AddItemCard = ({ data }) => {
+    // handlePress
     const handlePress = () => {
         postItem();
     };
@@ -32,7 +33,6 @@ export const AddItemCard = ({ navigation, data }) => {
             } else {
                 alert(res.data);
             }
-            console.log(res.data);
         } catch (error) {
             console.log(error.response.data);
         }
