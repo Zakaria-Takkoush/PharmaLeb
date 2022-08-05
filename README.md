@@ -53,9 +53,9 @@
     <th style="width:33%; text-align:center">Pharmacy</th>
   </tr>
   <tr>
-    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Home.png" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Medicine.png" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Pharmacy.png" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/wireframes/patient/Home.png" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/wireframes/patient/Medicine.png" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/wireframes/patient/Pharmacy.png" /></td>
   </tr>
  <tr>
     <th style="width:33%; text-align:center">Favorites </th>
@@ -63,9 +63,9 @@
     <th style="width:33%; text-align:center">Profile</th>
   </tr>
   <tr>
-    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Favorites.png" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Chat-Patient.png" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/wireframes/patient/Profile.png" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/wireframes/patient/Favorites.png" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/wireframes/patient/Chat-Patient.png" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/wireframes/patient/Profile.png" /></td>
   </tr>
 </table>
 
@@ -78,9 +78,9 @@
     <th style="width:33%; text-align:center">Edit Pharmacy</th>
   </tr>
   <tr>
-    <td style="width:33%"><img width="250px" src="./readme/wireframes/pharmacist/Stock.png" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/wireframes/pharmacist/Edit-Stock.png" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/wireframes/pharmacist/Edit-Pharmacy.png" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/wireframes/pharmacist/Stock.png" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/wireframes/pharmacist/Edit-Stock.png" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/wireframes/pharmacist/Edit-Pharmacy.png" /></td>
   </tr>
 </table>
 
@@ -111,11 +111,6 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
 
 ## Patient Screens:
 
-<!-- |                                                              Search for Medicine                                                              |                                                      Check Medicine Availability                                                       |                                                                  Call Pharmacy                                                                  |
-| :-------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                ![Browse](/readme/gifs/search-for-medicine.gif)                                                |                                        ![Availability](/readme/gifs/medicine-availability.gif)                                         |                                                   ![Pharmacy](/readme/gifs/call-pharmacy.gif)                                                   |
-| The patient can search for a certain medicine. Search results are filtered in real-time. They can press on the medicine card to view details. | Pharmacies selling each medicine are displayed with their availability stock of this medicine as well as their distance from the user. | The app can directly navigate to the phone dialer to call the pharmacy. The patient also has the choice to start a live chat with the pharmacy. | -->
-
 <table style="width:100%">
   <tr>
     <th style="width:33%; text-align:center">Search for Medicine </th>
@@ -134,11 +129,6 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
   </tr>
 </table>
 
-<!-- |                                   Add a Favorite                                   |                           Delete Favorites                            |                                        Edit Profile                                         |
-| :--------------------------------------------------------------------------------: | :-------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
-|                   ![Add Favorite](/readme/gifs/add-favorite.gif)                   |          ![Delete Favorite](/readme/gifs/edit-favorties.gif)          |                  ![Edit Profile](/readme/gifs/edit-profile-with-image.gif)                  |
-| The patient can add a medicine to their favorite list in order to track it easily. | The patient can also edit their favorites list by deleting medicines. | Patients and pharmacists can edit their profile anytime. They can upload a profile picture. | -->
-
 <table style="width:100%">
   <tr>
     <th style="width:33%; text-align:center">Add a Favorite</th>
@@ -156,11 +146,6 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
     <td style="width:33%; text-align:center">Patients and pharmacists can edit their profile anytime. They can upload a profile picture.</td>
   </tr>
 </table>
-
-<!-- |                                                                         Community Chat                                                                         |                                                                           Chat                                                                            |                                                                             Notifications                                                                              |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                            ![Chat](/readme/gifs/community-chat.gif)                                                            |                                                       ![Community Chat](/readme/gifs/chatting.gif)                                                        |                                                            ![Notifications](/readme/gifs/notifications.gif)                                                            |
-| The community chat is where all patients and pharmacists can communicate with each other. It is an additional way to find medicines and request medical needs. | One-to-one chat is another way of communication between a patient and a pharmacist. They can discuss availability, reservation, price, and delivery here. | Patients receive push notifications when a medicine in their favorites list becomes available. It keeps patients always updated with their medical needs availability. | -->
 
 <table style="width:100%">
   <tr>
@@ -182,11 +167,6 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
 
 ## Pharmacist Screens:
 
-<!-- |              Pharmacist Tabs              |                                          Add a Medicine                                           |                                           Edit Stock                                            |
-| :---------------------------------------: | :-----------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
-| ![Tabs](/readme/gifs/pharmacist-tabs.gif) |                          ![Add Medicine](/readme/gifs/add-to-stock.gif)                           |                           ![Edit Stock](/readme/gifs/edit-stock.gif)                            |
-|  This is the pharmacist part of the app.  | Pharmacists can add any medicine to their available items from the predefined medicines database. | Each pharmacist can edit the stock of their items whenever there are new arrivals or purchases. | -->
-
 <table style="width:100%">
   <tr>
     <th style="width:33%; text-align:center">Pharmacist Tabs</th>
@@ -207,11 +187,6 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
 
 ## Registration and Logging in:
 
-<!-- |                                                                                       Sign Up & Validation                                                                                        |                                                                                      Login                                                                                      |                                                                           Register a Pharmacy                                                                            |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                                     ![Sign Up](/readme/gifs/register_validation_location.gif)                                                                     |                                                                        ![Login](/readme/gifs/login.gif)                                                                         |                                                               ![Validation](/readme/gifs/add-pharmacy.gif)                                                               |
-| Patients and pharmacists can register to PharmaLeb. There are validation rules to ensure secure and genuine data. Users are asked to set their location as it wil be used to calculate distances. | This is the opening app screen. Users can log in and they will be welcomed. The app will automatically direct each user type to their corresponding UI (patient or pharmacist). | After a pharmacist registers their account, they will be asked to register their pharmacy. Of course, pharmacy data should be valid and pharmacy location should be set. | -->
-
 <table style="width:100%">
   <tr>
     <th style="width:33%; text-align:center">Sign Up & Validation</th>
@@ -231,11 +206,6 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
 </table>
 
 ## Admin Panel:
-
-<!-- |                                               Add a Medicine                                               |                                         Edit/Delete a Medicine                                         |
-| :--------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: |
-|                              ![Sign Up](/readme/gifs/admin-add-medicine.gif)                               |                                ![Login](/readme/gifs/admin-delete.gif)                                 |
-| The admin can manage the medicine list displayed in the app. They can add a medicine with all its details. | The admin can also edit an existing medicine data or delete the medicine completely from the database. | -->
 
 <table style="width:100%">
   <tr>
