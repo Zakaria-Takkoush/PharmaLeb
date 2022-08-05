@@ -123,9 +123,9 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
     <th style="width:33%; text-align:center">Call Pharmacy</th>
   </tr>
   <tr>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/search-for-medicine.gif" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/medicine-availability.gif" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/call-pharmacy.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/search-for-medicine.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/medicine-availability.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/call-pharmacy.gif" /></td>
   </tr>
  <tr>
     <td style="width:33%; text-align:center">The patient can search for a certain medicine. Search results are filtered in real-time. They can press on the medicine card to view details. </td>
@@ -146,9 +146,9 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
     <th style="width:33%; text-align:center">Edit Profile</th>
   </tr>
   <tr>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/add-favorite.gif" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/edit-favorties.gif" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/edit-profile-with-image.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/add-favorite.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/edit-favorties.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/edit-profile-with-image.gif" /></td>
   </tr>
  <tr>
     <td style="width:33%; text-align:center">The patient can add a medicine to their favorite list in order to track it easily. </td>
@@ -169,9 +169,9 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
     <th style="width:33%; text-align:center">Notifications</th>
   </tr>
   <tr>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/community-chat.gif" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/chatting.gif" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/notifications.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/community-chat.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/chatting.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/notifications.gif" /></td>
   </tr>
  <tr>
     <td style="width:33%; text-align:center">The community chat is where all patients and pharmacists can communicate with each other. It is an additional way to find medicines and request medical needs.</td>
@@ -194,9 +194,9 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
     <th style="width:33%; text-align:center">Edit Medicine Stock</th>
   </tr>
   <tr>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/pharmacist-tabs.gif" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/add-to-stock.gif" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/edit-stock.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/pharmacist-tabs.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/add-to-stock.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/edit-stock.gif" /></td>
   </tr>
  <tr>
     <td style="width:33%; text-align:center">This is the pharmacist part of the app.</td>
@@ -219,9 +219,9 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
     <th style="width:33%; text-align:center">Register a Pharmacy</th>
   </tr>
   <tr>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/register_validation_location.gif" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/login.gif" /></td>
-    <td style="width:33%"><img width="250px" src="./readme/gifs/add-pharmacy.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/register_validation_location.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/login.gif" /></td>
+    <td style="width:33%; text-align:center"><img width="250px" src="./readme/gifs/add-pharmacy.gif" /></td>
   </tr>
  <tr>
     <td style="width:33%; text-align:center">Patients and pharmacists can register to PharmaLeb. There are validation rules to ensure secure and genuine data. Users are asked to set their location as it wil be used to calculate distances.</td>
@@ -243,8 +243,8 @@ Here's a brief high-level overview of the tech stack PharmaLeb uses:
     <th style="width:50%; text-align:center">Edit/Delete a Medicine</th>
   </tr>
   <tr>
-    <td style="width:50%"><img width="100%" src="./readme/gifs/admin-add-medicine.gif" /></td>
-    <td style="width:50%"><img width="100%" src="./readme/gifs/admin-delete.gif" /></td>
+    <td style="width:50%; text-align:center"><img width="100%" src="./readme/gifs/admin-add-medicine.gif" /></td>
+    <td style="width:50%; text-align:center"><img width="100%" src="./readme/gifs/admin-delete.gif" /></td>
   </tr>
  <tr>
     <td style="width:33%; text-align:center">The admin can manage the medicine list displayed in the app. They can add a medicine with all its details.</td>
