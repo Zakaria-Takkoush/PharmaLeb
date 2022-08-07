@@ -44,7 +44,16 @@ export const PharmacyCard = ({ details, medicine, navigation }) => {
             }
         >
             <Text style={styles.name}>{details.name}</Text>
-            <Text style={styles.detail}>{distance} km away</Text>
+            <Text style={styles.detail}>
+                <>
+                    {distance} km away{" "}
+                    {distance <= 1 ? (
+                        <Text style={styles.close}>(close)</Text>
+                    ) : (
+                        <Text style={styles.far}>(far)</Text>
+                    )}
+                </>
+            </Text>
             <Text style={styles.detail}>Available Stock: {stock}</Text>
             <Ionicons
                 style={styles.icon}
@@ -81,5 +90,13 @@ const styles = StyleSheet.create({
         position: "absolute",
         right: 15,
         top: 15,
+    },
+    close: {
+        fontWeight: "bold",
+        color: "yellowgreen",
+    },
+    far: {
+        fontWeight: "bold",
+        color: "orange",
     },
 });
