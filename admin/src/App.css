@@ -128,6 +128,18 @@
   gap: 5px;
 }
 
+/* Navigation Bar */
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 5px;
+}
+
+.nav-bar button {
+  padding: 10px;
+}
+
 /* Utilities */
 .submit-add {
   background-color: #009FFF;
