@@ -5,6 +5,10 @@ import MedicineList from "./components/MedicineList";
 import axiosAPI from "./api/axiosAPI";
 import { useEffect, useState } from "react";
 
+import Home from "./pages/Home";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 function App() {
     const [medicines, setMedicines] = useState([]);
 
