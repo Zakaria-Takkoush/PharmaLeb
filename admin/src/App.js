@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 
 // pages
 import Home from "./pages/Home";
@@ -14,6 +15,7 @@ function App() {
     return (
         <BrowserRouter>
             <Header />
+            <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/medicines" element={<Medicines />} />
