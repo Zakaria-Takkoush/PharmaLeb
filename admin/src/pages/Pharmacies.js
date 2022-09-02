@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axiosAPI from "../api/axiosAPI";
+import PharmacyList from "../components/PharmacyList";
 
 const Pharmacies = () => {
     const [pharmacies, setPharmacies] = useState([]);
@@ -20,9 +21,7 @@ const Pharmacies = () => {
 
     return (
         <>
-            {pharmacies.map((pharmacy) => (
-                <p>{pharmacy.name}</p>
-            ))}
+            <PharmacyList pharmacies={pharmacies} />
         </>
     );
 };
