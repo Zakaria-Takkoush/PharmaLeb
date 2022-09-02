@@ -140,6 +140,37 @@
   padding: 10px;
 }
 
+/* Pharmacy Page */
+.pharmacy-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  border: 2px solid #009FFF;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.pharmacy-card:hover {
+  box-shadow: 0px 0px 8px 10px #cbcbcb;
+  border: none
+}
+
+.pharmacy-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.pharmacy-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 /* Utilities */
 .submit-add {
   background-color: #009FFF;

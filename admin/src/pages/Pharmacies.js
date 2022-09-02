@@ -20,9 +20,10 @@ const Pharmacies = () => {
     }, []);
 
     return (
-        <>
+        <div className="pharmacy-container">
+            <h2>List of Pharmacies</h2>
             <PharmacyList pharmacies={pharmacies} />
-        </>
+        </div>
     );
 };
 
