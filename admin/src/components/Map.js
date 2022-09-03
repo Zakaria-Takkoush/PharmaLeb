@@ -1,10 +1,10 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 
-const Map = () => {
+const Map = ({ location }) => {
     return (
         <MapContainer
-            center={[51.505, -0.09]}
+            center={[location.latitude, location.longitude]}
             zoom={13}
             scrollWheelZoom={false}
         >
@@ -12,7 +12,7 @@ const Map = () => {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[51.505, -0.09]}></Marker>
+            <Marker position={[location.latitude, location.longitude]}></Marker>
         </MapContainer>
     );
 };

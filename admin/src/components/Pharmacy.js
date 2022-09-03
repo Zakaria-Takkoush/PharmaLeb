@@ -7,7 +7,7 @@ const Pharmacy = ({ pharmacy }) => {
             <h3>{pharmacy.name}</h3>
             <p>Address: {pharmacy.address}</p>
             <p>Phone #: {pharmacy.phone_number}</p>
-            <Map />
+            <Map location={pharmacy.location} />
         </div>
     );
 };
