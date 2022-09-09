@@ -9,8 +9,12 @@ const {
     register,
     login,
     editProfile,
+    getUsers,
 } = require("../controllers/UserController");
 const verifyToken = require("../middleware/auth");
+
+// Get All users
+router.get("/", getUsers);
 
 // Register Route
 router.post("/register", register);
@@ -22,7 +26,7 @@ router.post("/login", login);
 router.put("/edit_prof/:id", verifyToken, editProfile);
 
 // Get the user from token
-router.get("/", verifyToken, (req, res) => {
+router.get("/user", verifyToken, (req, res) => {
     res.send(req.user);
 });
 

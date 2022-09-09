@@ -144,4 +144,13 @@ async function editProfile(req, res) {
     }
 }
 
-module.exports = { register, login, editProfile };
+async function getUsers(req, res) {
+    try {
+        const users = await User.find();
+        return res.json(users);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+module.exports = { register, login, editProfile, getUsers };
