@@ -5,7 +5,7 @@ const Map = ({ location }) => {
     return (
         <MapContainer
             center={[location.latitude, location.longitude]}
-            zoom={13}
+            zoom={15}
             scrollWheelZoom={false}
         >
             <TileLayer

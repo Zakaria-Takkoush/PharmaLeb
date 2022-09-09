@@ -150,6 +150,7 @@
   border: 2px solid #009FFF;
   border-radius: 8px;
   padding: 5px;
+  transition: 0.3s;
 }
 
 .pharmacy-card:hover {
@@ -174,6 +175,11 @@
 .leaflet-container {
   width: 100%;
   height: 200px;
+}
+
+.map {
+  width: 100%;
+  margin-top: 10px;
 }
 
 /* Utilities */
