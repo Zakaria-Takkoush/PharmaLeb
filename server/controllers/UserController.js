@@ -120,22 +120,11 @@ async function editProfile(req, res) {
         const {
             first_name,
             last_name,
-            // email,
-            // password,
             phone_number,
             date_of_birth,
             photo,
             location,
         } = req.body;
-
-        // Validate using Joi
-        // const { value, error } = validateRegister(req.body);
-        // if (error) {
-        //     return res.json(error.details);
-        // }
-
-        // Encrypt user password
-        // encryptedPassword = await bcrypt.hash(password, 10);
 
         // Get and update user
         const user = await User.findByIdAndUpdate(req.params.id, {
@@ -145,21 +134,7 @@ async function editProfile(req, res) {
             photo,
             phone_number,
             location,
-            // email: email.toLowerCase(), // sanitize: convert email to lowercase
-            // password: encryptedPassword,
         });
-
-        // // Create token
-        // const token = jwt.sign(
-        //     { user_id: user._id, email, type: user.user_type },
-        //     process.env.TOKEN_KEY,
-        //     {
-        //         expiresIn: "2h",
-        //     }
-        // );
-
-        // // save user token
-        // user.token = token;
 
         // return user edits
         res.status(201).json({ status: "updated successfully", user });
