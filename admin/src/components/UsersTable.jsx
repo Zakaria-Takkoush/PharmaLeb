@@ -1,6 +1,7 @@
 import React from "react";
+import User from "./User";
 
-const UsersTable = () => {
+const UsersTable = ({ users }) => {
     return (
         <table>
             <tbody>
@@ -13,6 +14,9 @@ const UsersTable = () => {
                     <th>Date of Birth</th>
                     <th>User Type</th>
                 </tr>
+                {users.map((user) => (
+                    <User key={user._id} user={user} />
+                ))}
             </tbody>
         </table>
     );
