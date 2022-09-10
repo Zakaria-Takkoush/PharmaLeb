@@ -20,7 +20,7 @@ const Users = () => {
     }, []);
 
     return (
-        <div>
+        <div className="users-table">
             <UsersTable users={users} />
         </div>
     );
